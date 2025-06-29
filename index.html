@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+
+
+
+
+<head>
+    <title>Anleitung</title>
+    <meta name="author"             content="WEelCh">
+    <meta name="description"        content="">
+    <meta name="keywords"           content="">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"> <!--OLD-->
+    <meta charset="utf-8">                                              <!--NEW-->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="/img/icon.png" rel="icon">
+
+    <!-- CSS
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="game/css/skeleton.css">
+    <link rel="stylesheet" href="game/css/normalize.css">
+
+    <link rel="stylesheet" href="game/css/style.css">
+
+    <!-- JS
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="game/js/utils.js"></script>
+
+    <script src="manual.js"></script>
+
+</head>
+
+
+
+
+
+<body onload=onLoad(this)>
+
+    <!-- Tab Bar
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="tab-bar">
+        <div id="tab1" class="tab purple" title="Tab 1" onclick=openTab(this);>
+            <i class="icon h1" data-lucide="dice-1"></i>
+        </div>
+
+        <div id="tab2" class="tab red" title="Tab 2" onclick=openTab(this);>
+            <i class="icon h1" data-lucide="dice-2"></i>
+        </div>
+
+        <div id="tab3" class="tab orange" title="Tab 3" onclick=openTab(this);>
+            <i class="icon h1" data-lucide="dice-3"></i>
+        </div>
+
+        <div id="tab4" class="tab yellow" title="Tab 4" onclick=openTab(this);>
+            <i class="icon h1" data-lucide="dice-4"></i>
+        </div>
+
+        <div id="tab5" class="tab green" title="Tab 5" onclick=openTab(this);>
+            <i class="icon h1" data-lucide="dice-5"></i>
+        </div>
+
+        <div id="tab6" class="tab blue" title="Tab 6" onclick=openTab(this);>
+            <i class="icon h1" data-lucide="dice-6"></i>
+        </div>
+    </div>
+ 
+    
+
+    <!-- AllTab Content 
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="container">
+        <div class="row">
+            <div class="column" style="text-align: center;">
+                <h3> ACALI Anleitung </h3>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+
+<!--<hr class="ten columns offset-by-one" style="margin-top: 0;">-->
+
+
+    <!-- Tab 0 Content 
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="container content tab0">
+        <div class="row" style="text-align: justify;">
+            <div class="ten columns offset-by-one box" style="padding: 2%;">
+                <h4>Überblick</h4>
+                <hr>
+                Willkommen in der Anleitung
+                Hier lernst du alle Regeln für das Acali Spiel
+            </div>
+        </div>
+
+        <div class="row" style="text-align: justify;">
+            <div class="ten columns offset-by-one box" style="padding: 2%;">
+                <h4>Überblick</h4>
+                <hr>
+                Willkommen in der Anleitung
+                Hier lernst du alle Regeln für das Acali Spiel
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Tab 1 Content 
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="container content tab1">
+        <div class="row">
+            <div class="one-half column offset-by-one box warning">
+                This is Tab 1 Content
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Tab 2 Content 
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="container content tab2">
+        <div class="row">
+            <div class="one-half column offset-by-two box warning">
+                This is Tab 2 Content
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Tab 3 Content 
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="container content tab3">
+        <div class="row">
+            <div class="one-half column offset-by-three box warning">
+                This is Tab 3 Content
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Tab 4 Content 
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="container content tab4">
+        <div class="row">
+            <div class="one-half column offset-by-four box warning">
+                This is Tab 4 Content
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Tab 5 Content 
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="container content tab5">
+        <div class="row">
+            <label for="cars">Choose a car:</label>
+
+            <select name="cars" id="cars">
+              <option value="volvo">Volvo</option>
+              <option value="saab">Saab</option>
+              <option value="mercedes">Mercedes</option>
+              <option value="audi">Audi</option>
+            </select> 
+            <button onclick=evalForm()>This</button>
+        </div>
+    </div>
+
+
+
+    <!-- Tab 6 Content 
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="container content tab6">
+        <div class="row">
+            <table class="u-full-width">
+                <thead>
+                    <tr>
+                    <th>Name</th>
+                    <th>Sex</th>
+                    <th>Location</th>
+                    <th class="number">Age</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>Dave Gamache</td>
+                    <td>Male</td>
+                    <td>San Francisco</td>
+                    <td class="number">26</td>
+                    </tr>
+                    <tr>
+                    <td>Dwayne Johnson</td>
+                    <td>Male</td>
+                    <td>Hayward</td>
+                    <td class="number">42</td>
+                    </tr>
+                </tbody>
+                </table>
+        </div>
+    </div>
+
+
+
+    <!-- Footer Content 
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="container">
+        <hr>
+        <div class="row">
+            <div class="column" style="text-align: center;">
+                <a style="cursor: pointer;color: #E1E1E1;" href="./game/index.html" title="SPIELEN">
+                    <i class="icon h2" data-lucide="play"></i> 
+                    <h3>Acali Spielen</h3>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>

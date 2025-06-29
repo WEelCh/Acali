@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+
+
+
+
+
+<head>
+    <title>Acali</title>
+    <meta name="author"             content="WEelCh">
+    <meta name="description"        content="">
+    <meta name="keywords"           content="">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"> <!--OLD-->
+    <meta charset="utf-8">                                              <!--NEW-->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/normalize.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- JS
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <!--<script src="https://unpkg.com/lucide@latest"></script>-->
+    <script src="https://unpkg.com/lucide@0.432.0/dist/umd/lucide.min.js"></script>
+
+    <script src="js/utils.js"></script>
+    <script src="js/core.js"></script>
+
+    <script src="APPDATA.js"></script>
+    <script src="js/script.js"></script>
+
+</head>
+
+
+
+
+
+<body onload=onLoad()>
+
+    <div class="container">
+
+        <!-- SETTINGS
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <div id="head-settings" class="row nomargin settings">
+            <h2 class="column">Einstellungen</h2>
+        </div>
+
+
+        <div class="row settings" style="text-align: center;">
+            <a class="ten columns offset-by-one" onclick=evalSettings()>
+                <i class="icon halffull" data-lucide="play"></i>
+            </a>
+        </div>
+
+
+        <div class="row settings" style="text-align: center;">
+            <div class="six columns box">
+                <h5><i class="icon h5" data-lucide="umbrella"></i> Wetter</h5>
+                <select id="setting-weather" style="margin-bottom: 15px;width: 80%;text-align: center;" autocomplete="off">
+                    <option value="easy" title="Einfach"           >Malta</option>
+                    <option selected value="normal" title="Normal" >Thüringen</option>
+                    <option value="hard" title="Hart"              >England</option>
+                    <option value="hardcore" title="Brutal"        >Ohio</option>
+                </select> 
+            </div>
+
+            <div class="six columns box">
+                <h5><i class="icon h5" data-lucide="ambulance"></i> Rettung</h5>
+                <select id="setting-search" style="margin-bottom: 15px;width: 80%;text-align: center;" autocomplete="off">
+                    <option value="easy" title="Einfach"           >Titan</option>
+                    <option selected value="normal" title="Normal" >Viking Sky</option>
+                    <option value="hard" title="Hart"              >Hansa Stavanger</option>
+                    <option value="hardcore" title="Brutal"        >High Aim 6</option>
+                </select> 
+            </div>
+        </div>
+
+
+
+        <div class="row settings" style="text-align: center;">
+            <div class="six columns box">
+                <h5><i class="icon h5" data-lucide="gem"></i> Ressourcen</h5>
+                <select id="setting-island-res" style="margin-bottom: 15px;width: 80%;text-align: center;" autocomplete="off">
+                    <option value="easy" title="Einfach"           >Überfluss</option>
+                    <option selected value="normal" title="Normal" >Reichlich</option>
+                    <option value="hard" title="Hart"              >Rar</option>
+                    <option value="hardcore" title="Brutal"        >Arktis</option>
+                </select> 
+            </div>
+
+            <div class="six columns box">
+                <h5><i class="icon h5" data-lucide="skull"></i> Gefahren</h5>
+                <select id="setting-island-danger" style="margin-bottom: 15px;width: 80%;text-align: center;" autocomplete="off">
+                    <option value="easy" title="Einfach"           >Kinderspielplatz</option>
+                    <option selected value="normal" title="Normal" >Wald</option>
+                    <option value="hard" title="Hart"              >Wildniss</option>
+                    <option value="hardcore" title="Brutal"        >Frankfurt</option>
+                </select> 
+            </div>
+        </div>
+
+
+
+        <div class="row settings" style="text-align: center;">
+            <div class="six columns box">
+                <h5><i class="icon h5" data-lucide="sunrise"></i> Zeit</h5>
+                <input  id="setting-sunrise" 
+                        type="text" 
+                        value="90" 
+                        onfocusout=validateInput(this,90) 
+                        style="margin-bottom: 15px;text-align: center;width: 80%;">
+            </div>
+
+            <div class="six columns box">
+                <h5><i class="icon h5" data-lucide="sunset"></i> Zeit</h5>
+                <input  id="setting-sunset" 
+                        type="text" 
+                        value="90" 
+                        onfocusout=validateInput(this,90) 
+                        style="margin-bottom: 15px;text-align: center;width: 80%;">
+            </div>
+        </div>
+
+
+
+        <div class="row settings" style="text-align: center;">
+            <div class="six columns box">
+                <h5><i class="icon h5" data-lucide="package-open"></i> Kisten</h5>
+                <select id="setting-package" style="margin-bottom: 15px;width: 80%;text-align: center;" autocomplete="off">
+                    <option value="easy" title="Einfach"           >Einfach</option>
+                    <option selected value="normal" title="Normal" >Normal</option>
+                    <option value="hard" title="Hart"              >Hart</option>
+                    <option value="hardcore" title="Brutal"        >Hardcore</option>
+                </select> 
+            </div>
+
+            <div class="six columns box">
+                <h5><i class="icon h5" data-lucide="anchor"></i> Sichere Rettung</h5>
+                <select id="setting-autorescue" style="margin-bottom: 15px;width: 80%;text-align: center;" autocomplete="off">
+                    <option value="easy" title="Einfach"           >Einfach</option>
+                    <option selected value="normal" title="Normal" >Normal</option>
+                    <option value="hard" title="Hart"              >Hart</option>
+                    <option value="hardcore" title="Brutal"        >Hardcore</option>
+                </select> 
+            </div>
+        </div>
+
+
+
+        <div class="row settings" style="text-align: center;margin-top: 75px;">
+            <a class="six columns offset-by-three box" onclick=evalSettings(true)>
+                <h5 style="margin-bottom: 0;margin-top: 2rem;"><i class="icon h1" data-lucide="cog"></i></h5>
+                <h5>Spielleiter-Menü</h5>
+            </a>
+        </div>
+
+
+
+        <div class="row settings" style="text-align: center;">
+            <div class="six columns offset-by-three box">
+                <h5><i class="icon h5" data-lucide="drumstick"></i> Unbekanntes Essen</h5>
+                <select id="setting-food" style="margin-bottom: 15px;width: 80%;text-align: center;" autocomplete="off">
+                    <option value="easy" title="Einfach"           >Kinderspielplatz</option>
+                    <option selected value="normal" title="Normal" >Wald</option>
+                    <option value="hard" title="Hart"              >Wildniss</option>
+                    <option value="hardcore" title="Brutal"        >Frankfurt</option>
+                </select> 
+            </div>
+        </div>
+
+
+
+        <!-- HEADER
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <div id="head-day-div" class="row nomargin content">
+            <h2 id="head-day" class="column">Tag 1</h2>
+        </div>
+
+
+
+        <!-- TIMER
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <div class="row content" style="text-align: center;">
+            <div class="column box">
+                <h2 id="id-timer" style="color: #E1E1E1; padding: 25px 0; margin: 0;">
+                    <i class="icon h2" data-lucide="timer-off"></i>
+                </h2>
+            </div>
+        </div>
+
+
+        <!-- TIME & WEATHER
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <div class="row content">
+            <!-- Time Column
+            –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+            <div id="box-time" class="six columns box">
+                <div class="row" style="text-align: center;">
+
+                    <!-- Heading
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <div class="ten columns offset-by-one">
+                        <h5>Tageszeit</h5>
+                    </div>
+
+
+                    <!-- Time Symbol
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <a id="starter" class="ten columns offset-by-one" onclick=clickProgressTime(this)>
+                        <i class="icon nearfull" data-lucide="sunrise"></i>
+                    </a>
+
+
+                    <!-- Tooltip
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <hr class="ten columns offset-by-one">
+
+                    <div class="ten columns offset-by-one">
+                        <h2 id="time-tooltip" style="color: #E1E1E1;">X</h2>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Weather Column
+            –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+            <div id="box-weather" class="six columns box">
+                <div class="row" style="text-align: center;">
+
+                    <!-- Heading
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <div class="ten columns offset-by-one">
+                        <h5>Wetter</h5>
+                    </div>
+
+
+                    <!-- Weather Symbol
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <div id="id-weather-logo" class="ten columns offset-by-one">
+                        <i class="icon nearfull" data-lucide="cloudy"></i>
+                    </div>
+
+
+
+                    <!-- Weather Effects
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <hr class="ten columns offset-by-one">
+
+                    <div class="ten columns offset-by-one">
+                        <h2 id="id-weather-effect" style="color: #E1E1E1;">
+                            -
+                        </h2>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- ISLAND & RESCUE
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <div class="row content">
+            <div id="box-island" class="six columns box">
+
+
+                <!-- M A P
+                –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+
+                <div class="row map" style="text-align: center">
+
+                    <!-- Heading
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <div class="ten columns offset-by-one">
+                        <h5>Insel</h5>
+                    </div>
+
+                    <!--MANUAL COLUMN WIDTH TO AVIOD RESIZE ON SMALL SCREEN-->
+                    <div class="row">
+                        <!-- Meadow
+                        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                        <a id="id-meadow" class="column" style="width: 35%;margin-left: 10%;" onclick=clickOpenTile(this)>
+                            <i class="icon nearfull" data-lucide="flower-2"></i>
+                        </a>
+
+                        <!-- Hill
+                        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                        <a id="id-hill" class="column" style="width: 35%;margin-left: 10%;" onclick=clickOpenTile(this)>
+                            <i class="icon nearfull" data-lucide="mountain"></i>
+                        </a>
+                    </div>
+
+                    <div class="row">
+                        <!-- Forest
+                        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                        <a id="id-forest" class="column" style="width: 35%;margin-left: 10%;" onclick=clickOpenTile(this)>
+                            <i class="icon nearfull" data-lucide="trees"></i>
+                        </a>
+
+                        <!-- Beach
+                        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                        <a id="id-beach" class="column" style="width: 35%;margin-left: 10%;" onclick=clickOpenTile(this)>
+                            <i class="icon nearfull" data-lucide="tree-palm"></i>
+                        </a>
+                    </div>
+
+                    <div class="row">
+                        <!-- Camp
+                        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                        <a id="id-camp" class="column" style="width: 35%; margin-left: 32.5%;" onclick=clickOpenTile(this)>
+                            <i class="icon nearfull" data-lucide="tent-tree"></i>
+                        </a>
+                    </div>
+                </div>
+
+
+                <!-- T I L E
+                –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+
+                <div class="row tile" style="text-align: center">
+
+                    <!-- Heading
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <div class="ten columns offset-by-one">
+                        <h5 id="id-tile-name">Tile</h5>
+                    </div>
+
+                    <!-- Tile Symbol
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <a id="id-tile-type" class="ten columns offset-by-one" onclick=clickCloseTile()>
+                        <i class="icon nearfull" data-lucide="trees"></i>
+                    </a>
+
+
+                    <!-- Tile Loot
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <hr class="ten columns offset-by-one">
+
+                    <div class="ten columns offset-by-one">
+                        <div class="row nomargin">
+                            <div class="six columns">
+                                <h2 id="id-tile-loot" style="color: #E1E1E1;">
+                                    <i class="icon h2 loot" data-lucide="gem"></i><i class="icon h2 loot" data-lucide="gem"></i>
+                                </h2>
+                            </div>
+                            <div class="six columns">
+                                <h2 id="id-tile-foe" style="color: #E1E1E1;">
+                                    <i class="icon h2 foe" data-lucide="skull"></i><i class="icon h2 foe" data-lucide="skull"></i><i class="icon h2 foe" data-lucide="skull"></i>
+                                </h2>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <!-- Rescue Column
+            –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+            <div id="box-rescue" class="six columns box">
+                <div class="row" style="text-align: center;">
+
+                    <!-- Heading
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <div class="ten columns offset-by-one">
+                        <h5>Suche</h5>
+                    </div>
+
+
+                    <!-- Rescue Symbol
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <a id="id-rescue-logo" class="ten columns offset-by-one" onclick=clickTryAttention()>
+                        <i class="icon nearfull" data-lucide="waves"></i>
+                    </a>
+
+
+                    <!-- Rescue Effects
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <hr class="ten columns offset-by-one">
+
+                    <div class="ten columns offset-by-one">
+                        <h2 id="id-rescue-effect">
+                            -
+                        </h2>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+
+        <!-- DICE
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <div class="row content" style="text-align: center;">
+            
+            <div class="four columns box">
+                <a id="dice1" class="ten columns offset-by-one" onclick=dice(this) style="padding: 10% 0;" value="false">
+                    <i class="icon h1" data-lucide="dices" style="margin: 0;"></i>
+                </a>
+            </div>
+
+            <div class="four columns box">
+                <a id="dice2" class="ten columns offset-by-one" onclick=dice(this) style="padding: 10% 0;">
+                    <i class="icon h1" data-lucide="dices" style="margin: 0;"></i>
+                    <i class="icon h1" data-lucide="dices" style="margin: 0;"></i>
+                </a>
+            </div>
+
+            <div class="four columns box">
+                <a id="dice3" class="ten columns offset-by-one" onclick=dice(this) style="padding: 10% 0;">
+                    <i class="icon h1" data-lucide="dices" style="margin: 0;"></i>
+                    <i class="icon h1" data-lucide="dices" style="margin: 0;"></i>
+                    <i class="icon h1" data-lucide="dices" style="margin: 0;"></i>
+                </a>
+            </div>
+
+        </div>
+
+
+
+        <!-- VICTORY
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <div class="row victory" style="display: none;">
+            <!-- Time Column
+            –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+            <div id="box-time" class="six columns box offset-by-three">
+                <div class="row" style="text-align: center;">
+
+                    <!-- Heading
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <div class="ten columns offset-by-one">
+                        <h5>Überlebende gerettet</h5>
+                    </div>
+
+
+                    <!-- Time Symbol
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <a class="ten columns offset-by-one" onclick=clickRejectVictory()>
+                        <i class="icon nearfull" data-lucide="ship"></i>
+                    </a>
+
+
+                    <!-- Time Symbol
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <hr class="ten columns offset-by-one">
+
+                    <h2>
+                        <i class="icon h2" data-lucide="crown"></i>
+                    </h2>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- DM Menu
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <!-- Tab Bar
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <div id="dm-menu-tab-bar" class="tab-bar dm-menu">
+            <div id="tab1" class="tab purple" title="Tab 1" style="width: 25%;" onclick=openTab(this);>
+                <i class="icon h1" data-lucide="grape"></i>
+            </div>
+
+            <div id="tab2" class="tab red" title="Tab 2" style="width: 25%;" onclick=openTab(this);>
+                <i class="icon h1" data-lucide="hop"></i>
+            </div>
+
+            <div id="tab3" class="tab orange" title="Tab 3" style="width: 25%;" onclick=openTab(this);>
+                <i class="icon h1" data-lucide="leafy-green"></i>
+            </div>
+
+            <div id="tab4" class="tab yellow" title="Tab 4" style="width: 25%;" onclick=openTab(this);>
+                <i class="icon h1" data-lucide="nut"></i>
+            </div>
+
+            <div id="tab5" class="tab green" title="Tab 5" style="width: 50%;" onclick=openTab;>
+                <i class="icon h1" data-lucide="dice-5"></i>
+            </div>
+
+            <div id="tab6" class="tab blue" title="Tab 6" style="width: 50%;" onclick=openTab;>
+                <i class="icon h1" data-lucide="dice-6"></i>
+            </div>
+        </div>
+
+
+        <div class="row tab1 dm-menu">
+            <!-- Food Column
+            –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+            <div id="box-time" class="six columns offset-by-three box">
+                <div class="row nomargin" style="text-align: center;margin-bottom: 2rem;">
+                    <!-- Name
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <div class="ten columns offset-by-one">
+                        <h5>Berren</h5>
+                    </div>
+                    <!-- Time Symbol
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <div class="ten columns offset-by-one">
+                        <i class="icon halffull" data-lucide="grape"></i>
+                    </div>
+                    <!-- Effect
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <hr class="ten columns offset-by-one">
+
+                    <div id="effect-berry" class="ten columns offset-by-one">
+                        <i class="icon h1" data-lucide="grape"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row tab2 dm-menu">
+            <!-- Food Column
+            –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+            <div id="box-time" class="six columns offset-by-three box">
+                <div class="row nomargin" style="text-align: center;margin-bottom: 2rem;">
+                    <!-- Name
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <div class="ten columns offset-by-one">
+                        <h5>Früchte</h5>
+                    </div>
+                    <!-- Time Symbol
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <div class="ten columns offset-by-one">
+                        <i class="icon halffull" data-lucide="hop"></i>
+                    </div>
+                    <!-- Effect
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <hr class="ten columns offset-by-one">
+
+                    <div id="effect-fruit" class="ten columns offset-by-one">
+                        <i class="icon h1" data-lucide="grape"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row tab3 dm-menu">
+            <!-- Food Column
+            –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+            <div id="box-time" class="six columns offset-by-three box">
+                <div class="row nomargin" style="text-align: center;margin-bottom: 2rem;">
+                    <!-- Name
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <div class="ten columns offset-by-one">
+                        <h5>Kräuter</h5>
+                    </div>
+                    <!-- Time Symbol
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <div class="ten columns offset-by-one">
+                        <i class="icon halffull" data-lucide="leafy-green"></i>
+                    </div>
+                    <!-- Effect
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <hr class="ten columns offset-by-one">
+
+                    <div id="effect-herb" class="ten columns offset-by-one">
+                        <i class="icon h1" data-lucide="grape"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row tab4 dm-menu">
+            <!-- Food Column
+            –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+            <div id="box-time" class="six columns offset-by-three box">
+                <div class="row nomargin" style="text-align: center;margin-bottom: 2rem;">
+                    <!-- Name
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <div class="ten columns offset-by-one">
+                        <h5>Nüsse</h5>
+                    </div>
+                    <!-- Time Symbol
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <div class="ten columns offset-by-one">
+                        <i class="icon halffull" data-lucide="nut"></i>
+                    </div>
+                    <!-- Effect
+                    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+                    <hr class="ten columns offset-by-one">
+
+                    <div id="effect-nut" class="ten columns offset-by-one">
+                        <i class="icon h1" data-lucide="grape"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    
+
+
+
+    <!-- Footer Content 
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="container" style="position: fixed;bottom: 0%;width: 100%;">
+        <div class="row">
+            <div class="twelve columns" style="text-align: center;margin-top: 25px;">
+                <a style="cursor: pointer;color: #E1E1E1;" href="../index.html" title="Anleitung">
+                    <i class="icon h1" data-lucide="scroll-text"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
