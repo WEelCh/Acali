@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<head>
+    <title>Acali</title>
+    <meta name="author"             content="WEelCh">
+    <meta name="description"        content="">
+    <meta name="keywords"           content="">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"> <!--OLD-->
+    <meta charset="utf-8">                                              <!--NEW-->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="https://weelch.de/skeleton/css/SymbolsNerdFont-Regular.css">
+    <link rel="stylesheet" href="https://weelch.de/skeleton/css/weelch.css">
+
+    <link rel="stylesheet" href="./index.css">
+
+    <!-- JS
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <script src="https://weelch.de/skeleton/js/Log.js"></script>
+    <script src="https://weelch.de/skeleton/js/DOM.js"></script>
+    <script src="https://weelch.de/skeleton/js/Popup.js"></script>
+    <script src="https://weelch.de/skeleton/js/Cookie.js"></script>
+
+    <script src="./js/GD_ICONS.js"></script>
+    <script src="./js/GD_LOCALES.js"></script>
+    <script src="./js/GD_WEATHER.js"></script>
+    <script src="./js/GD_SOUND.js"></script>
+    <script src="./js/GD_MAP.js"></script>
+    
+    <script src="./js/WH_LOADER.js"></script>
+    <script src="./js/WH_TIME.js"></script>
+    <script src="./js/WH_EVENTS.js"></script>
+    
+    <script src="./js_core/CORE_TEST.js"></script>
+
+    <script src="./js_mod/MOD_TEST.js"></script>
+
+</head>
+
+
+
+<body onload="WH_LOADER.onload()">
+
+    <div id="id_container_load" class="container static">
+
+
+        <div id="id_load_cores" class="box">
+            <h3 class="row smaller">
+                CORES
+            </h3> 
+        </div>
+
+        <div id="id_load_mods" class="box">
+            <h3 class="row smaller">
+                MODS
+            </h3> 
+        </div>
+
+        <div class="box">
+            <h3 class="row"> NSFW </h3>
+            <input class="rwo" type="checkbox" id="NSFW" name="NSFW" value="NSFW" checked="checked">
+        </div>
+
+        <div class="box" onclick="WH_LOADER.start()">
+            <h3 class="row smaller">
+                START
+            </h3> 
+        </div>
+
+
+    </div>
+    
+
+
+
+    <div id="id_container_game" class="container static">
+        
+        <!-- Z E I T  &  W E T T E R
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <div class="row box" style="padding: 12px 0px;" onclick="WH_TIME.tick()">
+            <div class="row smaller nomargin">
+                <h1 id="id_daytime_left" class="two column ltxt">
+                    <i class='nf nf-md-progress_question' style="vertical-align:top;"></i>
+                </h1>
+                <h1 id="id_daytime_center" class="eight column">
+                    ???
+                </h1>
+                <h1 id="id_daytime_right" class="two column rtxt">
+                    <i class='nf nf-md-progress_question' style="vertical-align:top;"></i>
+                </h1>
+            </div>
+
+            <div class="smaller row nomargin vcenterparent">
+                <div class="four column vcenterchild">
+                    <h1 id="id_weather_main_icon" class="row nomargin ctxt">
+                        <i class='bigicon nf nf-md-progress_question'></i>
+                    </h1>
+                    <h3 id="id_weather_main_name" class="row nomargin ctxt">
+                        ???
+                    </h3>
+                </div>
+
+                <div id="id_weather_effects" class="eight column vcenterchild">
+                    <div class="row nomargin">
+                        <h2 class="six column"> <i class='nf nf-md-progress_question'></i> </h2>
+                        <h2 class="six column">  <i class='nf nf-md-progress_question'></i> </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- M A P
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <div class="row box" style="padding-top: 12px;">
+            <div class="row nomargin">
+                <h1 class="two column">
+                    <i class='nf nf-md-map_outline' style="vertical-align:baseline;"></i>
+                </h1>
+                <h1 class="eight column">
+                    Acali Island
+                </h1>
+                <h1 class="two column">
+                    <i class='nf nf-md-map_outline' style="vertical-align:baseline;"></i>
+                </h1>
+            </div>
+            
+            <div class="ten column offset-by-one" style="margin-top: 15px; margin-bottom: 25px;">
+                <div class="smaller row nomargin maprow">
+                    <h2 class="column box tile5 offset-by-one-tile5"> <i class='nf nf-md-map_marker_outline'></i> </h2>
+                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker_outline'></i> </h2>
+                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker_outline'></i> </h2>
+                </div>
+                <div class="smaller row nomargin maprow">
+                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker_outline'></i> </h2>
+                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker_outline'></i> </h2>
+                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker_outline'></i> </h2>
+                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker_outline'></i> </h2>
+                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker_outline'></i> </h2>
+                </div>
+                <div class="smaller row nomargin maprow">
+                    <h2 class="column box tile5 widetile" style="width: 98%;"> 
+                        <i class='nf nf-md-walk'></i> 
+                    </h2>
+                </div>
+                <div class="smaller row nomargin maprow">
+                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker'></i> </h2>
+                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker'></i> </h2>
+                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker'></i> </h2>
+                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker'></i> </h2>
+                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker'></i> </h2>
+                </div>
+                <div class="smaller row nomargin maprow">
+                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker'></i> </h2>
+                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker'></i> </h2>
+                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker'></i> </h2>
+                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker'></i> </h2>
+                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker'></i> </h2>
+                </div>
+                <div class="smaller row nomargin maprow">
+                    <h2 class="column box tile5 offset-by-one-tile5"> <i class='nf nf-md-map_marker'></i> </h2>
+                    <h2 class="column box tile5" style="border: 2px dotted rgb(211, 214, 199) ;"> <i class='nf nf-md-campfire'></i> </h2>
+                    <h2 class="column box tile5" onclick="GD_MAP('ship')"> <i class='nf nf-md-sail_boat_sink'></i> </h2>
+                </div>
+
+                <h1 id="id_day" class="row ">
+                    <i style="vertical-align:text-top;" class='nf nf-md-progress_question'></i>
+                </h1>
+            </div>
+
+
+            
+        </div>
+
+        <div class="row">
+            <h1 class="box">
+                <i class='nf nf-weather-moon_full'></i>
+                <i class='nf nf-weather-moon_first_quarter'></i>
+                <i class='nf nf-weather-moon_third_quarter'></i>
+                <i class='nf nf-weather-moon_new'></i>
+                <i class='nf nf-weather-horizon'></i>
+                <i class='nf nf-weather-horizon_alt'></i>
+                <i class='nf nf-weather-day_sunny'></i>
+                <i class='nf '></i>
+            </h1>
+            <h1 class="box">
+                <i class='nf nf-weather-cloudy'></i>
+                <i class='nf nf-weather-hail'></i>
+                <i class='nf nf-weather-rain'></i>
+                <i class='nf nf-weather-showers'></i>
+                <i class='nf nf-weather-snow'></i>
+                <i class='nf nf-weather-sleet'></i>
+                <i class='nf nf-weather-thunderstorm'></i>
+                <i class='nf nf-weather-strong_wind'></i>
+                <i class='nf nf-weather-cloudy_gusts'></i>
+                <i class='nf nf-weather-windy'></i>
+                <i class='nf nf-weather-cloudy_windy'></i>
+                <i class='nf nf-weather-fog'></i>
+                <i class='nf '></i>
+                <i class='nf '></i>
+                <i class='nf '></i>
+                <i class='nf '></i>
+                <i class='nf '></i>
+            </h1>
+            <h1 class="box">
+                <i class='nf nf-weather-rain_mix'></i>
+                <i class='nf nf-weather-rain_wind'></i>
+                <i class='nf nf-weather-snow_wind'></i>
+                <i class='nf nf-weather-storm_showers'></i>
+                <i class='nf '></i>
+                <i class='nf '></i>
+                <i class='nf '></i>
+                <i class='nf '></i>
+            </h1>
+            <h1 class="box">
+                <i class='nf nf-fa-droplet'></i>
+                <i class='nf nf-md-water'></i>
+                <i class='nf nf-md-snowflake_thermometer'></i>
+                <i class='nf nf-md-image_broken_variant'></i>
+                <i class='nf nf-md-fire_off'></i>
+                <i class='nf nf-fa-cutlery'></i>
+                <i class='nf nf-md-food_drumstick'></i>
+                <i class='nf nf-md-food_drumstick_off'></i>
+                <i class='nf nf-md-fire'></i>
+                <i class='nf nf-md-thermometer_plus'></i>
+                <i class='nf nf-md-thermometer_chevron_up'></i>
+                <i class='nf nf-md-thermometer_chevron_down'></i>
+                <i class='nf nf-md-thermometer_check'></i>
+                <i class='nf '></i>
+            </h1>
+            <h1 class="box">
+                <i class='nf nf-weather-snowflake_cold'></i>
+                <i class='nf nf-weather-hot'></i>
+                <i class='nf '></i>
+            </h1>
+            <h1 class="box">
+                <i class='nf nf-md-forest'></i>
+                <i class='nf nf-md-flower_tulip'></i>
+                <i class='nf nf-md-flower'></i>
+                <i class='nf nf-md-waterfall'></i>
+                <i class='nf nf-md-water_opacity'></i>
+                <i class='nf nf-oct-north_star'></i>
+                <i class='nf nf-fa-star'></i>
+                <i class='nf nf-md-star'></i>
+                <i class='nf nf-cod-star_full'></i>
+                <i class='nf nf-oct-star_fill'></i>
+                <i class='nf nf-md-star_four_points'></i>
+                <i class='nf nf-fae-mountains'></i>
+                <i class='nf nf-md-tunnel_outline'></i>
+            </h1>
+            <h1 class="box">
+                <i class='nf nf-md-account'></i>
+                <i class='nf nf-md-account_alert'></i>
+                <i class='nf nf-md-account_cancel'></i>
+                <i class='nf nf-md-account_check'></i>
+                <i class='nf '></i>
+                <i class='nf '></i>
+                <i class='nf nf-md-account_multiple'></i>
+                <i class='nf nf-md-account_group'></i>
+            </h1>
+        </div>
+
+    </div>
+
+<div id="popup" class="modal"></div>
+
+</body>
+
+
+
+<script>
+    function setSquareHeight() {
+        // Select all elements that should be made square and centered
+        // Adjust the selector if you only want specific elements
+        const squareElements = document.querySelectorAll(`[class*="tile"]`);
+        squareElements.forEach(element => {
+            // Get the computed width of the element
+            const width = element.offsetWidth;
+            // Set the height of the element to its width, ensuring it's square
+            element.style.height = `${width}px`;
+        });
+        document.querySelector('.widetile').style.height = `${ document.querySelector('.tile5').offsetWidth * 0.75 }px`;
+    }
+    // JavaScript to make the 'box' elements square
+    document.addEventListener('DOMContentLoaded', function() {
+        // Call the function initially when the page loads
+        setSquareHeight();
+        // Add an event listener to adjust the height on window resize
+        window.addEventListener('resize', setSquareHeight);
+    });
+</script>

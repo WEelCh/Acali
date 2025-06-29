@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<head>
+    <title>Acali ModTool</title>
+    <meta name="author"             content="WEelCh">
+    <meta name="description"        content="">
+    <meta name="keywords"           content="">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"> <!--OLD-->
+    <meta charset="utf-8">                                              <!--NEW-->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="https://weelch.de/skeleton/css/SymbolsNerdFont-Regular.css">
+    <link rel="stylesheet" href="https://weelch.de/skeleton/css/weelch.css">
+
+    <!-- JS
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <script src="https://weelch.de/skeleton/js/Log.js"></script>
+    <script src="https://weelch.de/skeleton/js/DOM.js"></script>
+    <script src="https://weelch.de/skeleton/js/Popup.js"></script>
+    <script src="https://weelch.de/skeleton/js/Cookie.js"></script>
+
+    <script src="./js/ui.js"></script>
+    <script src="./js/dataManagment.js"></script>
+    <script src="../GAsset.js"></script>
+    
+</head>
+
+
+
+<body onload="onload()">
+<!-- NAVIGATION
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<div class="container static">
+
+    <div class="row">
+        <div id="tabMeta" class="column three box tab purple" onclick="openTab(this)">
+            <h1> <i class="nf nf-md-file_code"></i> </h1>
+        </div>
+        <div id="tabEdit" class="column six box tab green" onclick="openTab(this)">
+            <h1> <i class="nf nf-md-file_edit"></i> </h1>
+        </div>
+        <div id="tabHelp" class="column three box tab blue" onclick="openTab(this)">
+            <h1> <i class="nf nf-md-file_question"></i> </h1>
+        </div>
+    </div>
+
+</div>
+<!-- META
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<div id="tabMeta_Content" class="container box" style="display: none;">
+
+    <div class="row">
+        <div class="column three rtxt">
+            Modulname:
+        </div>
+        <input id="name" class="column nine" type="text">
+    </div>
+    <div class="row">
+        <div class="column three rtxt">
+            Autor:
+        </div>
+        <input id="author" class="column nine" type="text">
+    </div>
+    <div class="row">
+        <div class="column three rtxt">
+            Beschreibung:
+        </div>
+        <textarea id="description" class="column nine"></textarea>
+    </div>
+    <div class="row smaller nomargin">
+        <p class="column nine offset-by-three ctxt">Hier können auch analoge Sonderregeln erklärt werden</p>
+    </div>
+    <div class="row">
+        <div class="column three rtxt">
+            ID:
+        </div>
+        <h5 id="id" class="column six" type="text"></h5>
+    </div>
+    <div class="row">
+        <h1 class="column three offset-by-three box tab orange" onclick="saveToJSON()">
+            <i class="nf nf-fa-save"></i>
+        </h1>
+        <h1 class="column three box tab orange" onclick="loadFromJSON()">
+            <i class="nf nf-fa-upload"></i>
+        </h1>
+    </div>
+
+</div>
+<!-- EDIT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<div id="tabEdit_Content" style="display: none;">
+
+    <div class="container box">
+
+        <!-- EX/IM PLODE
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <div class="row">
+            <h1 class="column six box tab orange" onclick="implodeAllEvents()">
+                <i class="nf nf-md-chevron_double_up"></i>
+            </h1>
+            <h1 class="column six box tab orange" onclick="explodeAllEvents()">
+                <i class="nf nf-md-chevron_double_down"></i>
+            </h1>
+        </div>
+
+    </div>
+
+    <div class="container">
+
+        <!-- ADD BUTTON
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <div class="row">
+            <h1 class="column six offset-by-three box tab orange" onclick="addEvent(this , false)">
+                <i class="nf nf-cod-new_file"></i>
+            </h1>
+        </div>
+
+
+        <!-- EVENT SPACE
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+
+        <!-- ADD BUTTON
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <div class="row">
+            <h1 class="column six offset-by-three box tab orange" onclick="addEvent(this , true)">
+                <i class="nf nf-cod-new_file"></i>
+            </h1>
+        </div>
+
+    </div>
+
+</div>
+<!-- HELP
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<div id="tabHelp_Content" class="container box" style="display: none;">
+
+    help
+
+</div>
+
+
+
+
+<div id="popup" class="modal"></div>
+</body>
+

@@ -1,0 +1,128 @@
+
+
+<!DOCTYPE html>
+<head>
+    <title>Acali Prompt</title>
+    <meta name="author"             content="WEelCh">
+    <meta name="description"        content="">
+    <meta name="keywords"           content="">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"> <!--OLD-->
+    <meta charset="utf-8">                                              <!--NEW-->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="https://weelch.de/skeleton/css/SymbolsNerdFont-Regular.css">
+    <link rel="stylesheet" href="https://weelch.de/skeleton/css/weelch.css">
+
+    <!-- JS
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <script src="https://weelch.de/skeleton/js/Log.js"></script>
+    <script src="https://weelch.de/skeleton/js/DOM.js"></script>
+    <script src="https://weelch.de/skeleton/js/Popup.js"></script>
+    <script src="https://weelch.de/skeleton/js/Cookie.js"></script>
+
+    <script src="./index.js"></script>
+    
+</head>
+
+<style>
+    @font-face {
+        font-family: WatermintScript;
+        src: url(./WatermintScript_PERSONAL_USE_ONLY.otf);
+    }
+    body {
+        background-image: url(./bg_island.jpg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center center;
+        /*font-family: 'WatermintScript', cursive; */
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color: rgb(211, 214, 199); }
+    .ntxt {
+        font-family:serif; }
+    .box {
+        background-color: rgba(48, 56, 46, 0.65);
+        border: 0px solid;
+    }
+    p {
+        font-family: 'Courier New', Courier, monospace, "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans;
+    }
+    .inlineicon {
+        vertical-align:text-bottom; }
+    .smallicon {
+        font-size: 2.3rem; }
+    .bigicon {
+        font-size: 10rem; }
+    @media (min-width: 500px) {
+        .bigicon {
+            font-size: 15rem; }
+        .smallicon {
+            font-size: 3rem; }  }
+    @media (max-width: 500px) {
+        :root {
+            --fsH1: 3.0rem;
+            --fsH2: 2.7rem;
+            --fsH3: 2.2rem;
+            --fsH4: 1.8rem;
+            --fsH5: 1.4rem;
+            --fsH6: 1.1rem;
+            --fsP : 0.9rem; } }
+.vcenterchild {
+    display: flex;
+    flex-direction: column; /* Stack the h2 elements vertically */
+    justify-content: center; /* Vertically center the h2 elements within #foo */
+    height: 100%; /* Ensure #foo takes up the full height of its flex parent */
+}
+.vcenterparent { /* This is the parent of your big icon and 'foo' div */
+    display: flex;
+    align-items: center; /* This will vertically center items along the cross-axis */
+}
+.tile {
+    margin-left: 1% !important;
+    width: calc( (100 - (1 * 6)) * 0.2% );
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    /*padding-right: 1%;*/ }
+.tile3 {
+    margin-left: 10% !important;
+    width: calc( (100 - (10 * 4)) * 0.33333333% );
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    /*padding-right: 1%;*/ }
+.offset-by-tile { margin-left: calc( (100 - (1 * 6)) * 0.2% + 2% ) !important; }
+.maprow { margin-top: 1% !important; }
+</style>
+
+<body>
+    <div class="tile"></div>
+    <div class="widetile"></div>
+    <div id="popup" class="modal"></div>
+</body>
+
+
+<script>
+    function setSquareHeight() {
+        // Select all elements that should be made square and centered
+        // Adjust the selector if you only want specific elements
+        const squareElements = document.querySelectorAll(`[class*="tile"]`);
+        squareElements.forEach(element => {
+            // Get the computed width of the element
+            const width = element.offsetWidth;
+            // Set the height of the element to its width, ensuring it's square
+            element.style.height = `${width}px`;
+        });
+        document.querySelector('.widetile').style.height = `${ document.querySelector('.tile').offsetWidth * 0.75 }px`;
+    }
+    // JavaScript to make the 'box' elements square
+    document.addEventListener('DOMContentLoaded', function() {
+        // Call the function initially when the page loads
+        setSquareHeight();
+        // Add an event listener to adjust the height on window resize
+        window.addEventListener('resize', setSquareHeight);
+    });
+</script>
