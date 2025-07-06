@@ -1,16 +1,20 @@
-console.log("main.js is running!");
 
-function loadScript(src, callback) {
-    const script = document.createElement('script');
-    script.src = src;
-    script.onload = () => {
-        console.log(`${src} loaded.`);
-        if (callback) callback();
-    };
-    script.onerror = () => {
-        console.error(`Error loading ${src}`);
-    };
-    document.head.appendChild(script);
+
+
+class MEDIATOR {
+
+    static loadScript ( src ) {
+        const script = document.createElement('script');
+        script.src = src;
+        script.onload  = () => { console.debug(`[${src}] loaded.`) };
+        script.onerror = () => { console.error(`error loading [${src}]`) };
+        document.head.appendChild(script); }
+    
+
+
+
 }
 
-loadScript("./js/GD_LOCALES.js",null)
+
+
+MEDIATOR.loadScript("./js/GD_LOCALES.js",null)
