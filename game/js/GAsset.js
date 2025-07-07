@@ -1,6 +1,6 @@
 
 
-class GD_ICONS {
+class GAsset {
 
     static SPACER = "&nbsp;&nbsp;"
 

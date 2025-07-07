@@ -1,5 +1,6 @@
 
-class GD_WEATHER {
+
+class GWeather {
 
     static xx = undefined
     static prep ( weather ) {
@@ -53,3 +54,4 @@ class GD_WEATHER {
         FogCloudy : ["Clear"], }
 
 }
+

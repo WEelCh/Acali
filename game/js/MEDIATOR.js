@@ -1,7 +1,14 @@
 
 
-
 class MEDIATOR {
+    static Log = new Log( "Mediator" , "o" )
+
+    static ACores = []
+
+    static AMods  = []
+
+
+    
 
     static loadScript ( src ) {
         const script = document.createElement('script');
@@ -17,4 +24,11 @@ class MEDIATOR {
 
 
 
-MEDIATOR.loadScript("./js/GD_LOCALES.js",null)
+
+MEDIATOR.loadScript( "./js/GAsset.js" )
+MEDIATOR.loadScript( "./js/GTime.js" )
+MEDIATOR.loadScript( "./js/GWeather.js" )
+
+MEDIATOR.loadScript( "./ACores/test.acore.js" )
+
+MEDIATOR.loadScript( "./AMods/test.amod.js" )
