@@ -22,7 +22,14 @@ class GAsset {
         loseFire : this.#nfIcon("nf-md-fire_off"),
     }
 
+    static MAP = [
+        this.#nfIcon("nf-md-map_marker"),
+        this.#nfIcon("nf-md-map_marker_outline"),
+        this.#nfIcon("nf-md-campfire"),
+    ]
+
     static LOCATIONS = {
+        Boat   : this.#nfIcon("nf-md-sail_boat_sink"),
         Forest : this.#nfIcon("nf-md-forest"),
         Meadow : this.#nfIcon("nf-md-flower_tulip"),
         River  : this.#nfIcon("nf-md-waterfall"),
@@ -38,49 +45,56 @@ class GAsset {
           this.#nfIcon_top("nf-weather-moon_alt_first_quarter"), ],
         this.#nfIcon_top("nf-weather-horizon"),
         this.#nfIcon_top("nf-weather-day_sunny"),
-        this.#nfIcon_top("nf-weather-horizon_alt"),
-    ]
-
-    static CLEAR_WEATHER = [
-        [ this.#nfIcon_big("nf-weather-moon_alt_full") ,
-          this.#nfIcon_big("nf-weather-moon_alt_third_quarter"),
-          this.#nfIcon_big("nf-weather-moon_alt_new"),
-          this.#nfIcon_big("nf-weather-moon_alt_first_quarter"), ],
-        this.#nfIcon_big("nf-weather-horizon"),
-        this.#nfIcon_big("nf-weather-day_sunny"),
-        this.#nfIcon_big("nf-weather-horizon_alt"),
+        this.#nfIcon_top("nf-weather-horizon_alt"), 
     ]
 
     static WEATHER = {
-        Clear      : this.#nfIcon_big("nf-md-progress_alert"), // THIS SHOULD NOT BE PULLED -> DAYTIME SYMBOL
-        ClearWindy : this.#nfIcon_big("nf-weather-strong_wind"),
-        Cloudy      : this.#nfIcon_big("nf-weather-cloudy"),
-        CloudyWindy : this.#nfIcon_big("nf-weather-cloudy_gusts"),
-        Drizzle       : this.#nfIcon_big("nf-weather-snow"),
-        DrizzleWindy  : this.#nfIcon_big("nf-weather-snow_wind"),
-        DrizzleStormy : this.#nfIcon_big("nf-weather-storm_showers"),
-        Rain       : this.#nfIcon_big("nf-weather-rain"),
-        RainWindy  : this.#nfIcon_big("nf-weather-rain_wind"),
-        RainStormy : this.#nfIcon_big("nf-weather-thunderstorm"),
-        Fog       : this.#nfIcon_big("nf-weather-windy"),
-        FogCloudy : this.#nfIcon_big("nf-weather-fog"),
+        PREC : [
+            [ [ this.#nfIcon_big("nf-weather-moon_alt_full") ,
+                this.#nfIcon_big("nf-weather-moon_alt_third_quarter"),
+                this.#nfIcon_big("nf-weather-moon_alt_new"),
+                this.#nfIcon_big("nf-weather-moon_alt_first_quarter"), ],
+              this.#nfIcon_big("nf-weather-horizon"),
+              this.#nfIcon_big("nf-weather-day_sunny"),
+              this.#nfIcon_big("nf-weather-horizon_alt"), ],
+            this.#nfIcon_big("nf-weather-cloudy"),
+            this.#nfIcon_big("nf-weather-windy"),
+            this.#nfIcon_big("nf-weather-snow"),
+            this.#nfIcon_big("nf-weather-rain"),
+            this.#nfIcon_big("nf-weather-thunderstorm"),
+        ] ,
+        WIND : [
+            this.#nfIcon_big("nf-fa-minus"),
+            this.#nfIcon_big("nf-weather-strong_wind"),
+            this.#nfIcon_big("nf-fae-wind"),
+            this.#nfIcon_big("nf-md-weather_tornado"),
+        ] ,
+        TEMP : [
+            this.#nfIcon_big("nf-fa-thermometer_0"),
+            this.#nfIcon_big("nf-fa-thermometer_1"),
+            this.#nfIcon_big("nf-fa-thermometer_2"),
+            this.#nfIcon_big("nf-fa-thermometer_3"),
+            this.#nfIcon_big("nf-fa-thermometer_4"),
+        ] ,
     }
 
-    static WEATHER_EFFECTS = {
-        Wet   : this.#nfIcon("nf-md-water"),
-        Wind  : this.#nfIcon("nf-md-weather_windy"),
-        Storm : this.#nfIcon("nf-md-weather_tornado"),
-        Cold  : this.#nfIcon("nf-md-snowflake_thermometer"),
-        Heat  : this.#nfIcon("nf-weather-hot")
-    }
+    static effectAfflictionArrow = this.#nfIcon("nf-md-arrow_expand_down")+this.SPACER;
 
-    static WEATHER_AFFLICTIONS = {
-        Wet   : this.CAMP.loseFire ,
-        Wind  : this.PLAYER.gainHypo ,
-        Storm : this.CAMP.broken ,
-        Cold  : this.PLAYER.gainHypo ,
-        Heat  : this.PLAYER.healHypo ,
-    }
+    static WEATHER_EFFECTS = [
+        this.#nfIcon("nf-md-water")+this.SPACER,
+        this.#nfIcon("nf-md-snowflake_thermometer")+this.SPACER,
+        this.#nfIcon("nf-md-sun_thermometer_outline")+this.SPACER,
+        this.#nfIcon("nf-md-weather_windy")+this.SPACER,
+        this.#nfIcon("nf-md-weather_tornado")+this.SPACER,
+    ]
+
+    static WEATHER_AFFLICTIONS = [
+        this.CAMP.loseFire +this.SPACER ,
+        this.PLAYER.gainHypo +this.SPACER ,
+        this.PLAYER.healHypo +this.SPACER ,
+        this.PLAYER.gainHypo +this.SPACER ,
+        this.CAMP.broken +this.SPACER ,
+    ]
 
     
 

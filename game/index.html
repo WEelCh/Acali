@@ -22,12 +22,21 @@
     <script src="https://weelch.de/skeleton/js/Popup_v0.js"></script>
 
     <script src="./js/MEDIATOR.js"></script>
+    <script src="./js/GAsset.js"></script>
+    <script src="./js/GMap.js"></script>
+    <script src="./js/GLocales.js"></script>
+    <script src="./js/GTime.js"></script>
+    <script src="./js/GWeather.js"></script>
+
+    <script src="./ACores/test.acore.js"></script>
+
+    <script src="./AMods/test.amod.js"></script>
 
 </head>
 
 
 
-<body onload="WH_LOADER.onload()">
+<body onload="MEDIATOR.onload()">
 
     <div id="id_container_load" class="container static">
 
@@ -49,7 +58,7 @@
             <input class="rwo" type="checkbox" id="NSFW" name="NSFW" value="NSFW" checked="checked">
         </div>
 
-        <div class="box" onclick="WH_LOADER.start()">
+        <div class="box" onclick="MEDIATOR.start()">
             <h3 class="row smaller">
                 START
             </h3> 
@@ -65,7 +74,7 @@
         
         <!-- Z E I T  &  W E T T E R
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <div class="row box" style="padding: 12px 0px;" onclick="WH_TIME.tick()">
+        <div class="row box" style="padding: 12px 0px;" onclick="MEDIATOR.tick()">
             <div class="row smaller nomargin">
                 <h1 id="id_daytime_left" class="two column ltxt">
                     <i class='nf nf-md-progress_question' style="vertical-align:top;"></i>
@@ -78,23 +87,46 @@
                 </h1>
             </div>
 
-            <div class="smaller row nomargin vcenterparent">
-                <div class="four column vcenterchild">
-                    <h1 id="id_weather_main_icon" class="row nomargin ctxt">
+            <div class="smaller row">
+
+                <div class="four column">
+                    <h1 id="id_prec_icon" class="row nomargin ctxt">
                         <i class='bigicon nf nf-md-progress_question'></i>
                     </h1>
-                    <h3 id="id_weather_main_name" class="row nomargin ctxt">
+                    <h3 id="id_prec_name" class="row nomargin ctxt">
                         ???
                     </h3>
                 </div>
 
-                <div id="id_weather_effects" class="eight column vcenterchild">
-                    <div class="row nomargin">
-                        <h2 class="six column"> <i class='nf nf-md-progress_question'></i> </h2>
-                        <h2 class="six column">  <i class='nf nf-md-progress_question'></i> </h2>
-                    </div>
+                <div class="four column">
+                    <h1 id="id_temp_icon" class="row nomargin ctxt">
+                        <i class='bigicon nf nf-md-progress_question'></i>
+                    </h1>
+                    <h3 id="id_temp_name" class="row nomargin ctxt">
+                        ???
+                    </h3>
                 </div>
+
+                <div class="four column">
+                    <h1 id="id_wind_icon" class="row nomargin ctxt">
+                        <i class='bigicon nf nf-md-progress_question'></i>
+                    </h1>
+                    <h3 id="id_wind_name" class="row nomargin ctxt">
+                        ???
+                    </h3>
+                </div>
+
             </div>
+
+            <h2 id="id_weather_effects" class="smaller row nomargin">
+
+            </h2>
+            <h2 id="id_weather_arrow" class="smaller row nomargin">
+
+            </h2>
+            <h2 id="id_weather_afflictions" class="smaller row nomargin">
+
+            </h2>
         </div>
 
         <!-- M A P
@@ -114,40 +146,39 @@
             
             <div class="ten column offset-by-one" style="margin-top: 15px; margin-bottom: 25px;">
                 <div class="smaller row nomargin maprow">
-                    <h2 class="column box tile5 offset-by-one-tile5"> <i class='nf nf-md-map_marker_outline'></i> </h2>
-                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker_outline'></i> </h2>
-                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker_outline'></i> </h2>
+                    <h2 id="tile00" class="column box tile5"> <i class='nf nf-md-progress_question'></i> </h2>
+                    <h2 id="tile01" class="column box tile5"> <i class='nf nf-md-progress_question'></i> </h2>
+                    <h2 id="tile02" class="column box tile5"> <i class='nf nf-md-progress_question'></i> </h2>
+                    <h2 id="tile03" class="column box tile5"> <i class='nf nf-md-progress_question'></i> </h2>
+                    <h2 id="tile04" class="column box tile5"> <i class='nf nf-md-progress_question'></i> </h2>
                 </div>
                 <div class="smaller row nomargin maprow">
-                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker_outline'></i> </h2>
-                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker_outline'></i> </h2>
-                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker_outline'></i> </h2>
-                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker_outline'></i> </h2>
-                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker_outline'></i> </h2>
+                    <h2 id="tile10" class="column box tile5"> <i class='nf nf-md-progress_question'></i> </h2>
+                    <h2 id="tile11" class="column box tile5"> <i class='nf nf-md-progress_question'></i> </h2>
+                    <h2 id="tile12" class="column box tile5"> <i class='nf nf-md-progress_question'></i> </h2>
+                    <h2 id="tile13" class="column box tile5"> <i class='nf nf-md-progress_question'></i> </h2>
+                    <h2 id="tile14" class="column box tile5"> <i class='nf nf-md-progress_question'></i> </h2>
                 </div>
                 <div class="smaller row nomargin maprow">
-                    <h2 class="column box tile5 widetile" style="width: 98%;"> 
-                        <i class='nf nf-md-walk'></i> 
-                    </h2>
+                    <h2 id="tile20" class="column box tile5"> <i class='nf nf-md-progress_question'></i> </h2>
+                    <h2 id="tile21" class="column box tile5"> <i class='nf nf-md-progress_question'></i> </h2>
+                    <h2 id="tile22" class="column box tile5"> <i class='nf nf-md-progress_question'></i> </h2>
+                    <h2 id="tile23" class="column box tile5"> <i class='nf nf-md-progress_question'></i> </h2>
+                    <h2 id="tile24" class="column box tile5"> <i class='nf nf-md-progress_question'></i> </h2>
                 </div>
                 <div class="smaller row nomargin maprow">
-                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker'></i> </h2>
-                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker'></i> </h2>
-                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker'></i> </h2>
-                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker'></i> </h2>
-                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker'></i> </h2>
+                    <h2 id="tile30" class="column box tile5"> <i class='nf nf-md-progress_question'></i> </h2>
+                    <h2 id="tile31" class="column box tile5"> <i class='nf nf-md-progress_question'></i> </h2>
+                    <h2 id="tile32" class="column box tile5"> <i class='nf nf-md-progress_question'></i> </h2>
+                    <h2 id="tile33" class="column box tile5"> <i class='nf nf-md-progress_question'></i> </h2>
+                    <h2 id="tile34" class="column box tile5"> <i class='nf nf-md-progress_question'></i> </h2>
                 </div>
                 <div class="smaller row nomargin maprow">
-                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker'></i> </h2>
-                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker'></i> </h2>
-                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker'></i> </h2>
-                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker'></i> </h2>
-                    <h2 class="column box tile5"> <i class='nf nf-md-map_marker'></i> </h2>
-                </div>
-                <div class="smaller row nomargin maprow">
-                    <h2 class="column box tile5 offset-by-one-tile5"> <i class='nf nf-md-map_marker'></i> </h2>
-                    <h2 class="column box tile5" style="border: 2px dotted rgb(211, 214, 199) ;"> <i class='nf nf-md-campfire'></i> </h2>
-                    <h2 class="column box tile5" onclick="GD_MAP('ship')"> <i class='nf nf-md-sail_boat_sink'></i> </h2>
+                    <h2 id="tile40" class="column box tile5"> <i class='nf nf-md-progress_question'></i> </h2>
+                    <h2 id="tile41" class="column box tile5"> <i class='nf nf-md-progress_question'></i> </h2>
+                    <h2 id="tile42" class="column box tile5"> <i class='nf nf-md-progress_question'></i> </h2>
+                    <h2 id="tile43" class="column box tile5"> <i class='nf nf-md-progress_question'></i> </h2>
+                    <h2 id="tile44" class="column box tile5"> <i class='nf nf-md-progress_question'></i> </h2>
                 </div>
 
                 <h1 id="id_day" class="row ">
@@ -183,9 +214,9 @@
                 <i class='nf nf-weather-windy'></i>
                 <i class='nf nf-weather-cloudy_windy'></i>
                 <i class='nf nf-weather-fog'></i>
-                <i class='nf '></i>
-                <i class='nf '></i>
-                <i class='nf '></i>
+                <i class='nf nf-fa-wind'></i>
+                <i class='nf nf-fae-wind'></i>
+                <i class='nf nf-md-weather_tornado'></i>
                 <i class='nf '></i>
                 <i class='nf '></i>
             </h1>
@@ -266,7 +297,6 @@
             // Set the height of the element to its width, ensuring it's square
             element.style.height = `${width}px`;
         });
-        document.querySelector('.widetile').style.height = `${ document.querySelector('.tile5').offsetWidth * 0.75 }px`;
     }
     // JavaScript to make the 'box' elements square
     document.addEventListener('DOMContentLoaded', function() {

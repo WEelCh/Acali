@@ -1,6 +1,6 @@
 
 
-class GD_SOUND {
+class GSound {
 
     static #FADE_INT_LENGHT = 150;  // ms 
     static #FADE_VOL_CHANGE = 0.05; // %
@@ -43,6 +43,7 @@ class GD_SOUND {
             }
           }, this.#FADE_INT_LENGHT); }
     
+
 
     static fadeOut ( audio ) { // this.AUDIO.Wind
         clearInterval(audio.id);
