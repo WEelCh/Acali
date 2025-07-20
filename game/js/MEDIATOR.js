@@ -3,7 +3,8 @@
 class MEDIATOR {
     static Log = new Log( "Mediator" , "o" )
 
-    static ACores = []
+    static AWeather = []
+    static AMap = []
     static AMods  = []
 
 
@@ -12,12 +13,22 @@ class MEDIATOR {
     static onload ( ) {
         document.getElementById( "id_container_game" ).style.display = "none";
 
-        for ( const core in this.ACores ) {
-            document.getElementById( "id_load_cores" ).innerHTML += /*html*/`
+        for ( const weather in this.AWeather ) {
+            document.getElementById( "id_load_weather" ).innerHTML += /*html*/`
                 <div class="row smaller">
-                    <input class="column two" type="radio" id="CORE_${core}" name="CORES" value="${core}" checked="checked">
+                    <input class="column two" type="radio" id="WEATHER_${weather}" name="WEATHER" value="${weather}" checked="checked">
                     <h3 class="column nine ltxt">
-                        ${this.ACores[core].id}
+                        ${this.AWeather[weather].id}
+                    </h3>
+                </div>`
+        }
+
+        for ( const map in this.AMap ) {
+            document.getElementById( "id_load_map" ).innerHTML += /*html*/`
+                <div class="row smaller">
+                    <input class="column two" type="radio" id="MAP_${map}" name="MAP" value="${map}" checked="checked">
+                    <h3 class="column nine ltxt">
+                        ${this.AMap[map].id}
                     </h3>
                 </div>`
         }
@@ -37,12 +48,18 @@ class MEDIATOR {
     // =========================
     //  IS USER INPUT USEABLE ?
     // =========================
-        let CORE, MODS;
+        let WEATHER, MAP, MODS;
         try {
-            CORE = document.querySelector('input[name="CORES"]:checked').value;
+            WEATHER = document.querySelector('input[name="WEATHER"]:checked').value;
         } catch (e) {
             console.error(e)
-            window.alert( "No Core selected!" )
+            window.alert( "No Weather selected!" )
+            return }
+        try {
+            MAP = document.querySelector('input[name="MAP"]:checked').value;
+        } catch (e) {
+            console.error(e)
+            window.alert( "No Map selected!" )
             return }
         MODS = document.querySelectorAll('input[name="MODS"]:checked');
         if (MODS.length === 0) { window.alert( "No Module selected!" );return }
@@ -52,9 +69,9 @@ class MEDIATOR {
         // *** NSFW ***
         GMap.NSFW = document.querySelector('input[name="NSFW"]').checked;
         // *** WEATHER ***
-        GWeather.prep( this.ACores[CORE].weatherSystem );
+        GWeather.prep( this.AWeather[WEATHER].weatherSystem );
         // *** CORE :: LOCATIONS ***
-        for ( let location of this.ACores[CORE].locations ) {
+        for ( let location of this.AMap[MAP].locations ) {
             GMap.LOCATIONS.push( location ); }
         // *** MOD ***
         for ( let mod=0 ; mod<MODS.length ; mod++ ) {
@@ -69,7 +86,7 @@ class MEDIATOR {
                 GMap.LOCATIONS_WEIGHT += location.spawn; }
         }
         // *** MAP ***
-        GMap.prep()
+        //GMap.prep()
         // *** SOUND ***
         //GD_SOUND.prep()
     // ====================
@@ -80,8 +97,11 @@ class MEDIATOR {
         document.getElementById( "id_container_load" ).style.display = "none";
         document.getElementById( "id_container_game" ).style.display = "block";
 
-        GMap.generateIslandMap(15)
+        GMap.generateIslandMap(document.querySelector('input[name="map_size"]').value)
         GMap.displayMap()
+
+        this.tick()
+
     }
 
     static tick ( ) {

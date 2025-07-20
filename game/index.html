@@ -28,7 +28,9 @@
     <script src="./js/GTime.js"></script>
     <script src="./js/GWeather.js"></script>
 
-    <script src="./ACores/test.acore.js"></script>
+    <script src="./AMap/test.amap.js"></script>
+
+    <script src="./AWeather/test.aweather.js"></script>
 
     <script src="./AMods/test.amod.js"></script>
 
@@ -41,9 +43,21 @@
     <div id="id_container_load" class="container static">
 
 
-        <div id="id_load_cores" class="box">
+        <div id="id_load_map" class="box">
             <h3 class="row smaller">
-                CORES
+                MAP
+            </h3> 
+            <input type="range" id="id_map_size" name="map_size" min="5" max="21" />
+            <div class="row nomargin">
+                <h5 class="column one ctxt">5</h5>
+                <h5 class="offset-by-ten column one ctxt">21</h5>
+            </div>
+        </div>
+
+
+        <div id="id_load_weather" class="box">
+            <h3 class="row smaller">
+                WEATHER
             </h3> 
         </div>
 
@@ -55,7 +69,7 @@
 
         <div class="box">
             <h3 class="row"> NSFW </h3>
-            <input class="rwo" type="checkbox" id="NSFW" name="NSFW" value="NSFW" checked="checked">
+            <input class="row" type="checkbox" id="NSFW" name="NSFW" value="NSFW" checked="checked">
         </div>
 
         <div class="box" onclick="MEDIATOR.start()">

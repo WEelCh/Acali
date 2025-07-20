@@ -16,8 +16,7 @@ class GWeather {
         if ( this.weatherSystem !== undefined ) {
             this.Log.warn( "weatherSystem was already loaded. Abording!" );return }
         this.weatherSystem = weatherSystem;
-        this.Log.debug("weatherSystem loaded")
-        this.current_prec = 4; this.current_wind = 1; this.current_temp = 3; }
+        this.Log.debug("weatherSystem loaded"); }
 
 
     static selectWeightedRandomIndex(weights) {
@@ -49,7 +48,13 @@ class GWeather {
     }
     static progress ( ) {
         if ( this.weatherSystem === undefined ) {
-            this.Log.error("weatherSystem was never preped!") }
+            this.Log.error("weatherSystem was never preped!");
+            return; }
+        if ( this.current_prec === undefined ) {
+            this.current_prec = this.selectWeightedRandomIndex(this.weatherSystem.start_prec);
+            this.current_wind = this.selectWeightedRandomIndex(this.weatherSystem.start_wind);
+            this.current_temp = this.selectWeightedRandomIndex(this.weatherSystem.start_temp);
+            return; }
         let Vec = {
             prec : this.weatherSystem.prec_prec[this.current_prec],
             wind : this.weatherSystem.wind_wind[this.current_wind],

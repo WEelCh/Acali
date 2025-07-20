@@ -13,19 +13,6 @@ class GMap {
     static LOCATIONS = [];
     static LOCATIONS_WEIGHT = 0;
 
-    static prep() {}
-
-    /**
-     * Generates a 5x5 matrix representing a map with an island of size 'n'
-     * and a designated starting point, then marks distant island parts.
-     *
-     * @param {number} n The desired size of the island (between 1 and 25).
-     * @returns {number[][]} A 5x5 matrix where:
-     * - -1 represents empty sea.
-     * - 0 represents part of the island within 3 steps of the camp.
-     * - 2 represents the starting point (camp) on the island.
-     * - 1 represents part of the island more than 3 steps away from the camp.
-     */
     static generateIslandMap(n) {
         // Re-initialize the map for each call to ensure a clean slate
         // Sea fields are now -1
@@ -36,20 +23,8 @@ class GMap {
             return null;
         }
 
-        /**
-         * Helper function to check if given coordinates are within the matrix bounds.
-         * @param {number} r Row index.
-         * @param {number} c Column index.
-         * @returns {boolean} True if coordinates are valid, false otherwise.
-         */
         const isValid = (r, c) => r >= 0 && r < GMap.mapSize && c >= 0 && c < GMap.mapSize;
 
-        /**
-         * Helper function to get the direct (up, down, left, right) neighbors of a cell.
-         * @param {number} r Row index of the cell.
-         * @param {number} c Column index of the cell.
-         * @returns {Array<[number, number]>} An array of valid neighbor coordinates.
-         */
         const getNeighbors = (r, c) => {
             const neighbors = [];
             const dr = [-1, 1, 0, 0]; // Delta rows for up, down, same row
@@ -189,30 +164,41 @@ class GMap {
 
 
 
-static displayMap ( ) {
-    let offset;
-    for (const row in this.map) {
-        offset = 0;
-        for (const tile in this.map[row]) {
-            console.log(row,tile,this.map[row][tile])
-            if ( this.map[row][tile] === -1 ) {
-                console.log("sea field")
-                document.getElementById( `tile${row}${tile}` ).outerHTML = "";
-                offset++;
-                continue; }
-            if ( offset !== 0 ) {
-                document.getElementById( `tile${row}${tile}` ).classList.add(`offset-by-${offset}-tile5`); }
-            document.getElementById( `tile${row}${tile}` ).innerHTML = GAsset.MAP[this.map[row][tile]];
-            offset = 0; 
-            if ( this.map[row][tile] === 2 ) {
-                document.getElementById( `tile${row}${tile}` ).style.borderWidth = "2px";
-                document.getElementById( `tile${row}${tile}` ).style.borderStyle = "dotted";
-                document.getElementById( `tile${row}${tile}` ).style.borderColor = "rgb(211, 214, 199)"; } }
+    static displayMap ( ) {
+        let offset;
+        for (const row in this.map) {
+            offset = 0;
+            for (const tile in this.map[row]) {
+                if ( this.map[row][tile] === -1 ) {
+                    document.getElementById( `tile${row}${tile}` ).outerHTML = "";
+                    offset++;
+                    continue; }
+                if ( offset !== 0 ) {
+                    document.getElementById( `tile${row}${tile}` ).classList.add(`offset-by-${offset}-tile5`); }
+                document.getElementById( `tile${row}${tile}` ).innerHTML = GAsset.MAP[this.map[row][tile]];
+                offset = 0; 
+                if ( this.map[row][tile] === 2 ) {
+                    document.getElementById( `tile${row}${tile}` ).style.borderWidth = "2px";
+                    document.getElementById( `tile${row}${tile}` ).style.borderStyle = "dotted";
+                    document.getElementById( `tile${row}${tile}` ).style.borderColor = "rgb(211, 214, 199)"; } }
+        }
+    }
+
+
+
+    static populateMap ( ) {
+        for (const row in this.map) {
+            for (const tile in this.map[row]) {
+                
+            } 
+        }
+        
     }
 }
 
 
-}
+
+
 
 class Challenge {
 
