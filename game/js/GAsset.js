@@ -22,11 +22,11 @@ class GAsset {
         loseFire : this.#nfIcon("nf-md-fire_off"),
     }
 
-    static MAP = [
-        this.#nfIcon("nf-md-map_marker"),
-        this.#nfIcon("nf-md-map_marker_outline"),
-        this.#nfIcon("nf-md-campfire"),
-    ]
+    static MAP = {
+        near : this.#nfIcon("nf-md-map_marker"),
+        far  : this.#nfIcon("nf-md-map_marker_outline"),
+        camp : this.#nfIcon("nf-md-campfire"),
+    }
 
     static LOCATIONS = {
         Boat   : this.#nfIcon("nf-md-sail_boat_sink"),
