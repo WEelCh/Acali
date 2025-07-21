@@ -45,7 +45,7 @@ class GAsset {
     }
 
     static LOCATIONS = {
-        Boat   : this.#nfIcon("nf-md-sail_boat_sink"),
+        Ship   : this.#nfIcon("nf-md-sail_boat_sink"),
         Forest : this.#nfIcon("nf-md-forest"),
         Meadow : this.#nfIcon("nf-md-flower_tulip"),
         River  : this.#nfIcon("nf-md-waterfall"),

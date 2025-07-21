@@ -15,8 +15,26 @@ MEDIATOR.AMap.push((function() {
     desc : "",
 
     locations : [
+        {   id    : "Ship" ,
+            name  : {
+                de : "Schiff",
+                en : "Ship"
+            },
+            icon  : "Ship" ,
+            spawn : {
+                weight : 3,
+                min    : 0,
+                max    : 1,
+            } ,
+            loot  : {
+                Gathering : 0 ,
+                Hunting   : 0 ,
+                Chopping  : 0 , }, },
         {   id    : "Forest" ,
-            name  : "Forest" ,
+            name  : {
+                de : "Wald",
+                en : "Forest"
+            },
             icon  : "Forest" ,
             spawn : {
                 weight : 10,
@@ -28,35 +46,64 @@ MEDIATOR.AMap.push((function() {
                 Hunting   : 0 ,
                 Chopping  : 0 , }, },
         {   id    : "Meadow" ,
-            name  : "Meadow" ,
+            name  : {
+                de : "Lichtung",
+                en : "Meadow"
+            },
             icon  : "Meadow" ,
-            spawn : 10 ,
+            spawn : {
+                weight : 7,
+                min    : 0,
+                max    : 100,
+            } ,
             loot  : {
                 Gathering : 0 ,
                 Hunting   : 0 ,
                 Chopping  : 0 , }, },
         {   id    : "River" ,
-            name  : "River" ,
+            name  : {
+                de : "Gewässer",
+                en : "River"
+            },
             icon  : "River" ,
-            spawn : 10 ,
+            spawn : {
+                weight : 4,
+                min    : 0,
+                max    : 100,
+            } ,
             loot  : {
                 Gathering : 0 ,
                 Hunting   : 0 ,
                 Chopping  : 0 , }, },
         {   id    : "Hill" ,
-            name  : "Hill" ,
+            name  : {
+                de : "Hügel",
+                en : "Hill"
+            },
             icon  : "Hill" ,
-            spawn : 10 ,
+            spawn : {
+                weight : 5,
+                min    : 0,
+                max    : 100,
+            } ,
             loot  : {
                 Gathering : 0 ,
                 Hunting   : 0 ,
                 Chopping  : 0 , }, },
         {   id    : "Cave" ,
-            name  : "Cave" ,
+            name  : {
+                de : "Höhle",
+                en : "Cave"
+            },
             icon  : "Cave" ,
-            spawn : 10 ,
+            spawn : {
+                weight : 2,
+                min    : 0,
+                max    : 100,
+            } ,
             loot  : {
                 Gathering : 0 ,
                 Hunting   : 0 ,
-                Chopping  : 0 , }, }, ],
-            }})());
+                Chopping  : 0 , }, }, 
+    ],
+}})());

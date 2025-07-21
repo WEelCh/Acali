@@ -3,6 +3,7 @@
 class GLocales {
 
     static de = {
+        locale : "de",
         DAYTIME : [
             [
                 "Neumond",
