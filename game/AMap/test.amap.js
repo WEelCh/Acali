@@ -18,7 +18,11 @@ MEDIATOR.AMap.push((function() {
         {   id    : "Forest" ,
             name  : "Forest" ,
             icon  : "Forest" ,
-            spawn : 10 ,
+            spawn : {
+                weight : 10,
+                min    : 0,
+                max    : 100,
+            } ,
             loot  : {
                 Gathering : 0 ,
                 Hunting   : 0 ,
