@@ -56,9 +56,9 @@ class GWeather {
             this.current_temp = this.selectWeightedRandomIndex(this.weatherSystem.start_temp);
             return; }
         let Vec = {
-            prec : this.weatherSystem.prec_prec[this.current_prec],
-            wind : this.weatherSystem.wind_wind[this.current_wind],
-            temp : this.weatherSystem.temp_temp[this.current_temp],
+            prec : [...this.weatherSystem.prec_prec[this.current_prec]],
+            wind : [...this.weatherSystem.wind_wind[this.current_wind]],
+            temp : [...this.weatherSystem.temp_temp[this.current_temp]],
         }
         for ( const dim of ["prec","wind","temp"] ) {
             for ( const fac of ["prec","wind","temp","dayt"] ) {
@@ -79,7 +79,7 @@ class GWeather {
 
 
 
-    static update_display_weather ( ) {
+    static update_display ( ) {
         // PRECIPITATION
         if ( this.current_prec === 0 ) {
             document.getElementById( "id_prec_icon" ).innerHTML = (GTime.daytime === 0) ?
@@ -111,6 +111,36 @@ class GWeather {
                 document.getElementById( "id_weather_afflictions" ).innerHTML += GAsset.WEATHER_AFFLICTIONS[i].repeat(effects[i]);
             }
         }
+    }
+
+
+    static update_sound ( ) {
+
+        if (  this.current_prec < 2 && 
+                this.current_wind < 2 &&
+                this.current_temp > 0 ){
+            if ([0,3].includes( GTime.daytime )) { // Noon,Night
+                GSound.fadeOut(GAsset.SOUND.day);
+                GSound.fadeIn(GAsset.SOUND.night);
+            } else { // Day, Morning
+                GSound.fadeIn(GAsset.SOUND.day);
+                GSound.fadeOut(GAsset.SOUND.night);
+            }
+        } else {
+            GSound.fadeOut(GAsset.SOUND.day);
+            GSound.fadeOut(GAsset.SOUND.night);
+        }
+        for (const i in GAsset.SOUND.PREC) {
+            if ( this.current_prec == i ) {
+                GSound.fadeIn(GAsset.SOUND.PREC[i])
+            } else {GSound.fadeOut(GAsset.SOUND.PREC[i])} }
+        for (const i in GAsset.SOUND.WIND) {
+            if ( this.current_wind == i ) {
+                GSound.fadeIn(GAsset.SOUND.WIND[i])
+            } else {GSound.fadeOut(GAsset.SOUND.WIND[i])} }
+
+           
+        
     }
 
 

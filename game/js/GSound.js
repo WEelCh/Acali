@@ -1,37 +1,37 @@
 
 
 class GSound {
+    static Log = new Log( "Sound" , "y" )
 
     static #FADE_INT_LENGHT = 150;  // ms 
     static #FADE_VOL_CHANGE = 0.05; // %
     static #preped = false;
     static prep ( ) {
         if ( this.#preped ) {
-            console.warn( "GD_SOUND was already preped , SKIPPED !" ) ; return }
-        for ( let audio in this.AUDIO ) {
-            if ( audio === "Clear" ) { for ( const time of ["Day","Night"] ) {
-                this.AUDIO[audio][time].volume = 0;
-                this.AUDIO[audio][time].loop = true;
-                this.AUDIO[audio][time].play().catch(e => console.error(`Error playing ${audio}(${time}):`, e));
-            } continue }
-            this.AUDIO[audio].volume = 0;
-            this.AUDIO[audio].loop   = true;
-            this.AUDIO[audio].play().catch(e => console.error(`Error playing ${audio}:`, e)); }
-        this.#preped = true; }
+            this.Log.warn( "GD_SOUND was already preped , SKIPPED !" ) ; return }
+        for ( const time of ["day","night"] ) {
+            GAsset.SOUND[time].volume = 0;
+            GAsset.SOUND[time].loop   = true;
+            GAsset.SOUND[time].play().catch(e => this.Log.error(`Error [${time}]:`, e)); }
+        for (const i in GAsset.SOUND.PREC) {
+            if ( i < 3 ) { continue }
+            GAsset.SOUND.PREC[i].volume = 0;
+            GAsset.SOUND.PREC[i].loop   = true;
+            GAsset.SOUND.PREC[i].play().catch(e => this.Log.error(`Error [PREC][${i}]:`, e)); }
+        for (const i in GAsset.SOUND.WIND) {
+            if ( i < 2 ) { continue }
+            GAsset.SOUND.WIND[i].volume = 0;
+            GAsset.SOUND.WIND[i].loop   = true;
+            GAsset.SOUND.WIND[i].play().catch(e => this.Log.error(`Error [WIND][${i}]:`, e)); }
+        this.#preped = true; this.Log.debug("sound preped"); }
                 
-    static #PATHmp3 ( id ) { return `./audio/${id}.mp3` }
-    static AUDIO = {
-        Clear   : {
-            Day   : new Audio( this.#PATHmp3( "day" )   ),
-            Night : new Audio( this.#PATHmp3( "night" ) ) },
-        Wind    : new Audio( this.#PATHmp3( "wind" )    ),
-        Drizzle : new Audio( this.#PATHmp3( "drizzle" ) ),
-        Rain    : new Audio( this.#PATHmp3( "rain" )    ),
-        Thunder : new Audio( this.#PATHmp3( "thunder" ) ), }
+    
     
 
 
-    static fadeIn ( audio ) { // this.AUDIO.Wind
+    static fadeIn ( audio ) { // GAsset.SOUND.Wind
+        if(audio===null){return}
+        this.Log.debug("Fade-In:",audio.src);
         clearInterval(audio.id);
         audio.id = setInterval(() => {
             if (audio.volume < 1) {
@@ -46,6 +46,8 @@ class GSound {
 
 
     static fadeOut ( audio ) { // this.AUDIO.Wind
+        if(audio===null){return}
+        this.Log.debug("Fade-Out:",audio.src);
         clearInterval(audio.id);
         audio.id = setInterval(() => {
             if (audio.volume > 0) {

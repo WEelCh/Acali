@@ -8,6 +8,23 @@ class GAsset {
     static #nfIcon_top ( id ) { return `<i class='nf ${ id }' style="vertical-align:top;"></i>` }
     static #nfIcon_big ( id ) { return `<i class='bigicon nf ${ id }'></i>` }
 
+
+    static #PATHmp3 ( id ) { return `./sound/${id}.mp3` }
+    static SOUND = {
+        day :  new Audio( this.#PATHmp3( "day"   ) ),
+        night: new Audio( this.#PATHmp3( "night" ) ), 
+        PREC : [ // None Cloudy Foggy Drizzle Rain Heavy
+            null, null, null,
+            new Audio( this.#PATHmp3( "drizzle" ) ),
+            new Audio( this.#PATHmp3( "rain" )    ),
+            new Audio( this.#PATHmp3( "rain" )    ), ],
+        WIND : [ // None Breeze Gale Storm
+            null, null,
+            new Audio( this.#PATHmp3( "wind" ) ),
+            new Audio( this.#PATHmp3( "thunder" ) ), ]
+    }
+
+
     static PLAYER = {
         gainHypo : this.#nfIcon("nf-md-thermometer_minus"),
         healHypo : this.#nfIcon("nf-md-thermometer_plus"),

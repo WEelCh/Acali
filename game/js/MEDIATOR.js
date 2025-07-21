@@ -90,7 +90,7 @@ class MEDIATOR {
         GMap.populateMap()
         GMap.displayMap()
         // *** SOUND ***
-        //GD_SOUND.prep()
+        GSound.prep()
     // ====================
     //  CLEAN UP AND START
     // ====================
@@ -108,7 +108,8 @@ class MEDIATOR {
         GTime.update_display_day();
 
         GWeather.progress();
-        GWeather.update_display_weather();
+        GWeather.update_display();
+        GWeather.update_sound();
     }
 
 
