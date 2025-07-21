@@ -275,5 +275,6 @@ class GMap {
                 // and this.map[row][tile].tile
             }
         }
+        GMap.Log.debug("Island populated");
     }
 }

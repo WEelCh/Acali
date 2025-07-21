@@ -86,22 +86,19 @@ class MEDIATOR {
                 GMap.LOCATIONS_WEIGHT += location.spawn; }
         }
         // *** MAP ***
-        //GMap.prep()
+        GMap.generateIslandMap(document.querySelector('input[name="map_size"]').value)
+        GMap.populateMap()
+        GMap.displayMap()
         // *** SOUND ***
         //GD_SOUND.prep()
     // ====================
     //  CLEAN UP AND START
     // ====================
+        this.tick()
         delete this.ACores;
         delete this.AMods;
         document.getElementById( "id_container_load" ).style.display = "none";
         document.getElementById( "id_container_game" ).style.display = "block";
-
-        GMap.generateIslandMap(document.querySelector('input[name="map_size"]').value)
-        GMap.displayMap()
-
-        this.tick()
-
     }
 
     static tick ( ) {

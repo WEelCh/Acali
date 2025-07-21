@@ -17,7 +17,6 @@ class GAsset {
 
     static CAMP = {
         broken   : this.#nfIcon("nf-md-image_broken_variant"),
-
         gainFire : this.#nfIcon("nf-md-fire"),
         loseFire : this.#nfIcon("nf-md-fire_off"),
     }
