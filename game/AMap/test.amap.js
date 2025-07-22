@@ -23,8 +23,9 @@ MEDIATOR.AMap.push((function() {
             icon  : "Ship" ,
             spawn : {
                 weight : 3,
-                min    : 0,
                 max    : 1,
+                coast  : true,
+                inland : false,
             } ,
             loot  : {
                 Gathering : 0 ,
@@ -38,8 +39,9 @@ MEDIATOR.AMap.push((function() {
             icon  : "Forest" ,
             spawn : {
                 weight : 10,
-                min    : 0,
                 max    : 100,
+                coast  : true,
+                inland : true,
             } ,
             loot  : {
                 Gathering : 0 ,
@@ -53,8 +55,9 @@ MEDIATOR.AMap.push((function() {
             icon  : "Meadow" ,
             spawn : {
                 weight : 7,
-                min    : 0,
                 max    : 100,
+                coast  : true,
+                inland : true,
             } ,
             loot  : {
                 Gathering : 0 ,
@@ -68,8 +71,9 @@ MEDIATOR.AMap.push((function() {
             icon  : "River" ,
             spawn : {
                 weight : 4,
-                min    : 0,
                 max    : 100,
+                coast  : true,
+                inland : true,
             } ,
             loot  : {
                 Gathering : 0 ,
@@ -83,8 +87,9 @@ MEDIATOR.AMap.push((function() {
             icon  : "Hill" ,
             spawn : {
                 weight : 5,
-                min    : 0,
                 max    : 100,
+                coast  : true,
+                inland : true,
             } ,
             loot  : {
                 Gathering : 0 ,
@@ -98,8 +103,9 @@ MEDIATOR.AMap.push((function() {
             icon  : "Cave" ,
             spawn : {
                 weight : 2,
-                min    : 0,
                 max    : 100,
+                coast  : true,
+                inland : true,
             } ,
             loot  : {
                 Gathering : 0 ,

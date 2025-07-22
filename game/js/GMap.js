@@ -5,8 +5,10 @@ class GMap {
 
     static mapSize = 5;
     static map = []; // Initialize as an empty array, will be populated with objects
+    static coast;
+    static inland;
 
-    static ALL_EVENTS = [];
+    static EVENTS = [];
     static SPAWN_POOL = [];
     static SPAWN_WEIGHT = 0;
 
@@ -27,7 +29,7 @@ class GMap {
         return Array(GMap.mapSize).fill(0).map(() => Array(GMap.mapSize).fill(0).map(() => ({
             land: false,
             far: false,
-            coastal: false,
+            coast: false,
             tile: undefined
         })));
     }
@@ -119,6 +121,7 @@ class GMap {
      */
     static #selectCamp() {
         let costCandidates = [];
+        let inlandCandidates = [];
         GMap.#islandCells.forEach(cellStr => {
             const [r, c] = cellStr.split(',').map(Number);
 
@@ -135,25 +138,21 @@ class GMap {
 
             if (isBorder || hasAdjacentSea) {
                 costCandidates.push([r, c]);
-                // Also mark as coastal if it has adjacent sea or is a border cell
-                GMap.map[r][c].coastal = true;
+                // Also mark as coast if it has adjacent sea or is a border cell
+                GMap.map[r][c].coast = true;
+            } else {
+                inlandCandidates.push([r, c]);
             }
         });
         GMap.Log.debug("Coast marked");
 
-        if (costCandidates.length > 0) {
-            const randomCostIndex = Math.floor(Math.random() * costCandidates.length);
-            [GMap.#campRow, GMap.#campCol] = costCandidates[randomCostIndex];
-        } else {
-            GMap.Log.warn("No valid cost candidates found based on criteria. Marking a random island cell as fallback.");
-            const randomIslandCellIndex = Math.floor(Math.random() * Array.from(GMap.#islandCells).length);
-            [GMap.#campRow, GMap.#campCol] = Array.from(GMap.#islandCells)[randomIslandCellIndex].split(',').map(Number);
-            // Even if it's a fallback, ensure it's marked as coastal if it satisfies the criteria later on.
-            // For n=25, all cells are land, and border cells are the only 'coastal' candidates.
-            GMap.map[GMap.#campRow][GMap.#campCol].coastal = (GMap.#campRow === 0 || GMap.#campRow === GMap.mapSize - 1 || GMap.#campCol === 0 || GMap.#campCol === GMap.mapSize - 1);
-        }
+        const randomCostIndex = Math.floor(Math.random() * costCandidates.length);
+        [GMap.#campRow, GMap.#campCol] = costCandidates[randomCostIndex];
         GMap.map[GMap.#campRow][GMap.#campCol].tile = "camp"; // Use 'tile' property to mark the camp
         GMap.Log.debug("Camp marked");
+
+        GMap.coast = costCandidates;
+        GMap.inland = inlandCandidates;
     }
 
     /**
@@ -249,11 +248,13 @@ class GMap {
                     if (tile.tile === "camp") {
                         tileTypeForDisplay = "camp";
                     } else if (tile.far) {
-                        tileTypeForDisplay = "far";
-                    } else {
-                        tileTypeForDisplay = "near"; 
-                    }
+                        tileTypeForDisplay = "far"; } 
+                    else {
+                        tileTypeForDisplay = "near"; }
+                    // icon
                     tileElement.innerHTML = GAsset.MAP[tileTypeForDisplay];
+                    // click
+                    tileElement.onclick = function() { GMap.click(row, tileCol); };
 
                     if (tile.tile === "camp") { // If it's the camp
                         tileElement.style.borderWidth = "2px";
@@ -267,14 +268,81 @@ class GMap {
         GMap.Log.debug("Island displayed");
     }
 
-    static populateMap() {
-        for (const row in this.map) {
-            for (const tile in this.map[row]) {
-                // Logic for populating the map based on tile properties will go here.
-                // You can access this.map[row][tile].land, this.map[row][tile].far, this.map[row][tile].coastal
-                // and this.map[row][tile].tile
+    static populateMap( ) {
+        let locationCounts = {}; // To keep track of how many times each location has been added
+        // Initialize locationCounts and add min spawn number of each object
+        this.LOCATIONS.forEach(location => { locationCounts[location.id] = 0; });
+
+        for (let r in this.map){for (let c in this.map[r]){
+            if ( !this.map[r][c].land ) { continue } 
+            if ( this.map[r][c].tile == "camp" ) { continue } 
+            while (true){
+                // Calculate total weight for random selection
+                let totalWeight = 0; 
+                this.LOCATIONS.forEach(location => {
+                    totalWeight += location.spawn.weight; });
+                // choose random
+                let randomNumber = Math.random() * totalWeight;
+                let currentWeight = 0;
+                let chosenLocation = null;
+                let chosenLocationIndex = null;
+                for (let i = 0; i < this.LOCATIONS.length; i++) {
+                    let location = this.LOCATIONS[i];
+                    currentWeight += location.spawn.weight;
+                    if (randomNumber < currentWeight) {
+                        chosenLocation = location; chosenLocationIndex = i;
+                        locationCounts[chosenLocation.id]++; 
+                        break; } }
+                // skip if unfit conditions
+                if ( ( chosenLocation.spawn.coast && !chosenLocation.spawn.inland && !this.map[r][c].coast) ||
+                     (!chosenLocation.spawn.coast &&  chosenLocation.spawn.inland &&  this.map[r][c].coast) ){ continue }
+                // remove if max is reached
+                if ( locationCounts[chosenLocation.id] >= chosenLocation.spawn.max ) {
+                    this.LOCATIONS.splice(chosenLocationIndex , 1); }
+                // add to map
+                this.map[r][c].tile = chosenLocation;
+                break;
             }
-        }
-        GMap.Log.debug("Island populated");
+        }}
     }
+
+    static click (r,c) { 
+        if ( GTime.daytime == 1 || GTime.daytime == 3 ) {
+            this.Log.info( `Clicked [ ${r} | ${c} ] : ignored because of daytime [${GTime.daytime}]` )
+            return }
+
+        let location = this.map[r][c];
+        if ( location.tile == "camp" ) { 
+            this.click_handleCamp(r,c); return; }
+        if ( location.tile.id == "Ship" ) {
+            this.click_handelShip(r,c); return; }
+
+        this.Log.info( 
+            `Clicked [ ${r} | ${c} ] which is [${this.map[r][c].tile.id}] [far: ${location.far}] [coast: ${location.coast}]`)
+
+        let eventPool = [];
+        let eventWeigth;
+        this.EVENTS.forEach(event => { 
+            if ( 
+                !event.head.spawn.location.includes(location.id) ||
+                
+                ) { continue }
+         });
+
+    }
+
+
+
+    static click_handleCamp (r,c) {
+        let location = this.map[r][c];
+        this.Log.info( `Clicked [ ${r} | ${c} ] which is [CAMP]` );
+    }
+    static click_handelShip (r,c) {
+        let location = this.map[r][c];
+        this.Log.info( 
+            `Clicked [ ${r} | ${c} ] which is [SHIP] [far: ${location.far}] [coast: ${location.coast}]` ) 
+    }
+
+
+
 }

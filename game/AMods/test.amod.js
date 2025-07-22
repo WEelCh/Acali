@@ -18,14 +18,7 @@ MEDIATOR.AMods.push((function() {
     locations: [
         // Beispielort zur Demonstration
         //     kopieren und bearbeiten
-        {   id    : `${id}_location_MeinGebiet` ,
-            name  : "MeinGebiet" ,
-            icon  : "Special" ,
-            spawn : 1 ,
-            loot  : {
-                Gathering : 0 ,
-                Hunting   : 0 ,
-                Chopping  : 0 , }, }, ],
+         ],
 
 
     events: [
@@ -34,7 +27,7 @@ MEDIATOR.AMods.push((function() {
         //     kopieren und bearbeiten
         {
             head : {
-                id : `${id}_event_BeispielTitel` ,
+                id : `${id}_BeispielTitel` ,
                 spawn : {
                     disabled : false,
                     nsfw     : false,
@@ -43,30 +36,27 @@ MEDIATOR.AMods.push((function() {
                             "", ],
                         disabler : [
                             "", ], },
-                    // ONLY ONE LOCATION !
-                    location : "Camp Ship Forest Meadow River Hill Cave MeinGebiet",
-                    // ONLY ONE ACTION ! (ignored for Camp & Ship)
-                    action   : "Gathering Hunting Chopping",
-                    daytime : { // modifier for weather values
-                        day   : 1.0 ,
-                        night : [ // startet bei neumond
-                            1.0 ,
-                            1.0 ,
-                            1.0 ,
-                            1.0 , ], },
-                    weather : { // 10 5 3 1
-                        Clear        : 10 ,
-                        ClearWindy   : 10 ,
-                        Cloudy       : 10 ,
-                        CloudyWindy  : 10 ,
-                        Drizzle      : 10 ,
-                        DrizzleWindy : 10 ,
-                        DrizzleStormy: 10 ,
-                        Rain         : 10 ,
-                        RainWindy    : 10 ,
-                        RainStormy   : 10 ,
-                        Fog          : 10 ,
-                        FogCloudy    : 10 , }, }, },
+                    location : [
+                        "Camp" , "Ship" , "Forest" , "Meadow" , "River" , "Hill" , "Cave" , "MeinGebiet_id" ],
+                    action   : [ // ignored for camp & ship
+                        "Gathering" , "Hunting" , "Chopping" ],
+                    daytime : { // modifier for weather values below
+                        night : [// new half full half
+                                    1.0 , 1.0 , 1.0 , 1.0 , ], 
+                        day : 1.0 },
+                    weather : [ // 0-10
+                        // PREC
+                        [// None Cloudy Foggy Drizzle Rain Heavy
+                            0 , 0 , 0 , 0 , 0 , 0 ],
+                        // WIND
+                        [// None Breeze Gale Storm
+                            0 , 0 , 0 , 0 ],
+                        // TEMP
+                        [// Froz Cold Medium Warm Hot
+                            0 , 0 , 0 , 0 , 0 ], 
+                    ], 
+                }, 
+            }, 
             body : {
 
             },
