@@ -322,12 +322,12 @@ class GMap {
 
         let eventPool = [];
         let eventWeigth;
-        this.EVENTS.forEach(event => { 
-            if ( 
-                !event.head.spawn.location.includes(location.id) ||
-                
-                ) { continue }
-         });
+        //this.EVENTS.forEach(event => { 
+        //    if ( 
+        //        !event.head.spawn.location.includes(location.id) ||
+        //        
+        //        ) { continue }
+        // });
 
     }
 
