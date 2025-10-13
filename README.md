@@ -1,3 +1,8 @@
+
+Acali is a social-deduction-type game, designed to be as non-restrictive as possible, yet simple enough for all, with a big exploration aspect.
+
+<hr>
+
 <a href="https://github.com/WEelCh/Acali">Acali</a> 
 © 2025 by <a href="https://github.com/WEelCh">WEelCh</a> 
 is licensed under 
@@ -8,4 +13,4 @@ is licensed under
 <img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
 <img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
 
-Acali is a social-deduction-type game, designed to be as non-restrictive as possible, yet simple enough for all, with a big exploration aspect.
+
