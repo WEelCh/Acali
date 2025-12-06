@@ -1,36 +1,5 @@
 
-/* Boxes */
 
-.card-with-icon {
-    /* Establish positioning context for the icon */
-    position: relative; 
-    /*width: 90%;*/
-    min-height: 70px;
-    padding: 20px;
-    /* Apply border and rounding to the main container */
-    border: 2px solid #333;
-    border-radius: 10px; 
-  }
-  
-  .icon-container {
-    color: red;
-    /* Take the icon out of the normal flow for precise placement */
-    position: absolute; 
-    /* Center horizontally: move to 50% from the left, then translate back half its width */
-    left: 50%; 
-    transform: translateX(-50%);
-    /* Position vertically: move to the top of the container, then translate up half its height */
-    top: 0; 
-    transform: translate(-50%, -50%); /* Combine horizontal and vertical centering */
-    
-    /* Style the icon container to "break" the border */
-    background-color: white; /* **Crucial:** Match this to your div's background/page background */
-    padding: 5px 10px; /* Add padding around the icon */
-    z-index: 10; /* Ensure the icon sits above the border */
-    /* Remove the top border part visually if you want a clean break */
-    /* Optionally, give it its own little background/border if needed */
-  }
-  
 
 /********** STRUCT **********/
 
@@ -42,8 +11,8 @@
 .width70 {width: 70%;}
 
 .card {
-    width : 63mm;
-    height: 87mm;
+    width : 69mm;
+    height: 97.7mm;
 
     float: left;
 
@@ -52,6 +21,21 @@
 
     display: flex;
     flex-direction: column;
+}
+
+.card > .head {
+    margin-top: 3mm;
+}
+
+.card > .body {
+    /* This vert. centers the body content
+    flex-grow: 1; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+    */
+    /* This is only for when the body is not vert. centered */
+    margin-top: 0mm;
 }
 
 .elem {
@@ -71,12 +55,39 @@
 }
 
 
+.title {
+    float: left;
+    width: 80%;
+    text-align: center;
+}
+
+
+.effectbox {
+    margin: 5mm auto;
+    width: 80%;
+    border: 2px solid #333; border-radius: 10px;
+}
+
 
 /********** ICONS **********/
 
-.boxicon {
-    position: absolute;
+.icon {
+    vertical-align: middle;
     color: #6b6b6b;
+}
+
+.icon.title {
+    float: left;
+    width:8%;
+    margin-left: 2%;
+}
+.icon.title:last-child {
+    margin-left: 0%;
+    margin-right: 2%;
+}
+
+.effectbox > .icon:first-child {
+    position: absolute;
     /* Center horizontally: move to 50% from the left, then translate back half its width 
     left: 50%; 
     */transform: translateX(-50%);
@@ -92,10 +103,8 @@
     /* Optionally, give it its own little background/border if needed */
 }
 
-.icon {
-    vertical-align: middle;
-    color: #6b6b6b;
-}
+
+
 .icon.main {
     margin-top: 0.7rem;
 }
