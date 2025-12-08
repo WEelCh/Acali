@@ -37,9 +37,12 @@
 
 
 
-<body class="A4 " onload=onLoad()>
+<body class="A4">
 
     <style>@page { size: A4 landscape }</style>
+
+    <!-- Im to lazy to debug the onLoad reccursion -->
+    <div onload=onLoad()></div>
 
     <section class="sheet">
 
@@ -54,9 +57,10 @@
             <!-- B O D Y -->
             <div class="body">
                 <!-- W E I G H T -->
-                <div class="row nomargin smaller">
+                <div class="weightbox">
+                    <i class="icon" data-lucide="dumbbell"></i>
                     <i class="icon" data-lucide="weight"></i>
-                    <i class="icon" data-lucide="weight"></i>
+                    <i class="icon" data-lucide="anvil"></i>
                 </div>
                 <!-- E F F E C T -->
                 <div class="effectbox">
@@ -66,8 +70,7 @@
                 <!-- E F F E C T -->
                 <div class="effectbox">
                     <i class="icon" data-lucide="unlink"></i>
-                    <h3> <i class="icon" data-lucide="gem"></i> dasdasdasdasdasda</h3>
-
+                    <h3>Hier steht <i class="icon" data-lucide="gem"></i> Text</h3>
                 </div>
                 <!-- E F F E C T -->
                 <div class="effectbox">
@@ -79,10 +82,7 @@
             </div>
 
             <!-- F O O T E R -->
-            <div class="foot">
-                
-                <h5>1312</h5>
-            </div>
+            <h5 class="foot"> 1312 </h5>
         </div>
 
 
