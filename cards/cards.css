@@ -17,8 +17,8 @@ body, h1, h2, h3, h4, h5, h6 {
 /***** S T R U C T *****/
 
 .card {
-    width : 69.45mm;
-    height: 98.2mm;
+    width : 73.5mm;
+    height: 103.9mm;
 
     border:0.5mm solid #6b6b6b; /*border-radius: 5px;*/
     
@@ -47,6 +47,7 @@ h1 {
     margin-top: 0mm;
 }
 
+
 .weightbox {
     text-shadow: 0 0 0px var(--light);
     margin: 1mm auto;
@@ -61,6 +62,18 @@ h1 {
 h3               { text-shadow: 0 0 0px var(--light);font-size:     4mm; }
 h3:first-of-type { margin-top:    3mm; }
 h3:last-of-type  { margin-bottom: 2mm; }
+
+
+.attributebox {
+    float: left;
+    text-shadow: 0 0 0px var(--light);
+    margin-right: calc(2.5% - 4px) ;
+    margin-bottom: 5mm;
+    width: 25%;
+    height: 17mm;
+    border: 2px solid var(--dark); border-radius: 10px; }
+.attributebox:first-child{ margin-left: 10%; }
+.attributebox:last-child{ margin-right: 0; }
 
 .card > .foot { margin-top: auto; }
 h5 { 
@@ -91,6 +104,15 @@ h5 {
     background-color: white; 
     padding: 0px 5px;
     z-index: 10; }
+.attributebox > .icon:first-child {
+    color: var(--dark);
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background-color: white; 
+    padding: 0px 5px;
+    z-index: 10; }
+
+
 
 h3 > .icon { width: 5mm;}
 
