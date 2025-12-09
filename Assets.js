@@ -15,6 +15,8 @@ const Asset = {
       hunt     : { icon : `<i class="icon title" data-lucide="bow-arrow"></i>`},
       wood     : { icon : `<i class="icon title" data-lucide="axe"></i>`},
       treasure : { icon : `<i class="icon title" data-lucide="gem"></i>`},
+
+      character : { icon : `<i class="icon title" data-lucide="fingerprint"></i>`},
     }
   },
 
