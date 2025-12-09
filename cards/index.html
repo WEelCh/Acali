@@ -26,23 +26,21 @@
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
+    <script src="../Assets.js"></script>
     <script src="cards.js"></script>
 
 
 
 
 
-    <!--<meta http-equiv="refresh" content="15" />-->
+    <meta http-equiv="refresh" content="15" />
 </head>
 
 
 
-<body class="A4">
+<body class="A4" onload=onLoad()>
 
     <style>@page { size: A4 landscape }</style>
-
-    <!-- Im to lazy to debug the onLoad reccursion -->
-    <div onload=onLoad()></div>
 
     <section class="sheet">
 
@@ -50,9 +48,9 @@
         <div class="card">
             <!-- H E A D -->
                 <div class="row head">
-                    <i class="icon title" data-lucide="gem"></i>
+                    <i class="icon title" data-lucide="code"></i>
                     <h1 class="title">Item Name</h1>
-                    <i class="icon title" data-lucide="gem"></i>
+                    <i class="icon title" data-lucide="code"></i>
                 </div>
             <!-- B O D Y -->
             <div class="body">
@@ -87,7 +85,6 @@
 
 
     </section>
-
 
 </body>
 

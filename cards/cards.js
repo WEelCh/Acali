@@ -1,45 +1,52 @@
 
-function Card (
-    name
-) {
+function ItemCard ( card , ID ) {
+
+    const weight = function(){if(card.weight > 0) 
+        return /*html*/`
+        ${Asset.card.effect.weight.icon.repeat(card.weight)}
+        `; else return ""}();
+
+    let wear = "";
+    if (card.wear.length > 0){
+        wear += `<div class="effectbox">${Asset.card.effect.wear.icon}`;
+        for (let effect of card.wear){ wear += `<h3>${effect}</h3>` }; 
+        wear += `</div>` }
+
+    let use = "";
+    if (card.use.length > 0){
+        use += `<div class="effectbox">${Asset.card.effect.use.icon}`;
+        for (let effect of card.use){ use += `<h3>${effect}</h3>` }; 
+        use += `</div>` }
+
+    let spend = "";
+    if (card.spend.length > 0){
+        spend += `<div class="effectbox">${Asset.card.effect.spend.icon}`;
+        for (let effect of card.spend){ spend += `<h3>${effect}</h3>` }; 
+        spend += `</div>` }
 
     return /*html*/`
         <div class="card">
             <!-- H E A D -->
                 <div class="row head">
-                    <i class="icon title" data-lucide="gem"></i>
-                    <h1 class="title">${name}</h1>
-                    <i class="icon title" data-lucide="gem"></i>
+                    ${card.type.icon}
+                    <h1 class="title">${card.name}</h1>
+                    ${card.type.icon}
                 </div>
             <!-- B O D Y -->
             <div class="body">
                 <!-- W E I G H T -->
                 <div class="weightbox">
-                    <i class="icon" data-lucide="dumbbell"></i>
-                    <i class="icon" data-lucide="weight"></i>
-                    <i class="icon" data-lucide="anvil"></i>
+                    ${weight}
                 </div>
-                <!-- E F F E C T -->
-                <div class="effectbox">
-                    <i class="icon" data-lucide="shirt"></i>
-                    <h3>Hier steht Text</h3>
-                </div>
-                <!-- E F F E C T -->
-                <div class="effectbox">
-                    <i class="icon" data-lucide="unlink"></i>
-                    <h3>Hier steht <i class="icon" data-lucide="gem"></i> Text</h3>
-                </div>
-                <!-- E F F E C T -->
-                <div class="effectbox">
-                    <i class="icon" data-lucide="link"></i>
-                    <h3>Hier steht Text</h3>
-                    <h3>Hier steht <i class="icon" data-lucide="gem"></i> Text</h3>
-                    <h3>Hier steht Text</h3>
-                </div>
+                <!-- W E A R -->
+                ${wear}
+                <!-- U S E -->
+                ${use}
+                <!-- S P E N D -->
+                ${spend}
             </div>
-
             <!-- F O O T E R -->
-            <h5 class="foot"> 1312 </h5>
+            <h5 class="foot"> ${('000' + ID).slice(-3)} </h5>
         </div>
     `
 
@@ -47,23 +54,65 @@ function Card (
 
 
 
-const CARDS = [ "Test" , "Foo", "Foo", "Foo", "Foo", "Foo", "Foo", "Foo", "Foo" ]
-
-
+let ID = 1
+function addSheetIfNeeded( ID ){
+    if (ID%9 == 0) { document.body.innerHTML += '<section class="sheet"></section>' } }
 function onLoad(){
-    let ID = 1
     for (let card of CARDS) {
+        addSheetIfNeeded(ID);
+        document.querySelector('section:last-of-type').innerHTML += ItemCard( card , ID );
+        ID++; }
+    
 
-        // Add a new section (sheet) if needed
-        if (ID%9 == 0) {
-            document.body.innerHTML += '<section class="sheet"></section>'
-        }
-        
-        document.querySelector('section:last-of-type').innerHTML += Card(
-            ID
-        )
-
-        ID++;
-    }
+    
     lucide.createIcons()
 }
+
+
+
+
+const CARDS = [ 
+
+    {   type:Asset.card.type.ship, 
+        name:"Ship", 
+        weight:3, 
+        wear: ["-"],
+        use: ["-"],
+        spend: ["-"], },
+
+    {   type:Asset.card.type.craft, 
+        name:"Crafting", 
+        weight:3, 
+        wear: ["-"],
+        use: ["-"],
+        spend: ["-"], },
+
+    {   type:Asset.card.type.forage, 
+        name:"Forage", 
+        weight:3, 
+        wear: ["-"],
+        use: ["-"],
+        spend: ["-"], },
+
+    {   type:Asset.card.type.hunt, 
+        name:"Hunt", 
+        weight:1, 
+        wear: ["-"],
+        use: ["-"],
+        spend: ["-"], },
+
+    {   type:Asset.card.type.wood, 
+        name:"Wood", 
+        weight:3, 
+        wear: ["-"],
+        use: ["-"],
+        spend: ["-"], },
+
+    {   type:Asset.card.type.treasure, 
+        name:"Treasure", 
+        weight:3, 
+        wear: ["-"],
+        use: ["-"],
+        spend: ["-"], },
+
+]
