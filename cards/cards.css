@@ -81,7 +81,8 @@ h5 {
     margin-left: 4%; }
 .icon.title:last-child {
     margin-left: 0%;
-    margin-right: 4%; }
+    margin-right: 4%;
+    transform: scale(-1, 1); }
 
 .effectbox > .icon:first-child {
     color: var(--dark);
