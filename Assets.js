@@ -10,7 +10,7 @@ const Asset = {
     },
     type : {
       ship     : { icon : `<i class="icon title" data-lucide="drafting-compass"></i>`},
-      craft    : { icon : `<i class="icon title" data-lucide="pocket-knife"></i>`},
+      craft    : { icon : `<i class="icon title" data-lucide="pencil-ruler"></i>`},
       forage   : { icon : `<i class="icon title" data-lucide="hand-coins"></i>`},
       hunt     : { icon : `<i class="icon title" data-lucide="bow-arrow"></i>`},
       wood     : { icon : `<i class="icon title" data-lucide="axe"></i>`},
