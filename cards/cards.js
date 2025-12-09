@@ -58,12 +58,18 @@ let ID = 1
 function addSheetIfNeeded( ID ){
     if (ID%9 == 0) { document.body.innerHTML += '<section class="sheet"></section>' } }
 function onLoad(){
-    for (let card of CARDS) {
-        addSheetIfNeeded(ID);
-        document.querySelector('section:last-of-type').innerHTML += ItemCard( card , ID );
-        ID++; }
-    
 
+    for (let item of ITEMS) {
+        addSheetIfNeeded(ID);
+        for (let i=0;i<item.qty;i++){
+            document.querySelector('section:last-of-type').innerHTML += ItemCard( item , ID );
+            ID++; } }
+
+    for (let character of CHARACTERS) {
+        addSheetIfNeeded(ID);
+        for (let i=0;i<character.qty;i++){
+            document.querySelector('section:last-of-type').innerHTML += ItemCard( character , ID );
+            ID++; } }
     
     lucide.createIcons()
 }
@@ -71,44 +77,44 @@ function onLoad(){
 
 
 
-const CARDS = [ 
+const ITEMS = [ 
 
-    {   type:Asset.card.type.ship, 
+    {   type:Asset.card.type.ship, qty:1,
         name:"Ship", 
         weight:3, 
         wear: ["-"],
         use: ["-"],
         spend: ["-"], },
 
-    {   type:Asset.card.type.craft, 
+    {   type:Asset.card.type.craft, qty:1,
         name:"Crafting", 
         weight:3, 
         wear: ["-"],
         use: ["-"],
         spend: ["-"], },
 
-    {   type:Asset.card.type.forage, 
+    {   type:Asset.card.type.forage, qty:1,
         name:"Forage", 
         weight:3, 
         wear: ["-"],
         use: ["-"],
         spend: ["-"], },
 
-    {   type:Asset.card.type.hunt, 
+    {   type:Asset.card.type.hunt, qty:1,
         name:"Hunt", 
         weight:1, 
         wear: ["-"],
         use: ["-"],
         spend: ["-"], },
 
-    {   type:Asset.card.type.wood, 
+    {   type:Asset.card.type.wood, qty:1,
         name:"Wood", 
         weight:3, 
         wear: ["-"],
         use: ["-"],
         spend: ["-"], },
 
-    {   type:Asset.card.type.treasure, 
+    {   type:Asset.card.type.treasure, qty:1,
         name:"Treasure", 
         weight:3, 
         wear: ["-"],
@@ -116,3 +122,51 @@ const CARDS = [
         spend: ["-"], },
 
 ]
+
+
+const CHARACTERS = [ 
+
+    {   type:Asset.card.type.ship, qty:1,
+        name:"Ship", 
+        weight:3, 
+        wear: ["-"],
+        use: ["-"],
+        spend: ["-"], },
+
+    {   type:Asset.card.type.craft, qty:1,
+        name:"Crafting", 
+        weight:3, 
+        wear: ["-"],
+        use: ["-"],
+        spend: ["-"], },
+
+    {   type:Asset.card.type.forage, qty:1,
+        name:"Forage", 
+        weight:3, 
+        wear: ["-"],
+        use: ["-"],
+        spend: ["-"], },
+
+    {   type:Asset.card.type.hunt, qty:1,
+        name:"Hunt", 
+        weight:1, 
+        wear: ["-"],
+        use: ["-"],
+        spend: ["-"], },
+
+    {   type:Asset.card.type.wood, qty:1,
+        name:"Wood", 
+        weight:3, 
+        wear: ["-"],
+        use: ["-"],
+        spend: ["-"], },
+
+    {   type:Asset.card.type.treasure, qty:1,
+        name:"Treasure", 
+        weight:3, 
+        wear: ["-"],
+        use: ["-"],
+        spend: ["-"], },
+
+]
+
