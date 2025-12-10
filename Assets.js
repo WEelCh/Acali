@@ -1,5 +1,29 @@
+/* ICON  NAME  (ZAHL)  // ICONanzahl = ZAHL ???
+Brandgut
+Bedrohen
+Baustoff (versch. Arten)
+- Struktur, Dach, Stock, Faden
+
+Essen, Wärme, Heilung, Ausruhen
+Beeren, Pilze
+
+Schutz vor Kälte / Regen
+
+Werkzeug, Waffe, 
+*/
+
 
 const Asset = {
+
+  character : {
+    ability : { icon : `<i class="icon" data-lucide="star"></i>` },
+    trait   : { icon : `<i class="icon" data-lucide="square-star"></i>` },
+    attribute : {
+      str   : { icon : `<i class="icon" data-lucide="biceps-flexed"></i>` },
+      dex   : { icon : `<i class="icon" data-lucide="heart-handshake"></i>` },
+      wis   : { icon : `<i class="icon" data-lucide="brain"></i>` },
+    }
+  },
 
   card : {
     effect : {
