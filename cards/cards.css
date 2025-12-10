@@ -67,13 +67,16 @@ h3:last-of-type  { margin-bottom: 2mm; }
 .attributebox {
     float: left;
     text-shadow: 0 0 0px var(--light);
-    margin-right: calc(2.5% - 4px) ;
-    margin-bottom: 5mm;
-    width: 25%;
-    height: 17mm;
+    margin-right: 7% ;
+    width: calc(22% - 4px);
+    height: calc(15mm - 4px);
     border: 2px solid var(--dark); border-radius: 10px; }
-.attributebox:first-child{ margin-left: 10%; }
-.attributebox:last-child{ margin-right: 0; }
+.attributebox:first-of-type{ margin-left: 10%; }
+.attributebox:last-of-type{ margin-right: 0; }
+.passion > .icon {
+    border: 2px solid var(--dark); 
+    border-radius: 100px;
+}
 
 .card > .foot { margin-top: auto; }
 h5 { 
@@ -117,3 +120,12 @@ h5 {
 h3 > .icon { width: 5mm;}
 
 
+/*attribute*/
+h2 {
+    margin-top: 2.5mm;
+    color: var(--dark);
+}
+
+.hidden {
+    border-color: transparent;
+}
