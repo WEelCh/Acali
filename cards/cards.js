@@ -212,9 +212,9 @@ const ItemCards = [
 
     {   layout: ItemCard, type:Asset.card.type.ship, qty:1,
         name:"Ship", weight:3, 
-        wear : ["-" , "-" , "-"],
-        use  : ["-" , "-"],
-        spend: ["-" , "-"], 
+        wear : ["efjern dbkhk dh" , "-" , "das  d df g"],
+        use  : ["-" , "das asd d s s "],
+        spend: ["-" , "Adas asd asda d s"], 
     },
 
     {   layout: ItemCard, type:Asset.card.type.craft, qty:1,
@@ -226,9 +226,9 @@ const ItemCards = [
 
     {   layout: ItemCard, type:Asset.card.type.forage, qty:1,
         name:"Forage", weight:0,
-        wear : ["-"],
-        use  : ["-"],
-        spend: ["-"], 
+        wear : ["-" , "-" , "-"],
+        use  : ["-" , "-" , "-" , "-"],
+        spend: ["-" , "-"], 
     },
 
     {   layout: ItemCard, type:Asset.card.type.hunt, qty:1,

@@ -70,15 +70,19 @@ h1 {
     margin-top: 5mm;
     width: calc(100% -4px);
     border: 2px solid var(--dark); border-radius: 10px; }
-h3               { text-shadow: 0 0 0px var(--light);font-size: 3.5mm; }
+h3               { 
+    text-shadow: 0 0 0px var(--light);
+    font-size: 3.5mm;
+    line-height: 4.3mm; }
+h3.character-normalization { line-height: 4.55mm; }
 h3:first-of-type { margin-top:    3mm; }
-h3:last-of-type  { margin-bottom: 2mm; }
+h3:last-of-type  { margin-bottom: 1mm; }
 
 
 .attributebox {
     float: left;
     text-shadow: 0 0 0px var(--light);
-    height: calc(12mm - 4px);
+    height: calc(10.5mm - 4px);
     width: calc(30% - 4px);
     margin-right: calc(5% + 2px); /* 2px also come from the right-border of effect box! So 80%+4px*/
     border: 2px solid var(--dark); border-radius: 10px; }
@@ -89,6 +93,14 @@ h3:last-of-type  { margin-bottom: 2mm; }
 }
 
 
+.conditionbox {
+    text-shadow: 0 0 0px var(--light);
+    margin: 0mm auto;
+    margin-top: 5mm;
+    width: 100%;
+    border: 2px solid var(--dark); border-radius: 10px; }
+.conditionbox.left { border-left: none; border-radius: 0 10px 10px 0; }
+.conditionbox.right { border-right: none; border-radius: 10px 0 0 10px; }
 
 
 
@@ -116,24 +128,37 @@ h5 {
     transform: scale(-1, 1); }
 
 .effectbox > .icon:first-child,
-.attributebox > .icon:first-child {
+.attributebox > .icon:first-child ,
+.conditionbox > .icon:first-child {
     color: var(--dark);
     position: absolute;
     transform: translate(-50%, -50%);
     background-color: white; 
     padding: 0px 5px;
     z-index: 10; }
+.conditionbox.left:first-of-type > .icon:first-child { transform: translate(+33%, 350%); }
+.conditionbox.left:last-of-type  > .icon:first-child { transform: translate(+75%, 280%);padding: 0px; }
+.conditionbox.right:first-of-type > .icon:first-child { transform: translate(-127%, 350%); }
+.conditionbox.right:last-of-type  > .icon:first-child { transform: translate(-127%, 280%); }
 .icon:not(:first-of-type) {
     background-color: transparent;
 }
 
+.characteralignhelper { display: flex;flex-direction: row;flex-grow: 1;width: 100%;margin-bottom: 5mm; }
+.characterattributealignhelper { display: flex; margin-top: 4mm; }
+.characterbottomcondition { border-bottom: none;border-radius: 10px 10px 0 0; margin-top: 3mm; }
+.body.characterside { width: 15%; }
+.body.charactercenter { width: 60%; margin-left: 5%; margin-right: 5%; }
+
+.modifieroffset { margin-top: 5.5mm; }
 
 h3 > .icon { width: 4mm;}
 
 
 /*attribute*/
 h2 {
-    font-size: 6mm;
+    text-shadow: 0 0 0px var(--light);
+    font-size: 5mm;
     margin-top: 3.5mm;
     color: var(--dark);
 }
@@ -144,9 +169,11 @@ h2 {
 
 /*conditions*/
 h4 {
+    text-shadow: 0 0 0px var(--light);
     font-size: 5mm;
     margin: 2.5mm 0mm;
     color: var(--dark); }
 h4:first-of-type {
     margin-top: 4mm;
 }
+
