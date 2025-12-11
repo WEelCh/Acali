@@ -17,7 +17,7 @@ const Asset = {
 
   character : {
     ability : { icon : `<i class="icon" data-lucide="star"></i>` },
-    trait   : { icon : `<i class="icon" data-lucide="square-star"></i>` },
+    trait   : { icon : `<i class="icon" data-lucide="scan"></i>` },
     attribute : {
       str   : { icon : `<i class="icon" data-lucide="biceps-flexed"></i>` },
       dex   : { icon : `<i class="icon" data-lucide="heart-handshake"></i>` },
@@ -41,6 +41,11 @@ const Asset = {
       treasure : { icon : `<i class="icon title" data-lucide="gem"></i>`},
 
       character : { icon : `<i class="icon title" data-lucide="fingerprint"></i>`},
+      trait : {
+        pos : { icon : `<i class="icon" data-lucide="arrow-big-up"></i>`},
+        neu : { icon : `<i class="icon" data-lucide="separator-horizontal"></i>`},
+        neg : { icon : `<i class="icon" data-lucide="arrow-big-down"></i>`},
+      }
     }
   },
 
