@@ -1,5 +1,5 @@
 
-function genCardId (ID) { return ('000' + ID).slice(-3) }
+function genCardId (ID) { return ('γ'+(('000' + ID).slice(-3))) }
 
 function ItemCard ( card , ID ) {
 
@@ -29,7 +29,7 @@ function ItemCard ( card , ID ) {
         spend += `</div>` }
 
     return /*html*/`
-        <div class="card">
+        <div class="card item">
             <!-- H E A D -->
                 <div class="row head">
                     ${card.type.icon}
@@ -65,7 +65,7 @@ function CharacterCard ( card , ID ) {
 
 
     return /*html*/`
-        <div class="card">
+        <div class="card character">
             <!-- H E A D -->
                 <div class="row head">
                     ${card.type.icon}
@@ -107,7 +107,7 @@ function CharacterCard ( card , ID ) {
 
 function AttributeCard ( card , ID ) {
     return /*html*/`
-        <div class="card">
+        <div class="card modifier">
             <!-- H E A D -->
                 <div class="row head">
                     <h1 class="title">&nbsp</h1>
@@ -116,7 +116,7 @@ function AttributeCard ( card , ID ) {
             <div class="body">
                 <!-- C R A F T I N G  &  A B I L I T Y -->
                 <div class="effectbox hidden">
-                    <h3>&nbsp<br>&nbsp<br>&nbsp<br>&nbsp</h3>
+                    <h3>&nbsp<br>&nbsp<br>&nbsp<br>&nbsp<br>&nbsp</h3>
                 </div>
                 <!-- T R A I T -->
                 <div class="effectbox hidden">
@@ -149,7 +149,7 @@ function TraitCard ( card , ID ) {
     }
 
     return /*html*/`
-        <div class="card">
+        <div class="card modifier">
             <!-- H E A D -->
                 <div class="row head">
                     <h1 class="title">&nbsp</h1>
@@ -158,7 +158,7 @@ function TraitCard ( card , ID ) {
             <div class="body">
                 <!-- C R A F T I N G  &  A B I L I T Y -->
                 <div class="effectbox hidden">
-                    <h3>&nbsp<br>&nbsp<br>&nbsp<br>&nbsp</h3>
+                    <h3>&nbsp<br>&nbsp<br>&nbsp<br>&nbsp<br>&nbsp</h3>
                 </div>
                 <!-- T R A I T -->
                 <div class="effectbox hidden">
@@ -183,16 +183,24 @@ function TraitCard ( card , ID ) {
 }
 
 
-let ID = 1
-function addSheetIfNeeded( ID ){
-    if (ID%7 == 0) { document.body.innerHTML += '<section class="sheet"></section>' } }
+let ID = 1; let COS = 1;
+function addSheetIfNeeded( cardsOnSheet , max ){
+    if (cardsOnSheet%max == 0) { document.body.innerHTML += '<section class="sheet"></section>' } }
 function onLoad(){
 
-    for (let card of CARDS) {
-        addSheetIfNeeded(ID);
+    for (let card of ItemCards) {
         for (let i=0;i<card.qty;i++){
+            addSheetIfNeeded(COS , 10);
             document.querySelector('section:last-of-type').innerHTML += card.layout( card , ID );
-            ID++; } }
+            ID++; COS++; } }
+
+    addSheetIfNeeded(1,1); COS=1;
+
+    for (let card of CharacterCards) {
+        for (let i=0;i<card.qty;i++){
+            addSheetIfNeeded(COS , 5);
+            document.querySelector('section:last-of-type').innerHTML += card.layout( card , ID );
+            ID++; COS++; } }
 
     lucide.createIcons()
 }
@@ -200,13 +208,13 @@ function onLoad(){
 
 
 
-const CARDS = [ 
+const ItemCards = [ 
 
     {   layout: ItemCard, type:Asset.card.type.ship, qty:1,
         name:"Ship", weight:3, 
-        wear : ["-"],
-        use  : ["-"],
-        spend: ["-"], 
+        wear : ["-" , "-" , "-"],
+        use  : ["-" , "-"],
+        spend: ["-" , "-"], 
     },
 
     {   layout: ItemCard, type:Asset.card.type.craft, qty:1,
@@ -243,15 +251,21 @@ const CARDS = [
         use  : [],
         spend: ["-"], 
     },
+]
 
-    {   layout: CharacterCard, type:Asset.card.type.character, qty:1,
+
+const CharacterCards = [ 
+    {   layout: CharacterCard, type:Asset.card.type.character, qty:5,
         name:"Character",
-        ability: ["A","","C","D"],
+        ability: ["Icon Langeskeyword 100","","C","D"],
         passion: [ 0 , 1 , 0 ],
     },
+]
 
+
+const ModifierCards = [ 
     {   layout: AttributeCard, qty:1,
-        attribute : [2,4,8]
+        attribute : [3,1,2]
     },
 
     {   layout: TraitCard, qty:1,
@@ -259,7 +273,4 @@ const CARDS = [
         trait : ["-","-","-"],
     },
 ]
-
-
-
 
