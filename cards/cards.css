@@ -68,7 +68,7 @@ h1 {
     text-shadow: 0 0 0px var(--light);
     margin: 0mm auto;
     margin-top: 5mm;
-    width: calc(100% -4px);
+    width: calc(100% - 4px);
     border: 2px solid var(--dark); border-radius: 10px; }
 h3               { 
     text-shadow: 0 0 0px var(--light);
@@ -78,6 +78,7 @@ h3.character-normalization { line-height: 4.55mm; }
 h3:first-of-type { margin-top:    3mm; }
 h3:last-of-type  { margin-bottom: 1mm; }
 
+h3 > .icon { height: 4.5mm;}
 
 .attributebox {
     float: left;
@@ -152,7 +153,7 @@ h5 {
 
 .modifieroffset { margin-top: 5.5mm; }
 
-h3 > .icon { width: 4mm;}
+
 
 
 /*attribute*/
