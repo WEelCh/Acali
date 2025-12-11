@@ -67,11 +67,11 @@ h3:last-of-type  { margin-bottom: 2mm; }
 .attributebox {
     float: left;
     text-shadow: 0 0 0px var(--light);
-    margin-right: 7% ;
+    margin-right: calc(7% + 2px); /* 2px also come from the right-border of effect box! So 80%+4px*/
     width: calc(22% - 4px);
     height: calc(15mm - 4px);
     border: 2px solid var(--dark); border-radius: 10px; }
-.attributebox:first-of-type{ margin-left: 10%; }
+.attributebox:first-of-type{ margin-left: calc(10% - 2px); } /* 2px also come from the right-border of effect box! So 80%+4px*/
 .attributebox:last-of-type{ margin-right: 0; }
 .passion > .icon {
     border: 2px solid var(--dark); 
@@ -100,13 +100,7 @@ h5 {
     margin-right: 4%;
     transform: scale(-1, 1); }
 
-.effectbox > .icon:first-child {
-    color: var(--dark);
-    position: absolute;
-    transform: translate(-50%, -50%);
-    background-color: white; 
-    padding: 0px 5px;
-    z-index: 10; }
+.effectbox > .icon:first-child,
 .attributebox > .icon:first-child {
     color: var(--dark);
     position: absolute;
@@ -114,7 +108,9 @@ h5 {
     background-color: white; 
     padding: 0px 5px;
     z-index: 10; }
-
+.icon:not(:first-of-type) {
+    background-color: transparent;
+}
 
 
 h3 > .icon { width: 5mm;}

@@ -162,6 +162,7 @@ function TraitCard ( card , ID ) {
                 </div>
                 <!-- T R A I T -->
                 <div class="effectbox hidden">
+                    ${card.type.icon}
                     <h3> ${trait} </h3>
                 </div>
                 <!-- A T T R I B U T E S -->
@@ -254,7 +255,8 @@ const CARDS = [
     },
 
     {   layout: TraitCard, qty:1,
-        trait : ["-","-","-"]
+        type  : Asset.card.type.trait.pos,
+        trait : ["-","-","-"],
     },
 ]
 
