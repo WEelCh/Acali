@@ -1,5 +1,12 @@
 
-const Asset = {
+const Asset = { spacer : "&nbsp",
+
+  weather : {
+    effect : {
+      wet : { icon : `<i class="icon" data-lucide="droplets"></i>` },
+      cold : { icon : `<i class="icon" data-lucide="thermometer-snowflake"></i>` },
+    },
+  },
 
 
   keyword : {
@@ -10,10 +17,16 @@ const Asset = {
       fabric : { icon : `<i class="icon" data-lucide="line-squiggle"></i>` },
       cover : { icon : `<i class="icon" data-lucide="layers-2"></i>` },
       metal : { icon : `<i class="icon" data-lucide="anvil"></i>` },
+      fuel: { icon : `<i class="icon" data-lucide="flame"></i>` },
     },
     tool : {
+      cooking : { icon : `<i class="icon" data-lucide="cooking-pot"></i>` },
       chopping: { icon : `<i class="icon" data-lucide="axe"></i>` },
-      crafting: { icon : `<i class="icon" data-lucide="pencil-ruler"></i>` },
+      crafting: { icon : `<i class="icon" data-lucide="pocket-knife"></i>` },
+      kindle: { icon : `<i class="icon" data-lucide="flame-kindling"></i>` },
+      light: { icon : `<i class="icon" data-lucide="sparkles"></i>` },
+      backpack: { icon : `<i class="icon" data-lucide="package"></i>` },
+      navigation: { icon : `<i class="icon" data-lucide="drafting-compass"></i>` },
     },
     weapon : {
       meleeLight: { icon : `<i class="icon" data-lucide="sword"></i>` },
@@ -23,10 +36,8 @@ const Asset = {
     food : {
       cold: { icon : `<i class="icon" data-lucide="carrot"></i>` },
       warm: { icon : `<i class="icon" data-lucide="beef"></i>` },
-      mystery: { icon : `<i class="icon" data-lucide="grape"></i>` },
+      mystery: { icon : `<i class="icon" data-lucide="nut"></i>` },
     },
-    backpack: { icon : `<i class="icon" data-lucide="tool-case"></i>` },
-    fuel: { icon : `<i class="icon" data-lucide="flame"></i>` },
   },
   
   
@@ -47,9 +58,12 @@ const Asset = {
 
 
   card : {
-    character : { icon : `<i class="icon title" data-lucide="fingerprint"></i>`,
+    character : { 
+      colonist : { icon : `<i class="icon title" data-lucide="earth"></i>` },
+      seaman : { icon : `<i class="icon title" data-lucide="ship-wheel"></i>` },
+
       ability : { icon : `<i class="icon" data-lucide="star"></i>` },
-      craft  : { icon : `<i class="icon" data-lucide="pencil-ruler"></i>` },
+      craft  : { icon : `<i class="icon" data-lucide="pocket-knife"></i>` },
       trait   : { icon : `<i class="icon" data-lucide="scan"></i>` },
     },
     modifier : {
@@ -60,8 +74,9 @@ const Asset = {
       },
     },
     item : {
+      beispiel : { icon : `<i class="icon title" data-lucide="info"></i>`},
       ship     : { icon : `<i class="icon title" data-lucide="anchor"></i>`},
-      craft    : { icon : `<i class="icon title" data-lucide="pencil-ruler"></i>`},
+      craft    : { icon : `<i class="icon title" data-lucide="pocket-knife"></i>`},
       forage   : { icon : `<i class="icon title" data-lucide="hand-coins"></i>`},
       hunt     : { icon : `<i class="icon title" data-lucide="bow-arrow"></i>`},
       wood     : { icon : `<i class="icon title" data-lucide="axe"></i>`},

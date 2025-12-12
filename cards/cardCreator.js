@@ -33,7 +33,7 @@ function ItemCard ( card , ID ) {
             <!-- H E A D -->
                 <div class="row head">
                     ${card.type.icon}
-                    <h1 class="title">${card.name}</h1>
+                    <h1 class="title">${card.name[APPLOC]}</h1>
                     ${card.type.icon}
                 </div>
             <!-- B O D Y -->
@@ -74,7 +74,7 @@ function CharacterCard ( card , ID ) {
             <!-- H E A D -->
             <div class="head">
                 ${card.type.icon}
-                <h1 class="title">${card.name}</h1>
+                <h1 class="title">${card.name[APPLOC]}</h1>
                 ${card.type.icon}
             </div>
 
@@ -247,33 +247,34 @@ function TraitCard ( card , ID ) {
 
 
 
-let ID = 1; let COS = 1;
+let ID = 1; let COS = 0;
 function addSheetIfNeeded( cardsOnSheet , max ){
     if (cardsOnSheet%max == 0) { document.body.innerHTML += '<section class="sheet"></section>' } }
 function onLoad(){
 
     for (let card of ItemCards) {
         for (let i=0;i<card.qty;i++){
-            addSheetIfNeeded(COS , 10);
             document.querySelector('section:last-of-type').innerHTML += card.layout( card , ID );
-            ID++; COS++; } }
+            ID++; COS++; 
+            addSheetIfNeeded(COS , 9); 
+        } }
 
-    addSheetIfNeeded(1,1); COS=1;
+    addSheetIfNeeded(1,1); COS=0;
 
     for (let card of CharacterCards) {
         for (let i=0;i<card.qty;i++){
-            addSheetIfNeeded(COS , 5);
             document.querySelector('section:last-of-type').innerHTML += card.layout( card , ID );
-            ID++; COS++; } }
+            ID++; COS++; 
+            addSheetIfNeeded(COS , 4); } }
     
     /* FOIL CARDS */
-    addSheetIfNeeded(1,1); COS=1;
+    addSheetIfNeeded(1,1); COS=0;
 
     for (let card of ModifierCards) {
         for (let i=0;i<card.qty;i++){
-            addSheetIfNeeded(COS , 9);
             document.querySelector('section:last-of-type').innerHTML += card.layout( card , ID );
-            ID++; COS++; } }
+            ID++; COS++; 
+            addSheetIfNeeded(COS , 9); } }
 
 
     lucide.createIcons()
