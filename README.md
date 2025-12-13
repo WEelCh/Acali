@@ -1,5 +1,5 @@
 
-Acali is a social-deduction-type game, designed to be as non-restrictive as possible, yet simple enough for all, with a big exploration aspect.
+Acali is a social-deduction-type game - with the target of being also a story creator, designed to be as non-restrictive as possible, yet simple enough for all, with a big exploration aspect.
 
 <hr>
 
