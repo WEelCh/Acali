@@ -20,7 +20,6 @@ const Asset = { spacer : "&nbsp",
       fuel: { icon : `<i class="icon" data-lucide="flame"></i>` },
     },
     tool : {
-      cooking : { icon : `<i class="icon" data-lucide="cooking-pot"></i>` },
       chopping: { icon : `<i class="icon" data-lucide="axe"></i>` },
       crafting: { icon : `<i class="icon" data-lucide="pocket-knife"></i>` },
       kindle: { icon : `<i class="icon" data-lucide="flame-kindling"></i>` },

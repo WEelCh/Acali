@@ -18,8 +18,6 @@ const KW = {
             return make(n, Asset.keyword.material.fuel.icon , Locale.keyword.material.text() )},
     },
     tool : {
-        cooking  : function(n=1){
-            return make(n, Asset.keyword.tool.cooking.icon , Locale.keyword.tool.text() )},
         chopping : function(n=1){
             return make(n, Asset.keyword.tool.chopping.icon , Locale.keyword.tool.text() )},
         crafting : function(n=1){
@@ -86,11 +84,10 @@ const ItemCards = [
 {   layout: ItemCard, type:Asset.card.item.beispiel, qty:1,
     name:{de:"Bsp Ausrüstung"}, weight:0, 
     wear : [
-        KW.protectFrom.wet(),
         KW.protectFrom.cold(),
+        KW.protectFrom.wet(),
     ],
     use  : [
-        KW.tool.cooking(),
         KW.tool.crafting(),
         KW.tool.kindle(),
         KW.tool.chopping(),
@@ -145,10 +142,199 @@ const ItemCards = [
 S H I P 
 *****/
     {   layout: ItemCard, type:Asset.card.item.ship, qty:1,
-        name:{de:"Beispielitem"}, weight:0, 
-        wear : [],
+        name:{de:"Leinenkleidung"}, weight:0, 
+        wear : [
+            KW.protectFrom.cold(),
+        ],
         use  : [],
         spend: [], 
+    },
+    {   layout: ItemCard, type:Asset.card.item.ship, qty:1,
+        name:{de:"Wollkleidung"}, weight:0, 
+        wear : [
+            KW.protectFrom.cold(2),
+        ],
+        use  : [],
+        spend: [], 
+    },
+    {   layout: ItemCard, type:Asset.card.item.ship, qty:1,
+        name:{de:"Lederkleidung"}, weight:0, 
+        wear : [
+            KW.protectFrom.cold(),
+            KW.protectFrom.wet(),
+        ],
+        use  : [],
+        spend: [], 
+    },
+    {   layout: ItemCard, type:Asset.card.item.ship, qty:1,
+        name:{de:"Lederwollkleidung"}, weight:0, 
+        wear : [
+            KW.protectFrom.cold(2),
+            KW.protectFrom.wet(),
+        ],
+        use  : [],
+        spend: [], 
+    },
+    {   layout: ItemCard, type:Asset.card.item.ship, qty:1,
+        name:{de:"Mantel"}, weight:0, 
+        wear : [
+            KW.protectFrom.cold(2),
+            KW.protectFrom.wet(2),
+        ],
+        use  : [],
+        spend: [], 
+    },
+    {   layout: ItemCard, type:Asset.card.item.ship, qty:1,
+        name:{de:"Nähkit"}, weight:0, 
+        wear : [],
+        use  : [],
+        spend: [
+            KW.material.fabric(),
+        ], 
+    },
+    {   layout: ItemCard, type:Asset.card.item.ship, qty:1,
+        name:{de:"Pöckelfleisch"}, weight:0, 
+        wear : [],
+        use  : [],
+        spend: [
+            KW.food.warm(),
+        ], 
+    },
+    {   layout: ItemCard, type:Asset.card.item.ship, qty:1,
+        name:{de:"Bohnen"}, weight:0, 
+        wear : [],
+        use  : [],
+        spend: [
+            KW.food.cold(),
+        ], 
+    },
+    {   layout: ItemCard, type:Asset.card.item.ship, qty:1,
+        name:{de:"Kräutertinktur"}, weight:0, 
+        wear : [],
+        use  : [],
+        spend: [
+            KW.heal.wound(),
+        ], 
+    },
+    {   layout: ItemCard, type:Asset.card.item.ship, qty:1,
+        name:{de:"Bandagen"}, weight:0, 
+        wear : [],
+        use  : [],
+        spend: [
+            KW.heal.wound(),
+        ], 
+    },
+    {   layout: ItemCard, type:Asset.card.item.ship, qty:1,
+        name:{de:"Operationsbesteck"}, weight:0, 
+        wear : [],
+        use  : [
+            KW.heal.wound(),
+        ],
+        spend: [], 
+    },
+    {   layout: ItemCard, type:Asset.card.item.ship, qty:1,
+        name:{de:"Axt"}, weight:0, 
+        wear : [],
+        use  : [
+            KW.tool.chopping(),
+            KW.weapon.meleeHeavy(),
+        ],
+        spend: [], 
+    },
+    {   layout: ItemCard, type:Asset.card.item.ship, qty:1,
+        name:{de:"Beil"}, weight:0, 
+        wear : [],
+        use  : [
+            KW.tool.crafting(),
+            KW.tool.chopping(),
+            KW.weapon.meleeLight(),
+        ],
+        spend: [], 
+    },
+    {   layout: ItemCard, type:Asset.card.item.ship, qty:1,
+        name:{de:"Seil"}, weight:0, 
+        wear : [],
+        use  : [],
+        spend: [
+            KW.material.fabric(2),
+            KW.material.fuel(),
+        ], 
+    },
+    {   layout: ItemCard, type:Asset.card.item.ship, qty:1,
+        name:{de:"Messer"}, weight:0, 
+        wear : [],
+        use  : [
+            KW.weapon.meleeLight(),
+        ],
+        spend: [], 
+    },
+    {   layout: ItemCard, type:Asset.card.item.ship, qty:1,
+        name:{de:"Feuerstahl"}, weight:0, 
+        wear : [],
+        use  : [
+            KW.tool.kindle(),
+        ],
+        spend: [], 
+    },
+    {   layout: ItemCard, type:Asset.card.item.ship, qty:1,
+        name:{de:"Feuerstahl"}, weight:0, 
+        wear : [],
+        use  : [
+            KW.tool.kindle(),
+        ],
+        spend: [], 
+    },
+    {   layout: ItemCard, type:Asset.card.item.ship, qty:1,
+        name:{de:"Bibel"}, weight:0, 
+        wear : [],
+        use  : [
+            KW.heal.exhaustion(),
+        ],
+        spend: [
+            KW.material.fuel(),
+            "Wird die Bibel verbrannt:",
+            KW.suffer.exhaustion() + " (alle)",
+        ], 
+    },
+    {   layout: ItemCard, type:Asset.card.item.ship, qty:1,
+        name:{de:"Kompass"}, weight:0, 
+        wear : [],
+        use  : [
+            KW.tool.navigation(),
+        ],
+        spend: [], 
+    },
+    {   layout: ItemCard, type:Asset.card.item.ship, qty:1,
+        name:{de:"Karte"}, weight:0, 
+        wear : [],
+        use  : [
+            KW.tool.navigation(),
+        ],
+        spend: [], 
+    },
+    {   layout: ItemCard, type:Asset.card.item.ship, qty:1,
+        name:{de:"Segel"}, weight:0, 
+        wear : [],
+        use  : [
+            KW.tool.navigation(2),
+        ],
+        spend: [], 
+    },
+    {   layout: ItemCard, type:Asset.card.item.ship, qty:1,
+        name:{de:"Alkohol"}, weight:0, 
+        wear : [],
+        use  : [],
+        spend: [
+            KW.heal.exhaustion(),
+        ], 
+    },
+    {   layout: ItemCard, type:Asset.card.item.ship, qty:1,
+        name:{de:"Kautabak"}, weight:0, 
+        wear : [],
+        use  : [],
+        spend: [
+            KW.heal.exhaustion(),
+        ], 
     },
 /***** 
 C R A F T
@@ -266,6 +452,14 @@ H U N T
             KW.material.cover()
         ], 
     },
+    {   layout: ItemCard, type:Asset.card.item.hunt, qty:1,
+        name:{de:"Fett"}, weight:0, 
+        wear : [],
+        use  : [],
+        spend: [
+            KW.material.fuel(),
+        ], 
+    },
 /***** 
 W O O D
 *****/
@@ -328,9 +522,94 @@ T R E A S U R E
 const CharacterCards = [ 
 /***** 
 C H A R A C T E R
+Kolonist
 *****/
     {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
-        name:{de:"Beispielitem"},
+        name:{de:"Bauer"},
+        ability: ["","","",""
+        ],
+        crafting: ["","","",""
+        ],
+        passion: [ 0 , 1 , 1 ],
+    },
+    {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
+        name:{de:"Tischler"},
+        ability: ["","","",""
+        ],
+        crafting: ["","","",""
+        ],
+        passion: [ 0 , 1 , 1 ],
+    },
+    {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
+        name:{de:"Schmied"},
+        ability: ["","","",""
+        ],
+        crafting: ["","","",""
+        ],
+        passion: [ 0 , 1 , 1 ],
+    },
+    {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
+        name:{de:"Jäger"},
+        ability: ["","","",""
+        ],
+        crafting: ["","","",""
+        ],
+        passion: [ 0 , 1 , 1 ],
+    },
+    {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
+        name:{de:"Schneider"},
+        ability: ["","","",""
+        ],
+        crafting: ["","","",""
+        ],
+        passion: [ 0 , 1 , 1 ],
+    },
+    {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
+        name:{de:"Doktor"},
+        ability: ["","","",""
+        ],
+        crafting: ["","","",""
+        ],
+        passion: [ 0 , 1 , 1 ],
+    },
+    {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
+        name:{de:"Priester"},
+        ability: ["","","",""
+        ],
+        crafting: ["","","",""
+        ],
+        passion: [ 0 , 1 , 1 ],
+    },
+    {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
+        name:{de:"Kaufmann"},
+        ability: ["","","",""
+        ],
+        crafting: ["","","",""
+        ],
+        passion: [ 0 , 1 , 1 ],
+    },
+    {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
+        name:{de:"Handwerker"},
+        ability: ["","","",""
+        ],
+        crafting: ["","","",""
+        ],
+        passion: [ 0 , 1 , 1 ],
+    },
+    {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
+        name:{de:"Koch"},
+        ability: ["","","",""
+        ],
+        crafting: ["","","",""
+        ],
+        passion: [ 0 , 1 , 1 ],
+    },
+/***** 
+C H A R A C T E R
+Seefahrer
+*****/
+    {   layout: CharacterCard, type:Asset.card.character.seaman, qty:1,
+        name:{de:"Kapitän"},
         ability: ["","","",""
         ],
         crafting: ["","","",""
@@ -338,7 +617,31 @@ C H A R A C T E R
         passion: [ 0 , 1 , 1 ],
     },
     {   layout: CharacterCard, type:Asset.card.character.seaman, qty:1,
-        name:{de:"Beispielitem"},
+        name:{de:"Erster Offizier"},
+        ability: ["","","",""
+        ],
+        crafting: ["","","",""
+        ],
+        passion: [ 0 , 1 , 1 ],
+    },
+    {   layout: CharacterCard, type:Asset.card.character.seaman, qty:1,
+        name:{de:"Navigator"},
+        ability: ["","","",""
+        ],
+        crafting: ["","","",""
+        ],
+        passion: [ 0 , 1 , 1 ],
+    },
+    {   layout: CharacterCard, type:Asset.card.character.seaman, qty:1,
+        name:{de:"Matrose"},
+        ability: ["","","",""
+        ],
+        crafting: ["","","",""
+        ],
+        passion: [ 0 , 1 , 1 ],
+    },
+    {   layout: CharacterCard, type:Asset.card.character.seaman, qty:1,
+        name:{de:"Koch"},
         ability: ["","","",""
         ],
         crafting: ["","","",""
