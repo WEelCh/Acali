@@ -77,7 +77,8 @@ const KW = {
 }
 
 
-
+// use and spend defined by the event or recipe or action not on card anymore ?
+// 
 
 
 const ItemCards = [ 

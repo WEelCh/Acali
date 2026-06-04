@@ -3,6 +3,15 @@
     --light:#6b6b6b;
 }
 
+svg.lucide {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle; /* works, but -0.125em often aligns perfectly with the text baseline */
+    /* vertical-align: -0.125em; */
+    stroke: var(--dark); /* Keeps dynamic coloring intact */
+    fill: none;
+}
+
 /***** F O N T *****/
 
 body, h1, h2, h3, h4, h5, h6 {
