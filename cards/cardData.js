@@ -33,46 +33,46 @@ const KW = {
     },
     weapon : {
         meleeLight : function(n=1){
-            return make(n, Asset.keyword.weapon.meleeLight.icon , Locale.keyword.weapon.text() )},
+            return null},
         meleeHeavy : function(n=1){
-            return make(n, Asset.keyword.weapon.meleeHeavy.icon , Locale.keyword.weapon.text() )},
+            return null},
         ranged : function(n=1){
-            return make(n, Asset.keyword.weapon.ranged.icon , Locale.keyword.weapon.text() )},
+            return null},
     },
     food : {
         cold : function(n=1){
-            return make(n, Asset.keyword.food.cold.icon , Locale.keyword.food.text() )},
+            return null},
         warm : function(n=1){
-            return make(n, Asset.keyword.food.warm.icon , Locale.keyword.food.text() )},
+            return null},
         mystery : function(n=1){
-            return make(n, Asset.keyword.food.mystery.icon , Locale.keyword.food.text() )},
+            return null},
     },
 
     suffer : {
         exhaustion : function(n=1){
-            return make(n, Asset.condition.exhaustion.icon , Locale.keyword.suffer.text() )},
+            return null},
         wound : function(n=1){
-            return make(n, Asset.condition.wound.icon , Locale.keyword.suffer.text() )},
+            return null},
         hunger : function(n=1){
-            return make(n, Asset.condition.hunger.icon , Locale.keyword.suffer.text() )},
+            return null},
         hypothermia : function(n=1){
-            return make(n, Asset.condition.hypothermia.icon , Locale.keyword.suffer.text() )},
+            return null},
     },
     heal : {
         exhaustion : function(n=1){
-            return make(n, Asset.condition.exhaustion.icon , Locale.keyword.heal.text() )},
+            return null},
         wound : function(n=1){
-            return make(n, Asset.condition.wound.icon , Locale.keyword.heal.text() )},
+            return null},
         hunger : function(n=1){
-            return make(n, Asset.condition.hunger.icon , Locale.keyword.heal.text() )},
+            return null},
         hypothermia : function(n=1){
-            return make(n, Asset.condition.hypothermia.icon , Locale.keyword.heal.text() )},
+            return null},
     },
     protectFrom : {
         wet : function(n=1){
-            return make(n, Asset.weather.effect.wet.icon , Locale.keyword.protectFrom.text() )},
+            return null},
         cold : function(n=1){
-            return make(n, Asset.weather.effect.cold.icon , Locale.keyword.protectFrom.text() )},
+            return null},
     },
 }
 
@@ -83,28 +83,53 @@ const KW = {
 
 const ItemCards = [ 
 {   layout: ItemCard, type:Asset.card.item.beispiel, qty:1,
-    name:{de:"Bsp Ausrüstung"}, weight:0, 
-    wear : [
-        KW.protectFrom.cold(),
-        KW.protectFrom.wet(),
-    ],
-    use  : [
-        KW.tool.crafting(),
-        KW.tool.kindle(),
-        KW.tool.chopping(),
-        KW.tool.backpack(),
-        KW.tool.light(),
-        KW.tool.navigation(),
-        KW.weapon.meleeLight(),
-        KW.weapon.meleeHeavy(),
-        KW.weapon.ranged(),
-    ],
-    spend: [
+    name:{de:"All-in Beispiel"}, weight:3, 
+    
+    keyword : {
+        clothing : {
+            wetProt : 1,
+            coldProt : 2,
+            windProt : 1,
+        },
+        tool : {
+            crafting : 1,
+            kindle : 1,
+            chopping : 1,
+            backpack : 1,
+            light : 1,
+            navigation : 1,
+            meleeLight : 1,
+            meleeHeavy : 1,
+            ranged : 1,
+        },
+        material : {
+            construction : 1,
+            hard : 1,
+            stick : 1,
+            fabric : 1,
+            cover : 1,
+            metal : 1,
+            fuel: 1,
+        },
+        supply : {
+            exhaustion : 1,
+            wound : 1,
+            hunger : 1,
+            hypothermia : 1,
+            
+            mushroom : 1,
+            nut : 1,
+            root : 1,
+            herb : 1,
+            fruit : 1,
+
+            _isPerishable : true,
+        },
         
-    ], 
+    },
 },
 {   layout: ItemCard, type:Asset.card.item.beispiel, qty:1,
-    name:{de:"Bsp Material"}, weight:0, 
+    name:{de:"Bsp Material"}, weight:1, 
     wear : [],
     use  : [],
     spend: [
@@ -124,6 +149,9 @@ const ItemCards = [
 {   layout: ItemCard, type:Asset.card.item.beispiel, qty:1,
     name:{de:"Bsp Effekte"}, weight:0, 
     wear : [],
+    cook : [
+        KW.suffer.exhaustion(),
+    ], 
     use  : [
         
     ],

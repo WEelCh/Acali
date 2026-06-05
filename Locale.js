@@ -8,6 +8,11 @@ APPLOC = "de";
 
 const Locale = {
   keyword : {
+    clothing : { text : function(){return Locale.keyword.clothing[APPLOC]},
+      de : "Kleidung",
+      en : "Clothing",
+    },
+
     material : { text : function(){return Locale.keyword.material[APPLOC]},
       de : "Material",
       en : "Material",
@@ -20,21 +25,9 @@ const Locale = {
       de : "Waffe",
       en : "Weapon",
     },
-    food : { text : function(){return Locale.keyword.food[APPLOC]},
-      de : "Nahrung",
-      en : "Food",
-    },
-    suffer : { text : function(){return Locale.keyword.suffer[APPLOC]},
-      de : "Erleide",
-      en : "Suffer",
-    },
-    heal : { text : function(){return Locale.keyword.heal[APPLOC]},
-      de : "Heile",
-      en : "Heal",
-    },
-    protectFrom : { text : function(){return Locale.keyword.protectFrom[APPLOC]},
-      de : "Schützt vor",
-      en : "Protects from",
+    supply : { text : function(){return Locale.keyword.supply[APPLOC]},
+      de : "Versorgung",
+      en : "Supply",
     },
   },
 };

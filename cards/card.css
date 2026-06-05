@@ -3,7 +3,7 @@
     --light:#6b6b6b;
 }
 
-svg.lucide {
+svg.icon {
     width: 1em;
     height: 1em;
     vertical-align: middle; /* works, but -0.125em often aligns perfectly with the text baseline */
@@ -21,6 +21,11 @@ body, h1, h2, h3, h4, h5, h6 {
     text-shadow: 0 0 0px red;
     text-align: center; }
 
+hr {
+    border: 1px solid var(--dark); border-radius: 10px;
+    width: 80%;
+    margin-top: 0.7em;
+}
 
 
 /***** S T R U C T *****/
@@ -45,7 +50,7 @@ body, h1, h2, h3, h4, h5, h6 {
 
 .title {
     float: left;
-    width: 74%;
+    width: /*74%*/ 100%;
     text-align: center; }
 h1 {
     text-shadow: 0 0 0px var(--dark);
@@ -81,13 +86,17 @@ h1 {
     border: 2px solid var(--dark); border-radius: 10px; }
 h3               { 
     text-shadow: 0 0 0px var(--light);
-    font-size: 3.5mm;
-    line-height: 4.3mm; }
+    font-size: 4.5mm; /*3.5mm;*/
+    line-height: 5.3mm /*4.3mm*/; }
 h3.character-normalization { line-height: 4.55mm; }
 h3:first-of-type { margin-top:    3mm; }
 h3:last-of-type  { margin-bottom: 1mm; }
 
 h3 > .icon { height: 4.5mm;}
+
+.effectbox > .icon:not(:first-of-type) {
+    margin-left: 1.2mm;
+}
 
 .attributebox {
     float: left;
@@ -127,15 +136,20 @@ h5 {
     vertical-align: middle;
     color: var(--light); }
 
-.icon.title {
+/*.icon.title {
     color: var(--dark);
     float: left;
     width:9%;
-    margin-left: 4%; }
-.icon.title:last-child {
+    margin-left: 4%; }*/
+/*.icon.title:last-child {
     margin-left: 0%;
     margin-right: 4%;
-    transform: scale(-1, 1); }
+    transform: scale(-1, 1); }*/
+
+.effectbox > .icon {
+    margin-top: 3mm;
+    margin-bottom: 2mm;
+}
 
 .effectbox > .icon:first-child,
 .attributebox > .icon:first-child ,
@@ -146,6 +160,16 @@ h5 {
     background-color: white; 
     padding: 0px 5px;
     z-index: 10; }
+
+.effectbox > .headline {
+    position: absolute;
+    left: 50%; /* Moves the left edge to the exact middle of the parent */
+    transform: translate(-50%, -50%); /* Shifts the element back by exactly 50% of its OWN dynamic width */
+    width: max-content;  
+    padding: 0 3px;
+    background-color: white; 
+}
+
 .conditionbox.left:first-of-type > .icon:first-child { transform: translate(+33%, 350%); }
 .conditionbox.left:last-of-type  > .icon:first-child { transform: translate(+75%, 280%);padding: 0px; }
 .conditionbox.right:first-of-type > .icon:first-child { transform: translate(-127%, 350%); }

@@ -10,42 +10,49 @@ function ItemCard ( card , ID ) {
         </div>
         `; else return ""}();
 
-    let wear = "";
-    if (card.wear.length > 0){
-        wear += `<div class="effectbox">${Asset.card.item.effect.wear.icon}`;
-        for (let effect of card.wear){ wear += `<h3>${effect}</h3>` }; 
-        wear += `</div>` }
 
-    let use = "";
-    if (card.use.length > 0){
-        use += `<div class="effectbox">${Asset.card.item.effect.use.icon}`;
-        for (let effect of card.use){ use += `<h3>${effect}</h3>` }; 
-        use += `</div>` }
-
-    let spend = "";
-    if (card.spend.length > 0){
-        spend += `<div class="effectbox">${Asset.card.item.effect.spend.icon}`;
-        for (let effect of card.spend){ spend += `<h3>${effect}</h3>` }; 
-        spend += `</div>` }
+    parsed_categories = {
+        clothing : "",
+        tool : "",
+        material : "",
+        supply : "",
+    }
+    for ( category in parsed_categories ){
+        headline = Locale.keyword[category].text();
+        for (key in card.keyword[category]){
+            // handel the "_is..." special condition
+            console.log(key,card.keyword[category][key])
+            if ((key.startsWith('_is')) && card.keyword[category][key]) {
+                headline = Asset.keyword[category][key].icon+` `
+                            +Locale.keyword[category].text()
+                            +` `+Asset.keyword[category][key].icon;
+            } else if ( (typeof(card.keyword[category][key])=="number") && (card.keyword[category][key]>0) ){
+                parsed_categories[category] += Asset.keyword[category][key].icon.repeat( card.keyword[category][key] ); } }
+        if ( parsed_categories[category].length > 0 ){
+            parsed_categories[category] = `<div class="effectbox"><h1 class="headline">${headline}</h1>` 
+                                            + parsed_categories[category] + `</div>`; }
+    }
     
     return /*html*/`
         <div class="card item">
             <!-- H E A D -->
                 <div class="row head">
-                    ${card.type.icon}
                     <h1 class="title">${card.name[APPLOC]}</h1>
-                    ${card.type.icon}
                 </div>
+            <!-- CATEGORIES -->
+            <div class="row nomargin" style="width: 80%">
+                <hr class="column" style="width:40%">
+                <h1 class="two column" style="width:20% ; margin-left:0">
+                    ${card.type.icon}
+                </h1>
+                <hr class="five column" style="width:40% ; margin-left:0">
+            </div>
             <!-- B O D Y -->
             <div class="body">
                 <!-- W E I G H T -->
                 ${weight}
-                <!-- W E A R -->
-                ${wear}
-                <!-- U S E -->
-                ${use}
-                <!-- S P E N D -->
-                ${spend}
+                <!--K E Y W O R D S -->
+                ${Object.values(parsed_categories).join('')}
             </div>
             <!-- F O O T E R -->
             <h5 class="foot"> ${genCardId(ID)} </h5>
@@ -254,7 +261,8 @@ function onLoad(){
 
     for (let card of ItemCards) {
         for (let i=0;i<card.qty;i++){
-            document.querySelector('section:last-of-type').innerHTML += card.layout( card , ID );
+            try {document.querySelector('section:last-of-type').innerHTML += card.layout( card , ID );}
+            catch (e) { console.warn( `Error generating card (id:${ID}): ${e}` ) }
             ID++; COS++; 
             addSheetIfNeeded(COS , 9); 
         } }
@@ -263,7 +271,8 @@ function onLoad(){
 
     for (let card of CharacterCards) {
         for (let i=0;i<card.qty;i++){
-            document.querySelector('section:last-of-type').innerHTML += card.layout( card , ID );
+            try {document.querySelector('section:last-of-type').innerHTML += card.layout( card , ID );}
+            catch (e) { console.warn( `Error generating card (id:${ID}): ${e}` ) }
             ID++; COS++; 
             addSheetIfNeeded(COS , 4); } }
     
@@ -272,7 +281,8 @@ function onLoad(){
 
     for (let card of ModifierCards) {
         for (let i=0;i<card.qty;i++){
-            document.querySelector('section:last-of-type').innerHTML += card.layout( card , ID );
+            try {document.querySelector('section:last-of-type').innerHTML += card.layout( card , ID );}
+            catch (e) { console.warn( `Error generating card (id:${ID}): ${e}` ) }
             ID++; COS++; 
             addSheetIfNeeded(COS , 9); } }
 
