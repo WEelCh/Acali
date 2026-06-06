@@ -3,33 +3,33 @@ function make(n,icon,text) { return `${text} ${icon.repeat(n)}` }
 const KW = {
     material : {
         construction : function(n=1){
-            return make(n, Asset.keyword.material.construction.icon , Locale.keyword.material.text() )},
+            return null},
         hard : function(n=1){
-            return make(n, Asset.keyword.material.hard.icon , Locale.keyword.material.text() )},
+            return null},
         stick : function(n=1){
-            return make(n, Asset.keyword.material.stick.icon , Locale.keyword.material.text() )},
+            return null},
         fabric : function(n=1){
-            return make(n, Asset.keyword.material.fabric.icon , Locale.keyword.material.text() )},
+            return null},
         cover : function(n=1){
-            return make(n, Asset.keyword.material.cover.icon , Locale.keyword.material.text() )},
+            return null},
         metal : function(n=1){
-            return make(n, Asset.keyword.material.metal.icon , Locale.keyword.material.text() )},
+            return null},
         fuel : function(n=1){
-            return make(n, Asset.keyword.material.fuel.icon , Locale.keyword.material.text() )},
+            return null},
     },
     tool : {
         chopping : function(n=1){
-            return make(n, Asset.keyword.tool.chopping.icon , Locale.keyword.tool.text() )},
+            return null},
         crafting : function(n=1){
-            return make(n, Asset.keyword.tool.crafting.icon , Locale.keyword.tool.text() )},
+            return null},
         kindle : function(n=1){
-            return make(n, Asset.keyword.tool.kindle.icon , Locale.keyword.tool.text() )},
+            return null},
         light : function(n=1){
-            return make(n, Asset.keyword.tool.light.icon , Locale.keyword.tool.text() )},
+            return null},
         backpack : function(n=1){
-            return make(n, Asset.keyword.tool.backpack.icon , Locale.keyword.tool.text() )},
+            return null},
         navigation : function(n=1){
-            return make(n, Asset.keyword.tool.navigation.icon , Locale.keyword.tool.text() )},
+            return null},
     },
     weapon : {
         meleeLight : function(n=1){
@@ -82,35 +82,44 @@ const KW = {
 
 
 const ItemCards = [ 
-{   layout: ItemCard, type:Asset.card.item.beispiel, qty:1,
+{   layout: ItemCard, type:Asset.card.item.beispiel, qty:2,
     name:{de:"All-in Beispiel"}, weight:3, 
     
     keyword : {
         clothing : {
-            wetProt : 1,
+            wetProt : 2,
             coldProt : 2,
-            windProt : 1,
-        },
+            windProt : 2,
+            dmgProt : 2,
+            _custom : "",
+            _isFragile : true, },
         tool : {
             crafting : 1,
             kindle : 1,
             chopping : 1,
-            backpack : 1,
             light : 1,
+            storage : 1,
+            lookout : 1,
             navigation : 1,
             meleeLight : 1,
             meleeHeavy : 1,
             ranged : 1,
-        },
+            trap : 1,
+            fishing : 1,
+            _custom : "",
+            _isFragile : false, },
         material : {
-            construction : 1,
+            structural : 1,
             hard : 1,
-            stick : 1,
-            fabric : 1,
+            sharp : 1,
+            shaft : 1,
+            cordage : 1,
             cover : 1,
-            metal : 1,
-            fuel: 1,
-        },
+            adhesive : 1,
+            metallic : 1,
+            flammable : 1,
+            _custom : "",
+            _isFragile : true, },
         supply : {
             exhaustion : 1,
             wound : 1,
@@ -121,10 +130,9 @@ const ItemCards = [
             nut : 1,
             root : 1,
             herb : 1,
-            fruit : 1,
-
-            _isPerishable : true,
-        },
+            berry : 1,
+            _custom : "",
+            _isPerishable : true, },
         
     },
 },

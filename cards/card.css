@@ -9,6 +9,7 @@ svg.icon {
     vertical-align: middle; /* works, but -0.125em often aligns perfectly with the text baseline */
     /* vertical-align: -0.125em; */
     stroke: var(--dark); /* Keeps dynamic coloring intact */
+    color: var(--dark);
     fill: none;
 }
 
@@ -25,6 +26,7 @@ hr {
     border: 1px solid var(--dark); border-radius: 10px;
     width: 80%;
     margin-top: 0.7em;
+    margin-bottom: 0;
 }
 
 
@@ -84,6 +86,11 @@ h1 {
     margin-top: 5mm;
     width: calc(100% - 4px);
     border: 2px solid var(--dark); border-radius: 10px; }
+.effectbox:first-of-type {
+    margin-top: 3mm;
+}
+.icon.dummy { stroke: white; color: white; }
+
 h3               { 
     text-shadow: 0 0 0px var(--light);
     font-size: 4.5mm; /*3.5mm;*/
@@ -94,9 +101,6 @@ h3:last-of-type  { margin-bottom: 1mm; }
 
 h3 > .icon { height: 4.5mm;}
 
-.effectbox > .icon:not(:first-of-type) {
-    margin-left: 1.2mm;
-}
 
 .attributebox {
     float: left;
@@ -122,6 +126,18 @@ h3 > .icon { height: 4.5mm;}
 .conditionbox.right { border-right: none; border-radius: 10px 0 0 10px; }
 
 
+div > .weight {
+    position: absolute;
+    left: 50%;  /*Moves the left edge to the exact middle of the parent */
+    transform: translate(-50%, -55%); 
+    width: max-content;  
+    padding: 0px 3px;
+    background-color: white; 
+}
+.weight > .icon:not(:first-of-type) {
+    margin-left: 1mm;
+}
+
 
 .card > .foot { margin-top: auto; }
 h5 { 
@@ -146,12 +162,10 @@ h5 {
     margin-right: 4%;
     transform: scale(-1, 1); }*/
 
-.effectbox > .icon {
-    margin-top: 3mm;
-    margin-bottom: 2mm;
-}
 
-.effectbox > .icon:first-child,
+
+
+
 .attributebox > .icon:first-child ,
 .conditionbox > .icon:first-child {
     color: var(--dark);
@@ -168,6 +182,27 @@ h5 {
     width: max-content;  
     padding: 0 3px;
     background-color: white; 
+}
+
+.effectbox > .icon.special {
+    position: absolute;
+    left: 100%; /* Moves the left edge to the exact middle of the parent */
+    transform: translate(-150%, -128%); 
+    width: max-content;  
+    padding: 0px 3px;
+    background-color: white; 
+}
+.effectbox > .icon {
+    margin-top: 3mm;
+    margin-bottom: 2mm;
+}
+/* Targets any .icon that comes AFTER another .icon, 
+   but excludes it if it has the .special class */
+.effectbox > .icon:not(.special) ~ .icon:not(.special) {
+    margin-left: 1.2mm;
+}
+.effectbox > .icon:nth-child(9 of .icon:not(.special)) ~ .icon {
+    margin-top: 0mm;
 }
 
 .conditionbox.left:first-of-type > .icon:first-child { transform: translate(+33%, 350%); }

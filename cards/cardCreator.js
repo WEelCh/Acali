@@ -5,8 +5,8 @@ function ItemCard ( card , ID ) {
 
     const weight = function(){if(card.weight > 0) 
         return /*html*/`
-        <div class="weightbox">
-        ${Asset.card.item.effect.weight.icon.repeat(card.weight)}
+        <div class="weight">
+        ${Asset.keyword.weight.icon.repeat(card.weight)}
         </div>
         `; else return ""}();
 
@@ -18,19 +18,22 @@ function ItemCard ( card , ID ) {
         supply : "",
     }
     for ( category in parsed_categories ){
-        headline = Locale.keyword[category].text();
-        for (key in card.keyword[category]){
+        specialCondition = '';
+        for (key in Asset.keyword[category]){
             // handel the "_is..." special condition
-            console.log(key,card.keyword[category][key])
             if ((key.startsWith('_is')) && card.keyword[category][key]) {
-                headline = Asset.keyword[category][key].icon+` `
-                            +Locale.keyword[category].text()
-                            +` `+Asset.keyword[category][key].icon;
+                specialCondition = Asset.keyword[category][key].icon;
             } else if ( (typeof(card.keyword[category][key])=="number") && (card.keyword[category][key]>0) ){
                 parsed_categories[category] += Asset.keyword[category][key].icon.repeat( card.keyword[category][key] ); } }
-        if ( parsed_categories[category].length > 0 ){
-            parsed_categories[category] = `<div class="effectbox"><h1 class="headline">${headline}</h1>` 
-                                            + parsed_categories[category] + `</div>`; }
+        if ( card.keyword[category]._custom ) {
+            parsed_categories[category] += "<br>"+String(card.keyword[category]._custom)
+        }
+        if ( parsed_categories[category].length == 0 ){ parsed_categories[category] = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon dummy lucide lucide-wind-icon lucide-wind"><path d="M12.8 19.6A2 2 0 1 0 14 16H2"/><path d="M17.5 8a2.5 2.5 0 1 1 2 4H2"/><path d="M9.8 4.4A2 2 0 1 1 11 8H2"/><line x1="1" y1="1" x2="23" y2="23" stroke="currentColor" stroke-width="2" /></svg>` }
+            parsed_categories[category] = /*html*/`
+                                            <div class="effectbox">
+                                            <h1 class="headline">${Locale.keyword[category].text()}</h1>
+                                            ${specialCondition}
+                                            ${parsed_categories[category]}</div> `; 
     }
     
     return /*html*/`
@@ -39,22 +42,24 @@ function ItemCard ( card , ID ) {
                 <div class="row head">
                     <h1 class="title">${card.name[APPLOC]}</h1>
                 </div>
-            <!-- CATEGORIES -->
-            <div class="row nomargin" style="width: 80%">
-                <hr class="column" style="width:40%">
-                <h1 class="two column" style="width:20% ; margin-left:0">
-                    ${card.type.icon}
-                </h1>
-                <hr class="five column" style="width:40% ; margin-left:0">
-            </div>
+                <div class="row nomargin" style="width: 80%">
+                    <hr class="column" style="width:40%">
+                    <h1 class="two column" style="width:20% ; margin-left:0">
+                        ${card.type.icon}
+                    </h1>
+                    <hr class="five column" style="width:40% ; margin-left:0">
+                </div>
             <!-- B O D Y -->
             <div class="body">
-                <!-- W E I G H T -->
-                ${weight}
-                <!--K E Y W O R D S -->
-                ${Object.values(parsed_categories).join('')}
+            ${Object.values(parsed_categories).join('')}
             </div>
             <!-- F O O T E R -->
+            <div class="row nomargin" style="width: 100%; margin-top:2mm; position: relative">
+                <hr> 
+                ${weight}
+            </div>
+
+            
             <h5 class="foot"> ${genCardId(ID)} </h5>
         </div>
     `
