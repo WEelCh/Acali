@@ -28,12 +28,13 @@ function ItemCard ( card , ID ) {
         if ( card.keyword[category]._custom ) {
             parsed_categories[category] += "<br>"+String(card.keyword[category]._custom)
         }
-        if ( parsed_categories[category].length == 0 ){ parsed_categories[category] = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon dummy lucide lucide-wind-icon lucide-wind"><path d="M12.8 19.6A2 2 0 1 0 14 16H2"/><path d="M17.5 8a2.5 2.5 0 1 1 2 4H2"/><path d="M9.8 4.4A2 2 0 1 1 11 8H2"/><line x1="1" y1="1" x2="23" y2="23" stroke="currentColor" stroke-width="2" /></svg>` }
+        //if ( parsed_categories[category].length == 0 ){ parsed_categories[category] = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon dummy lucide lucide-wind-icon lucide-wind"><path d="M12.8 19.6A2 2 0 1 0 14 16H2"/><path d="M17.5 8a2.5 2.5 0 1 1 2 4H2"/><path d="M9.8 4.4A2 2 0 1 1 11 8H2"/><line x1="1" y1="1" x2="23" y2="23" stroke="currentColor" stroke-width="2" /></svg>` }
+        if ( parsed_categories[category].length > 0 ){
             parsed_categories[category] = /*html*/`
                                             <div class="effectbox">
                                             <h1 class="headline">${Locale.keyword[category].text()}</h1>
                                             ${specialCondition}
-                                            ${parsed_categories[category]}</div> `; 
+                                            ${parsed_categories[category]}</div> `; }
     }
     
     return /*html*/`
@@ -54,13 +55,15 @@ function ItemCard ( card , ID ) {
             ${Object.values(parsed_categories).join('')}
             </div>
             <!-- F O O T E R -->
-            <div class="row nomargin" style="width: 100%; margin-top:2mm; position: relative">
-                <hr> 
-                ${weight}
+            <div class="foot">
+                <div class="row nomargin" style="width: 100%; margin-top:2mm; position: relative">
+                    <hr> 
+                    ${weight}
+                </div>
+                <h5 class="column" style="width:40% ; margin: 0 0 0 10% ; text-align:left"> ${genCardId(ID)} </h5>
+                <h5 class="column" style="width:40% ; margin: 0 10% 0 0 ; text-align:right"> ${genCardId(ID)} </h5>
             </div>
-
             
-            <h5 class="foot"> ${genCardId(ID)} </h5>
         </div>
     `
 
@@ -85,9 +88,9 @@ function CharacterCard ( card , ID ) {
         <div class="card character">
             <!-- H E A D -->
             <div class="head">
-                ${card.type.icon}
-                <h1 class="title">${card.name[APPLOC]}</h1>
-                ${card.type.icon}
+                <h1 class="column two">${card.type.icon}</h1>
+                <h1 class="column eight title">${card.name[APPLOC]}</h1>
+                <h1 class="column two">${card.type.icon}</h1>
             </div>
 
             <div class="characteralignhelper">
@@ -108,17 +111,17 @@ function CharacterCard ( card , ID ) {
                 <!-- B O D Y -->
                 <div class="body charactercenter">
                     <!-- A B I L I T Y -->
-                    <div class="effectbox">
+                    <div class="effectbox centerheader">
                         ${Asset.card.character.ability.icon}
                         <h3 class="character-normalization">${ability}</h3>
                     </div>
                     <!-- C R A F T I N G -->
-                    <div class="effectbox">
+                    <div class="effectbox centerheader">
                         ${Asset.card.character.craft.icon}
                         <h3 class="character-normalization">${crafting}</h3>
                     </div>
                     <!-- T R A I T -->
-                    <div class="effectbox">
+                    <div class="effectbox centerheader">
                         ${Asset.card.character.trait.icon}
                         <h3 class="character-normalization">&nbsp<br>&nbsp<br>&nbsp<br>&nbsp</h3>
                     </div>
@@ -135,7 +138,7 @@ function CharacterCard ( card , ID ) {
                         </div>
                     </div>
                     <!-- C O N D -->
-                    <div class="effectbox characterbottomcondition">
+                    <div class="effectbox centerheader characterbottomcondition">
                         ${Asset.condition.hypothermia.icon}
                         <h4 style="margin-top: 0.7mm;">0 &nbsp 1 &nbsp 2 &nbsp 3</h4>
                     </div>
@@ -156,6 +159,10 @@ function CharacterCard ( card , ID ) {
                 </div>
 
             </div>
+
+            <!-- F O O T E R -->
+            <h5> ${genCardId(ID)} </h5>
+            <h5> ${genCardId(ID)} </h5>
 
         </div>
     `
@@ -289,7 +296,8 @@ function onLoad(){
             try {document.querySelector('section:last-of-type').innerHTML += card.layout( card , ID );}
             catch (e) { console.warn( `Error generating card (id:${ID}): ${e}` ) }
             ID++; COS++; 
-            addSheetIfNeeded(COS , 9); } }
+            addSheetIfNeeded(COS , 10); } }
+
 
 
     lucide.createIcons()

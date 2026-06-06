@@ -77,63 +77,28 @@ const KW = {
 }
 
 
-// use and spend defined by the event or recipe or action not on card anymore ?
-// 
-
 
 const ItemCards = [ 
-{   layout: ItemCard, type:Asset.card.item.beispiel, qty:2,
-    name:{de:"All-in Beispiel"}, weight:3, 
+{   layout: ItemCard , type:Asset.card.item.beispiel , qty: 1 ,
+    name:{ de:"All-in Beispiel", en:"" }, weight: 0 ,
     
     keyword : {
-        clothing : {
-            wetProt : 2,
-            coldProt : 2,
-            windProt : 2,
-            dmgProt : 2,
-            _custom : "",
-            _isFragile : true, },
-        tool : {
-            crafting : 1,
-            kindle : 1,
-            chopping : 1,
-            light : 1,
-            storage : 1,
-            lookout : 1,
-            navigation : 1,
-            meleeLight : 1,
-            meleeHeavy : 1,
-            ranged : 1,
-            trap : 1,
-            fishing : 1,
-            _custom : "",
-            _isFragile : false, },
-        material : {
-            structural : 1,
-            hard : 1,
-            sharp : 1,
-            shaft : 1,
-            cordage : 1,
-            cover : 1,
-            adhesive : 1,
-            metallic : 1,
-            flammable : 1,
-            _custom : "",
-            _isFragile : true, },
-        supply : {
-            exhaustion : 1,
-            wound : 1,
-            hunger : 1,
-            hypothermia : 1,
-            
-            mushroom : 1,
-            nut : 1,
-            root : 1,
-            herb : 1,
-            berry : 1,
-            _custom : "",
-            _isPerishable : true, },
+
+        clothing : { _custom : "" , _isFragile : true ,
+            coldProt : 2 , wetProt : 2 , windProt : 2 , dmgProt : 2 },
+
+        tool : { _custom : "" ,  _isFragile : true ,
+            crafting   : 1 ,  chopping   : 1 , kindle : 1 , light : 1 , storage : 1 ,
+            lookout    : 1 ,  navigation : 1 ,
+            meleeLight : 1 , meleeHeavy  : 1 , ranged : 1 , trap  : 1 , fishing : 1 },
         
+        material : { _custom : "" , _isFragile : true ,
+            structural : 1 , hard  : 1 , metallic : 1 , sharp     : 1 , shaft : 1 ,
+            cordage    : 1 , cover : 1 , adhesive : 1 , flammable : 1 },
+        
+        supply : { _custom : "" , _isPerishable : true ,
+            exhaustion : 1 , hunger : 1 , hypothermia : 1 , wound    : 1 , 
+            herb       : 1 , nut    : 1 , root        : 1 , mushroom : 1 , berry : 1 },
     },
 },
 {   layout: ItemCard, type:Asset.card.item.beispiel, qty:1,
@@ -563,11 +528,11 @@ Kolonist
 *****/
     {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
         name:{de:"Bauer"},
-        ability: ["","","",""
+        ability: ["a","b","c","d"
         ],
-        crafting: ["","","",""
+        crafting: ["e","f","g","h"
         ],
-        passion: [ 0 , 1 , 1 ],
+        passion: [ 0 , 1 , 0 ],
     },
     {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
         name:{de:"Tischler"},
@@ -731,7 +696,7 @@ A T T R I B U T E
 /***** 
 M O D I F I E R
 *****/
-    //{ layout:TraitCard,type:Asset.card.modifier.trait.pos, qty : 1 , trait : ["1","1","1"] },
+    { layout:TraitCard,type:Asset.card.modifier.trait.pos, qty : 1 , trait : ["1","1","1"] },
 
     //{ layout:TraitCard,type:Asset.card.modifier.trait.neg, qty : 1 , trait : ["1","1","1"] },
 
