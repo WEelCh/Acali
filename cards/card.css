@@ -28,7 +28,13 @@ hr {
     margin-top: 0.7em;
     margin-bottom: 0;
 }
-
+h6 {
+    text-shadow: 0 0 0px var(--dark);
+    margin-top: 3mm;
+    margin-bottom: 0mm;
+    line-height: 1.5rem; }
+h6:not(:first-of-type) { margin: 0mm; }
+h6:last-of-type { margin-bottom: 2mm; }
 
 /***** S T R U C T *****/
 

@@ -10,13 +10,23 @@ function ItemCard ( card , ID ) {
         </div>
         `; else return ""}();
 
-
+    custom_category = "";
     parsed_categories = {
         clothing : "",
         tool : "",
         material : "",
         supply : "",
+    };
+
+    if ( card.keyword?.custom?.length ) {
+        custom_category += /*html*/`
+                                <div class="effectbox">
+                                <h1 class="headline">${Locale.keyword.custom.text()}</h1>`; 
+        for (line of card.keyword.custom) { custom_category += /*html*/`<h6>${line}</h6>`; }
+        custom_category += /*html*/`</div>`; 
     }
+        
+
     for ( category in parsed_categories ){
         specialCondition = '';
         for (key in Asset.keyword[category]){
@@ -25,9 +35,6 @@ function ItemCard ( card , ID ) {
                 specialCondition = Asset.keyword[category][key].icon;
             } else if ( (typeof(card.keyword[category][key])=="number") && (card.keyword[category][key]>0) ){
                 parsed_categories[category] += Asset.keyword[category][key].icon.repeat( card.keyword[category][key] ); } }
-        if ( card.keyword[category]._custom ) {
-            parsed_categories[category] += "<br>"+String(card.keyword[category]._custom)
-        }
         //if ( parsed_categories[category].length == 0 ){ parsed_categories[category] = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon dummy lucide lucide-wind-icon lucide-wind"><path d="M12.8 19.6A2 2 0 1 0 14 16H2"/><path d="M17.5 8a2.5 2.5 0 1 1 2 4H2"/><path d="M9.8 4.4A2 2 0 1 1 11 8H2"/><line x1="1" y1="1" x2="23" y2="23" stroke="currentColor" stroke-width="2" /></svg>` }
         if ( parsed_categories[category].length > 0 ){
             parsed_categories[category] = /*html*/`
@@ -52,6 +59,7 @@ function ItemCard ( card , ID ) {
                 </div>
             <!-- B O D Y -->
             <div class="body">
+            ${custom_category}
             ${Object.values(parsed_categories).join('')}
             </div>
             <!-- F O O T E R -->
