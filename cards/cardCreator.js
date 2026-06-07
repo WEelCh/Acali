@@ -11,13 +11,6 @@ function ItemCard ( card , ID ) {
         `; else return ""}();
 
     custom_category = "";
-    parsed_categories = {
-        clothing : "",
-        tool : "",
-        material : "",
-        supply : "",
-    };
-
     if ( card.keyword?.custom?.length ) {
         custom_category += /*html*/`
                                 <div class="effectbox">
@@ -26,7 +19,12 @@ function ItemCard ( card , ID ) {
         custom_category += /*html*/`</div>`; 
     }
         
-
+    parsed_categories = {
+        clothing : "",
+        tool : "",
+        material : "",
+        supply : "",
+    };
     for ( category in parsed_categories ){
         specialCondition = '';
         for (key in Asset.keyword[category]){
@@ -42,6 +40,11 @@ function ItemCard ( card , ID ) {
                                             <h1 class="headline">${Locale.keyword[category].text()}</h1>
                                             ${specialCondition}
                                             ${parsed_categories[category]}</div> `; }
+    }
+
+    flavor = "";
+    if ( card?.flavor[APPLOC] ) {
+        flavor = `<p> „${card.flavor[APPLOC]}“ </p>`
     }
     
     return /*html*/`
@@ -61,6 +64,7 @@ function ItemCard ( card , ID ) {
             <div class="body">
             ${custom_category}
             ${Object.values(parsed_categories).join('')}
+            ${flavor}
             </div>
             <!-- F O O T E R -->
             <div class="foot">

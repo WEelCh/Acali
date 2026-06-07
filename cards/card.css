@@ -36,6 +36,13 @@ h6 {
 h6:not(:first-of-type) { margin: 0mm; }
 h6:last-of-type { margin-bottom: 2mm; }
 
+p {
+    margin-top: 3mm;
+   color: transparent;
+    text-shadow: 0 0 0px var(--light);
+    text-align: center; 
+}
+
 /***** S T R U C T *****/
 
 .card {
@@ -140,8 +147,11 @@ div > .weight {
     transform: translate(-50%, -55%); 
     width: max-content;  
     padding: 0px 3px;
-    background-color: white; 
+    background-color: white;
 }
+/*div > .weight svg * {
+    fill: var(--light); 
+}*/
 .weight > .icon:not(:first-of-type) {
     margin-left: 1mm;
 }

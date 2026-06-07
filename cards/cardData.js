@@ -1,10 +1,12 @@
 
+
 const ItemCards = [ 
 /***** 
 D E B U G
 *****/
 {   layout: ItemCard , type:Asset.card.item.beispiel , qty: 1 ,
     name:{ de:"AllInExample", en:"" }, weight: 2 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         custom   : [  ],
 
@@ -27,6 +29,7 @@ D E B U G
 },
 {   layout: ItemCard , type:Asset.card.item.beispiel , qty: 1 ,
     name:{ de:"AllOutExample", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         custom   : [  ],
 
@@ -51,7 +54,8 @@ D E B U G
 S H I P 
 *****/
 {   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
-    name:{ de:"Leinenkleidung", en:"" }, weight: 0 ,
+    name:{ de:"Leinenjacke", en:"Linen clothing" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         custom   : [  ],
 
@@ -73,29 +77,8 @@ S H I P
     },
 },
 {   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
-    name:{ de:"Wollkleidung", en:"" }, weight: 0 ,
-    keyword : {
-        custom   : [  ],
-        
-        clothing : { _isFragile : false ,
-            coldProt : 2 , wetProt : 0 , windProt : 0 , dmgProt : 0 },
-
-        tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
-            lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 },
-
-        material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
-            cordage    : 1 , cover : 0 , adhesive : 0 , flammable : 1 },
-
-        supply : { _isPerishable : false ,
-            exhaustion : 0 , hunger : 0 , hypothermia : 0 , wound    : 0 , 
-            herb       : 0 , nut    : 0 , root        : 0 , mushroom : 0 , berry : 0 },
-    },
-},
-{   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
-    name:{ de:"Lederkleidung", en:"" }, weight: 0 ,
+    name:{ de:"Wolljacke", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         custom   : [  ],
         
@@ -109,20 +92,85 @@ S H I P
 
         material : { _isFragile : false ,
             structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
-            cordage    : 1 , cover : 0 , adhesive : 0 , flammable : 1 },
+            cordage    : 1 , cover : 1 , adhesive : 0 , flammable : 0 },
 
         supply : { _isPerishable : false ,
             exhaustion : 0 , hunger : 0 , hypothermia : 0 , wound    : 0 , 
             herb       : 0 , nut    : 0 , root        : 0 , mushroom : 0 , berry : 0 },
     },
 },
-// Lederwollkleidung
-//Mantel
+{   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
+    name:{ de:"Canvasjacke", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
+    keyword : {
+        custom   : [  ],
+        
+        clothing : { _isFragile : false ,
+            coldProt : 1 , wetProt : 2 , windProt : 1 , dmgProt : 0 },
 
+        tool : {  _isFragile : false ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            lookout    : 0 , navigation  : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 },
 
+        material : { _isFragile : false ,
+            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            cordage    : 1 , cover : 1 , adhesive : 0 , flammable : 1 },
 
+        supply : { _isPerishable : false ,
+            exhaustion : 0 , hunger : 0 , hypothermia : 0 , wound    : 0 , 
+            herb       : 0 , nut    : 0 , root        : 0 , mushroom : 0 , berry : 0 },
+    },
+},
+{   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
+    name:{ de:"Lederjacke", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
+    keyword : {
+        custom   : [  ],
+        
+        clothing : { _isFragile : false ,
+            coldProt : 1 , wetProt : 1 , windProt : 0 , dmgProt : 1 },
+
+        tool : {  _isFragile : false ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            lookout    : 0 , navigation  : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 },
+
+        material : { _isFragile : false ,
+            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            cordage    : 1 , cover : 1 , adhesive : 0 , flammable : 0 },
+
+        supply : { _isPerishable : false ,
+            exhaustion : 0 , hunger : 0 , hypothermia : 0 , wound    : 0 , 
+            herb       : 0 , nut    : 0 , root        : 0 , mushroom : 0 , berry : 0 },
+    },
+},
+{   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
+    name:{ de:"Ledermantel", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
+    keyword : {
+        custom   : [  ],
+        
+        clothing : { _isFragile : false ,
+            coldProt : 1 , wetProt : 2 , windProt : 1 , dmgProt : 1 },
+
+        tool : {  _isFragile : false ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            lookout    : 0 , navigation  : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 },
+
+        material : { _isFragile : false ,
+            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            cordage    : 1 , cover : 1 , adhesive : 0 , flammable : 0 },
+
+        supply : { _isPerishable : false ,
+            exhaustion : 0 , hunger : 0 , hypothermia : 0 , wound    : 0 , 
+            herb       : 0 , nut    : 0 , root        : 0 , mushroom : 0 , berry : 0 },
+    },
+},
 {   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
     name:{ de:"Nähkit", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         custom   : [  ],
         
@@ -145,6 +193,7 @@ S H I P
 },
 {   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
     name:{ de:"Pöckelfleisch", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         custom   : [  ],
         
@@ -167,6 +216,7 @@ S H I P
 },
 {   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
     name:{ de:"Bohnen", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         custom   : [  ],
         
@@ -189,6 +239,7 @@ S H I P
 },
 {   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
     name:{ de:"Kräutertinktur", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         custom   : [  ],
         
@@ -211,6 +262,7 @@ S H I P
 },
 {   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
     name:{ de:"Bandagen", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         custom   : [  ],
         
@@ -233,6 +285,7 @@ S H I P
 },
 {   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
     name:{ de:"Operationsbesteck", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         custom   : [  ],
         
@@ -255,6 +308,7 @@ S H I P
 },
 {   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
     name:{ de:"Axt", en:"" }, weight: 1 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         custom   : [  ],
         
@@ -277,6 +331,7 @@ S H I P
 },
 {   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
     name:{ de:"Beil", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         custom   : [  ],
         
@@ -299,6 +354,7 @@ S H I P
 },
 {   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
     name:{ de:"Seil", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         custom   : [  ],
         
@@ -321,6 +377,7 @@ S H I P
 },
 {   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
     name:{ de:"Messer", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         custom   : [  ],
         
@@ -343,6 +400,7 @@ S H I P
 },
 {   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
     name:{ de:"Schlagfeuerzeug", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         custom   : [  ],
         
@@ -365,6 +423,7 @@ S H I P
 },
 {   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
     name:{ de:"Bibel", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         custom   : [ 
             `${Asset.keyword.supply.exhaustion.icon} pro Tag` , 
@@ -389,6 +448,7 @@ S H I P
 },
 {   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
     name:{ de:"Kompass", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         custom   : [  ],
         
@@ -411,6 +471,7 @@ S H I P
 },
 {   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
     name:{ de:"Karte", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         custom   : [  ],
         
@@ -433,6 +494,7 @@ S H I P
 },
 {   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
     name:{ de:"Segel", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         custom   : [  ],
         
@@ -455,6 +517,7 @@ S H I P
 },
 {   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
     name:{ de:"Rum", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         custom   : [  ],
         
@@ -477,6 +540,7 @@ S H I P
 },
 {   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
     name:{ de:"Tabak", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         custom   : [  ],
         
@@ -502,6 +566,7 @@ C R A F T
 *****/
 {   layout: ItemCard , type:Asset.card.item.craft , qty: 1 ,
     name:{ de:"AllOutExample", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
             coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 },
@@ -525,6 +590,7 @@ F O R A G E
 *****/
 {   layout: ItemCard , type:Asset.card.item.forage , qty: 1 ,
     name:{ de:"Moos", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
             coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 },
@@ -545,6 +611,7 @@ F O R A G E
 },
 {   layout: ItemCard , type:Asset.card.item.forage , qty: 1 ,
     name:{ de:"Wildes Kraut", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
             coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 },
@@ -565,6 +632,7 @@ F O R A G E
 },
 {   layout: ItemCard , type:Asset.card.item.forage , qty: 1 ,
     name:{ de:"Wild Nuss", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
             coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 },
@@ -585,6 +653,7 @@ F O R A G E
 },
 {   layout: ItemCard , type:Asset.card.item.forage , qty: 1 ,
     name:{ de:"Wilde Wurzel", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
             coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 },
@@ -605,6 +674,7 @@ F O R A G E
 },
 {   layout: ItemCard , type:Asset.card.item.forage , qty: 1 ,
     name:{ de:"Wilder Pilz", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
             coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 },
@@ -625,6 +695,7 @@ F O R A G E
 },
 {   layout: ItemCard , type:Asset.card.item.forage , qty: 1 ,
     name:{ de:"Wilde Beere", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
             coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 },
@@ -645,6 +716,7 @@ F O R A G E
 },
 {   layout: ItemCard , type:Asset.card.item.forage , qty: 1 ,
     name:{ de:"Stock", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
             coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 },
@@ -665,6 +737,7 @@ F O R A G E
 },
 {   layout: ItemCard , type:Asset.card.item.forage , qty: 1 ,
     name:{ de:"Feuerstein", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
             coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 },
@@ -688,6 +761,7 @@ H U N T
 *****/
 {   layout: ItemCard , type:Asset.card.item.hunt , qty: 1 ,
     name:{ de:"Fleisch", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
             coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 },
@@ -708,6 +782,7 @@ H U N T
 },
 {   layout: ItemCard , type:Asset.card.item.hunt , qty: 1 ,
     name:{ de:"Knochen", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
             coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 },
@@ -728,9 +803,10 @@ H U N T
 },
 {   layout: ItemCard , type:Asset.card.item.hunt , qty: 1 ,
     name:{ de:"Leder", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 },
+            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 1 },
 
         tool : {  _isFragile : false ,
             crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
@@ -747,7 +823,29 @@ H U N T
     },
 },
 {   layout: ItemCard , type:Asset.card.item.hunt , qty: 1 ,
+    name:{ de:"Fell", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
+    keyword : {
+        clothing : { _isFragile : false ,
+            coldProt : 1 , wetProt : 0 , windProt : 1 , dmgProt : 0 },
+
+        tool : {  _isFragile : false ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            lookout    : 0 , navigation  : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 },
+
+        material : { _isFragile : false ,
+            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            cordage    : 1 , cover : 1 , adhesive : 0 , flammable : 1 },
+
+        supply : { _isPerishable : false ,
+            exhaustion : 0 , hunger : 0 , hypothermia : 0 , wound    : 0 , 
+            herb       : 0 , nut    : 0 , root        : 0 , mushroom : 0 , berry : 0 },
+    },
+},
+{   layout: ItemCard , type:Asset.card.item.hunt , qty: 1 ,
     name:{ de:"Fett", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
             coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 },
@@ -761,7 +859,7 @@ H U N T
             structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 1 , flammable : 1 },
 
-        supply : { _isPerishable : false ,
+        supply : { _isPerishable : true ,
             exhaustion : 0 , hunger : 1 , hypothermia : 0 , wound    : 0 , 
             herb       : 0 , nut    : 0 , root        : 0 , mushroom : 0 , berry : 0 },
     },
@@ -771,6 +869,7 @@ W O O D
 *****/
 {   layout: ItemCard , type:Asset.card.item.wood , qty: 1 ,
     name:{ de:"Scheit", en:"" }, weight: 1 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
             coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 },
@@ -781,7 +880,7 @@ W O O D
             meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 },
 
         material : { _isFragile : false ,
-            structural : 1 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 1 ,
+            structural : 1 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 1 },
 
         supply : { _isPerishable : false ,
@@ -791,6 +890,7 @@ W O O D
 },
 {   layout: ItemCard , type:Asset.card.item.hunt , qty: 1 ,
     name:{ de:"Ast", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
             coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 },
@@ -814,6 +914,7 @@ T R E A S U R E
 *****/
 {   layout: ItemCard , type:Asset.card.item.treasure , qty: 1 ,
     name:{ de:"Name", en:"" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
             coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 },
