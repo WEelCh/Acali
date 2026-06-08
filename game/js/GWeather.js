@@ -2,6 +2,8 @@
 
 class GWeather {
 
+    
+
     static Log = new Log( "Weather" , "b" )
 
     static current_prec;
