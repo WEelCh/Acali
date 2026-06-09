@@ -1,5 +1,5 @@
 
-class GCweather { static Log = new Log( "Weather" , "b" )
+class GCweather { static Log = new Log( "GCweather" , "b" )
 
     static available_weatherSystems = [];
 
