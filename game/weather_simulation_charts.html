@@ -1,0 +1,160 @@
+
+<h2 class="sr-only">ACALI weather simulation visualization</h2>
+
+<script src="https://weelch.de/skeleton/js/Log_v0.js"></script>
+<script src="./GCweather.js"></script>
+<script src="./AWeather/subtropic.aweather.js"></script>
+<script src="./AWeather/temperate.aweather.js"></script>
+<script src="./AWeather/subpolar.aweather.js"></script>
+
+<style>
+.sim-metric-row{display:flex;gap:10px;margin-bottom:1.5rem;}
+.sim-metric{flex:1;background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.85rem 1rem;}
+.sim-metric p{margin:0;}
+.sim-metric .lbl{font-size:12px;color:var(--color-text-secondary);margin-bottom:3px;}
+.sim-metric .val{font-size:22px;font-weight:500;}
+.sim-panel{margin-bottom:2rem;}
+.sim-title{display:flex;align-items:center;gap:7px;margin-bottom:6px;font-size:14px;font-weight:500;color:var(--color-text-primary);}
+.sim-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.sim-subtitle{font-size:12px;font-weight:400;color:var(--color-text-secondary);margin-left:2px;}
+.sim-legend{display:flex;align-items:center;gap:16px;margin-bottom:8px;font-size:12px;color:var(--color-text-secondary);}
+.sim-legend-item{display:flex;align-items:center;gap:5px;}
+.leg-ghost{width:22px;height:4px;border-radius:2px;opacity:.5;}
+.leg-avg{width:22px;height:3px;border-radius:1px;}
+.sim-stats{display:flex;gap:18px;margin-top:6px;font-size:12px;color:var(--color-text-secondary);}
+.sim-stats em{font-style:normal;color:var(--color-text-primary);}
+</style>
+
+<div class="sim-metric-row">
+  <div class="sim-metric"><p class="lbl">avg precipitation</p><p class="val" id="m-prec" style="color:#2d7dd2">—</p></div>
+  <div class="sim-metric"><p class="lbl">avg wind</p><p class="val" id="m-wind" style="color:#4a9e5c">—</p></div>
+  <div class="sim-metric"><p class="lbl">avg temperature</p><p class="val" id="m-temp" style="color:#d93b3b">—</p></div>
+</div>
+
+<div class="sim-panel">
+  <div class="sim-title"><span class="sim-dot" style="background:#2d7dd2"></span>Precipitation<span class="sim-subtitle" id="sub-prec"></span></div>
+  <div class="sim-legend">
+    <div class="sim-legend-item"><span class="leg-ghost" style="background:#2d7dd2"></span>individual runs</div>
+    <div class="sim-legend-item"><span class="leg-avg" style="background:#2d7dd2"></span>mean</div>
+  </div>
+  <div style="position:relative;width:100%;height:210px;"><canvas id="precChart" role="img" aria-label="Precipitation over time. Bold blue line is the mean across all simulation runs. Faint blue lines show individual runs.">Precipitation over time for all simulation runs.</canvas></div>
+  <div class="sim-stats" id="stat-prec"></div>
+</div>
+
+<div class="sim-panel">
+  <div class="sim-title"><span class="sim-dot" style="background:#4a9e5c"></span>Wind<span class="sim-subtitle" id="sub-wind"></span></div>
+  <div class="sim-legend">
+    <div class="sim-legend-item"><span class="leg-ghost" style="background:#4a9e5c"></span>individual runs</div>
+    <div class="sim-legend-item"><span class="leg-avg" style="background:#4a9e5c"></span>mean</div>
+  </div>
+  <div style="position:relative;width:100%;height:210px;"><canvas id="windChart" role="img" aria-label="Wind speed over time. Bold green line is the mean. Faint lines show individual runs.">Wind speed over time for all simulation runs.</canvas></div>
+  <div class="sim-stats" id="stat-wind"></div>
+</div>
+
+<div class="sim-panel">
+  <div class="sim-title"><span class="sim-dot" style="background:#d93b3b"></span>Temperature<span class="sim-subtitle" id="sub-temp"></span></div>
+  <div class="sim-legend">
+    <div class="sim-legend-item"><span class="leg-ghost" style="background:#d93b3b"></span>individual runs</div>
+    <div class="sim-legend-item"><span class="leg-avg" style="background:#d93b3b"></span>mean</div>
+  </div>
+  <div style="position:relative;width:100%;height:210px;"><canvas id="tempChart" role="img" aria-label="Temperature over time. Bold red line is the mean. Faint lines show individual runs.">Temperature over time for all simulation runs.</canvas></div>
+  <div class="sim-stats" id="stat-temp"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+// ── REPLACE THIS with: const SIM = WeatherSystem.simulate(index, gameLength, iterations);
+// SIM[sim][t] must equal { prec, wind, temp }
+const GAME_LENGTH = 208;
+const ITERATIONS  = 100;
+const MAX_SHOW    = 1000; // ghost lines drawn per chart — tune for performance
+const ALPHA       = 0.05;
+const SEASON_LENGHT = 26;
+
+SIM = GCweather.simulate( 2 , GAME_LENGTH , ITERATIONS );
+// ─────────────────────────────────────────────────────────────────────────────
+
+const isDark   = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const gridClr  = isDark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.06)';
+const tickClr  = isDark ? '#999' : '#888';
+const labels   = Array.from({ length: GAME_LENGTH }, (_, i) => i);
+
+function avg(key) {
+  return labels.map(t => {
+    let s = 0;
+    for (let i = 0; i < SIM.length-1; i++) s += SIM[i][t][key];
+    return s / SIM.length;
+  });
+}
+
+function globalStats(key) {
+  let sum = 0, mn = Infinity, mx = -Infinity;
+  for (let s = 0; s < SIM.length; s++)
+    for (let t = 0; t < GAME_LENGTH; t++) {
+      const v = SIM[s][t][key];
+      sum += v; if (v < mn) mn = v; if (v > mx) mx = v;
+    }
+  const n = SIM.length * GAME_LENGTH;
+  return { avg: (sum/n).toFixed(2), min: mn.toFixed(2), max: mx.toFixed(2) };
+}
+
+function makeOpts() {
+  return {
+    animation: false,
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { enabled: false } },
+    scales: {
+      x: {
+        title: { display: true, text: 'turn (t)', color: tickClr, font: { size: 11 } },
+        grid:  { color: gridClr },
+        ticks: {
+          color: tickClr,
+          font: { size: 11 },
+          autoSkip: false,
+          maxRotation: 0,
+          callback: (val, idx) => idx % SEASON_LENGHT === 0 ? val : '',
+        },
+      },
+      y: {
+        min: 0,
+        grid:  { color: gridClr },
+        ticks: { color: tickClr, font: { size: 11 }, stepSize: 1 },
+      }
+    }
+  };
+}
+
+function buildChart(id, key, solid, ghost) {
+  const ds = [];
+  const show = Math.min(SIM.length, MAX_SHOW);
+  for (let s = 0; s < show; s++)
+    ds.push({ data: SIM[s].map(d => d[key]), borderColor: ghost, borderWidth: 1, pointRadius: 0, tension: 0.3 });
+  ds.push({ data: avg(key), borderColor: solid, borderWidth: 2.5, pointRadius: 0, tension: 0.3 });
+  new Chart(document.getElementById(id), { type: 'line', data: { labels, datasets: ds }, options: makeOpts() });
+}
+
+function renderStats(id, key) {
+  const s = globalStats(key);
+  document.getElementById(id).innerHTML =
+    `<span>mean <em>${s.avg}</em></span><span>min <em>${s.min}</em></span><span>max <em>${s.max}</em></span>`;
+}
+
+const shown = Math.min(SIM.length, MAX_SHOW);
+['prec','wind','temp'].forEach(k => {
+  document.getElementById(`sub-${k}`).textContent = `· ${shown} of ${SIM.length} runs shown · ${GAME_LENGTH} turns`;
+});
+
+buildChart('precChart', 'prec', '#2d7dd2', `rgba(45,125,210,${ALPHA})`);
+buildChart('windChart', 'wind', '#4a9e5c', `rgba(74,158,92,${ALPHA})`);
+buildChart('tempChart', 'temp', '#d93b3b', `rgba(217,59,59,${ALPHA})`);
+
+renderStats('stat-prec', 'prec');
+renderStats('stat-wind', 'wind');
+renderStats('stat-temp', 'temp');
+
+const ps = globalStats('prec'), ws = globalStats('wind'), ts = globalStats('temp');
+document.getElementById('m-prec').textContent = ps.avg;
+document.getElementById('m-wind').textContent = ws.avg;
+document.getElementById('m-temp').textContent = ts.avg;
+</script>
