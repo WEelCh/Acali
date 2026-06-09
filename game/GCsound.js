@@ -18,53 +18,46 @@ class GCsound { static Log = new Log( "GCsound" , "p" )
     static #newAudioObj ( id ) { return new Audio( `./audio/${id}.mp3` ) }
     static AUDIO = {
         no_prec_day   : this.#newAudioObj("day") ,
-        no_prec_night : this.#newAudioObj("day") ,
+        no_prec_night : this.#newAudioObj("night") ,
         drizzle       : this.#newAudioObj("drizzle") ,
         rain          : this.#newAudioObj("rain") ,
         heavy         : this.#newAudioObj("thunder") ,
         
         breeze : this.#newAudioObj("wind") ,
         gale   : this.#newAudioObj("wind") ,
-        strom  : this.#newAudioObj("wind") ,
+        storm  : this.#newAudioObj("wind") ,
 
-    }
-    static CONDITIONS = {
-        // '{daytime}{temp}{prec}{wind}'
-        "0*0*" : "no_prec_day",
-        "0*1*" : "no_prec_day",
-        "1*0*" : "no_prec_night",
-        "1*1*" : "no_prec_night",
-        "**2*" : "drizzle",
-        "**3*" : "rain",
-        "**4*" : "heavy",
-        // '{daytime}{temp}{prec}{wind}'
-        "***1" : "breeze",
-        "***2" : "gale",
-        "***3" : "storm",
-    }
-    
+    }    
                 
     static weather ( dayt , temp , prec , wind ) {
-        for ( const conditions in this.CONDITIONS ) {
-            for ( const condition of conditions ) {
-                
-            }
+        if (!this.#preped) {
+            this.Log.info("GCsound not yet prepped, prepping!");
+            this.prep()
+        }
+        var toFadeIn = [];
+        if ((temp>1) && (prec<2) && (wind<2)) {
+            if (dayt==0) { toFadeIn[toFadeIn.length] = this.AUDIO.no_prec_day }
+            if (dayt==1) { toFadeIn[toFadeIn.length] = this.AUDIO.no_prec_night } }
+        if (prec==2) { toFadeIn[toFadeIn.length] = this.AUDIO.drizzle }
+        if (prec==3) { toFadeIn[toFadeIn.length] = this.AUDIO.rain }
+        if (prec==4) { toFadeIn[toFadeIn.length] = this.AUDIO.heavy }
+        if (wind==1) { toFadeIn[toFadeIn.length] = this.AUDIO.breeze }
+        if (wind==2) { toFadeIn[toFadeIn.length] = this.AUDIO.gale }
+        if (wind==3) { toFadeIn[toFadeIn.length] = this.AUDIO.storm }
+        for ( var audio in this.AUDIO ) {
+            if (toFadeIn.includes(this.AUDIO[audio])) { this.fadeIn( this.AUDIO[audio] ); } 
+            else { this.fadeOut(this.AUDIO[audio]); }
         }
     }
     
     
-
 
     static fadeIn ( audio ) { // this.AUDIO.Wind
         clearInterval(audio.id);
         audio.id = setInterval(() => {
             if (audio.volume < 1) {
               audio.volume = Math.min( (audio.volume+this.#FADE_VOL_CHANGE) , 1 );
-              //console.log(`[${audio.id}] fade in at: ${audio.volume}`);
-            } else {
-                //console.log(`[${audio.id}] fade in complete`);
-                clearInterval(audio.id);
-            }
+            } else { clearInterval(audio.id); }
           }, this.#FADE_INT_LENGHT); }
     
 
@@ -74,16 +67,7 @@ class GCsound { static Log = new Log( "GCsound" , "p" )
         audio.id = setInterval(() => {
             if (audio.volume > 0) {
                 audio.volume = Math.max( (audio.volume-this.#FADE_VOL_CHANGE) , 0 );
-                //console.log(`[${audio.id}] fade out at: ${audio.volume}`);
-            } else {
-                //console.log(`[${audio.id}] fade out complete`);
-                clearInterval(audio.id);
-            }
+            } else { clearInterval(audio.id); }
             }, this.#FADE_INT_LENGHT); }
-
-
-
-
-
 
 }
