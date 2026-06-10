@@ -30,6 +30,7 @@ class GCsound { static Log = new Log( "GCsound" , "p" )
     }    
                 
     static weather ( dayt , temp , prec , wind ) {
+        // TODO : FIRE, SNOW
         if (!this.#preped) {
             this.Log.info("GCsound not yet prepped, prepping!");
             this.prep()

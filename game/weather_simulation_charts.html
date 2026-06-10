@@ -65,13 +65,13 @@
 <script>
 // ── REPLACE THIS with: const SIM = WeatherSystem.simulate(index, gameLength, iterations);
 // SIM[sim][t] must equal { prec, wind, temp }
-const GAME_LENGTH = 208;
+const GAME_LENGTH = 48*2*1;
 const ITERATIONS  = 100;
 const MAX_SHOW    = 1000; // ghost lines drawn per chart — tune for performance
 const ALPHA       = 0.05;
-const SEASON_LENGHT = 26;
+const SEASON_LENGHT = 12*2;
 
-SIM = GCweather.simulate( 0 , GAME_LENGTH , ITERATIONS );
+SIM = GCweather.simulate( 1 , GAME_LENGTH , ITERATIONS );
 // ─────────────────────────────────────────────────────────────────────────────
 
 const isDark   = window.matchMedia('(prefers-color-scheme: dark)').matches;
