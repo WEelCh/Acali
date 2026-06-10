@@ -1,1 +1,7 @@
-GCdisplay, GCmap, GCevent, controller
+GCdisplay
+GCmap
+GCevent (global?)
+GCsound fire
+controller
+
+modtool: cards, events, weather, map
