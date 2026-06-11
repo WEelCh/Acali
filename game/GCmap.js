@@ -1,26 +1,48 @@
 TEST_LOCATIONS = [
     {
-            head : {
-                tags  : [ "" , "" ],
-                spawn: {
-                    min:  5, // min tiles of this template per map
-                    max: 99, // max tiles of this template per map
-                    weight : 5 // 1 (rare) to 10 (often)
-                },
-                resources: {
-                    gather: [1, 3],
-                    hunt:   [2, 4],
-                    chop:   [3, 5],
-                },
-                //distance : -1, // will be only added after generation
-            }, 
-            body : {
-                name  : "TestWald" ,
-                description : "Ein Wald zum testen",
-                specialRule : ``,
-                weatherProt : { coldProt : 0 , wetProt : 0 , windProt : 0 },
-            }
-        },
+        head : {
+            tags  : [  ],
+            spawn: {
+                min:  2, // min tiles of this template per map
+                max: 99, // max tiles of this template per map
+                weight : 5 // 1 (rare) to 10 (often)
+            },
+            resources: {
+                gather: [1, 3],
+                hunt:   [2, 4],
+                chop:   [3, 5],
+            },
+            //distance : -1, // will be only added after generation
+        }, 
+        body : {
+            name  : "TestWald" ,
+            description : "Ein Wald zum testen",
+            specialRule : ``,
+            weatherProt : { coldProt : 0 , wetProt : 0 , windProt : 0 },
+        }
+    },
+    {
+        head : {
+            tags  : [  ],
+            spawn: {
+                min:  2, // min tiles of this template per map
+                max: 99, // max tiles of this template per map
+                weight : 5 // 1 (rare) to 10 (often)
+            },
+            resources: {
+                gather: [1, 3],
+                hunt:   [2, 4],
+                chop:   [3, 5],
+            },
+            //distance : -1, // will be only added after generation
+        }, 
+        body : {
+            name  : "TestLichtung" ,
+            description : "Eine Lichtung zum testen",
+            specialRule : ``,
+            weatherProt : { coldProt : 0 , wetProt : 0 , windProt : 0 },
+        }
+    },
 ]
 
 
@@ -142,16 +164,22 @@ class GCmap { static Log = new Log("Map", "c");
 
 
 
-    static assignTiles ( tiles ) {
+    static assignTiles ( inputTiles ) {
         var tileSelection = [];
-
         var freeLandTiles = [];
-        // get all locations
-        for (const row in this.island) {
-            for (const col in this.island[row]) {
-                if (this.island[row][col] == 0) { freeLandTiles.push([row,col]) }
+
+        // FIX: Deep clone the input to prevent mutating TEST_LOCATIONS across multiple runs
+        const tiles = JSON.parse(JSON.stringify(inputTiles));
+
+        // FIX: Use traditional loops to get integer indices instead of string indices
+        for (let r = 0; r < this.size; r++) {
+            for (let c = 0; c < this.size; c++) {
+                if (this.island[r][c] === 0) { 
+                    freeLandTiles.push([r, c]); 
+                }
             } 
-        } this.Log.debug(freeLandTiles);
+        } 
+        this.Log.debug(freeLandTiles);
         
         // MIN SPAWN
         for (const tile of tiles) {
@@ -162,45 +190,49 @@ class GCmap { static Log = new Log("Map", "c");
                 tile.head.spawn.inSelection += 1;
             }
         }
-        // remove random if to many
+
+        // remove random if too many
         while (tileSelection.length > freeLandTiles.length) {
-            this.Log.warn("To many MIN tiles, removing random");
+            this.Log.warn("Too many MIN tiles, removing random");
             tileSelection.splice( Math.floor( Math.random() * tileSelection.length ) , 1);
         }
 
         // FILL tileSelection (KEEP MAX IN MIND)
         var allTilesWeight = 0;
         for (const tile of tiles) { allTilesWeight += tile.head.spawn.weight; }
-        for (let i=0; i<10000; i++) {
-            if (i>=9999) { 
-                this.Log.error("CRITICAL 10.000 tries could not populate tileSelection");
+
+        for (let i=0; i<1000; i++) {
+            if (i>=999) { 
+                this.Log.error("CRITICAL 1.000 tries could not populate tileSelection");
                 break;
             }
-            if (tileSelection.length == freeLandTiles.length) {break}
-            const dice = Math.random()*allTilesWeight;
+            // FIX: Use >= to prevent infinite loops if the length overshoots
+            if (tileSelection.length >= freeLandTiles.length) { break; }
+            
+            var dice = Math.random() * allTilesWeight;
             var weight = 0;
             for (const tile of tiles) { 
                 weight += tile.head.spawn.weight
                 if (weight >= dice) { 
                     if (tile.head.spawn.inSelection >= tile.head.spawn.max) {
                         this.Log.debug(tile, "rejected");
-                        break;
+                        break; 
                     }
                     if (!tile.head.spawn.inSelection){tile.head.spawn.inSelection = 0}
                     tile.head.spawn.inSelection += 1;
                     tileSelection.push( JSON.parse(JSON.stringify( tile )) ); 
                     this.Log.debug(tile, "added");
-                    continue;
+                    break; // FIX: Break out of the tile loop so we don't add the next tile too!
                 }
             }
         }
-        this.Log.debug("final tileSelection:",tileSelection);
+        this.Log.debug("final tileSelection:", tileSelection);
 
         // ASSIGN TILES TO ISLAND
         for (const landTile of freeLandTiles){
-            let randIndex = Math.floor(Math.random()*tileSelection.length);
+            let randIndex = Math.floor(Math.random() * tileSelection.length);
             this.island[landTile[0]][landTile[1]] = JSON.parse(JSON.stringify( tileSelection[randIndex] ));
-            tileSelection.splice( [randIndex] , 1 );
+            tileSelection.splice( randIndex, 1 ); // FIX: Removed brackets around randIndex
         }
         
         // ADD COASTAL FLAG
@@ -210,14 +242,13 @@ class GCmap { static Log = new Log("Map", "c");
         }
 
         // ADD DISTANCE
-        // Use BFS to calculate distances from the camp (value 2)
         const distances = Array(this.size).fill(0).map(() => Array(this.size).fill(Infinity));
         const queue = [];
         const isValid = (r, c) => r >= 0 && r < this.size && c >= 0 && c < this.size;
         const getNeighbors = (r, c) => {
             const neighbors = [];
-            const dr = [-1, 1, 0, 0]; // Delta rows for up, down, same row
-            const dc = [0, 0, -1, 1]; // Delta columns for same col, left, right
+            const dr = [-1, 1, 0, 0]; 
+            const dc = [0, 0, -1, 1]; 
             for (let i = 0; i < 4; i++) {
                 const nr = r + dr[i];
                 const nc = c + dc[i];
@@ -227,79 +258,32 @@ class GCmap { static Log = new Log("Map", "c");
             }
             return neighbors;
         };
-        // Start BFS from the camp
+
         distances[this.campTile[0]][this.campTile[1]] = 0;
         queue.push(this.campTile);
-        let head = 0; // Pointer for the queue (simulating dequeue)
+        let head = 0; 
         while (head < queue.length) {
-            const [r, c] = queue[head++]; // Dequeue
+            const [r, c] = queue[head++]; 
             const currentDistance = distances[r][c];
             getNeighbors(r, c).forEach(([nr, nc]) => {
-                // Only consider island cells that haven't been visited yet (distance is Infinity)
                 if (this.island[nr][nc] == -1 || this.island[nr][nc] == 1) {  }
                 else if (distances[nr][nc] === Infinity) {
                     distances[nr][nc] = currentDistance + 1;
-                    queue.push([nr, nc]); // Enqueue
+                    queue.push([nr, nc]); 
                 }
             });
-        }
-        // Iterate through the map and mark cells based on distance
-        for (const row in this.island) {
-            for (const col in this.island[row]) {
-                if (this.island[row][col] == -1 || this.island[row][col] == 1) { continue }
-                this.island[row][col].head.distance = distances[row][col];
-            } 
         }
         
-        return this.island
-    }
-
-
-
-
-
-
-
-
-    static generateIslandMap(n) {
-        // --- Step 4: Mark cells more than three "steps" away from camp (1) ---
-        // Use BFS to calculate distances from the camp (value 2)
-        const distances = Array(this.size).fill(0).map(() => Array(this.size).fill(Infinity));
-        const queue = [];
-
-        // Start BFS from the camp
-        distances[campRow][campCol] = 0;
-        queue.push([campRow, campCol]);
-
-        let head = 0; // Pointer for the queue (simulating dequeue)
-        while (head < queue.length) {
-            const [r, c] = queue[head++]; // Dequeue
-            const currentDistance = distances[r][c];
-
-            getNeighbors(r, c).forEach(([nr, nc]) => {
-                // Only consider island cells (0 or 2, but 2 is already processed as start)
-                // that haven't been visited yet (distance is Infinity)
-                if ((this.island[nr][nc] === 0 || this.island[nr][nc] === 2) && distances[nr][nc] === Infinity) {
-                    distances[nr][nc] = currentDistance + 1;
-                    queue.push([nr, nc]); // Enqueue
-                }
-            });
-        }
-
-        // Iterate through the map and mark cells based on distance
+        // FIX: Proper integer loops for assignment to prevent string coercion issues
         for (let r = 0; r < this.size; r++) {
             for (let c = 0; c < this.size; c++) {
-                // If it's an island cell (0) and its distance from camp is > 3
-                if (this.island[r][c] === 0 && distances[r][c] > 3) {
-                    this.island[r][c] = 1; // Mark as far away (now 1)
-                }
-            }
+                if (this.island[r][c] == -1 || this.island[r][c] == 1) { continue }
+                this.island[r][c].head.distance = distances[r][c];
+            } 
         }
 
         return this.island;
     }
 }
-
-
 
 
