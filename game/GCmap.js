@@ -29,6 +29,10 @@ class GCmap { static Log = new Log("Map", "c");
     static size = 5;
     static island = undefined;
 
+    static costTiles = [];
+    static landTiles = [];
+    static campTile  = [];
+
     static genIsland ( n ) {
         if (n < 1 || n > this.size**2) {
             this.Log.error(`n [${n}] must be between 1 and ${this.size**2}`);
@@ -96,6 +100,7 @@ class GCmap { static Log = new Log("Map", "c");
         let costCandidates = [];
         islandCells.forEach(cellStr => {
             const [r, c] = cellStr.split(',').map(Number);
+            this.landTiles.push([r,c]);
             // Check condition: Is adjacent to the map border?
             const isBorder = (r === 0 || r === this.size - 1 || c === 0 || c === this.size - 1);
             // Check condition: Has at least one adjacent -1 field?
@@ -110,6 +115,7 @@ class GCmap { static Log = new Log("Map", "c");
                 costCandidates.push([r, c]);
             }
         });
+        this.costTiles = costCandidates;
         // Select a random candidate for the cost field.
         let campRow, campCol;
         if (costCandidates.length > 0) {
@@ -122,7 +128,8 @@ class GCmap { static Log = new Log("Map", "c");
             [campRow, campCol] = Array.from(islandCells)[randomIslandCellIndex].split(',').map(Number);
             this.island[campRow][campCol] = 1;
         }
-
+        this.campTile = [campRow,campCol];
+        
         for (const row of this.island) {
             var line = "";
             for (const tile of row) {
@@ -155,13 +162,11 @@ class GCmap { static Log = new Log("Map", "c");
                 tile.head.spawn.inSelection += 1;
             }
         }
-        this.Log.debug(tileSelection)
         // remove random if to many
         while (tileSelection.length > freeLandTiles.length) {
             this.Log.warn("To many MIN tiles, removing random");
             tileSelection.splice( Math.floor( Math.random() * tileSelection.length ) , 1);
         }
-        this.Log.debug(tileSelection)
 
         // FILL tileSelection (KEEP MAX IN MIND)
         var allTilesWeight = 0;
@@ -188,15 +193,47 @@ class GCmap { static Log = new Log("Map", "c");
                     continue;
                 }
             }
+        }
+        this.Log.debug("final tileSelection:",tileSelection);
 
-            this.Log.debug(tileSelection)
+        // ASSIGN TILES TO ISLAND
+        
 
-            this.Log.info("Adding random tile to allTilesWeight")
 
+        return
+        // ADD COASTAL FLAG
+
+        // ADD DISTANCE
+        // Use BFS to calculate distances from the camp (value 2)
+        const distances = Array(this.size).fill(0).map(() => Array(this.size).fill(Infinity));
+        const queue = [];
+        // Start BFS from the camp
+        distances[campRow][campCol] = 0;
+        queue.push([campRow, campCol]);
+        let head = 0; // Pointer for the queue (simulating dequeue)
+        while (head < queue.length) {
+            const [r, c] = queue[head++]; // Dequeue
+            const currentDistance = distances[r][c];
+            getNeighbors(r, c).forEach(([nr, nc]) => {
+                // Only consider island cells (0 or 2, but 2 is already processed as start)
+                // that haven't been visited yet (distance is Infinity)
+                if ((this.island[nr][nc] === 0 || this.island[nr][nc] === 2) && distances[nr][nc] === Infinity) {
+                    distances[nr][nc] = currentDistance + 1;
+                    queue.push([nr, nc]); // Enqueue
+                }
+            });
+        }
+        // Iterate through the map and mark cells based on distance
+        for (let r = 0; r < this.size; r++) {
+            for (let c = 0; c < this.size; c++) {
+                // If it's an island cell (0) and its distance from camp is > 3
+                if (this.island[r][c] === 0 && distances[r][c] > 3) {
+                    this.island[r][c] = 1; // Mark as far away (now 1)
+                }
+            }
         }
 
 
-        // add distance
     }
 
 
@@ -207,13 +244,6 @@ class GCmap { static Log = new Log("Map", "c");
 
 
     static generateIslandMap(n) {
-        
-
-        
-
-        
-
-
         // --- Step 4: Mark cells more than three "steps" away from camp (1) ---
         // Use BFS to calculate distances from the camp (value 2)
         const distances = Array(this.size).fill(0).map(() => Array(this.size).fill(Infinity));
@@ -249,39 +279,6 @@ class GCmap { static Log = new Log("Map", "c");
         }
 
         return this.island;
-    }
-
-
-
-    static displayMap ( ) {
-        let offset;
-        for (const row in this.map) {
-            offset = 0;
-            for (const tile in this.map[row]) {
-                if ( this.map[row][tile] === -1 ) {
-                    document.getElementById( `tile${row}${tile}` ).outerHTML = "";
-                    offset++;
-                    continue; }
-                if ( offset !== 0 ) {
-                    document.getElementById( `tile${row}${tile}` ).classList.add(`offset-by-${offset}-tile5`); }
-                document.getElementById( `tile${row}${tile}` ).innerHTML = GAsset.MAP[this.map[row][tile]];
-                offset = 0; 
-                if ( this.map[row][tile] === 2 ) {
-                    document.getElementById( `tile${row}${tile}` ).style.borderWidth = "2px";
-                    document.getElementById( `tile${row}${tile}` ).style.borderStyle = "dotted";
-                    document.getElementById( `tile${row}${tile}` ).style.borderColor = "rgb(211, 214, 199)"; } }
-        }
-    }
-
-
-
-    static populateMap ( ) {
-        for (const row in this.map) {
-            for (const tile in this.map[row]) {
-                
-            } 
-        }
-        
     }
 }
 
