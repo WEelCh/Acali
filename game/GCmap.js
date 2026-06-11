@@ -198,31 +198,25 @@ class GCmap { static Log = new Log("Map", "c");
         }
 
         // FILL tileSelection (KEEP MAX IN MIND)
-        var allTilesWeight = 0;
-        for (const tile of tiles) { allTilesWeight += tile.head.spawn.weight; }
+        while (tileSelection.length < freeLandTiles.length) {
+            let availableTiles = tiles.filter(t => (t.head.spawn.inSelection || 0) < t.head.spawn.max);
 
-        for (let i=0; i<1000; i++) {
-            if (i>=999) { 
-                this.Log.error("CRITICAL 1.000 tries could not populate tileSelection");
-                break;
+            if (availableTiles.length === 0) {
+                this.Log.error("Could not generate enough locations. Add more tile types or increase max limits.");
+                return 1;
             }
-            // FIX: Use >= to prevent infinite loops if the length overshoots
-            if (tileSelection.length >= freeLandTiles.length) { break; }
-            
-            var dice = Math.random() * allTilesWeight;
-            var weight = 0;
-            for (const tile of tiles) { 
-                weight += tile.head.spawn.weight
+
+            let currentTotalWeight = availableTiles.reduce((sum, t) => sum + t.head.spawn.weight, 0);
+            let dice = Math.random() * currentTotalWeight;
+            let weight = 0;
+
+            for (const tile of availableTiles) { 
+                weight += tile.head.spawn.weight;
                 if (weight >= dice) { 
-                    if (tile.head.spawn.inSelection >= tile.head.spawn.max) {
-                        this.Log.debug(tile, "rejected");
-                        break; 
-                    }
-                    if (!tile.head.spawn.inSelection){tile.head.spawn.inSelection = 0}
-                    tile.head.spawn.inSelection += 1;
+                    tile.head.spawn.inSelection = (tile.head.spawn.inSelection || 0) + 1;
+                    // This deep clone is perfect - it ensures each map tile has its own independent state
                     tileSelection.push( JSON.parse(JSON.stringify( tile )) ); 
-                    this.Log.debug(tile, "added");
-                    break; // FIX: Break out of the tile loop so we don't add the next tile too!
+                    break; 
                 }
             }
         }
