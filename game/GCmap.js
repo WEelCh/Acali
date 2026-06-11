@@ -196,44 +196,62 @@ class GCmap { static Log = new Log("Map", "c");
         }
         this.Log.debug("final tileSelection:",tileSelection);
 
-        // ASSIGN TILES TO ISLAND 
-
-
-
-        return
+        // ASSIGN TILES TO ISLAND
+        for (const landTile of freeLandTiles){
+            let randIndex = Math.floor(Math.random()*tileSelection.length);
+            this.island[landTile[0]][landTile[1]] = JSON.parse(JSON.stringify( tileSelection[randIndex] ));
+            tileSelection.splice( [randIndex] , 1 );
+        }
+        
         // ADD COASTAL FLAG
+        for (const coastTile of this.costTiles) {
+            if (coastTile[0]==this.campTile[0] && coastTile[1]==this.campTile[1]) {continue}
+            this.island[coastTile[0]][coastTile[1]].head.tags.push("coastal");
+        }
 
         // ADD DISTANCE
         // Use BFS to calculate distances from the camp (value 2)
         const distances = Array(this.size).fill(0).map(() => Array(this.size).fill(Infinity));
         const queue = [];
+        const isValid = (r, c) => r >= 0 && r < this.size && c >= 0 && c < this.size;
+        const getNeighbors = (r, c) => {
+            const neighbors = [];
+            const dr = [-1, 1, 0, 0]; // Delta rows for up, down, same row
+            const dc = [0, 0, -1, 1]; // Delta columns for same col, left, right
+            for (let i = 0; i < 4; i++) {
+                const nr = r + dr[i];
+                const nc = c + dc[i];
+                if (isValid(nr, nc)) {
+                    neighbors.push([nr, nc]);
+                }
+            }
+            return neighbors;
+        };
         // Start BFS from the camp
-        distances[campRow][campCol] = 0;
-        queue.push([campRow, campCol]);
+        distances[this.campTile[0]][this.campTile[1]] = 0;
+        queue.push(this.campTile);
         let head = 0; // Pointer for the queue (simulating dequeue)
         while (head < queue.length) {
             const [r, c] = queue[head++]; // Dequeue
             const currentDistance = distances[r][c];
             getNeighbors(r, c).forEach(([nr, nc]) => {
-                // Only consider island cells (0 or 2, but 2 is already processed as start)
-                // that haven't been visited yet (distance is Infinity)
-                if ((this.island[nr][nc] === 0 || this.island[nr][nc] === 2) && distances[nr][nc] === Infinity) {
+                // Only consider island cells that haven't been visited yet (distance is Infinity)
+                if (this.island[nr][nc] == -1 || this.island[nr][nc] == 1) {  }
+                else if (distances[nr][nc] === Infinity) {
                     distances[nr][nc] = currentDistance + 1;
                     queue.push([nr, nc]); // Enqueue
                 }
             });
         }
         // Iterate through the map and mark cells based on distance
-        for (let r = 0; r < this.size; r++) {
-            for (let c = 0; c < this.size; c++) {
-                // If it's an island cell (0) and its distance from camp is > 3
-                if (this.island[r][c] === 0 && distances[r][c] > 3) {
-                    this.island[r][c] = 1; // Mark as far away (now 1)
-                }
-            }
+        for (const row in this.island) {
+            for (const col in this.island[row]) {
+                if (this.island[row][col] == -1 || this.island[row][col] == 1) { continue }
+                this.island[row][col].head.distance = distances[row][col];
+            } 
         }
-
-
+        
+        return this.island
     }
 
 
