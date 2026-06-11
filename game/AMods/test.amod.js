@@ -1,6 +1,6 @@
 
 
-MEDIATOR.AMods.push((function() {
+MEDIATOR.AMods.push(function() {
     const author = "WEelCh" ;
     const name   = "Test"   ;
     const date   = "250620" ; 
@@ -14,27 +14,171 @@ MEDIATOR.AMods.push((function() {
 
     desc : "",
 
-    // LOCATIONS
+    // ===================================================================
+    // LOCATION TEMPLATE
+    // Used at generation time to stamp out tile instances.
+    // The app populates `distance` on the instance — it's not authored here.
+    // ===================================================================
     locations: [
-        // Beispielort zur Demonstration
-        //     kopieren und bearbeiten
-        {   id    : `${id}_location_MeinGebiet` ,
-            name  : "MeinGebiet" ,
-            icon  : "Special" ,
-            spawn : 1 ,
-            loot  : {
-                Gathering : 0 ,
-                Hunting   : 0 ,
-                Chopping  : 0 , }, }, ],
-
-
-    events: [
-        
-        // Beispielevent zur Demonstration
-        //     kopieren und bearbeiten
         {
             head : {
-                id : `${id}_event_BeispielTitel` ,
+                tags  : [ "" , "" ],
+                spawn: {
+                    min:  0, // min tiles of this template per map
+                    max: 99, // max tiles of this template per map
+                },
+                resources: {
+                    gather: [1, 3],
+                    hunt:   [2, 4],
+                    chop:   [3, 5],
+                },
+                //distance : -1, // will be only added after generation
+            }, 
+            body : {
+                name  : "" ,
+                description : "",
+                specialRule : ``,
+                weatherProt : { coldProt : 0 , wetProt : 0 , windProt : 0 },
+            }
+        }, 
+    ],
+
+    // ===================================================================
+    // SUBEVENT
+    // ===================================================================
+    subevents: [
+        {
+            head : {
+                type: "travel", // Valid values: "travel" | "weather" | "action" | "discovery"
+                spawn : {
+                    disabled : false, // disables this subevent
+                    cw       : false, // content warning for especially distrubing or harmfull content
+                    tags : {
+                        require: ["wilderness"],  // tile must have ALL of these
+                        exclude: [],             // tile must have NONE of these
+                    },
+                    // Valid values: "gathering" | "hunting" | "chopping"
+                    action: "gathering",
+                    weight: {
+                        daytime : [ 1.0 , [ 1.0 , 1.0 , 1.0 , 1.0 ] ], // [ day , night (starts with gaining moon) ] 
+                        weather : {
+                            temp : [ 1.0 , 1.0 , 1.0 , 1.0 , 1.0 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                            prec : [ 1.0 , 1.0 , 1.0 , 1.0 , 1.0 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                            wind : [ 1.0 , 1.0 , 1.0 , 1.0       ], // [ Calm   , Breeze   , Gale    , Storm          ]
+                        }, 
+                    },
+                    // -1 : unlikely with distance | 0 : independent from distance | 1 : unlikely without distance
+                    distanceDependent: 0, // especially for travel
+                }, 
+            },
+            body : {
+                description : "",
+                effects: {
+                    // Valid target values:
+                    //   "all" | "choice" |
+                    //   "highest_strength" | "lowest_strength"  |
+                    //   "highest_wisdom"   | "lowest_wisdom"    |
+                    //   "highest_dexterity"| "lowest_dexterity" |
+                    //   "most_exhausted"
+                    target: "all",
+                    // Cards drawn from these resource decks (0 = draw nothing)
+                    lootCards: {
+                        gathering: 0,
+                        chopping:  0,
+                        hunting:   0,
+                        ship:      0,
+                    },
+                    afflictions: { // negative values mean healing
+                        exhaustion:  1,
+                        hunger:      0,
+                        hypothermia: 0,
+                        wound:       0,
+                    },
+                    addTags:    [], // add tag to location
+                    removeTags: [], // remove tag from location
+                },
+                choices : [ // 2–4 choices. At least one must always be unconditional (no requires); empty for no choices
+                    {
+                        description : "",
+                        skillcheck : {
+                            type : "DEX STR WIS", // "" | "DEX" | "STR" | "WIS"
+                            difficulty : [ 3 , 3 , 4 , 5 , 5 , 6], // one will be random selected
+                        },
+                        neededKeyword : "",
+                        onSuccess : {
+                            description : "",
+                            effects: {
+                                // Valid target values:
+                                //   "all" | "choice" |
+                                //   "highest_strength" | "lowest_strength"  |
+                                //   "highest_wisdom"   | "lowest_wisdom"    |
+                                //   "highest_dexterity"| "lowest_dexterity" |
+                                //   "most_exhausted"
+                                // Ties resolved by coin throw (never group choice).
+                                target: "all",
+                                // Cards drawn from these resource decks (0 = draw nothing)
+                                lootCards: {
+                                    gathering: 0,
+                                    chopping:  0,
+                                    hunting:   0,
+                                    ship:      0,
+                                },
+                                afflictions: {
+                                    exhaustion:  1,
+                                    hunger:      0,
+                                    hypothermia: 0,
+                                    wound:       0,
+                                },
+                                // Persistent tag mutations on this tile for the remainder of the session.
+                                addTags:    [],
+                                removeTags: [],
+                            },
+                        },
+                        onFailure : {
+                            description : "",
+                            effects: {
+                                // Valid target values:
+                                //   "all" | "choice" |
+                                //   "highest_strength" | "lowest_strength"  |
+                                //   "highest_wisdom"   | "lowest_wisdom"    |
+                                //   "highest_dexterity"| "lowest_dexterity" |
+                                //   "most_exhausted"
+                                // Ties resolved by coin throw (never group choice).
+                                target: "all",
+                                // Cards drawn from these resource decks (0 = draw nothing)
+                                lootCards: {
+                                    gathering: 0,
+                                    chopping:  0,
+                                    hunting:   0,
+                                    ship:      0,
+                                },
+                                afflictions: {
+                                    exhaustion:  1,
+                                    hunger:      0,
+                                    hypothermia: 0,
+                                    wound:       0,
+                                },
+                                // Persistent tag mutations on this tile for the remainder of the session.
+                                addTags:    [],
+                                removeTags: [],
+                            },
+                        },
+                    },
+                ],
+            }
+        },
+    ]
+        
+        
+        
+        
+        
+}}());  
+    /*
+        [
+        {
+            head : {
+                type : "" ,
                 spawn : {
                     disabled : false,
                     nsfw     : false,
@@ -81,4 +225,4 @@ MEDIATOR.AMods.push((function() {
 
     
     };
-})());
+})()); */

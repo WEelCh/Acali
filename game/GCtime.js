@@ -26,7 +26,7 @@ class GCtime { static Log = new Log( "GCtime" , "g" )
             if ( ( week==0 || week/2%4 == 1 ) && day == 0 ) { return 1 } // new moon
             if ( week%4 == 0 && day == 0 ) { return 3 } // full moon
             if ( week <= 1 ) { return 0 } // gaining moon
-            if ( week >= 1 ) { return 2 } // gaining moon
+            if ( week >= 1 ) { return 2 } // losing  moon
             this.Log.error("moon phase slipped, weird!")
         } return ( this.date[1] % 4 )
     }
