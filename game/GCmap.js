@@ -3,7 +3,7 @@ TEST_LOCATIONS = [
             head : {
                 tags  : [ "" , "" ],
                 spawn: {
-                    min:  0, // min tiles of this template per map
+                    min:  5, // min tiles of this template per map
                     max: 99, // max tiles of this template per map
                     weight : 5 // 1 (rare) to 10 (often)
                 },
@@ -136,11 +136,64 @@ class GCmap { static Log = new Log("Map", "c");
 
 
     static assignTiles ( tiles ) {
-        var 
-        
-        // min spawn 
+        var tileSelection = [];
 
-        // max spawn
+        var freeLandTiles = [];
+        // get all locations
+        for (const row in this.island) {
+            for (const col in this.island[row]) {
+                if (this.island[row][col] == 0) { freeLandTiles.push([row,col]) }
+            } 
+        } this.Log.debug(freeLandTiles);
+        
+        // MIN SPAWN
+        for (const tile of tiles) {
+            if (tile.head.spawn.min <= 0) { continue }
+            for (let i=0; i<tile.head.spawn.min; i++) {
+                tileSelection.push( JSON.parse(JSON.stringify( tile )) );
+                if (!tile.head.spawn.inSelection){tile.head.spawn.inSelection = 0}
+                tile.head.spawn.inSelection += 1;
+            }
+        }
+        this.Log.debug(tileSelection)
+        // remove random if to many
+        while (tileSelection.length > freeLandTiles.length) {
+            this.Log.warn("To many MIN tiles, removing random");
+            tileSelection.splice( Math.floor( Math.random() * tileSelection.length ) , 1);
+        }
+        this.Log.debug(tileSelection)
+
+        // FILL tileSelection (KEEP MAX IN MIND)
+        var allTilesWeight = 0;
+        for (const tile of tiles) { allTilesWeight += tile.head.spawn.weight; }
+        for (let i=0; i<10000; i++) {
+            if (i>=9999) { 
+                this.Log.error("CRITICAL 10.000 tries could not populate tileSelection");
+                break;
+            }
+            if (tileSelection.length == freeLandTiles.length) {break}
+            const dice = Math.random()*allTilesWeight;
+            var weight = 0;
+            for (const tile of tiles) { 
+                weight += tile.head.spawn.weight
+                if (weight >= dice) { 
+                    if (tile.head.spawn.inSelection >= tile.head.spawn.max) {
+                        this.Log.debug(tile, "rejected");
+                        break;
+                    }
+                    if (!tile.head.spawn.inSelection){tile.head.spawn.inSelection = 0}
+                    tile.head.spawn.inSelection += 1;
+                    tileSelection.push( JSON.parse(JSON.stringify( tile )) ); 
+                    this.Log.debug(tile, "added");
+                    continue;
+                }
+            }
+
+            this.Log.debug(tileSelection)
+
+            this.Log.info("Adding random tile to allTilesWeight")
+
+        }
 
 
         // add distance
