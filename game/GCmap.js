@@ -196,8 +196,8 @@ class GCmap { static Log = new Log("Map", "c");
         }
         this.Log.debug("final tileSelection:",tileSelection);
 
-        // ASSIGN TILES TO ISLAND
-        
+        // ASSIGN TILES TO ISLAND 
+
 
 
         return
