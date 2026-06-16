@@ -66,7 +66,7 @@ const Locale = {
           en : "Special",
         },
         /*Medium*/   
-        { text : function(){return Locale.weather.state.temp[30][APPLOC]},
+        { text : function(){return Locale.weather.state.temp[3][APPLOC]},
           de : "Moderat",
           en : "Special",
         },
@@ -116,7 +116,7 @@ const Locale = {
         },
         /*Gale*/     
         { text : function(){return Locale.weather.state.wind[2][APPLOC]},
-          de : "Wind",
+          de : "Windig",
           en : "Special",
         },
         /*Storm*/     

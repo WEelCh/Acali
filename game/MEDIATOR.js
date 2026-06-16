@@ -108,7 +108,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
         // *** MAP ***
         GCmap.genIsland( MAPSIZE )
         GCdisplay.update_map( GCmap.island )
-        //GCmap.assignTiles()
+        this.Log.warn("TODO ASSIGN TILES") //GCmap.assignTiles()
         // *** SOUND ***
         GCsound.prep()
     // ====================
@@ -124,15 +124,20 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
     }
 
     static tick ( ) {
-        this.Log.warn("TODO: TICK NOT YET IMPLEMENTED !")
-        return
-        GTime.timetick += 1;
-        GTime.recalc_day_daytime_moon();
-        GTime.update_display_daytime();
-        GTime.update_display_day();
+        let olddayTime = GCtime.dayTime;
+        GCtime.progress();
+        if (GCtime.dayTime != olddayTime) {
+            GCweather.progress( GCtime.dayTime , GCtime.season );
+        }
 
-        GWeather.progress();
-        GWeather.update_display_weather();
+        this.Log.warn("TODO: display current week, day, season, year")
+        //GCdisplay.update_dayCounter( GCtime.tick / 4 );
+
+        GCdisplay.update_dayPhase( GCtime.dayPhase , GCtime.moonPhase );
+        GCdisplay.update_weather( 
+            GCweather.current.prec, GCweather.current.wind, GCweather.current.temp,
+            GCtime.dayPhase, GCtime.moonPhase
+        );
     }
 
 

@@ -66,8 +66,12 @@ class GCdisplay { static Log = new Log("Display", "b");
         }
     }
 
-
+    static #map_is_locked = false
     static update_map ( island ) {
+        if (this.#map_is_locked) { 
+            this.Log.error("map already displayed. you did something wrong calling this!") ; 
+            return 
+        } this.#map_is_locked = true;
         let offset;
         for (const row in island) {
             offset = 0;
