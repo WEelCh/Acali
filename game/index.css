@@ -18,6 +18,15 @@ body {
 p { font-family: 'Courier New', Courier, monospace, "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans; }
 
 
+svg.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle; /* works, but -0.125em often aligns perfectly with the text baseline */
+    /* vertical-align: -0.125em; */
+    stroke: var(--txtColor); /* Keeps dynamic coloring intact */
+    color: var(--txtColor);
+    fill: none;
+}
 .inlineicon { vertical-align:text-bottom; }
 .smallicon { font-size: 2.3rem; }
 .bigicon { font-size: 10rem; }

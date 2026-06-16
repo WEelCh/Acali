@@ -18,6 +18,14 @@ const Asset = { spacer : "&nbsp",
     ],
   ],
 
+  dayCount : [
+    { icon : `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" class="icon lucide lucide-tallymark-icon lucide-tallymark"><line x1="6" y1="3" x2="6" y2="21" stroke="currentColor" stroke-width="2"/></svg>` },
+    { icon : `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" class="icon lucide lucide-tallymark-icon lucide-tallymark"><line x1="6" y1="3" x2="6" y2="21" stroke="currentColor" stroke-width="2"/><line x1="10" y1="3" x2="10" y2="21" stroke="currentColor" stroke-width="2"/></svg>` },
+    { icon : `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" class="icon lucide lucide-tallymark-icon lucide-tallymark"><line x1="6" y1="3" x2="6" y2="21" stroke="currentColor" stroke-width="2"/><line x1="10" y1="3" x2="10" y2="21" stroke="currentColor" stroke-width="2"/><line x1="14" y1="3" x2="14" y2="21" stroke="currentColor" stroke-width="2"/></svg>` },
+    { icon : `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" class="icon lucide lucide-tallymark-icon lucide-tallymark"><line x1="6" y1="3" x2="6" y2="21" stroke="currentColor" stroke-width="2"/><line x1="10" y1="3" x2="10" y2="21" stroke="currentColor" stroke-width="2"/><line x1="14" y1="3" x2="14" y2="21" stroke="currentColor" stroke-width="2"/><line x1="18" y1="3" x2="18" y2="21" stroke="currentColor" stroke-width="2"/></svg>` },
+    { icon : `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" class="icon lucide lucide-tallymark-icon lucide-tallymark"><line x1="6" y1="3" x2="6" y2="21" stroke="currentColor" stroke-width="2"/><line x1="10" y1="3" x2="10" y2="21" stroke="currentColor" stroke-width="2"/><line x1="14" y1="3" x2="14" y2="21" stroke="currentColor" stroke-width="2"/><line x1="18" y1="3" x2="18" y2="21" stroke="currentColor" stroke-width="2"/><line x1="3" y1="5" x2="21" y2="19" stroke="currentColor" stroke-width="2"/></svg>` },
+  ],
+
   weather : {
     state : {
       temp : [    
