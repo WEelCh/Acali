@@ -95,6 +95,8 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
         }
         // *** MAP ***
         GCmap.genIsland( MAPSIZE )
+        GCdisplay.update_map( GCmap.island )
+        //GCmap.assignTiles()
         // *** SOUND ***
         GCsound.prep()
     // ====================
