@@ -57,7 +57,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
     // =========================
     //  IS USER INPUT USEABLE ?
     // =========================
-        let WEATHER, MAP, MAPSIZE, EVENTS;
+        let WEATHER, MAP, MAPSIZE, EVENTS, DATE_OFFSET_W, DATE_OFFSET_D;
         try {
             WEATHER = document.querySelector('input[name="WEATHER"]:checked').value;
         } catch (e) {
@@ -72,6 +72,16 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
             this.Log.error(e)
             window.alert( "No Map core selected or map size not in [1-25]!" )
             return }
+        try {
+            DATE_OFFSET_D = Number(document.querySelector('input[name="DATE_OFFSET_D"]').value);
+            DATE_OFFSET_W = Number(document.querySelector('input[name="DATE_OFFSET_W"]').value);
+            if ((DATE_OFFSET_D<0 || DATE_OFFSET_D>6)||(DATE_OFFSET_W<0 || DATE_OFFSET_W>47)) { 
+                throw new Error("Day offset not in [0-6] or Week offset not in [0-47]"); 
+            }
+        } catch (e) {
+            this.Log.error(e)
+            window.alert( "Day offset not in [0-6] or Week offset not in [0-47]" )
+            return }
         EVENTS = document.querySelectorAll('input[name="EVENTS"]:checked');
         if (EVENTS.length === 0) { window.alert( "No Module selected!" );return }
         // yippie, start munchin
@@ -79,8 +89,11 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
     // ==================
     //  APPLY USER INPUT
     // ==================
-        // *** NSFW ***
+        // *** CW ***
         GCevent.CW_allowed = document.querySelector('input[name="CW"]').checked;
+        // *** realistic time and offset ***
+        GCtime.isRealistic = document.querySelector('input[name="realTime"]').checked;
+        GCtime.startDateOffset = [ 0 , DATE_OFFSET_W , DATE_OFFSET_D ];
         // *** CORE :: WEATHER ***
         GCweather.loadWeatherSystem( this.selectable_weatherSystems[WEATHER].weatherSystem );
         // *** CORE :: MAP ***
