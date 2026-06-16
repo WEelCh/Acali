@@ -4,6 +4,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
     static selectable_maps = []
     static selectable_weatherSystems = []
     static selectable_events  = []
+    
     static async onload ( ) {
         document.getElementById( "id_container_game" ).style.display = "none";
 
@@ -51,93 +52,65 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
                 </div>`
         }
         this.Log.info("selectable_weatherSystems:",this.selectable_weatherSystems)
-
-
-
-        return
-
-        for ( const map in this.AMap ) {
-            document.getElementById( "id_load_map" ).innerHTML += /*html*/`
-                <div class="row smaller">
-                    <input class="column two" type="radio" id="MAP_${map}" name="MAP" value="${map}" checked="checked">
-                    <h3 class="column nine ltxt">
-                        ${this.AMap[map].id}
-                    </h3>
-                </div>`
-        }
-
-        for ( const mod in this.AMods ) {
-            document.getElementById( "id_load_mods" ).innerHTML += /*html*/`
-                <div class="row smaller">
-                    <input class="column two" type="checkbox" id="MOD_${mod}" name="MODS" value="${mod}" checked="checked">
-                    <h3 class="column nine ltxt">
-                    ${this.AMods[mod].id}
-                    </h3>
-                </div>`
-        }
     }
 
     static start ( ) {
     // =========================
     //  IS USER INPUT USEABLE ?
     // =========================
-        let WEATHER, MAP, MODS;
+        let WEATHER, MAP, MAPSIZE, EVENTS;
         try {
             WEATHER = document.querySelector('input[name="WEATHER"]:checked').value;
         } catch (e) {
-            console.error(e)
-            window.alert( "No Weather selected!" )
+            this.Log.error(e)
+            window.alert( "No Weather core selected!" )
             return }
         try {
             MAP = document.querySelector('input[name="MAP"]:checked').value;
+            MAPSIZE = document.querySelector('input[name="MAPSIZE"]').value;
+            if (MAPSIZE<1 || MAPSIZE>25) { throw new Error("Mapsize not in [1-25]"); }
         } catch (e) {
-            console.error(e)
-            window.alert( "No Map selected!" )
+            this.Log.error(e)
+            window.alert( "No Map core selected or map size not in [1-25]!" )
             return }
-        MODS = document.querySelectorAll('input[name="MODS"]:checked');
-        if (MODS.length === 0) { window.alert( "No Module selected!" );return }
+        EVENTS = document.querySelectorAll('input[name="EVENTS"]:checked');
+        if (EVENTS.length === 0) { window.alert( "No Module selected!" );return }
+        // yippie, start munchin
+        document.getElementById( "id_container_load" ).style.display = "none";
     // ==================
     //  APPLY USER INPUT
     // ==================
         // *** NSFW ***
-        GMap.NSFW = document.querySelector('input[name="NSFW"]').checked;
-        // *** WEATHER ***
-        GWeather.prep( this.AWeather[WEATHER].weatherSystem );
-        // *** CORE :: LOCATIONS ***
-        for ( let location of this.AMap[MAP].locations ) {
-            GMap.LOCATIONS.push( location ); }
+        GCevent.CW_allowed = document.querySelector('input[name="CW"]').checked;
+        // *** CORE :: WEATHER ***
+        GCweather.loadWeatherSystem( this.selectable_weatherSystems[WEATHER].weatherSystem );
+        // *** CORE :: MAP ***
+        GCmap.allTiles = this.selectable_maps[MAP].locations;
         // *** MOD ***
-        for ( let mod=0 ; mod<MODS.length ; mod++ ) {
+        for ( const events of EVENTS ) {
             // *** MOD :: EVENTS ***
-            for ( let event of this.AMods[mod].events ) {
-                if ( event.head.spawn.disabled ) { continue }
-                if ( !GMap.NSFW && event.head.spawn.nsfw ) { continue }
-                GMap.ALL_EVENTS.push( event ); }
+            GCevent.allSubevents = GCevent.allSubevents.concat( this.selectable_events[events.value].subevents );
             // *** MOD :: LOCATIONS ***
-            for ( let location of this.AMods[mod].locations ) {
-                GMap.LOCATIONS.push( location );
-                GMap.LOCATIONS_WEIGHT += location.spawn; }
+            GCmap.allTiles = GCmap.allTiles.concat( this.selectable_events[events.value].locations );
         }
         // *** MAP ***
-        //GMap.prep()
+        GCmap.genIsland( MAPSIZE )
         // *** SOUND ***
-        //GD_SOUND.prep()
+        GCsound.prep()
     // ====================
     //  CLEAN UP AND START
     // ====================
-        delete this.ACores;
-        delete this.AMods;
-        document.getElementById( "id_container_load" ).style.display = "none";
-        document.getElementById( "id_container_game" ).style.display = "block";
-
-        GMap.generateIslandMap(document.querySelector('input[name="map_size"]').value)
-        GMap.displayMap()
-
+        delete this.selectable_maps;
+        delete this.selectable_events;
+        delete this.selectable_weatherSystems;
+        
         this.tick()
-
+        document.getElementById( "id_container_game" ).style.display = "block";
     }
 
     static tick ( ) {
+        this.Log.warn("TODO: TICK NOT YET IMPLEMENTED !")
+        return
         GTime.timetick += 1;
         GTime.recalc_day_daytime_moon();
         GTime.update_display_daytime();

@@ -1,8 +1,6 @@
 
 class GCweather { static Log = new Log( "GCweather" , "b" )
 
-    static available_weatherSystems = [];
-
     static current = {
         prec : undefined,
         wind : undefined,
@@ -10,13 +8,11 @@ class GCweather { static Log = new Log( "GCweather" , "b" )
 
     static weatherSystem = undefined;
 
-    static loadWeatherSystem ( index ) {
+    static loadWeatherSystem ( weatherSystem ) {
         if ( this.weatherSystem !== undefined ) {
-            //this.Log.warn( "weatherSystem was already loaded" ) 
+            this.Log.warn( "weatherSystem was already loaded" ) 
         };
-        if ( !(index in this.available_weatherSystems) ) {
-            this.Log.error( "weatherSystem index out of reach; abort 1" ); return 1 };
-        this.weatherSystem = this.available_weatherSystems[ index ].weatherSystem;
+        this.weatherSystem = weatherSystem;
         this.current = { ...this.weatherSystem.start };
         this.Log.debug("weatherSystem loaded"); 
         return 0; }
@@ -46,8 +42,8 @@ class GCweather { static Log = new Log( "GCweather" , "b" )
         if ( this.current.prec === undefined || 
              this.current.wind === undefined || 
              this.current.temp === undefined ) {
-            this.Log.warn("broken current state, defaulting to emergency values")
-            this.current = { prec : 1, wind : 1, temp : 3, } }
+            this.Log.warn("broken current state, defaulting to start values")
+            this.current = { ...this.weatherSystem.start }; }
         
         let weights = {
             prec : [ ...this.weatherSystem.prec_influences_prec[this.current.prec] ],

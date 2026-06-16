@@ -2,6 +2,8 @@ GCdisplay
 GCmap locations
 GCevent (global?)
 GCsound fire
-controller
+Mediator
+Mediator: Localization
+Mediator: game start settings looks trash
 
 modtool: cards, events, weather, map

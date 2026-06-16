@@ -1,55 +1,10 @@
-TEST_LOCATIONS = [
-    {
-        head : {
-            tags  : [  ],
-            spawn: {
-                min:  2, // min tiles of this template per map
-                max: 99, // max tiles of this template per map
-                weight : 5 // 1 (rare) to 10 (often)
-            },
-            resources: {
-                gather: [1, 3],
-                hunt:   [2, 4],
-                chop:   [3, 5],
-            },
-            //distance : -1, // will be only added after generation
-        }, 
-        body : {
-            name  : "TestWald" ,
-            description : "Ein Wald zum testen",
-            specialRule : ``,
-            weatherProt : { coldProt : 0 , wetProt : 0 , windProt : 0 },
-        }
-    },
-    {
-        head : {
-            tags  : [  ],
-            spawn: {
-                min:  2, // min tiles of this template per map
-                max: 99, // max tiles of this template per map
-                weight : 5 // 1 (rare) to 10 (often)
-            },
-            resources: {
-                gather: [1, 3],
-                hunt:   [2, 4],
-                chop:   [3, 5],
-            },
-            //distance : -1, // will be only added after generation
-        }, 
-        body : {
-            name  : "TestLichtung" ,
-            description : "Eine Lichtung zum testen",
-            specialRule : ``,
-            weatherProt : { coldProt : 0 , wetProt : 0 , windProt : 0 },
-        }
-    },
-]
-
 
 class GCmap { static Log = new Log("Map", "c");
 
     static size = 5;
     static island = undefined;
+
+    static allTiles = [];
 
     static costTiles = [];
     static landTiles = [];
@@ -164,12 +119,12 @@ class GCmap { static Log = new Log("Map", "c");
 
 
 
-    static assignTiles ( inputTiles ) {
+    static assignTiles (  ) {
         var tileSelection = [];
         var freeLandTiles = [];
 
-        // FIX: Deep clone the input to prevent mutating TEST_LOCATIONS across multiple runs
-        const tiles = JSON.parse(JSON.stringify(inputTiles));
+        // FIX: Deep clone the input to prevent mutating this.allTiles across multiple runs (for Sim?)
+        const tiles = JSON.parse(JSON.stringify(this.allTiles));
 
         // FIX: Use traditional loops to get integer indices instead of string indices
         for (let r = 0; r < this.size; r++) {
