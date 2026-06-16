@@ -1,19 +1,11 @@
 
+const author = "WEelCh";
+const name   = "Temperate";
+const date   = "250620"; 
+const id     = `${author}_${name}_${date}`;
+const desc   = "";
 
-MEDIATOR.AMap.push((function() {
-    const author = "WEelCh" ;
-    const name   = "Test"   ;
-    const date   = "250620" ; 
-    const id     = `${author}_${name}_${date}`;
-    return {
-    type   : "MAP",
-    author : author,
-    name   : name  ,
-    date   : date  ,
-    id     : id    ,
-
-    desc : "",
-
+export default { type: "MAP", author, name, date, id, desc,
     locations : [
         {   id    : "Forest" ,
             name  : "Forest" ,
@@ -58,5 +50,6 @@ MEDIATOR.AMap.push((function() {
             loot  : {
                 Gathering : 0 ,
                 Hunting   : 0 ,
-                Chopping  : 0 , }, }, ],
-            }})());
+                Chopping  : 0 , }, }, 
+    ],
+}

@@ -1,27 +1,60 @@
 
+class MEDIATOR { static Log = new Log( "Mediator" , "o" )
 
-class MEDIATOR {
-    static Log = new Log( "Mediator" , "o" )
-
-    static AWeather = []
-    static AMap = []
-    static AMods  = []
-
-
-
-
-    static onload ( ) {
+    static selectable_maps = []
+    static selectable_weatherSystems = []
+    static selectable_events  = []
+    static async onload ( ) {
         document.getElementById( "id_container_game" ).style.display = "none";
 
-        for ( const weather in this.AWeather ) {
-            document.getElementById( "id_load_weather" ).innerHTML += /*html*/`
+        const response = await fetch('scanner.php');
+        const allModules = await response.json();
+
+        for (const path of allModules.map) {
+            const mod = await import(path);
+            this.selectable_maps.push(mod.default);
+            const index = this.selectable_maps.length-1
+            document.getElementById( "id_load_map" ).innerHTML += /*html*/`
                 <div class="row smaller">
-                    <input class="column two" type="radio" id="WEATHER_${weather}" name="WEATHER" value="${weather}" checked="checked">
+                    <input class="column two" type="radio" id="MAP_${index}" name="MAP" value="${index}" checked="checked">
                     <h3 class="column nine ltxt">
-                        ${this.AWeather[weather].id}
+                        ${mod.default.name}
                     </h3>
                 </div>`
         }
+        this.Log.info("selectable_maps:",this.selectable_maps)
+
+        for (const path of allModules.weather) {
+            const mod = await import(path);
+            this.selectable_weatherSystems.push(mod.default);
+            const index = this.selectable_weatherSystems.length-1
+            document.getElementById( "id_load_weather" ).innerHTML += /*html*/`
+                <div class="row smaller">
+                    <input class="column two" type="radio" id="WEATHER_${index}" name="WEATHER" value="${index}" checked="checked">
+                    <h3 class="column nine ltxt">
+                        ${mod.default.name}
+                    </h3>
+                </div>`
+        }
+        this.Log.info("selectable_weatherSystems:",this.selectable_weatherSystems)
+
+        for (const path of allModules.events) {
+            const mod = await import(path);
+            this.selectable_events.push(mod.default);
+            const index = this.selectable_events.length-1
+            document.getElementById( "id_load_events" ).innerHTML += /*html*/`
+                <div class="row smaller">
+                    <input class="column two" type="checkbox" id="MOD_${index}" name="EVENTS" value="${index}" checked="checked">
+                    <h3 class="column nine ltxt">
+                    ${mod.default.name}
+                    </h3>
+                </div>`
+        }
+        this.Log.info("selectable_weatherSystems:",this.selectable_weatherSystems)
+
+
+
+        return
 
         for ( const map in this.AMap ) {
             document.getElementById( "id_load_map" ).innerHTML += /*html*/`

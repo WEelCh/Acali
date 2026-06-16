@@ -1,24 +1,11 @@
 
+const author = "WEelCh";
+const name   = "Default";
+const date   = "250620"; 
+const id     = `${author}_${name}_${date}`;
+const desc   = "";
 
-MEDIATOR.AMods.push(function() {
-    const author = "WEelCh" ;
-    const name   = "Test"   ;
-    const date   = "250620" ; 
-    const id     = `${author}_${name}_${date}`;
-    return {
-    type   : "MOD" ,
-    author : author,
-    name   : name  ,
-    date   : date  ,
-    id     : id    ,
-
-    desc : "",
-
-    // ===================================================================
-    // LOCATION TEMPLATE
-    // Used at generation time to stamp out tile instances.
-    // The app populates `distance` on the instance — it's not authored here.
-    // ===================================================================
+export default { type: "EVENTS", author, name, date, id, desc,
     locations: [
         {
             head : {
@@ -168,12 +155,7 @@ MEDIATOR.AMods.push(function() {
             }
         },
     ]
-        
-        
-        
-        
-        
-}}());  
+}  
     /*
         [
         {

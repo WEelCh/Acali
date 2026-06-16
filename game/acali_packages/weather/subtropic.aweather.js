@@ -1,20 +1,11 @@
 
+const author = "WEelCh";
+const name   = "Subtropic";
+const date   = "250620"; 
+const id     = `${author}_${name}_${date}`;
+const desc   = "";
 
-GCweather.available_weatherSystems.push((function() {
-    const author = "WEelCh" ;
-    const name   = "Temperate"   ;
-    const date   = "250620" ; 
-    const id     = `${author}_${name}_${date}`;
-    return {
-    type   : "WEATHER",
-    author : author,
-    name   : name  ,
-    date   : date  ,
-    id     : id    ,
-
-    desc : "",
-
-    
+export default { type: "WEATHER", author, name, date, id, desc,
     weatherSystem : {
 
         start : {
@@ -141,5 +132,5 @@ GCweather.available_weatherSystems.push((function() {
         //TO  Arctic Freezing Cold  Medium Warm
         ],
 
- } } 
-})());
+    } 
+}
