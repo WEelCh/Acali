@@ -6,8 +6,6 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
     static selectable_events  = []
     
     static async onload ( ) { // prompt game settings
-        document.getElementById( "id_container_game" ).style.display = "none";
-
         const response = await fetch('scanner.php');
         const allModules = await response.json();
 
@@ -52,6 +50,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
                 </div>`
         }
         this.Log.info("selectable_weatherSystems:",this.selectable_weatherSystems)
+        document.getElementById( "id_container_load" ).style.display = "block";
     }
 
     static start ( ) {
@@ -107,7 +106,8 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
         delete this.selectable_weatherSystems;
         
         this.tick()
-        document.getElementById( "id_container_game" ).style.display = "block";
+
+        document.getElementById( "id_container_game" ).style.opacity = "1";
     }
 
     static tick ( ) {
