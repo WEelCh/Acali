@@ -5,7 +5,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
     static selectable_weatherSystems = []
     static selectable_events  = []
     
-    static async onload ( ) {
+    static async onload ( ) { // prompt game settings
         document.getElementById( "id_container_game" ).style.display = "none";
 
         const response = await fetch('scanner.php');

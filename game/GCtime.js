@@ -4,6 +4,7 @@ class GCtime { static Log = new Log( "GCtime" , "g" )
     static tick = -1;
 
     static get dayPhase ( ) { return this.tick % 4 }
+    // dayPhase 0 = morning
     static get dayTime ( ) { return Math.floor( this.tick / 2 ) % 2 }
 
     static isRealistic = false;
@@ -21,12 +22,13 @@ class GCtime { static Log = new Log( "GCtime" , "g" )
     }
 
     static get moonPhase ( ) {
+        // moonPhase 0 = gaining moon
         if (this.isRealistic) {
             const date = this.date; const week = date[1]; const day = date[2];
             if ( ( week==0 || week/2%4 == 1 ) && day == 0 ) { return 1 } // new moon
             if ( week%4 == 0 && day == 0 ) { return 3 } // full moon
-            if ( week <= 1 ) { return 0 } // gaining moon
-            if ( week >= 1 ) { return 2 } // losing  moon
+            if ( week <= 1 ) { return 0 } // losing moon
+            if ( week >= 1 ) { return 2 } // gaining  moon
             this.Log.error("moon phase slipped, weird!")
         } return ( this.date[1] % 4 )
     }
