@@ -10,7 +10,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
         const allModules = await response.json();
 
         for (const path of allModules.map) {
-            const mod = await import(path);
+            const mod = await import(`../${path}`);
             this.selectable_maps.push(mod.default);
             const index = this.selectable_maps.length-1
             document.getElementById( "id_load_map" ).innerHTML += /*html*/`
@@ -24,7 +24,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
         this.Log.info("selectable_maps:",this.selectable_maps)
 
         for (const path of allModules.weather) {
-            const mod = await import(path);
+            const mod = await import(`../${path}`);
             this.selectable_weatherSystems.push(mod.default);
             const index = this.selectable_weatherSystems.length-1
             document.getElementById( "id_load_weather" ).innerHTML += /*html*/`
@@ -38,7 +38,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
         this.Log.info("selectable_weatherSystems:",this.selectable_weatherSystems)
 
         for (const path of allModules.events) {
-            const mod = await import(path);
+            const mod = await import(`../${path}`);
             this.selectable_events.push(mod.default);
             const index = this.selectable_events.length-1
             document.getElementById( "id_load_events" ).innerHTML += /*html*/`

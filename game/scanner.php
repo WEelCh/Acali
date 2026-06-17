@@ -1,9 +1,9 @@
 <?php
 header('Content-Type: application/json');
 $modules = [
-    "map"     => glob('./acali_packages/map/*.amap.js'),
-    "weather" => glob('./acali_packages/weather/*.aweather.js'),
-    "events"  => glob('./acali_packages/events/*.aevents.js'),
+    "map"     => glob('./modules/map/*.amap.js'),
+    "weather" => glob('./modules/weather/*.aweather.js'),
+    "events"  => glob('./modules/events/*.aevents.js'),
 ];
 echo json_encode($modules);
 ?>
