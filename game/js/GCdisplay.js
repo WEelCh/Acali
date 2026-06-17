@@ -7,22 +7,33 @@ class GCdisplay { static Log = new Log("Display", "b");
             Asset.dayPhase[dayPhase][moonPhase].icon :
             Asset.dayPhase[dayPhase].icon;
         const name = (dayPhase === 3) ?
-            Locale.dayPhase[dayPhase][moonPhase].text() :
-            Locale.dayPhase[dayPhase].text();
+            Locale.time.dayPhase[dayPhase][moonPhase].text() :
+            Locale.time.dayPhase[dayPhase].text();
         document.getElementById( "id_dayphase_left" ).innerHTML = icon;
         document.getElementById( "id_dayphase_right" ).innerHTML = icon;
         document.getElementById( "id_dayphase_center" ).innerText = name;
     }
 
 
-    static update_dayCounter ( day ) {
-        day--;
+    static update_dayCounter ( tick ) {
+        const day = Math.floor( tick/4 );
         if (day < 0) {
             document.getElementById( "id_day" ).innerHTML = ``
             return
         }
         document.getElementById( "id_day" ).innerHTML = 
         `${Asset.dayCount[5-1].icon.repeat(Math.floor(day/5))}${Asset.dayCount[(day)%5].icon}`
+    }
+
+    static update_date ( isRealistic , date ) {
+        const startYear = 1756;
+        var dateString;
+        if (isRealistic) { 
+            dateString = `${date[2]+1}. ${Locale.time.month[date[1]].text()} anno ${startYear+date[0]}` 
+        } else { 
+            dateString = `${date[2]+1}. ${Locale.time.week.text()} ${Locale.time.month[date[1]].text()} anno ${startYear+date[0]}` 
+        }
+        document.getElementById( "id_date" ).innerHTML = dateString;
     }
 
 

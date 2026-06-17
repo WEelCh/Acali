@@ -130,8 +130,8 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
             GCweather.progress( GCtime.dayTime , GCtime.season );
         }
 
-        this.Log.warn("TODO: display current week, day, season, year")
-        //GCdisplay.update_dayCounter( GCtime.tick / 4 );
+        GCdisplay.update_date(GCtime.isRealistic, GCtime.date)
+        GCdisplay.update_dayCounter( GCtime.tick );
 
         GCdisplay.update_dayPhase( GCtime.dayPhase , GCtime.moonPhase );
         GCdisplay.update_weather( 

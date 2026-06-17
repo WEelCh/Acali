@@ -7,45 +7,101 @@ APPLOC = "de";
 
 
 const Locale = {
-  dayPhase : [
-    /*morning*/   
-    { text : function(){return Locale.dayPhase[0][APPLOC]},
-      de : "Morgen",
-      en : "Special",
+  time : {
+    week : { text : function(){return Locale.time.week[APPLOC]},
+      de : "Woche des",
+      en : "week of",
     },
-    /*day*/       
-    { text : function(){return Locale.dayPhase[1][APPLOC]},
-      de : "Tag",
-      en : "Special",
-    },
-    /*afternoon*/ 
-    { text : function(){return Locale.dayPhase[2][APPLOC]},
-      de : "Abend",
-      en : "Special",
-    },
-    /*night :: moon*/     [
-      /*losing*/  
-      { text : function(){return Locale.dayPhase[3][0][APPLOC]},
-        de : "Halbmond",
+    month : [
+      { text : function(){return Locale.time.month[0][APPLOC]},
+        de : "Januar",
         en : "Special",
       },
-      /*new*/     
-      { text : function(){return Locale.dayPhase[3][1][APPLOC]},
-        de : "Neumond",
+      { text : function(){return Locale.time.month[1][APPLOC]},
+        de : "Februar",
         en : "Special",
       },
-      /*gaining*/ 
-      { text : function(){return Locale.dayPhase[3][2][APPLOC]},
-        de : "Halbmond",
+      { text : function(){return Locale.time.month[2][APPLOC]},
+        de : "März",
         en : "Special",
       },
-      /*full*/    
-      { text : function(){return Locale.dayPhase[3][3][APPLOC]},
-        de : "Vollmond",
+      { text : function(){return Locale.time.month[3][APPLOC]},
+        de : "April",
+        en : "Special",
+      },
+      { text : function(){return Locale.time.month[4][APPLOC]},
+        de : "Mai",
+        en : "Special",
+      },
+      { text : function(){return Locale.time.month[5][APPLOC]},
+        de : "Juni",
+        en : "Special",
+      },
+      { text : function(){return Locale.time.month[6][APPLOC]},
+        de : "Juli",
+        en : "Special",
+      },
+      { text : function(){return Locale.time.month[7][APPLOC]},
+        de : "August",
+        en : "Special",
+      },
+      { text : function(){return Locale.time.month[8][APPLOC]},
+        de : "September",
+        en : "Special",
+      },
+      { text : function(){return Locale.time.month[9][APPLOC]},
+        de : "Oktober",
+        en : "Special",
+      },
+      { text : function(){return Locale.time.month[10][APPLOC]},
+        de : "November",
+        en : "Special",
+      },
+      { text : function(){return Locale.time.month[11][APPLOC]},
+        de : "Dezember",
         en : "Special",
       },
     ],
-  ],
+    dayPhase : [
+      /*morning*/   
+      { text : function(){return Locale.time.dayPhase[0][APPLOC]},
+        de : "Morgen",
+        en : "Special",
+      },
+      /*day*/       
+      { text : function(){return Locale.time.dayPhase[1][APPLOC]},
+        de : "Tag",
+        en : "Special",
+      },
+      /*afternoon*/ 
+      { text : function(){return Locale.time.dayPhase[2][APPLOC]},
+        de : "Abend",
+        en : "Special",
+      },
+      /*night :: moon*/     [
+        /*losing*/  
+        { text : function(){return Locale.time.dayPhase[3][0][APPLOC]},
+          de : "Halbmond",
+          en : "Special",
+        },
+        /*new*/     
+        { text : function(){return Locale.time.dayPhase[3][1][APPLOC]},
+          de : "Dunkelmond",
+          en : "Special",
+        },
+        /*gaining*/ 
+        { text : function(){return Locale.time.dayPhase[3][2][APPLOC]},
+          de : "Halbmond",
+          en : "Special",
+        },
+        /*full*/    
+        { text : function(){return Locale.time.dayPhase[3][3][APPLOC]},
+          de : "Vollmond",
+          en : "Special",
+        },
+      ],
+    ],
+  },
 
   weather : {
     state : {
