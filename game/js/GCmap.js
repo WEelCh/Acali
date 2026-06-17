@@ -124,7 +124,9 @@ class GCmap { static Log = new Log("Map", "c");
         var freeLandTiles = [];
 
         // FIX: Deep clone the input to prevent mutating this.allTiles across multiple runs (for Sim?)
-        const tiles = JSON.parse(JSON.stringify(this.allTiles));
+        const tiles = JSON.parse(JSON.stringify(
+            this.allTiles.filter(tile => !tile.head?.spawn?.disabled))
+        );
 
         // FIX: Use traditional loops to get integer indices instead of string indices
         for (let r = 0; r < this.size; r++) {
@@ -207,7 +209,6 @@ class GCmap { static Log = new Log("Map", "c");
             }
             return neighbors;
         };
-
         distances[this.campTile[0]][this.campTile[1]] = 0;
         queue.push(this.campTile);
         let head = 0; 
@@ -222,8 +223,6 @@ class GCmap { static Log = new Log("Map", "c");
                 }
             });
         }
-        
-        // FIX: Proper integer loops for assignment to prevent string coercion issues
         for (let r = 0; r < this.size; r++) {
             for (let c = 0; c < this.size; c++) {
                 if (this.island[r][c] == -1 || this.island[r][c] == 1) { continue }
