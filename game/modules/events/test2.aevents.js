@@ -1,33 +1,12 @@
 
 const author = "WEelCh";
 const name   = "Default 2";
-const date   = "250620"; 
+const date   = "260617"; 
 const id     = `${author}_${name}_${date}`;
 const desc   = "";
 
 export default { type: "EVENTS", author, name, date, id, desc,
     locations: [
-        {
-            head : {
-                tags  : [ "" , "" ],
-                spawn: {
-                    min:  0, // min tiles of this template per map
-                    max: 99, // max tiles of this template per map
-                },
-                resources: {
-                    gather: [1, 3],
-                    hunt:   [2, 4],
-                    chop:   [3, 5],
-                },
-                //distance : -1, // will be only added after generation
-            }, 
-            body : {
-                name  : "" ,
-                description : "",
-                specialRule : ``,
-                weatherProt : { coldProt : 0 , wetProt : 0 , windProt : 0 },
-            }
-        }, 
     ],
 
     // ===================================================================

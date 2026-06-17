@@ -1,7 +1,7 @@
 
 const author = "WEelCh";
 const name   = "Default";
-const date   = "250620"; 
+const date   = "260617"; 
 const id     = `${author}_${name}_${date}`;
 const desc   = "";
 
@@ -9,22 +9,32 @@ export default { type: "EVENTS", author, name, date, id, desc,
     locations: [
         {
             head : {
-                tags  : [ "" , "" ],
+                tags  : [ "" ],
                 spawn: {
+                    disabled : false, // disables this location
+                    weight: 10,
                     min:  0, // min tiles of this template per map
                     max: 99, // max tiles of this template per map
                 },
-                resources: {
-                    gather: [1, 3],
-                    hunt:   [2, 4],
-                    chop:   [3, 5],
+                resources: { 
+                    gather: [ 2 , 3 ],
+                    hunt:   [ 2 , 3 ],
+                    chop:   [ 3 , 4 ],
                 },
-                //distance : -1, // will be only added after generation
             }, 
             body : {
-                name  : "" ,
-                description : "",
-                specialRule : ``,
+                name  : { 
+                    de : "Wow von Default" , 
+                    en : "Wow" ,
+                } ,
+                description : { 
+                    de : "Wow" , 
+                    en : "" ,
+                } ,
+                specialRule : { 
+                    de : `` , 
+                    en : `` ,
+                } ,
                 weatherProt : { coldProt : 0 , wetProt : 0 , windProt : 0 },
             }
         }, 
@@ -47,19 +57,27 @@ export default { type: "EVENTS", author, name, date, id, desc,
                     // Valid values: "gathering" | "hunting" | "chopping"
                     action: "gathering",
                     weight: {
-                        daytime : [ 1.0 , [ 1.0 , 1.0 , 1.0 , 1.0 ] ], // [ day , night (starts with gaining moon) ] 
+                        daytime : [ 1.0 , [ 1.0 , 1.0 , 1.0 , 1.0 ] ], // [ day , night (starts with losing moon) ] 
                         weather : {
                             temp : [ 1.0 , 1.0 , 1.0 , 1.0 , 1.0 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
                             prec : [ 1.0 , 1.0 , 1.0 , 1.0 , 1.0 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
                             wind : [ 1.0 , 1.0 , 1.0 , 1.0       ], // [ Calm   , Breeze   , Gale    , Storm          ]
                         }, 
+                        season : [ 1.0 , 1.0 , 1.0 , 1.0 ] // starts with spring
                     },
-                    // -1 : unlikely with distance | 0 : independent from distance | 1 : unlikely without distance
-                    distanceDependent: 0, // especially for travel
+                    // array = [minDistance, maxDistance] inclusive
+                    // Documented defaults for authors:
+                    //   near     : [0, 2] ( mind: as 0 is camp )
+                    //   far      : [3, 4]
+                    //   vary far : [5, 8] ( mind: most island wont even have this! )
+                    distanceRange: [ 0 , 8 ],
                 }, 
             },
             body : {
-                description : "",
+                description : { 
+                    de : "" , 
+                    en : "" ,
+                } ,
                 effects: {
                     // Valid target values:
                     //   "all" | "choice" |
@@ -69,6 +87,7 @@ export default { type: "EVENTS", author, name, date, id, desc,
                     //   "most_exhausted"
                     target: "all",
                     // Cards drawn from these resource decks (0 = draw nothing)
+                    // added to location base value
                     lootCards: {
                         gathering: 0,
                         chopping:  0,
@@ -81,48 +100,60 @@ export default { type: "EVENTS", author, name, date, id, desc,
                         hypothermia: 0,
                         wound:       0,
                     },
+                    // Persistent tag mutations on this tile for the remainder of the session.
                     addTags:    [], // add tag to location
                     removeTags: [], // remove tag from location
                 },
-                choices : [ // 2–4 choices. At least one must always be unconditional (no requires); empty for no choices
+                choices : [ // 2–3 choices. At least one unconditional (no requires); empty for no choices
                     {
-                        description : "",
+                        description : { 
+                            de : "" , 
+                            en : "" ,
+                        } ,
                         skillcheck : {
-                            type : "DEX STR WIS", // "" | "DEX" | "STR" | "WIS"
+                            type : "", // Valid values:  "" | "DEX" | "STR" | "WIS"
                             difficulty : [ 3 , 3 , 4 , 5 , 5 , 6], // one will be random selected
                         },
-                        neededKeyword : "",
+                        neededKeyword : "", // the player needs a card with this keyword
                         onSuccess : {
-                            description : "",
+                            description : { 
+                                de : "" , 
+                                en : "" ,
+                            } ,
                             effects: {
                                 // Valid target values:
                                 //   "all" | "choice" |
                                 //   "highest_strength" | "lowest_strength"  |
                                 //   "highest_wisdom"   | "lowest_wisdom"    |
                                 //   "highest_dexterity"| "lowest_dexterity" |
-                                //   "most_exhausted"
+                                //   "most_exhausted"   | "most_wounded"     | 
+                                //   "most_hungry"      | "most_hypothermia" | and also least
                                 // Ties resolved by coin throw (never group choice).
                                 target: "all",
                                 // Cards drawn from these resource decks (0 = draw nothing)
+                                // added to location base value
                                 lootCards: {
                                     gathering: 0,
                                     chopping:  0,
                                     hunting:   0,
                                     ship:      0,
                                 },
-                                afflictions: {
+                                afflictions: { // negative values mean healing
                                     exhaustion:  1,
                                     hunger:      0,
                                     hypothermia: 0,
                                     wound:       0,
                                 },
                                 // Persistent tag mutations on this tile for the remainder of the session.
-                                addTags:    [],
-                                removeTags: [],
+                                addTags:    [], // add tag to location
+                                removeTags: [], // remove tag from location
                             },
                         },
                         onFailure : {
-                            description : "",
+                            description : { 
+                                de : "" , 
+                                en : "" ,
+                            } ,
                             effects: {
                                 // Valid target values:
                                 //   "all" | "choice" |
@@ -133,21 +164,22 @@ export default { type: "EVENTS", author, name, date, id, desc,
                                 // Ties resolved by coin throw (never group choice).
                                 target: "all",
                                 // Cards drawn from these resource decks (0 = draw nothing)
+                                // added to location base value
                                 lootCards: {
                                     gathering: 0,
                                     chopping:  0,
                                     hunting:   0,
                                     ship:      0,
                                 },
-                                afflictions: {
+                                afflictions: { // negative values mean healing
                                     exhaustion:  1,
                                     hunger:      0,
                                     hypothermia: 0,
                                     wound:       0,
                                 },
                                 // Persistent tag mutations on this tile for the remainder of the session.
-                                addTags:    [],
-                                removeTags: [],
+                                addTags:    [], // add tag to location
+                                removeTags: [], // remove tag from location
                             },
                         },
                     },
