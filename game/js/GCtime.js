@@ -3,38 +3,44 @@ class GCtime { static Log = new Log( "GCtime" , "g" )
 
     static tick = -1;
 
-    static get dayPhase ( ) { return this.tick % 4 }
-    // dayPhase 0 = morning
-    static get dayTime ( ) { return Math.floor( this.tick / 2 ) % 2 }
+    static get dayPhase ( ) { return this.tick % 4 } // 0 = morning
+    static get dayTime  ( ) { return Math.floor( this.tick / 2 ) % 2 } // 0 = day
 
     static isRealistic = false;
     static startDateOffset = [ 0 , 0 , 0 ];
     static get timeLost ( ) { return this.#calcDatetime() }
-    static get date ( ) { return this.#calcDatetime( this.startDateOffset ) }
+    static get date     ( ) { return this.#calcDatetime( this.startDateOffset ) }
     static #calcDatetime ( offset = [ 0 , 0 , 0 ] ) {
-        if (this.isRealistic) { return [
-            (Math.floor( this.tick / 4 / 7 / 48 )) + offset[0], //years
-            (Math.floor( this.tick / 4 / 7 ) % 48) + offset[1], //weeks
-            (Math.floor( this.tick / 4 ) % 7) + offset[2], ] }  //days
+        if (this.isRealistic) { 
+            const dateTick = this.tick + offset[2]*4 + offset[1]*4*7*4 + offset[0]*4*7*4*12;
+            return [
+                 Math.floor( dateTick /12 /4 /7 /4 )       , //       whole years
+                (Math.floor( dateTick     /4 /7 /4 ) %12 ) , // extra whole months
+                (Math.floor( dateTick           /4 ) %28 ) , // extra whole days
+            ];
+        } 
+        const dateTick = this.tick + offset[2]*0 + offset[1]*4*4 + offset[0]*4*4*12;
         return [ 
-            (Math.floor( this.tick / 4 / 48 )) + offset[0] ,      //years
-            (Math.floor( this.tick / 4 ) % 48) + offset[1] , 0 ]; //weeks
+             Math.floor( dateTick /12 /4 /4 )       , //       whole years
+            (Math.floor( dateTick     /4 /4 ) %12 ) , // extra whole months
+            (Math.floor( dateTick        /4 ) % 4 ) , // extra whole weeks
+        ];
     }
 
+    static get season    ( ) { return Math.floor( (this.date[1]+1) /3) %4 }
     static get moonPhase ( ) {
         // moonPhase 0 = gaining moon
         if (this.isRealistic) {
-            const date = this.date; const week = date[1]; const day = date[2];
-            if ( ( week==0 || week/2%4 == 1 ) && day == 0 ) { return 1 } // new moon
-            if ( week%4 == 0 && day == 0 ) { return 3 } // full moon
-            if ( week <= 1 ) { return 0 } // losing moon
-            if ( week >= 1 ) { return 2 } // gaining  moon
+            const date = this.date;
+            if ( date[2] == 13 ) { return 1 } // new moon
+            if ( date[2] == 27 ) { return 3 } // full moon
+            if ( date[2] <  13 ) { return 0 } // losing moon
+            if ( date[2] >  13 ) { return 2 } // gaining  moon
             this.Log.error("moon phase slipped, weird!")
-        } return ( this.date[1] % 4 )
+        } return ( this.date[2] %4 )
     }
     
-    static get season ( ) { return Math.floor( this.date[1] / 12 ) % 4 }
-
+    
 
     static progress ( ) {
         this.tick += 1;
