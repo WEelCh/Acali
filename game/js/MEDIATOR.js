@@ -62,7 +62,8 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
             WEATHER = document.querySelector('input[name="WEATHER"]:checked').value;
         } catch (e) {
             this.Log.error(e)
-            window.alert( "No Weather core selected!" )
+            Popup.alertWarn( "" , "Please select a weather core." )
+            //window.alert( "No Weather core selected!" )
             return }
         try {
             MAP = document.querySelector('input[name="MAP"]:checked').value;
@@ -129,6 +130,8 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
         if (GCtime.dayTime != olddayTime) {
             GCweather.progress( GCtime.dayTime , GCtime.season );
         }
+
+        GCdisplay.update_bg_onDayPhase(GCtime.dayPhase);
 
         GCdisplay.update_date(GCtime.isRealistic, GCtime.date)
         GCdisplay.update_dayCounter( GCtime.tick );

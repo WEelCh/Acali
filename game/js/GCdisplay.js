@@ -107,4 +107,14 @@ class GCdisplay { static Log = new Log("Display", "b");
             }
         }
     }
+
+    static update_bg_onDayPhase(dayPhase) {
+        const bgStates = ['state-sunrise', 'state-day', 'state-sunset', 'state-night']
+        const body = document.body;
+        // Remove any existing time-of-day classes
+        body.classList.remove('state-day', 'state-sunrise', 'state-sunset', 'state-night');
+        // Add the new target state class
+        body.classList.add(bgStates[dayPhase]);
+    }
+    
 }

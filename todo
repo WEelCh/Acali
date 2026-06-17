@@ -4,7 +4,9 @@ GCevent (global?)
 GCsound fire
 Mediator
 Mediator: Localization
+Mediator: Popup 
 Mediator: game start settings looks trash
 
 modtool: cards, events, weather, map
 
+overlay bg images perfectly :()

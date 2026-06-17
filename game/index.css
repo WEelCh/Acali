@@ -4,14 +4,67 @@
     src: url(./font/WatermintScript_PERSONAL_USE_ONLY.otf);
 }
 body {
-    background-image: url(./img/bg_island.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center center;
+    background: transparent;
     /*font-family: 'WatermintScript', cursive; */
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: rgb(211, 214, 199); }
+    color: rgb(211, 214, 199);
+    /* Ensure the body acts as a proper viewport base */
+    min-height: 100vh; }
+
+/* BACKGROUND IMAGE LOGIC */
+/* Container that holds all the background slices */
+#bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Keeps it strictly behind your UI elements */
+    overflow: hidden;
+}
+
+/* Shared properties for all background layers */
+.bg-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    
+    /* Default hidden state properties */
+    opacity: 0; 
+    z-index: 1;
+
+    /* CRUCIAL FIX: When a layer LOSES its active class, 
+       it drops to the bottom layer instantly (z-index 0s), but 
+       holds its 100% opacity for 1 second (opacity 0s 1s delay) 
+       before turning off. This covers up the gray skeleton background. */
+    transition: opacity 0s 1s, z-index 0s 0s;
+}
+
+/* Assign the respective image assets */
+.bg-layer.day     { background-image: url('./img/bg_island_day.jpg'); }
+.bg-layer.sunrise { background-image: url('./img/bg_island_sunrise.png'); }
+.bg-layer.sunset  { background-image: url('./img/bg_island_sunset.png'); }
+.bg-layer.night   { background-image: url('./img/bg_island_night.png'); }
+
+/* State Controls: When a layer GAINS its active class */
+body.state-day .bg-layer.day,
+body.state-sunrise .bg-layer.sunrise,
+body.state-sunset .bg-layer.sunset,
+body.state-night .bg-layer.night {
+    opacity: 1;
+    z-index: 2; /* Pulls the incoming image to the absolute top layer */
+    
+    /* Smoothly fade the incoming top layer in immediately over 1s */
+    transition: opacity 1s ease-in-out, z-index 0s;
+}
+
+
+
 hr {
     border-color: var(--txtColor);
 }
