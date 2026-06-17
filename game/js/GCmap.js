@@ -179,6 +179,17 @@ class GCmap { static Log = new Log("Map", "c");
         }
         this.Log.debug("final tileSelection:", tileSelection);
 
+        // COMPUTE RESOURCES
+        const getRandomIntFromRange = ( range ) => {
+            const [min, max] = range;
+            return Math.floor(Math.random() * (max - min + 1)) + min; } 
+        for (let tile of tileSelection) {
+            tile.head.resources.gather = getRandomIntFromRange(tile.head.resources.gather);
+            tile.head.resources.hunt   = getRandomIntFromRange(tile.head.resources.hunt);
+            tile.head.resources.chop   = getRandomIntFromRange(tile.head.resources.chop);
+            tile.head.resources.ship   = getRandomIntFromRange(tile.head.resources.ship);
+        }
+
         // ASSIGN TILES TO ISLAND
         for (const landTile of freeLandTiles){
             let randIndex = Math.floor(Math.random() * tileSelection.length);
