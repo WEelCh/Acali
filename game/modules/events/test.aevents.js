@@ -67,7 +67,7 @@ export default { type: "EVENTS", author, name, date, id, desc,
                     },
                     // array = [minDistance, maxDistance] inclusive
                     // Documented defaults for authors:
-                    //   near     : [0, 2] ( mind: as 0 is camp )
+                    //   near     : [0, 2] ( mind: 0 is camp )
                     //   far      : [3, 4]
                     //   vary far : [5, 8] ( mind: most island wont even have this! )
                     distanceRange: [ 0 , 8 ],

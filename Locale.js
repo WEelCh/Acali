@@ -7,6 +7,52 @@ APPLOC = "de";
 
 
 const Locale = {
+  map : {
+    name : { text : function(){return Locale.map.name[APPLOC]},
+        de : "Acali-Insel",
+        en : "Acali Island",
+      },
+  },
+
+  setting : {
+    headline : {
+      map : { text : function(){return Locale.setting.headline.map[APPLOC]},
+        de : "KARTE",
+        en : "MAP",
+      },
+      time : { text : function(){return Locale.setting.headline.time[APPLOC]},
+        de : "ZEIT",
+        en : "TIME",
+      },
+      weather : { text : function(){return Locale.setting.headline.weather[APPLOC]},
+        de : "WETTER",
+        en : "WEATHER",
+      },
+      events : { text : function(){return Locale.setting.headline.events[APPLOC]},
+        de : "EREIGNISSE",
+        en : "EVENTS",
+      },
+    },
+    prompt : {
+      realtime : { text : function(){return Locale.setting.prompt.realtime[APPLOC]},
+        de : "Mit realistischer Zeit spielen?",
+        en : "Play with realistic time?",
+      },
+      startdate : { text : function(){return Locale.setting.prompt.startdate[APPLOC]},
+        de : "Datum des Unglücks",
+        en : "Date",
+      },
+      cw : { text : function(){return Locale.setting.prompt.cw[APPLOC]},
+        de : "Ereignisse, die mit Inhaltswarnungen markiert sind, aktivieren?",
+        en : "Play with CW Events?",
+      },
+      start : { text : function(){return Locale.setting.prompt.start[APPLOC]},
+        de : "STARTEN",
+        en : "START",
+      },
+    },
+  },
+
   time : {
     week : { text : function(){return Locale.time.week[APPLOC]},
       de : "Woche des",

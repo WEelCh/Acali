@@ -9,6 +9,9 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="icon" href="data:,">
+    <!--<link rel="icon" type="image/x-icon" href="./favicon.ico">-->
+
     <!-- CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link rel="stylesheet" href="https://weelch.de/skeleton/css/weelch_v0.css">
@@ -62,11 +65,11 @@
             <h3 id="settings-headline-time" class="row smaller">
                 TIME
             </h3> 
-            <h3 id="settings-prompt-realtime" class="row"> Play with realistic time? </h3>
+            <h5 id="settings-prompt-realtime" class="row"> Play with realistic time? </h5>
             <input class="row" type="checkbox" id="realTime" name="realTime" value="realTime">
-            <h3 id="settings-prompt-startdate" class="row"> Play with start date offset? </h3>
+            <h5 id="settings-prompt-startdate" class="row"> Play with start date offset? </h5>
             <div class="row smaller">
-                <input class="column four offset-by-four" type="date" value="1018-07-22" id="startdate" name="STARTDATE" min="1018-01-01" max="2018-12-31" />
+                <input class="column eight offset-by-two" type="date" value="1756-01-01" id="startdate" name="STARTDATE" min="1756-01-01" max="1756-12-28" />
             </div>
         </div>
 
@@ -83,7 +86,7 @@
         </div>
 
         <div class="box" style="padding-bottom: 5mm;">
-            <h3 id="settings-prompt-cw" class="row"> Play with CW Events? </h3>
+            <h5 id="settings-prompt-cw" class="row"> Play with CW Events? </h5>
             <input class="row" type="checkbox" id="CW" name="CW" value="CW" checked="checked">
         </div>
 
@@ -116,7 +119,7 @@
             </div>
 
             <h5 id="id_date" class="row smaller nomargin"><i>
-                1. Januar anno 1745
+                ???
             </i></h5>
 
             <hr class="row smaller nomargin">
@@ -170,7 +173,7 @@
                 <h1 class="two column ltxt">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon lucide lucide-map-icon lucide-map"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></svg>
                 </h1>
-                <h1 class="eight column">
+                <h1 id="id_island_land" class="eight column">
                     Acali Island
                 </h1>
                 <h1 class="two column rtxt">

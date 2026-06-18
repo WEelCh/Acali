@@ -26,12 +26,11 @@ class GCdisplay { static Log = new Log("Display", "b");
     }
 
     static update_date ( isRealistic , date ) {
-        const startYear = 1756;
         var dateString;
         if (isRealistic) { 
-            dateString = `${date[2]+1}. ${Locale.time.month[date[1]].text()} anno ${startYear+date[0]}` 
+            dateString = `${date[2]+1}. ${Locale.time.month[date[1]].text()} anno ${date[0]}` 
         } else { 
-            dateString = `${date[2]+1}. ${Locale.time.week.text()} ${Locale.time.month[date[1]].text()} anno ${startYear+date[0]}` 
+            dateString = `${date[2]+1}. ${Locale.time.week.text()} ${Locale.time.month[date[1]].text()} anno ${date[0]}` 
         }
         document.getElementById( "id_date" ).innerHTML = dateString;
     }
@@ -58,9 +57,9 @@ class GCdisplay { static Log = new Log("Display", "b");
             document.getElementById( "id_prec_name" ).innerHTML = Locale.weather.state.prec[prec].text();
         }
 
-        return
+        
         // EFFECTS
-        document.getElementById( "id_weather_effects" ).innerHTML     = GAsset.SPACER;
+        /*document.getElementById( "id_weather_effects" ).innerHTML     = GAsset.SPACER;
         document.getElementById( "id_weather_arrow" ).innerHTML       = GAsset.SPACER;
         document.getElementById( "id_weather_afflictions" ).innerHTML = GAsset.SPACER;
         let effects = [0,0,0,0,0];
@@ -74,11 +73,12 @@ class GCdisplay { static Log = new Log("Display", "b");
                 document.getElementById( "id_weather_arrow" ).innerHTML += GAsset.effectAfflictionArrow.repeat(effects[i]);
                 document.getElementById( "id_weather_afflictions" ).innerHTML += GAsset.WEATHER_AFFLICTIONS[i].repeat(effects[i]);
             }
-        }
+        }*/
     }
 
     static #map_is_locked = false
     static update_map ( island ) {
+        document.getElementById('id_island_land').innerHTML = Locale.map.name.text();
         if (this.#map_is_locked) { 
             this.Log.error("map already displayed. you did something wrong calling this!") ; 
             return 
@@ -107,6 +107,24 @@ class GCdisplay { static Log = new Log("Display", "b");
             }
         }
     }
+
+
+    static update_settingLocals( ){
+        document.getElementById('settings-headline-map').innerHTML = Locale.setting.headline.map.text();
+
+        document.getElementById('settings-headline-time').innerHTML = Locale.setting.headline.time.text();
+        document.getElementById('settings-prompt-realtime').innerHTML = Locale.setting.prompt.realtime.text();
+        document.getElementById('settings-prompt-startdate').innerHTML = Locale.setting.prompt.startdate.text();
+
+        document.getElementById('settings-headline-weather').innerHTML = Locale.setting.headline.weather.text();
+
+        document.getElementById('settings-headline-events').innerHTML = Locale.setting.headline.events.text();
+
+        document.getElementById('settings-prompt-cw').innerHTML = Locale.setting.prompt.cw.text();
+
+        document.getElementById('settings-prompt-start').innerHTML = Locale.setting.prompt.start.text();
+    }
+
 
     static update_bg_onDayPhase(dayPhase) {
         const bgStates = ['state-sunrise', 'state-day', 'state-sunset', 'state-night'];

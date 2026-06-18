@@ -7,9 +7,9 @@ class GCtime { static Log = new Log( "GCtime" , "g" )
     static get dayTime  ( ) { return Math.floor( this.tick / 2 ) % 2 } // 0 = day
 
     static isRealistic = false;
-    static startDateOffset = [ 0 , 0 , 0 ];
+    static startDate = [ 0 , 0 , 0 ];
     static get timeLost ( ) { return this.#calcDatetime() }
-    static get date     ( ) { return this.#calcDatetime( this.startDateOffset ) }
+    static get date     ( ) { return this.#calcDatetime( this.startDate ) }
     static #calcDatetime ( offset = [ 0 , 0 , 0 ] ) {
         if (this.isRealistic) { 
             const dateTick = this.tick + offset[2]*4 + offset[1]*4*7*4 + offset[0]*4*7*4*12;
@@ -19,7 +19,7 @@ class GCtime { static Log = new Log( "GCtime" , "g" )
                 (Math.floor( dateTick           /4 ) %28 ) , // extra whole days
             ];
         } 
-        const dateTick = this.tick + offset[2]*0 + offset[1]*4*4 + offset[0]*4*4*12;
+        const dateTick = this.tick + Math.floor(offset[2]/7)*4 + offset[1]*4*4 + offset[0]*4*4*12;
         return [ 
              Math.floor( dateTick /12 /4 /4 )       , //       whole years
             (Math.floor( dateTick     /4 /4 ) %12 ) , // extra whole months

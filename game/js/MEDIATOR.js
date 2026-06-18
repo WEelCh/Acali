@@ -6,6 +6,8 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
     static selectable_events  = []
     
     static async onload ( ) { // prompt game settings
+        GCdisplay.update_settingLocals();
+
         const response = await fetch('scanner.php');
         const allModules = await response.json();
 
@@ -57,13 +59,12 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
     // =========================
     //  IS USER INPUT USEABLE ?
     // =========================
-        let WEATHER, MAP, MAPSIZE, EVENTS, DATE_OFFSET_W, DATE_OFFSET_D;
+        let WEATHER, MAP, MAPSIZE, EVENTS, START_DATE;
         try {
             WEATHER = document.querySelector('input[name="WEATHER"]:checked').value;
         } catch (e) {
             this.Log.error(e)
-            Popup.alertWarn( "" , "Please select a weather core." )
-            //window.alert( "No Weather core selected!" )
+            window.alert( "No Weather core selected!" )
             return }
         try {
             MAP = document.querySelector('input[name="MAP"]:checked').value;
@@ -74,9 +75,15 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
             window.alert( "No Map core selected or map size not in [1-25]!" )
             return }
         try {
-            DATE_OFFSET_D = Number(document.querySelector('input[name="DATE_OFFSET_D"]').value);
-            DATE_OFFSET_W = Number(document.querySelector('input[name="DATE_OFFSET_W"]').value);
-            if ((DATE_OFFSET_D<0 || DATE_OFFSET_D>6)||(DATE_OFFSET_W<0 || DATE_OFFSET_W>47)) { 
+            const dateString = document.querySelector('input[name="STARTDATE"]').value;
+            // Split by '-' and convert each string to a number
+            START_DATE = dateString.split('-').map(Number);
+            START_DATE[2]--; START_DATE[1]--;
+            this.Log.info(START_DATE)
+            //DATE_OFFSET_D = Number(document.querySelector('input[name="DATE_OFFSET_D"]').value);
+            //DATE_OFFSET_W = Number(document.querySelector('input[name="DATE_OFFSET_W"]').value);
+            this.Log.warn("TODO DATE CHECKER")
+            if (false) { 
                 throw new Error("Day offset not in [0-6] or Week offset not in [0-47]"); 
             }
         } catch (e) {
@@ -84,7 +91,9 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
             window.alert( "Day offset not in [0-6] or Week offset not in [0-47]" )
             return }
         EVENTS = document.querySelectorAll('input[name="EVENTS"]:checked');
-        if (EVENTS.length === 0) { window.alert( "No Module selected!" );return }
+        if (EVENTS.length === 0) { 
+            Popup.alertWarn( "No Module selected!" , "" );return 
+        }
         // yippie, start munchin
         document.getElementById( "id_container_load" ).style.display = "none";
     // ==================
@@ -94,7 +103,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
         GCevent.CW_allowed = document.querySelector('input[name="CW"]').checked;
         // *** realistic time and offset ***
         GCtime.isRealistic = document.querySelector('input[name="realTime"]').checked;
-        GCtime.startDateOffset = [ 0 , DATE_OFFSET_W , DATE_OFFSET_D ];
+        GCtime.startDate = START_DATE;
         // *** CORE :: WEATHER ***
         GCweather.loadWeatherSystem( this.selectable_weatherSystems[WEATHER].weatherSystem );
         // *** CORE :: MAP ***
