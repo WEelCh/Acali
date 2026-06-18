@@ -36,9 +36,10 @@
 
 
 
-<body onload="MEDIATOR.onload()" class="state-night">
+<body onload="MEDIATOR.onload()" class="state-ship">
 
     <div id="bg-container">
+        <div class="bg-layer ship"></div>
         <div class="bg-layer day"></div>
         <div class="bg-layer sunrise"></div>
         <div class="bg-layer sunset"></div>
@@ -49,7 +50,7 @@
 
 
         <div id="id_load_map" class="box" style="padding-bottom: 5mm;">
-            <h3 class="row smaller">
+            <h3 id="settings-headline-map" class="row smaller">
                 MAP
             </h3> 
             <div class="row">
@@ -58,39 +59,36 @@
         </div>
 
         <div id="" class="box" style="padding-bottom: 5mm;">
-            <h3 class="row smaller">
+            <h3 id="settings-headline-time" class="row smaller">
                 TIME
             </h3> 
-            <h3 class="row"> Play with realistic time? </h3>
+            <h3 id="settings-prompt-realtime" class="row"> Play with realistic time? </h3>
             <input class="row" type="checkbox" id="realTime" name="realTime" value="realTime">
-            <h3 class="row"> Play with start date offset? </h3>
+            <h3 id="settings-prompt-startdate" class="row"> Play with start date offset? </h3>
             <div class="row smaller">
-                <input class="column three" type="number" value="0" id="id_date_offset_w" name="DATE_OFFSET_W" min="0" max="47" />
-                <h5 class="column three">Weeks and</h5>
-                <input class="column three" type="number" value="0" id="id_date_offset_d" name="DATE_OFFSET_D" min="0" max="6" />
-                <h5 class="column three">Days</h5>
+                <input class="column four offset-by-four" type="date" value="1018-07-22" id="startdate" name="STARTDATE" min="1018-01-01" max="2018-12-31" />
             </div>
         </div>
 
         <div id="id_load_weather" class="box" style="padding-bottom: 5mm;">
-            <h3 class="row smaller">
+            <h3 id="settings-headline-weather" class="row smaller">
                 WEATHER
             </h3> 
         </div>
 
         <div id="id_load_events" class="box" style="padding-bottom: 5mm;">
-            <h3 class="row smaller">
+            <h3 id="settings-headline-events" class="row smaller">
                 EVENTS
             </h3> 
         </div>
 
         <div class="box" style="padding-bottom: 5mm;">
-            <h3 class="row"> Play with CW Events? </h3>
+            <h3 id="settings-prompt-cw" class="row"> Play with CW Events? </h3>
             <input class="row" type="checkbox" id="CW" name="CW" value="CW" checked="checked">
         </div>
 
         <div class="box" onclick="MEDIATOR.start()">
-            <h3 class="row smaller">
+            <h3 id="settings-prompt-start" class="row smaller">
                 START
             </h3> 
         </div>

@@ -46,12 +46,14 @@ body {
 }
 
 /* Assign the respective image assets */
-.bg-layer.day     { background-image: url('./img/bg_island_day.jpg'); }
+.bg-layer.ship    { background-image: url('./img/bg_ship.jpg'); }
+.bg-layer.day     { background-image: url('./img/bg_island_day.png'); }
 .bg-layer.sunrise { background-image: url('./img/bg_island_sunrise.png'); }
 .bg-layer.sunset  { background-image: url('./img/bg_island_sunset.png'); }
 .bg-layer.night   { background-image: url('./img/bg_island_night.png'); }
 
 /* State Controls: When a layer GAINS its active class */
+body.state-ship .bg-layer.ship,
 body.state-day .bg-layer.day,
 body.state-sunrise .bg-layer.sunrise,
 body.state-sunset .bg-layer.sunset,
