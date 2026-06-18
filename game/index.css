@@ -74,7 +74,7 @@ hr {
 p { font-family: 'Courier New', Courier, monospace, "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans; }
 
 
-svg.icon {
+svg.icon:not(.popup) {
     width: 1em;
     height: 1em;
     vertical-align: middle; /* works, but -0.125em often aligns perfectly with the text baseline */
@@ -83,6 +83,7 @@ svg.icon {
     color: var(--txtColor);
     fill: none;
 }
+svg.icon.popup { vertical-align: -0.125em; margin-bottom: 5px; }
 .inlineicon { vertical-align:text-bottom; }
 .smallicon { 
     width: 2.3rem;
