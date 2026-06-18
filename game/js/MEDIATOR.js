@@ -117,8 +117,9 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
         }
         // *** MAP ***
         GCmap.genIsland( MAPSIZE )
-        GCdisplay.update_map( GCmap.island )
-        this.Log.warn("TODO ASSIGN TILES") //GCmap.assignTiles()
+        GCdisplay.update_map( GCmap.island , this.triggerTile )
+        //this.Log.warn("TODO ASSIGN TILES") //
+        GCmap.assignTiles()
         // *** SOUND ***
         GCsound.prep()
     // ====================
@@ -150,6 +151,15 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
             GCweather.current.prec, GCweather.current.wind, GCweather.current.temp,
             GCtime.dayPhase, GCtime.moonPhase
         );
+    }
+
+    static triggerTile ( element ) { /* IS ASSIGNED TO onclick ; NAME ALL EXPLICITLY ! */
+        const id = element.currentTarget.id;
+        const row = id[4] ; const col = id[5];
+        MEDIATOR.Log.info(id, row, col, GCmap.island[row][col]);
+        // hand click info to GCevent to build the event
+        // hand the event over to GCdisplay to display (popup) and let players play
+        // hand event outcome to GCmap to change tags and ressources
     }
 
 

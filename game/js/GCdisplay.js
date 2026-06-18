@@ -77,7 +77,7 @@ class GCdisplay { static Log = new Log("Display", "b");
     }
 
     static #map_is_locked = false
-    static update_map ( island ) {
+    static update_map ( island , triggerFunc ) {
         document.getElementById('id_island_land').innerHTML = Locale.map.name.text();
         if (this.#map_is_locked) { 
             this.Log.error("map already displayed. you did something wrong calling this!") ; 
@@ -91,6 +91,8 @@ class GCdisplay { static Log = new Log("Display", "b");
                     document.getElementById( `tile${row}${tile}` ).outerHTML = "";
                     offset++;
                     continue; }
+                // every non water tile gets a trigger
+                document.getElementById( `tile${row}${tile}` ).onclick = triggerFunc;
                 if ( offset !== 0 ) { // non water needs to be offset
                     document.getElementById( `tile${row}${tile}` ).classList.add(`offset-by-${offset}-tile5`); }
                 if ( island[row][tile] === 1 ) { // is camp

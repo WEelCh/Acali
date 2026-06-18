@@ -187,7 +187,6 @@ class GCmap { static Log = new Log("Map", "c");
             tile.head.resources.gather = getRandomIntFromRange(tile.head.resources.gather);
             tile.head.resources.hunt   = getRandomIntFromRange(tile.head.resources.hunt);
             tile.head.resources.chop   = getRandomIntFromRange(tile.head.resources.chop);
-            tile.head.resources.ship   = getRandomIntFromRange(tile.head.resources.ship);
         }
 
         // ASSIGN TILES TO ISLAND
