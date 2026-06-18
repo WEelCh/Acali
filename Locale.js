@@ -51,6 +51,24 @@ const Locale = {
         en : "START",
       },
     },
+    error : {
+      no_weather_core : { text : function(){return Locale.setting.error.no_weather_core[APPLOC]},
+        de : "Es ist kein Wetter ausgewählt!",
+        en : "x",
+      },
+      no_map_core : { text : function(){return Locale.setting.error.no_map_core[APPLOC]},
+        de : "Es ist keine Karte ausgewählt, oder die Kartengröße ist nicht im Intervall [ 1 , 25 ]!",
+        en : "x",
+      },
+      no_event_core : { text : function(){return Locale.setting.error.no_event_core[APPLOC]},
+        de : "Mindestens ein Ereignispacket auswählen!",
+        en : "x",
+      },
+      wrong_startDate_format : { text : function(){return Locale.setting.error.wrong_startDate_format[APPLOC]},
+        de : "Bitte wähle ein legitimes Startdatum ( jeder Monat hat nur 28. Tage )",
+        en : "x",
+      },
+    }
   },
 
   time : {

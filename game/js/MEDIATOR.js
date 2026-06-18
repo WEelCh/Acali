@@ -63,16 +63,16 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
         try {
             WEATHER = document.querySelector('input[name="WEATHER"]:checked').value;
         } catch (e) {
-            this.Log.error(e)
-            window.alert( "No Weather core selected!" )
+            this.Log.warn(e)
+            Popup.alertWarn( Locale.setting.error.no_weather_core.text() , "" );
             return }
         try {
             MAP = document.querySelector('input[name="MAP"]:checked').value;
             MAPSIZE = document.querySelector('input[name="MAPSIZE"]').value;
             if (MAPSIZE<1 || MAPSIZE>25) { throw new Error("Mapsize not in [1-25]"); }
         } catch (e) {
-            this.Log.error(e)
-            window.alert( "No Map core selected or map size not in [1-25]!" )
+            this.Log.warn(e)
+            Popup.alertWarn( Locale.setting.error.no_map_core.text() , "" );
             return }
         try {
             const dateString = document.querySelector('input[name="STARTDATE"]').value;
@@ -82,17 +82,17 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
             this.Log.info(START_DATE)
             //DATE_OFFSET_D = Number(document.querySelector('input[name="DATE_OFFSET_D"]').value);
             //DATE_OFFSET_W = Number(document.querySelector('input[name="DATE_OFFSET_W"]').value);
-            this.Log.warn("TODO DATE CHECKER")
-            if (false) { 
-                throw new Error("Day offset not in [0-6] or Week offset not in [0-47]"); 
+            if ( START_DATE[1]<0 || START_DATE[1]>11 || START_DATE[2]<0 || START_DATE[2]>27 ) { 
+                throw new Error("Start Date not valid"); 
             }
         } catch (e) {
             this.Log.error(e)
-            window.alert( "Day offset not in [0-6] or Week offset not in [0-47]" )
+            Popup.alertWarn( Locale.setting.error.wrong_startDate_format.text() , "" );
             return }
         EVENTS = document.querySelectorAll('input[name="EVENTS"]:checked');
         if (EVENTS.length === 0) { 
-            Popup.alertWarn( "No Module selected!" , "" );return 
+            Popup.alertWarn( Locale.setting.error.no_event_core.text() , "" );
+            return 
         }
         // yippie, start munchin
         document.getElementById( "id_container_load" ).style.display = "none";
