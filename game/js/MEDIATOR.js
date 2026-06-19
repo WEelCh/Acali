@@ -23,7 +23,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
                     </h3>
                 </div>`
         }
-        this.Log.info("selectable_maps:",this.selectable_maps)
+        this.Log.debug("selectable_maps:",this.selectable_maps)
 
         for (const path of allModules.weather) {
             const mod = await import(`../${path}`);
@@ -37,7 +37,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
                     </h3>
                 </div>`
         }
-        this.Log.info("selectable_weatherSystems:",this.selectable_weatherSystems)
+        this.Log.debug("selectable_weatherSystems:",this.selectable_weatherSystems)
 
         for (const path of allModules.events) {
             const mod = await import(`../${path}`);
@@ -51,7 +51,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
                     </h3>
                 </div>`
         }
-        this.Log.info("selectable_weatherSystems:",this.selectable_weatherSystems)
+        this.Log.debug("selectable_weatherSystems:",this.selectable_weatherSystems)
         document.getElementById( "id_container_load" ).style.display = "block";
     }
 
@@ -111,14 +111,13 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
         // *** MOD ***
         for ( const events of EVENTS ) {
             // *** MOD :: EVENTS ***
-            GCevent.allSubevents = GCevent.allSubevents.concat( this.selectable_events[events.value].subevents );
+            GCevent.add( this.selectable_events[events.value].subevents )
             // *** MOD :: LOCATIONS ***
             GCmap.allTiles = GCmap.allTiles.concat( this.selectable_events[events.value].locations );
         }
         // *** MAP ***
         GCmap.genIsland( MAPSIZE )
         GCdisplay.update_map( GCmap.island , this.triggerTile )
-        //this.Log.warn("TODO ASSIGN TILES") //
         GCmap.assignTiles()
         // *** SOUND ***
         GCsound.prep()
@@ -133,6 +132,8 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
 
         document.getElementById( "id_container_game" ).style.opacity = "1";
     }
+
+
 
     static tick ( ) {
         let olddayTime = GCtime.dayTime;
@@ -152,6 +153,8 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
             GCtime.dayPhase, GCtime.moonPhase
         );
     }
+
+
 
     static triggerTile ( element ) { /* IS ASSIGNED TO onclick ; NAME ALL EXPLICITLY ! */
         const id = element.currentTarget.id;

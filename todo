@@ -1,3 +1,9 @@
+difficulty ( loot, degradation, env )
+using weatherObj, timeObj ????
+using event object
+
+
+
 GCdisplay
 GCmap locations
 GCevent (global?)

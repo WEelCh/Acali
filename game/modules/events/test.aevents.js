@@ -46,8 +46,8 @@ export default { type: "EVENTS", author, name, date, id, desc,
     subevents: [
         {
             head : {
-                type: "travel", // Valid values: "travel" | "weather" | "action" | "discovery"
                 spawn : {
+                    type: "travel", // Valid values: "travel" | "weather" | "action" | "discovery"
                     disabled : false, // disables this subevent
                     cw       : false, // content warning for especially distrubing or harmfull content
                     tags : {
@@ -111,6 +111,7 @@ export default { type: "EVENTS", author, name, date, id, desc,
                             en : "" ,
                         } ,
                         skillcheck : {
+                            target: "all",
                             type : "", // Valid values:  "" | "DEX" | "STR" | "WIS"
                             difficulty : [ 3 , 3 , 4 , 5 , 5 , 6], // one will be random selected
                         },

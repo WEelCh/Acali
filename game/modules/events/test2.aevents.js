@@ -15,8 +15,8 @@ export default { type: "EVENTS", author, name, date, id, desc,
     subevents: [
         {
             head : {
-                type: "travel", // Valid values: "travel" | "weather" | "action" | "discovery"
                 spawn : {
+                    type: "travel", // Valid values: "travel" | "weather" | "action" | "discovery"
                     disabled : false, // disables this subevent
                     cw       : false, // content warning for especially distrubing or harmfull content
                     tags : {
