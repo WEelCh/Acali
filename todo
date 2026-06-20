@@ -1,18 +1,21 @@
+
+EVENT LOOP AND TARGETING
+
 difficulty ( loot, degradation, env )
+
 using weatherObj, timeObj ????
 using event object
 
-
-
-GCdisplay
-GCmap locations
-GCevent (global?)
+GCevent ( weather subevents are global )
 GCsound fire
-Mediator
-Mediator: Localization
-Mediator: Popup 
+
+Localization ( Mediator, Errors ) 
 Mediator: game start settings looks trash
 
 modtool: cards, events, weather, map
 
-overlay bg images perfectly :()
+* Storyteller as default difficulty settings (RimWorld-esc)
+* () ersetzt ()()
+* not defect catory on items, but special icons instead (or to less return from more complexity?)
+* items destroyed by rain?
+* start loot in chests?
