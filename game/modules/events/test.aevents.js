@@ -59,14 +59,13 @@ export default { type: "EVENTS", author, name, date, id, desc,
                     },
                     // HINT: action only applies if type=="action"
                     action: "gathering", // "gathering" | "hunting" | "chopping"
-                    weight: {
-                        daytime : [ 1.0 , [ 1.0 , 1.0 , 1.0 , 1.0 ] ], // [ day , night (starts with losing moon) ] 
-                        weather : {
-                            temp : [ 1.0 , 1.0 , 1.0 , 1.0 , 1.0 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
-                            prec : [ 1.0 , 1.0 , 1.0 , 1.0 , 1.0 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
-                            wind : [ 1.0 , 1.0 , 1.0 , 1.0       ], // [ Calm   , Breeze   , Gale    , Storm          ]
-                        }, 
-                        season : [ 1.0 , 1.0 , 1.0 , 1.0 ] // starts with spring
+                    weight: 5, // spawn weight
+                    daytime : [ true , [ true , true , true , true ] ], // BOOL: [ day , night (starts with losing moon) ] 
+                    season : [ true , true , true , true ], // BOOL: starts with spring
+                    weather : {
+                        temp : [ true , true , true , true , true ], // BOOL: [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                        prec : [ true , true , true , true , true ], // BOOL: [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                        wind : [ true , true , true , true        ], // BOOL: [ Calm   , Breeze   , Gale    , Storm          ]
                     },
                     // array = [minDistance, maxDistance] inclusive
                     // Documented defaults for authors:
@@ -74,6 +73,8 @@ export default { type: "EVENTS", author, name, date, id, desc,
                     //   far      : [3, 4]
                     //   vary far : [5, 8] ( mind: most island wont even have this! )
                     distanceRange: [ 0 , 8 ],
+                    // spawns on tiles with yieldTier [0,3] in:
+                    yieldTierRange: [ 1 , 2 ],
                 }, 
             },
             body : {
