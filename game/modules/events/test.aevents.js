@@ -45,17 +45,20 @@ export default { type: "EVENTS", author, name, date, id, desc,
     // ===================================================================
     subevents: [
         {
+            // HINT: each group (all players visiting the same tile) gets one event
             head : {
                 spawn : {
-                    type: "travel", // Valid values: "travel" | "weather" | "action" | "discovery"
+                    // EDIT: I dropped discovery events
+                    // HINT: weather subevents will be determined globally per round, each groups gets the same (only makes sense)
+                    type: "travel", // "travel" | "weather" | "action" 
                     disabled : false, // disables this subevent
                     cw       : false, // content warning for especially distrubing or harmfull content
-                    tags : {
-                        require: ["wilderness"],  // tile must have ALL of these
-                        exclude: [],             // tile must have NONE of these
+                    flags : {
+                        require: ["wilderness"], // tile (and global) must have ALL of these
+                        exclude: [],             // tile (and global) must have NONE of these
                     },
-                    // Valid values: "gathering" | "hunting" | "chopping"
-                    action: "gathering",
+                    // HINT: action only applies if type=="action"
+                    action: "gathering", // "gathering" | "hunting" | "chopping"
                     weight: {
                         daytime : [ 1.0 , [ 1.0 , 1.0 , 1.0 , 1.0 ] ], // [ day , night (starts with losing moon) ] 
                         weather : {
@@ -79,16 +82,10 @@ export default { type: "EVENTS", author, name, date, id, desc,
                     en : "" ,
                 } ,
                 effects: {
-                    // Valid target values:
-                    //   "all" | "choice" |
-                    //   "highest_strength" | "lowest_strength"  |
-                    //   "highest_wisdom"   | "lowest_wisdom"    |
-                    //   "highest_dexterity"| "lowest_dexterity" |
-                    //   "most_exhausted"
-                    target: "all",
                     // Cards drawn from these resource decks (0 = draw nothing)
                     // added to location base value
-                    lootCards: {
+                    yield: { 
+                        // REMOVE TILE yield modifactors - cant do same action twice? And or tile modifications are a new selector for events? Makes narrativl more sense?
                         gathering: 0,
                         chopping:  0,
                         hunting:   0,
@@ -99,41 +96,59 @@ export default { type: "EVENTS", author, name, date, id, desc,
                         hunger:      0,
                         hypothermia: 0,
                         wound:       0,
+                        // Valid target values:
+                        //   "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
+                        //   "highest_strength" | "lowest_strength"  |
+                        //   "highest_wisdom"   | "lowest_wisdom"    |
+                        //   "highest_dexterity"| "lowest_dexterity" |
+                        //   "most_exhausted"   | "least_exhausted"  | 
+                        //   (also for hypo,hunger,wound)
+                        target: "all",
                     },
-                    // Persistent tag mutations on this tile for the remainder of the session.
-                    addTags:    [], // add tag to location
-                    removeTags: [], // remove tag from location
+                    // Persistent tag mutations on this tile/globally for the remainder of the session.
+                    flags: {
+                        addLocal     : [],
+                        removeLocal  : [],
+                        addGlobal    : [],
+                        removeGlobal : [],
+                    },
                 },
-                choices : [ // 2–3 choices. At least one unconditional (no requires); empty for no choices
+                options : [ // 1–3 choices. At least one unconditional (no requires); empty for no choices
                     {
                         description : { 
                             de : "" , 
                             en : "" ,
                         } ,
-                        skillcheck : {
+                        challenge : { // can be skillcheck and or keyword or nothing
+                            // Valid target values:
+                            //   "" / false for omit
+                            //   "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
+                            //   "highest_strength" | "lowest_strength"  |
+                            //   "highest_wisdom"   | "lowest_wisdom"    |
+                            //   "highest_dexterity"| "lowest_dexterity" |
+                            //   "most_exhausted"   | "least_exhausted"  | 
+                            //   (also for hypo,hunger,wound)
                             target: "all",
-                            type : "", // Valid values:  "" | "DEX" | "STR" | "WIS"
-                            difficulty : [ 3 , 3 , 4 , 5 , 5 , 6], // one will be random selected
+                            skillcheck : {
+                                type : "", // "" for omit | "DEX" | "STR" | "WIS"
+                                difficulty : [ 2 , 3 , 6], // random value will be chosen, players only get range
+                            },
+                            // if multiple are given: OR (in group settings also only one)
+                            useKeyword     : [], 
+                            consumeKeyword : [],
                         },
-                        neededKeyword : "", // the player needs a card with this keyword
+                        
+                        
                         onSuccess : {
                             description : { 
                                 de : "" , 
                                 en : "" ,
                             } ,
                             effects: {
-                                // Valid target values:
-                                //   "all" | "choice" |
-                                //   "highest_strength" | "lowest_strength"  |
-                                //   "highest_wisdom"   | "lowest_wisdom"    |
-                                //   "highest_dexterity"| "lowest_dexterity" |
-                                //   "most_exhausted"   | "most_wounded"     | 
-                                //   "most_hungry"      | "most_hypothermia" | and also least
-                                // Ties resolved by coin throw (never group choice).
-                                target: "all",
                                 // Cards drawn from these resource decks (0 = draw nothing)
                                 // added to location base value
-                                lootCards: {
+                                yield: { 
+                                    // REMOVE TILE yield modifactors - cant do same action twice? And or tile modifications are a new selector for events? Makes narrativl more sense?
                                     gathering: 0,
                                     chopping:  0,
                                     hunting:   0,
@@ -144,10 +159,23 @@ export default { type: "EVENTS", author, name, date, id, desc,
                                     hunger:      0,
                                     hypothermia: 0,
                                     wound:       0,
+                                    // Valid target values:
+                                    //   "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
+                                    //   "highest_strength" | "lowest_strength"  |
+                                    //   "highest_wisdom"   | "lowest_wisdom"    |
+                                    //   "highest_dexterity"| "lowest_dexterity" |
+                                    //   "most_exhausted"   | "least_exhausted"  | 
+                                    //   (also for hypo,hunger,wound)
+                                    target: "all",
+                                    onlyParticipants: false,
                                 },
-                                // Persistent tag mutations on this tile for the remainder of the session.
-                                addTags:    [], // add tag to location
-                                removeTags: [], // remove tag from location
+                                // Persistent tag mutations on this tile/globally for the remainder of the session.
+                                flags: {
+                                    addLocal     : [],
+                                    removeLocal  : [],
+                                    addGlobal    : [],
+                                    removeGlobal : [],
+                                },
                             },
                         },
                         onFailure : {
@@ -156,17 +184,10 @@ export default { type: "EVENTS", author, name, date, id, desc,
                                 en : "" ,
                             } ,
                             effects: {
-                                // Valid target values:
-                                //   "all" | "choice" |
-                                //   "highest_strength" | "lowest_strength"  |
-                                //   "highest_wisdom"   | "lowest_wisdom"    |
-                                //   "highest_dexterity"| "lowest_dexterity" |
-                                //   "most_exhausted"
-                                // Ties resolved by coin throw (never group choice).
-                                target: "all",
                                 // Cards drawn from these resource decks (0 = draw nothing)
                                 // added to location base value
-                                lootCards: {
+                                yield: { 
+                                    // REMOVE TILE yield modifactors - cant do same action twice? And or tile modifications are a new selector for events? Makes narrativl more sense?
                                     gathering: 0,
                                     chopping:  0,
                                     hunting:   0,
@@ -177,10 +198,23 @@ export default { type: "EVENTS", author, name, date, id, desc,
                                     hunger:      0,
                                     hypothermia: 0,
                                     wound:       0,
+                                    // Valid target values:
+                                    //   "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
+                                    //   "highest_strength" | "lowest_strength"  |
+                                    //   "highest_wisdom"   | "lowest_wisdom"    |
+                                    //   "highest_dexterity"| "lowest_dexterity" |
+                                    //   "most_exhausted"   | "least_exhausted"  | 
+                                    //   (also for hypo,hunger,wound)
+                                    target: "all",
+                                    onlyParticipants: true,
                                 },
-                                // Persistent tag mutations on this tile for the remainder of the session.
-                                addTags:    [], // add tag to location
-                                removeTags: [], // remove tag from location
+                                // Persistent tag mutations on this tile/globally for the remainder of the session.
+                                flags: {
+                                    addLocal     : [],
+                                    removeLocal  : [],
+                                    addGlobal    : [],
+                                    removeGlobal : [],
+                                },
                             },
                         },
                     },

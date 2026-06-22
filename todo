@@ -19,3 +19,11 @@ modtool: cards, events, weather, map
 * not defect catory on items, but special icons instead (or to less return from more complexity?)
 * items destroyed by rain?
 * start loot in chests?
+
+
+
+
+
+
+rethink TILE YIELD MOD: cant do same twice? Or tile resource quality as event selector?
+
