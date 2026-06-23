@@ -140,6 +140,8 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
         GCtime.progress();
         if (GCtime.dayTime != olddayTime) {
             GCweather.progress( GCtime.dayTime , GCtime.season );
+            GCsound.weather(
+                GCtime.dayTime, GCweather.current.temp, GCweather.current.prec, GCweather.current.wind )
         }
 
         GCdisplay.update_bg_onDayPhase(GCtime.dayPhase);
