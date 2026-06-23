@@ -20,10 +20,4 @@ modtool: cards, events, weather, map
 * items destroyed by rain?
 * start loot in chests?
 
-
-
-
-
-
-rethink TILE YIELD MOD: cant do same twice? Or tile resource quality as event selector?
-
+MEDIATOR: import all js modules ??? --> data intensive (need to check)
