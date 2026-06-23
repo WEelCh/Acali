@@ -21,3 +21,7 @@ modtool: cards, events, weather, map
 * start loot in chests?
 
 MEDIATOR: import all js modules ??? --> data intensive (need to check)
+
+
++ yield could be emergent property of tag system ??? (instead of three different resource yield ranges)
++ event difficulty system (percentage vaues instead of range ?)

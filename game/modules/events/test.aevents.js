@@ -9,17 +9,18 @@ export default { type: "EVENTS", author, name, date, id, desc,
     locations: [
         {
             head : {
-                tags  : [ "" ],
+                tags  : [ "wilderness","water" ],
                 spawn: {
                     disabled : false, // disables this location
                     weight: 10,
                     min:  0, // min tiles of this template per map
                     max: 99, // max tiles of this template per map
                 },
-                resources: { 
-                    gather: [ 2 , 3 ],
-                    hunt:   [ 2 , 3 ],
-                    chop:   [ 3 , 4 ],
+                resources: { // NEW TIER BASED SYSTEM (weight seletion)
+                    //        low medium high
+                    gather: [ 0 , 1 ,    1 ],
+                    hunt:   [ 1 , 1 ,    1 ],
+                    chop:   [ 1 , 1 ,    1 ],
                 },
             }, 
             body : {
@@ -53,12 +54,19 @@ export default { type: "EVENTS", author, name, date, id, desc,
                     type: "travel", // "travel" | "weather" | "action" 
                     disabled : false, // disables this subevent
                     cw       : false, // content warning for especially distrubing or harmfull content
+                    difficulty : 0, // easy, normal, harsh, brutal TODO
+                    tags : {
+                        require: ["wilderness"], // tile must have ALL of these
+                        exclude: [],             // tile must have NONE of these
+                    },
                     flags : {
-                        require: ["wilderness"], // tile (and global) must have ALL of these
+                        require: ["dear_hunted"], // tile (and global) must have ALL of these //OPTION TO MAKE MODULE SPECIFIC
                         exclude: [],             // tile (and global) must have NONE of these
                     },
-                    // HINT: action only applies if type=="action"
-                    action: "gathering", // "gathering" | "hunting" | "chopping"
+                    // HINT: only applies if type=="action"
+                        action: "gathering", // "gathering" | "hunting" | "chopping"
+                        // spawns on tiles with yieldTier [0,3] in:
+                        yieldTierRange: [ 1 , 2 ],
                     weight: 5, // spawn weight
                     daytime : [ true , [ true , true , true , true ] ], // BOOL: [ day , night (starts with losing moon) ] 
                     season : [ true , true , true , true ], // BOOL: starts with spring
@@ -73,8 +81,7 @@ export default { type: "EVENTS", author, name, date, id, desc,
                     //   far      : [3, 4]
                     //   vary far : [5, 8] ( mind: most island wont even have this! )
                     distanceRange: [ 0 , 8 ],
-                    // spawns on tiles with yieldTier [0,3] in:
-                    yieldTierRange: [ 1 , 2 ],
+                    
                 }, 
             },
             body : {
@@ -83,10 +90,7 @@ export default { type: "EVENTS", author, name, date, id, desc,
                     en : "" ,
                 } ,
                 effects: {
-                    // Cards drawn from these resource decks (0 = draw nothing)
-                    // added to location base value
-                    yield: { 
-                        // REMOVE TILE yield modifactors - cant do same action twice? And or tile modifications are a new selector for events? Makes narrativl more sense?
+                    yield: { // Cards drawn from these resource decks (0 = draw nothing)
                         gathering: 0,
                         chopping:  0,
                         hunting:   0,
@@ -224,55 +228,3 @@ export default { type: "EVENTS", author, name, date, id, desc,
         },
     ]
 }  
-    /*
-        [
-        {
-            head : {
-                type : "" ,
-                spawn : {
-                    disabled : false,
-                    nsfw     : false,
-                    flags : {
-                        enabler  : [
-                            "", ],
-                        disabler : [
-                            "", ], },
-                    // ONLY ONE LOCATION !
-                    location : "Camp Ship Forest Meadow River Hill Cave MeinGebiet",
-                    // ONLY ONE ACTION ! (ignored for Camp & Ship)
-                    action   : "Gathering Hunting Chopping",
-                    daytime : { // modifier for weather values
-                        day   : 1.0 ,
-                        night : [ // startet bei neumond
-                            1.0 ,
-                            1.0 ,
-                            1.0 ,
-                            1.0 , ], },
-                    weather : { // 10 5 3 1
-                        Clear        : 10 ,
-                        ClearWindy   : 10 ,
-                        Cloudy       : 10 ,
-                        CloudyWindy  : 10 ,
-                        Drizzle      : 10 ,
-                        DrizzleWindy : 10 ,
-                        DrizzleStormy: 10 ,
-                        Rain         : 10 ,
-                        RainWindy    : 10 ,
-                        RainStormy   : 10 ,
-                        Fog          : 10 ,
-                        FogCloudy    : 10 , }, }, },
-            body : {
-
-            },
-
-
-
-
-        },
-
-    ]
-
-
-    
-    };
-})()); */
