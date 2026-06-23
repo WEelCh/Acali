@@ -17,7 +17,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
             const index = this.selectable_weatherSystems.length-1
             document.getElementById( "id_load_weather" ).innerHTML += /*html*/`
                 <div class="row smaller">
-                    <input class="column two" type="radio" id="WEATHER_${index}" name="WEATHER" value="${index}" checked="checked">
+                    <input class="column two" type="radio" id="WEATHER_${index}" name="WEATHER" value="${index}">
                     <h3 class="column nine ltxt">
                         ${mod.default.name}
                     </h3>
@@ -31,7 +31,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
             const index = this.selectable_events.length-1
             document.getElementById( "id_load_events" ).innerHTML += /*html*/`
                 <div class="row smaller">
-                    <input class="column two" type="checkbox" id="MOD_${index}" name="EVENTS" value="${index}" checked="checked">
+                    <input class="column two" type="checkbox" id="MOD_${index}" name="EVENTS" value="${index}">
                     <h3 class="column nine ltxt">
                     ${mod.default.name}
                     </h3>
@@ -144,7 +144,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
     static triggerTile ( element ) { /* IS ASSIGNED TO onclick ; NAME ALL EXPLICITLY ! */
         const id = element.currentTarget.id;
         const row = id[4] ; const col = id[5];
-        MEDIATOR.Log.info(id, row, col, GCmap.island[row][col]);
+        MEDIATOR.Log.info(id, row, col, GCmap.island[row][col].body.name);
         // hand click info to GCevent to build the event
         // hand the event over to GCdisplay to display (popup) and let players play
         // hand event outcome to GCmap to change tags and ressources

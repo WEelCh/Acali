@@ -1,7 +1,7 @@
 
 EVENT LOOP AND TARGETING
 
-difficulty ( loot, degradation, env )
+difficulty ( loot, degradation, env, severity )
 
 using weatherObj, timeObj ????
 using event object

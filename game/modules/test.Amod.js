@@ -3,24 +3,27 @@ const author = "WEelCh";
 const name   = "Default";
 const date   = "260617"; 
 const id     = `${author}_${name}_${date}`;
-const desc   = "";
+const desc   = { 
+    de : "" , 
+    en : "" ,
+};
 
-export default { type: "EVENTS", author, name, date, id, desc,
+export default { author, name, date, id, desc,
+    // ===================================================================
+    // LOCATIONS
+    // ===================================================================
     locations: [
         {
             head : {
-                tags  : [ "wilderness","water" ],
+                tags  : [ "wilderness" , "water" ],
                 spawn: {
-                    disabled : false, // disables this location
-                    weight: 10,
-                    min:  0, // min tiles of this template per map
-                    max: 99, // max tiles of this template per map
+                    disabled : false,
+                    weight: 10, min:  0,  max: 99,
                 },
-                resources: { // NEW TIER BASED SYSTEM (weight seletion)
-                    //        low medium high
-                    gather: [ 0 , 1 ,    1 ],
-                    hunt:   [ 1 , 1 ,    1 ],
-                    chop:   [ 1 , 1 ,    1 ],
+                resources: {// low mid high ( weighted distribution )
+                    gather: [  0 , 1 , 1  ],
+                    hunt:   [  1 , 1 , 1  ],
+                    chop:   [  1 , 1 , 1  ],
                 },
             }, 
             body : {
@@ -42,103 +45,98 @@ export default { type: "EVENTS", author, name, date, id, desc,
     ],
 
     // ===================================================================
-    // SUBEVENT
+    // SUBEVENTS
     // ===================================================================
     subevents: [
         {
-            // HINT: each group (all players visiting the same tile) gets one event
             head : {
                 spawn : {
-                    // EDIT: I dropped discovery events
-                    // HINT: weather subevents will be determined globally per round, each groups gets the same (only makes sense)
-                    type: "travel", // "travel" | "weather" | "action" 
-                    disabled : false, // disables this subevent
-                    cw       : false, // content warning for especially distrubing or harmfull content
-                    difficulty : 0, // easy, normal, harsh, brutal TODO
+                    type     : "travel",// "travel" | "weather" | "action" 
+                    actionConfig: { // only applies if (type=="action")
+                        action: "gathering",        // "gathering" | "hunting" | "chopping"
+                        yieldTierRange: [ 1 , 2 ],  // spawns on tiles with yield<action>Tier [ 0 - 2 ]
+                    },
+                    weight   : 5,       // [ 1 - 10 ]
+                    disabled : false,   // disables this subevent
+                    cw       : false,   // players can disable events with content warning for especially distrubing / harmfull content
+                    severity : 0,       // 0:forgiving | 1:standard | 2:harsh | 3:brutal
                     tags : {
-                        require: ["wilderness"], // tile must have ALL of these
-                        exclude: [],             // tile must have NONE of these
+                        require: [ "wilderness" ], // tile must have ALL of these tags
+                        exclude: [  ], // tile must have NONE of these tags
                     },
                     flags : {
-                        require: ["dear_hunted"], // tile (and global) must have ALL of these //OPTION TO MAKE MODULE SPECIFIC
-                        exclude: [],             // tile (and global) must have NONE of these
+                        require: [ "dear_hunted" ], // tile (and global) must have ALL of these
+                        exclude: [  ], // tile (and global) must have NONE of these
                     },
-                    // HINT: only applies if type=="action"
-                        action: "gathering", // "gathering" | "hunting" | "chopping"
-                        // spawns on tiles with yieldTier [0,3] in:
-                        yieldTierRange: [ 1 , 2 ],
-                    weight: 5, // spawn weight
-                    daytime : [ true , [ true , true , true , true ] ], // BOOL: [ day , night (starts with losing moon) ] 
-                    season : [ true , true , true , true ], // BOOL: starts with spring
+                    daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                    season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
                     weather : {
-                        temp : [ true , true , true , true , true ], // BOOL: [ Arctic , Freezing , Cold    , Medium , Warm  ]
-                        prec : [ true , true , true , true , true ], // BOOL: [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
-                        wind : [ true , true , true , true        ], // BOOL: [ Calm   , Breeze   , Gale    , Storm          ]
+                        temp : [ true , true , true , true , true ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                        prec : [ true , true , true , true , true ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                        wind : [ true , true , true , true        ], // [ Calm   , Breeze   , Gale    , Storm          ]
                     },
-                    // array = [minDistance, maxDistance] inclusive
-                    // Documented defaults for authors:
-                    //   near     : [0, 2] ( mind: 0 is camp )
-                    //   far      : [3, 4]
-                    //   vary far : [5, 8] ( mind: most island wont even have this! )
-                    distanceRange: [ 0 , 8 ],
-                    
+                    // Orientation: near     : [0, 2] ( 0 is camp )
+                    //              far      : [3, 4]
+                    //              vary far : [5, 8] ( most island wont even have this! )
+                    distanceRange: [ 0 , 8 ], // [minDistance, maxDistance]
                 }, 
             },
             body : {
                 description : { 
                     de : "" , 
                     en : "" ,
-                } ,
+                },
                 effects: {
-                    yield: { // Cards drawn from these resource decks (0 = draw nothing)
+                    yield: { // cards drawn from resource decks
                         gathering: 0,
                         chopping:  0,
                         hunting:   0,
                         ship:      0,
                     },
-                    afflictions: { // negative values mean healing
+                    afflictions: { // neg means healing
                         exhaustion:  1,
                         hunger:      0,
                         hypothermia: 0,
                         wound:       0,
-                        // Valid target values:
-                        //   "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
-                        //   "highest_strength" | "lowest_strength"  |
-                        //   "highest_wisdom"   | "lowest_wisdom"    |
-                        //   "highest_dexterity"| "lowest_dexterity" |
-                        //   "most_exhausted"   | "least_exhausted"  | 
-                        //   (also for hypo,hunger,wound)
-                        target: "all",
+                        // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" |
+                        // "highest_str" | "lowest_str" | 
+                        // "highest_wis" | "lowest_wis" | 
+                        // "highest_dex" | "lowest_dex" |
+                        // "most_exhausted"   | "least_exhausted"   | 
+                        // "most_hypothermia" | "least_hypothermia" | 
+                        // "most_hunger"      | "least_hunger       | 
+                        // "most_wound"       | "least_wound"
+                        target: "singleForced",
                     },
-                    // Persistent tag mutations on this tile/globally for the remainder of the session.
                     flags: {
-                        addLocal     : [],
-                        removeLocal  : [],
-                        addGlobal    : [],
-                        removeGlobal : [],
+                        addLocal     : [  ],
+                        removeLocal  : [  ],
+                        addGlobal    : [  ],
+                        removeGlobal : [  ],
                     },
                 },
-                options : [ // 1–3 choices. At least one unconditional (no requires); empty for no choices
+                options : [ // 0-3 options (at least one without keyword needs)
                     {
                         description : { 
                             de : "" , 
                             en : "" ,
                         } ,
-                        challenge : { // can be skillcheck and or keyword or nothing
-                            // Valid target values:
-                            //   "" / false for omit
-                            //   "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
-                            //   "highest_strength" | "lowest_strength"  |
-                            //   "highest_wisdom"   | "lowest_wisdom"    |
-                            //   "highest_dexterity"| "lowest_dexterity" |
-                            //   "most_exhausted"   | "least_exhausted"  | 
-                            //   (also for hypo,hunger,wound)
-                            target: "all",
+                        challenge : { // (skillcheck and/or keyword) or nothing
+                            // to omit: "" |
+                            // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" |
+                            // "highest_str" | "lowest_str" | 
+                            // "highest_wis" | "lowest_wis" | 
+                            // "highest_dex" | "lowest_dex" |
+                            // "most_exhausted"   | "least_exhausted"   | 
+                            // "most_hypothermia" | "least_hypothermia" | 
+                            // "most_hunger"      | "least_hunger       | 
+                            // "most_wound"       | "least_wound"
+                            target: "",
                             skillcheck : {
-                                type : "", // "" for omit | "DEX" | "STR" | "WIS"
-                                difficulty : [ 2 , 3 , 6], // random value will be chosen, players only get range
+                                type : "", // to omit: "" | "dex" | "str" | "wis"
+                                difficulty : [ 2 , 3 , 6], // custom dice (players only get range)
                             },
-                            // if multiple are given: OR (in group settings also only one)
+                            // group: still only one ; players need one of the stated (OR)
                             useKeyword     : [], 
                             consumeKeyword : [],
                         },
@@ -150,36 +148,33 @@ export default { type: "EVENTS", author, name, date, id, desc,
                                 en : "" ,
                             } ,
                             effects: {
-                                // Cards drawn from these resource decks (0 = draw nothing)
-                                // added to location base value
-                                yield: { 
-                                    // REMOVE TILE yield modifactors - cant do same action twice? And or tile modifications are a new selector for events? Makes narrativl more sense?
+                                yield: { // cards drawn from resource decks
                                     gathering: 0,
                                     chopping:  0,
                                     hunting:   0,
                                     ship:      0,
                                 },
-                                afflictions: { // negative values mean healing
+                                afflictions: { // neg means healing
                                     exhaustion:  1,
                                     hunger:      0,
                                     hypothermia: 0,
                                     wound:       0,
-                                    // Valid target values:
-                                    //   "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
-                                    //   "highest_strength" | "lowest_strength"  |
-                                    //   "highest_wisdom"   | "lowest_wisdom"    |
-                                    //   "highest_dexterity"| "lowest_dexterity" |
-                                    //   "most_exhausted"   | "least_exhausted"  | 
-                                    //   (also for hypo,hunger,wound)
-                                    target: "all",
+                                    // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" |
+                                    // "highest_str" | "lowest_str" | 
+                                    // "highest_wis" | "lowest_wis" | 
+                                    // "highest_dex" | "lowest_dex" |
+                                    // "most_exhausted"   | "least_exhausted"   | 
+                                    // "most_hypothermia" | "least_hypothermia" | 
+                                    // "most_hunger"      | "least_hunger       | 
+                                    // "most_wound"       | "least_wound"
+                                    target: "singleForced",
                                     onlyParticipants: false,
                                 },
-                                // Persistent tag mutations on this tile/globally for the remainder of the session.
                                 flags: {
-                                    addLocal     : [],
-                                    removeLocal  : [],
-                                    addGlobal    : [],
-                                    removeGlobal : [],
+                                    addLocal     : [  ],
+                                    removeLocal  : [  ],
+                                    addGlobal    : [  ],
+                                    removeGlobal : [  ],
                                 },
                             },
                         },
@@ -189,36 +184,33 @@ export default { type: "EVENTS", author, name, date, id, desc,
                                 en : "" ,
                             } ,
                             effects: {
-                                // Cards drawn from these resource decks (0 = draw nothing)
-                                // added to location base value
-                                yield: { 
-                                    // REMOVE TILE yield modifactors - cant do same action twice? And or tile modifications are a new selector for events? Makes narrativl more sense?
+                                yield: { // cards drawn from resource decks
                                     gathering: 0,
                                     chopping:  0,
                                     hunting:   0,
                                     ship:      0,
                                 },
-                                afflictions: { // negative values mean healing
+                                afflictions: { // neg means healing
                                     exhaustion:  1,
                                     hunger:      0,
                                     hypothermia: 0,
                                     wound:       0,
-                                    // Valid target values:
-                                    //   "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
-                                    //   "highest_strength" | "lowest_strength"  |
-                                    //   "highest_wisdom"   | "lowest_wisdom"    |
-                                    //   "highest_dexterity"| "lowest_dexterity" |
-                                    //   "most_exhausted"   | "least_exhausted"  | 
-                                    //   (also for hypo,hunger,wound)
-                                    target: "all",
-                                    onlyParticipants: true,
+                                    // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" |
+                                    // "highest_str" | "lowest_str" | 
+                                    // "highest_wis" | "lowest_wis" | 
+                                    // "highest_dex" | "lowest_dex" |
+                                    // "most_exhausted"   | "least_exhausted"   | 
+                                    // "most_hypothermia" | "least_hypothermia" | 
+                                    // "most_hunger"      | "least_hunger       | 
+                                    // "most_wound"       | "least_wound"
+                                    target: "singleForced",
+                                    onlyParticipants: false,
                                 },
-                                // Persistent tag mutations on this tile/globally for the remainder of the session.
                                 flags: {
-                                    addLocal     : [],
-                                    removeLocal  : [],
-                                    addGlobal    : [],
-                                    removeGlobal : [],
+                                    addLocal     : [  ],
+                                    removeLocal  : [  ],
+                                    addGlobal    : [  ],
+                                    removeGlobal : [  ],
                                 },
                             },
                         },
