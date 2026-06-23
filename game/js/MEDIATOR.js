@@ -11,20 +11,6 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
         const response = await fetch('scanner.php');
         const allModules = await response.json();
 
-        for (const path of allModules.map) { break;
-            const mod = await import(`../${path}`);
-            this.selectable_maps.push(mod.default);
-            const index = this.selectable_maps.length-1
-            document.getElementById( "id_load_map" ).innerHTML += /*html*/`
-                <div class="row smaller">
-                    <input class="column two" type="radio" id="MAP_${index}" name="MAP" value="${index}" checked="checked">
-                    <h3 class="column nine ltxt">
-                        ${mod.default.name}
-                    </h3>
-                </div>`
-        }
-        //this.Log.debug("selectable_maps:",this.selectable_maps)
-
         for (const path of allModules.weather) {
             const mod = await import(`../${path}`);
             this.selectable_weatherSystems.push(mod.default);
@@ -59,7 +45,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
     // =========================
     //  IS USER INPUT USEABLE ?
     // =========================
-        let WEATHER, MAP, MAPSIZE, EVENTS, START_DATE;
+        let WEATHER, MAPSIZE, EVENTS, START_DATE;
         try {
             WEATHER = document.querySelector('input[name="WEATHER"]:checked').value;
         } catch (e) {
@@ -67,7 +53,6 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
             Popup.alertWarn( Locale.setting.error.no_weather_core.text() , "" );
             return }
         try {
-            MAP = document.querySelector('input[name="MAP"]:checked').value;
             MAPSIZE = document.querySelector('input[name="MAPSIZE"]').value;
             if (MAPSIZE<1 || MAPSIZE>25) { throw new Error("Mapsize not in [1-25]"); }
         } catch (e) {
@@ -106,8 +91,6 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
         GCtime.startDate = START_DATE;
         // *** CORE :: WEATHER ***
         GCweather.loadWeatherSystem( this.selectable_weatherSystems[WEATHER].weatherSystem );
-        // *** CORE :: MAP ***
-        GCmap.allTiles = this.selectable_maps[MAP].locations;
         // *** MOD ***
         for ( const events of EVENTS ) {
             // *** MOD :: EVENTS ***
