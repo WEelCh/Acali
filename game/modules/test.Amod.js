@@ -15,7 +15,7 @@ export default { author, name, date, id, desc,
     locations: [
         {
             head : {
-                tags  : [ "wilderness" , "water" ],
+                tags  : [ "" ],
                 spawn: {
                     disabled : false,
                     weight: 10, min:  0,  max: 99,
@@ -51,29 +51,29 @@ export default { author, name, date, id, desc,
         {
             head : {
                 spawn : {
-                    type     : "travel",// "travel" | "weather" | "action" 
+                    type     : "", // "travel" | "weather" | "action" 
                     actionConfig: { // only applies if (type=="action")
-                        action: "gathering",        // "gathering" | "hunting" | "chopping"
-                        yieldTierRange: [ 1 , 2 ],  // spawns on tiles with yield<action>Tier [ 0 - 2 ]
+                        action: "", // "gathering" | "hunting" | "chopping"
+                        yieldTierRange: [ 1 , 2 ],  // spawns on tiles with yield<action>Tier [ 0-2 ]
                     },
-                    weight   : 5,       // [ 1 - 10 ]
+                    weight   : 5,       // [ 1-10 ]
                     disabled : false,   // disables this subevent
                     cw       : false,   // players can disable events with content warning for especially distrubing / harmfull content
                     severity : 0,       // 0:forgiving | 1:standard | 2:harsh | 3:brutal
                     tags : {
-                        require: [ "wilderness" ], // tile must have ALL of these tags
+                        require: [  ], // tile must have ALL of these tags
                         exclude: [  ], // tile must have NONE of these tags
                     },
                     flags : {
-                        require: [ "dear_hunted" ], // tile (and global) must have ALL of these
+                        require: [  ], // tile (and global) must have ALL of these
                         exclude: [  ], // tile (and global) must have NONE of these
                     },
                     daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
                     season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
                     weather : {
-                        temp : [ true , true , true , true , true ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
-                        prec : [ true , true , true , true , true ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
-                        wind : [ true , true , true , true        ], // [ Calm   , Breeze   , Gale    , Storm          ]
+                        temp : [ 0 , 4 ], // range [ 0-4 ]: [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                        prec : [ 0 , 4 ], // range [ 0-4 ]: [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                        wind : [ 0 , 3 ], // range [ 0-3 ]: [ Calm   , Breeze   , Gale    , Storm          ]
                     },
                     // Orientation: near     : [0, 2] ( 0 is camp )
                     //              far      : [3, 4]
@@ -115,6 +115,7 @@ export default { author, name, date, id, desc,
                         removeGlobal : [  ],
                     },
                 },
+                // weather type events' options are never used!
                 options : [ // 0-3 options (at least one without keyword needs)
                     {
                         description : { 
