@@ -12,7 +12,7 @@ GCsound fire
 Localization ( Mediator, Errors ) 
 Mediator: game start settings looks trash
 
-modtool: cards, events, weather, map
+modtool: cards, events, weather, map --> started implementing "spawn new event"
 
 * Storyteller as default difficulty settings (RimWorld-esc)
 * () ersetzt ()()
