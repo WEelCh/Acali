@@ -8,7 +8,7 @@ const description = {
     en : "" ,
 };
 
-export default { meta : { author, name, date, id, description },
+const TEMPLATE = { meta : { author, name, date, id, description },
     // ===================================================================
     // LOCATIONS
     // ===================================================================
@@ -48,8 +48,8 @@ export default { meta : { author, name, date, id, description },
     // ===================================================================
     subevents: [
         {
+            title : "", // work title
             head : {
-                title : "", // work title
                 spawn : {
                     type     : "", // "travel" | "weather" | "action" 
                     actionConfig: { // only applies if (type=="action")
