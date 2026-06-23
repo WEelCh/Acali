@@ -11,7 +11,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
         const response = await fetch('scanner.php');
         const allModules = await response.json();
 
-        for (const path of allModules.map) {
+        for (const path of allModules.map) { break;
             const mod = await import(`../${path}`);
             this.selectable_maps.push(mod.default);
             const index = this.selectable_maps.length-1
@@ -23,7 +23,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
                     </h3>
                 </div>`
         }
-        this.Log.debug("selectable_maps:",this.selectable_maps)
+        //this.Log.debug("selectable_maps:",this.selectable_maps)
 
         for (const path of allModules.weather) {
             const mod = await import(`../${path}`);
