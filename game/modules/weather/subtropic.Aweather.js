@@ -3,9 +3,12 @@ const author = "WEelCh";
 const name   = "Subtropic";
 const date   = "250620"; 
 const id     = `${author}_${name}_${date}`;
-const desc   = "";
+const description = { 
+    de : "" , 
+    en : "" ,
+};
 
-export default { type: "WEATHER", author, name, date, id, desc,
+export default { meta : { author, name, date, id, description },
     weatherSystem : {
 
         start : {
