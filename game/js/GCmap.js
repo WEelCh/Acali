@@ -236,7 +236,7 @@ class GCmap { static Log = new Log("Map", "c");
         for (let r = 0; r < this.size; r++) {
             for (let c = 0; c < this.size; c++) {
                 if (this.island[r][c] == -1 || this.island[r][c] == 1) { continue }
-                this.island[r][c].head.distance = distances[r][c];
+                this.island[r][c].head.spawn.distance = distances[r][c];
             } 
         }
 
