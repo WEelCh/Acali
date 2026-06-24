@@ -240,6 +240,30 @@ class GCmap { static Log = new Log("Map", "c");
             } 
         }
 
+        // replace CAMP
+        this.island[this.campTile[0]][this.campTile[1]] = {
+            head : {
+                tags  : [ "camp" ],
+                spawn: { disabled:false,weight:0,min:1,max:1,distance:0 },
+                resources: { gather:[0,0,0],hunt:[0,0,0],chop:[0,0,0] },
+            }, 
+            body : {
+                name  : { 
+                    de : "Lager" , 
+                    en : "Camp" ,
+                } ,
+                description : { 
+                    de : "Die Lagerstätte" , 
+                    en : "The camp site" ,
+                } ,
+                specialRule : { 
+                    de : `` , 
+                    en : `` ,
+                } ,
+                weatherProt : { coldProt : 0 , wetProt : 0 , windProt : 0 },
+            }
+        };
+
         return this.island;
     }
 }
