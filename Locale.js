@@ -3,7 +3,7 @@ function genKeyword ( n , icon , text ) { return text + " " + icon.repeat(n) }
 
 
 /* Applied Locale */
-APPLOC = "de";
+const APPLOC = "de";
 
 
 const Locale = {

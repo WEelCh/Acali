@@ -1,8 +1,11 @@
 
 const author      = "WEelCh";
-const name        = "Default";
+const name        = { 
+    de : "Vorlage" , 
+    en : "Template" ,
+};
 const date        = "260617"; 
-const id          = `${author}_${name}_${date}`;
+const id          = `${author}_${name.en}_${date}`;
 const description = { 
     de : "" , 
     en : "" ,

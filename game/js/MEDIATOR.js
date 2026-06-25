@@ -19,7 +19,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
                 <div class="row smaller">
                     <input class="column two" type="radio" id="WEATHER_${index}" name="WEATHER" value="${index}">
                     <h3 class="column nine ltxt">
-                        ${mod.default.meta.name}
+                        ${mod.default.meta.name[APPLOC]}
                     </h3>
                 </div>`
         }
@@ -33,7 +33,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
                 <div class="row smaller">
                     <input class="column two" type="checkbox" id="MOD_${index}" name="EVENTS" value="${index}">
                     <h3 class="column nine ltxt">
-                    ${mod.default.meta.name}
+                    ${mod.default.meta.name[APPLOC]}
                     </h3>
                 </div>`
         }

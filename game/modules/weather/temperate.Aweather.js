@@ -1,6 +1,9 @@
 
 const author = "WEelCh";
-const name   = "Temperate";
+const name        = { 
+    de : "Gemäßigt" , 
+    en : "Temperate" ,
+};
 const date   = "250620"; 
 const id     = `${author}_${name}_${date}`;
 const description = { 

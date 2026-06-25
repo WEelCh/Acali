@@ -1,6 +1,9 @@
 
 const author      = "WEelCh";
-const name        = "Default";
+const name        = { 
+    de : "Wetter Grundpacket" , 
+    en : "Weather base package" ,
+};
 const date        = "260617"; 
 const id          = `${author}_${name}_${date}`;
 const description = { 
