@@ -18,21 +18,22 @@ export default { meta : { author, name, date, id, description },
                 tags  : [ "" ],
                 spawn: {
                     disabled : false,
-                    weight: 10, min:  0,  max: 99,
+                    weight: 5, // [ 1-10 ]
+                    min: 0, max: 99,
                 },
                 resources: {// low mid high ( weighted distribution )
-                    gather: [  0 , 1 , 1  ],
-                    hunt:   [  1 , 1 , 1  ],
-                    chop:   [  1 , 1 , 1  ],
+                    gather: [  1 , 3 , 2  ],
+                    hunt:   [  1 , 3 , 2  ],
+                    chop:   [  1 , 3 , 2  ],
                 },
             }, 
             body : {
                 name  : { 
-                    de : "Wow von Default" , 
-                    en : "Wow" ,
+                    de : "" , 
+                    en : "" ,
                 } ,
                 description : { 
-                    de : "Wow" , 
+                    de : "" , 
                     en : "" ,
                 } ,
                 specialRule : { 
@@ -54,7 +55,7 @@ export default { meta : { author, name, date, id, description },
                     type     : "", // "travel" | "weather" | "action" 
                     actionConfig: { // only applies if (type=="action")
                         action: "", // "gathering" | "hunting" | "chopping"
-                        yieldTierRange: [ 1 , 2 ],  // spawns on tiles with yield<action>Tier [ 0-2 ]
+                        yieldTierRange: [ 0 , 2 ],  // spawns on tiles with yield<action>Tier [ 0-2 ]
                     },
                     weight   : 5,       // [ 1-10 ]
                     disabled : false,   // disables this subevent
@@ -93,20 +94,17 @@ export default { meta : { author, name, date, id, description },
                         hunting:   0,
                         ship:      0,
                     },
-                    afflictions: { // neg means healing
+                    afflictions: { 
+                        target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
+                        // direct (neg means healing)
                         exhaustion:  1,
                         hunger:      0,
                         hypothermia: 0,
                         wound:       0,
-                        // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" |
-                        // "highest_str" | "lowest_str" | 
-                        // "highest_wis" | "lowest_wis" | 
-                        // "highest_dex" | "lowest_dex" |
-                        // "most_exhausted"   | "least_exhausted"   | 
-                        // "most_hypothermia" | "least_hypothermia" | 
-                        // "most_hunger"      | "least_hunger       | 
-                        // "most_wound"       | "least_wound"
-                        target: "singleForced",
+                        // indirect (translate to hypothermia if not protected against)
+                        cold:        0,
+                        wet:         0,
+                        wind:        0,
                     },
                     flags: {
                         addLocal     : [  ],
@@ -123,16 +121,7 @@ export default { meta : { author, name, date, id, description },
                             en : "" ,
                         } ,
                         challenge : { // (skillcheck and/or keyword) or nothing
-                            // to omit: "" |
-                            // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" |
-                            // "highest_str" | "lowest_str" | 
-                            // "highest_wis" | "lowest_wis" | 
-                            // "highest_dex" | "lowest_dex" |
-                            // "most_exhausted"   | "least_exhausted"   | 
-                            // "most_hypothermia" | "least_hypothermia" | 
-                            // "most_hunger"      | "least_hunger       | 
-                            // "most_wound"       | "least_wound"
-                            target: "",
+                            target: "", // to omit: "" | "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
                             skillcheck : {
                                 type : "", // to omit: "" | "dex" | "str" | "wis"
                                 difficulty : [ 2 , 3 , 6], // custom dice (players only get range)
@@ -155,21 +144,18 @@ export default { meta : { author, name, date, id, description },
                                     hunting:   0,
                                     ship:      0,
                                 },
-                                afflictions: { // neg means healing
+                                afflictions: {
+                                    target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
+                                    onlyParticipants: false,
+                                    // direct (neg means healing)
                                     exhaustion:  1,
                                     hunger:      0,
                                     hypothermia: 0,
                                     wound:       0,
-                                    // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" |
-                                    // "highest_str" | "lowest_str" | 
-                                    // "highest_wis" | "lowest_wis" | 
-                                    // "highest_dex" | "lowest_dex" |
-                                    // "most_exhausted"   | "least_exhausted"   | 
-                                    // "most_hypothermia" | "least_hypothermia" | 
-                                    // "most_hunger"      | "least_hunger       | 
-                                    // "most_wound"       | "least_wound"
-                                    target: "singleForced",
-                                    onlyParticipants: false,
+                                    // indirect (translate to hypothermia if not protected against)
+                                    cold:        0,
+                                    wet:         0,
+                                    wind:        0,
                                 },
                                 flags: {
                                     addLocal     : [  ],
@@ -191,21 +177,18 @@ export default { meta : { author, name, date, id, description },
                                     hunting:   0,
                                     ship:      0,
                                 },
-                                afflictions: { // neg means healing
-                                    exhaustion:  1,
+                                afflictions: {
+                                    target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
+                                    onlyParticipants: false,
+                                    // direct (neg means healing)
+                                    exhaustion:  0,
                                     hunger:      0,
                                     hypothermia: 0,
                                     wound:       0,
-                                    // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" |
-                                    // "highest_str" | "lowest_str" | 
-                                    // "highest_wis" | "lowest_wis" | 
-                                    // "highest_dex" | "lowest_dex" |
-                                    // "most_exhausted"   | "least_exhausted"   | 
-                                    // "most_hypothermia" | "least_hypothermia" | 
-                                    // "most_hunger"      | "least_hunger       | 
-                                    // "most_wound"       | "least_wound"
-                                    target: "singleForced",
-                                    onlyParticipants: false,
+                                    // indirect (translate to hypothermia if not protected against)
+                                    cold:        0,
+                                    wet:         0,
+                                    wind:        0,
                                 },
                                 flags: {
                                     addLocal     : [  ],
