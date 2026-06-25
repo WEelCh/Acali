@@ -140,6 +140,16 @@ const Asset = { spacer : "&nbsp",
   },
 
 
+  event : {
+    target : {
+      singleChoice   : { icon : `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon lucide lucide-user-icon lucide-user"><path d="M19 22v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="8" r="4"/><path d="M19 2.5c.2-.4.5-.8.9-1a2.1 2.1 0 0 1 2.6.4c.3.4.5.8.5 1.3 0 1.3-2 2-2 2"/><line x1="21" y1="8" x2="21" y2="8" stroke="currentColor" stroke-width="2" /></svg>` },
+      singleForced   : { icon : `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon lucide lucide-user-icon lucide-user"><path d="M19 22v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="8" r="4"/><line x1="21" y1="1" x2="21" y2="5" stroke="currentColor" stroke-width="2"/><line x1="21" y1="8" x2="21" y2="8" stroke="currentColor" stroke-width="2" /></svg>` },
+      groupChoice   : { icon : `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon lucide lucide-users-icon lucide-users"><path d="M16 22v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M15 4.128a4 4 0 0 1 0 7.744"/><path d="M21 22v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="8" r="4"/><path d="M19 2.5c.2-.4.5-.8.9-1a2.1 2.1 0 0 1 2.6.4c.3.4.5.8.5 1.3 0 1.3-2 2-2 2"/><line x1="21" y1="8" x2="21" y2="8" stroke="currentColor" stroke-width="2" /></svg>` },
+      groupForced   : { icon : `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon lucide lucide-users-icon lucide-users"><path d="M16 22v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M15 4.128a4 4 0 0 1 0 7.744"/><path d="M21 22v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="8" r="4"/><line x1="21" y1="1" x2="21" y2="5" stroke="currentColor" stroke-width="2"/><line x1="21" y1="8" x2="21" y2="8" stroke="currentColor" stroke-width="2" /></svg>` },
+    },
+  },
+
+
   card : {
     character : { 
       colonist : { icon : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon lucide lucide-earth-icon lucide-earth"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/><path d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17"/><path d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"/><circle cx="12" cy="12" r="10"/></svg>` },
