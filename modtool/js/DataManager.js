@@ -9,9 +9,9 @@ class DataManager {
     }
     static saveInput( ctx ) {
         const ident = ctx.id.split("_") ; // type, id
-        this.MODULE.events[ident[1]][ident[0]] = ctx.value;
-        console.table(this.MODULE.events)
-        console.table(this.MODULE.events[ident[1]])
+        this.MODULE.subevents[ident[1]][ident[0]] = ctx.value;
+        console.table(this.MODULE.subevents)
+        console.table(this.MODULE.subevents[ident[1]])
     }
 
 
@@ -92,7 +92,7 @@ class DataManager {
             if (eventId === "") {
             warnings += `ID is empty. Skipping!<br>`;
             return; }
-            if (this.MODULE.events.hasOwnProperty(eventId)) {
+            if (this.MODULE.subevents.hasOwnProperty(eventId)) {
                 warnings += `ID "${eventId}" is doubled. Skipping!<br>`;
             return; }
 
@@ -105,7 +105,7 @@ class DataManager {
                 introduction: bodyIntroductionTextarea ? bodyIntroductionTextarea.value : "",
                 },
             };
-            this.MODULE.events[metaIdInput] = eventObject;
+            this.MODULE.subevents[metaIdInput] = eventObject;
         });
 
         return warnings;
