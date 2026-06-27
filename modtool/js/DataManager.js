@@ -3,9 +3,10 @@ class DataManager {
 
     static MODULE = JSON.parse(JSON.stringify( TEMPLATE ))
 
-    static newEvent( ){
+    static newEvent( title ){
         this.MODULE.subevents.push( JSON.parse(JSON.stringify( TEMPLATE.subevents[0] )) );
-        return this.MODULE.subevents.length-1;
+        this.MODULE.subevents[ this.MODULE.subevents.length-1 ].head.title = title;
+        return this.MODULE.subevents.length;
     }
     static saveInput( ctx ) {
         const ident = ctx.id.split("_"); // typeAndSubid, id+1
@@ -110,9 +111,9 @@ class DataManager {
 
     static async saveToJSON ( ) {
         this.readMeta();
-        if ( this.MODULE.meta.name == "" || this.MODULE.meta.author == "" ) {
+        if ( this.MODULE.meta.name.de == "" || this.MODULE.meta.name.en == "" || this.MODULE.meta.author == "" ) {
             await Popup.alertError(
-                "Bitte stelle sicher, dass NAME und AUTOR gesetzt sind!", "Metadatenfehler")
+                "Bitte stelle sicher, dass NAME (DE & EN) und AUTOR gesetzt sind!", "Metadatenfehler")
             return
         }
         try {
@@ -187,17 +188,21 @@ class DataManager {
 
 
     static readMeta ( ) {
-        this.MODULE.meta.name   = document.getElementById("name").value;
+        this.MODULE.meta.name.de   = document.getElementById("nameDE").value;
+        this.MODULE.meta.name.en   = document.getElementById("nameEN").value;
         this.MODULE.meta.author = document.getElementById("author").value;
-        this.MODULE.meta.description = document.getElementById("description").value;
+        this.MODULE.meta.description.de = document.getElementById("descriptionDE").value;
+        this.MODULE.meta.description.en = document.getElementById("descriptionEN").value;
         this.MODULE.meta.date = new Date(Date.now()).toISOString().substring(0,10).replaceAll('-','');
-        this.MODULE.meta.id = `${this.MODULE.meta.author}_${this.MODULE.meta.name}_${this.MODULE.meta.date}`;
+        this.MODULE.meta.id = `${this.MODULE.meta.author}_${this.MODULE.meta.name.en}_${this.MODULE.meta.date}`;
         document.getElementById("id").innerText = this.MODULE.meta.id;
     }
     static displayMeta ( ) {
-        document.getElementById("name").value = this.MODULE.meta.name;
+        document.getElementById("nameDE").value = this.MODULE.meta.name.de;
+        document.getElementById("nameEN").value = this.MODULE.meta.name.en;
         document.getElementById("author").value = this.MODULE.meta.author;
-        document.getElementById("description").value = this.MODULE.meta.description;
+        document.getElementById("descriptionDE").value = this.MODULE.meta.description.de;
+        document.getElementById("descriptionEN").value = this.MODULE.meta.description.en;
         document.getElementById("id").innerText = this.MODULE.meta.id;
     }
 
@@ -205,3 +210,6 @@ class DataManager {
 
 
 }
+
+DataManager.MODULE.locations = [];
+DataManager.MODULE.subevents = [];

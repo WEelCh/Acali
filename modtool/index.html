@@ -43,7 +43,7 @@
 
 
 
-<body onload="Display.onload()" style="background-image: url('../game/img/bg_ship.jpg');background-repeat: no-repeat;background-size: cover;background-position: center top;">
+<body onload="Display.onload()" style="background-image: url('../game/img/bg_ship.jpg');background-repeat: no-repeat;background-size: cover;background-position: center 40%; background-attachment: fixed;">
 <!-- NAVIGATION
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <div class="container static">
@@ -73,21 +73,36 @@
 
     <div class="row">
         <div class="column three rtxt">
-            Modulname:
-        </div>
-        <input id="name" class="column nine" type="text">
-    </div>
-    <div class="row">
-        <div class="column three rtxt">
             Autor:
         </div>
         <input id="author" class="column nine" type="text">
     </div>
     <div class="row">
         <div class="column three rtxt">
-            Beschreibung:
+            Modulname: (DE)
         </div>
-        <textarea id="description" class="column nine"></textarea>
+        <input id="nameDE" class="column nine" type="text">
+    </div>
+    <div class="row">
+        <div class="column three rtxt">
+            Modulname: (EN)
+        </div>
+        <input id="nameEN" class="column nine" type="text">
+    </div>
+    <div class="row">
+        <div class="column three rtxt">
+            Description: (DE)
+        </div>
+        <textarea id="descriptionDE" class="column nine"></textarea>
+    </div>
+    <div class="row smaller nomargin">
+        <p class="column nine offset-by-three ctxt">Hier können auch analoge Sonderregeln erklärt werden</p>
+    </div>
+    <div class="row">
+        <div class="column three rtxt">
+            Description: (EN)
+        </div>
+        <textarea id="descriptionEN" class="column nine"></textarea>
     </div>
     <div class="row smaller nomargin">
         <p class="column nine offset-by-three ctxt">Hier können auch analoge Sonderregeln erklärt werden</p>
@@ -157,7 +172,7 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <div id="tabHelp_Content" class="container box" style="display: none;">
 
-    help
+    TODO : tag and flag analysis, general module stats (distributen), warnings (empty desc)
 
 </div>
 

@@ -87,7 +87,7 @@ class Display {
         const btn = this.prepBtn(above);
         const btnAbove = !above ? btn : "" ;
         const btnBelow =  above ? btn : "" ;
-        if (id==-1) { id = DataManager.newEvent(); }
+        if (id==-1) { id = DataManager.newEvent(title); }
         ctx.parentElement.outerHTML = /*html*/`
             <!--${btnAbove}-->
             ${this.prepEvent(title, id)}
