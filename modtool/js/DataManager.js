@@ -157,7 +157,6 @@ class DataManager {
                                 this.MODULE.subevents[event].head.title,
                                 Number(event)+1
                             )
-                            this.loadEventIntoUI( Number(event)+1 );
                         }
                         Popup.alertOk( "Geladen ( Keine Integritätsprüfung! )" )
                     } catch (error) {

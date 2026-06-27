@@ -92,6 +92,7 @@ class Display {
             <!--${btnAbove}-->
             ${this.prepEvent(title, id)}
             ${btnBelow}`;
+        DataManager.loadEventIntoUI(DataManager.MODULE.subevents.length)
     }
     static isValidEventTitle( str ) { return false;
         if (typeof str !== 'string' || str.length === 0) { return `"${str}" ist keine erlaubte Event ID: Leer`; }
