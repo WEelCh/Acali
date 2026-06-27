@@ -8,6 +8,91 @@ const description = {
     en : "" ,
 };
 
+const _option = {
+                        description : { 
+                            de : "" , 
+                            en : "" ,
+                        } ,
+                        challenge : { // (skillcheck and/or keyword) or nothing
+                            target: "", // to omit: "" | "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
+                            skillcheck : {
+                                type : "", // to omit: "" | "dex" | "str" | "wis"
+                                difficulty : [ 2 , 3 , 6], // custom dice (players only get range)
+                            },
+                            // group: still only one ; players need one of the stated (OR)
+                            useKeyword     : [], 
+                            consumeKeyword : [],
+                        },
+                        
+                        
+                        onSuccess : {
+                            description : { 
+                                de : "" , 
+                                en : "" ,
+                            } ,
+                            effects: {
+                                yield: { // cards drawn from resource decks
+                                    gathering: 0,
+                                    chopping:  0,
+                                    hunting:   0,
+                                    ship:      0,
+                                },
+                                afflictions: {
+                                    target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
+                                    onlyParticipants: false,
+                                    // direct (neg means healing)
+                                    exhaustion:  1,
+                                    hunger:      0,
+                                    hypothermia: 0,
+                                    wound:       0,
+                                    // indirect (translate to hypothermia if not protected against)
+                                    cold:        0,
+                                    wet:         0,
+                                    wind:        0,
+                                },
+                                flags: {
+                                    addLocal     : [  ],
+                                    removeLocal  : [  ],
+                                    addGlobal    : [  ],
+                                    removeGlobal : [  ],
+                                },
+                            },
+                        },
+                        onFailure : {
+                            description : { 
+                                de : "" , 
+                                en : "" ,
+                            } ,
+                            effects: {
+                                yield: { // cards drawn from resource decks
+                                    gathering: 0,
+                                    chopping:  0,
+                                    hunting:   0,
+                                    ship:      0,
+                                },
+                                afflictions: {
+                                    target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
+                                    onlyParticipants: false,
+                                    // direct (neg means healing)
+                                    exhaustion:  0,
+                                    hunger:      0,
+                                    hypothermia: 0,
+                                    wound:       0,
+                                    // indirect (translate to hypothermia if not protected against)
+                                    cold:        0,
+                                    wet:         0,
+                                    wind:        0,
+                                },
+                                flags: {
+                                    addLocal     : [  ],
+                                    removeLocal  : [  ],
+                                    addGlobal    : [  ],
+                                    removeGlobal : [  ],
+                                },
+                            },
+                        },
+                    };
+
 const TEMPLATE = { meta : { author, name, date, id, description },
     // ===================================================================
     // LOCATIONS
@@ -115,90 +200,7 @@ const TEMPLATE = { meta : { author, name, date, id, description },
                 },
                 // weather type events' options are never used!
                 options : [ // 0-3 options (at least one without keyword needs)
-                    {
-                        description : { 
-                            de : "" , 
-                            en : "" ,
-                        } ,
-                        challenge : { // (skillcheck and/or keyword) or nothing
-                            target: "", // to omit: "" | "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
-                            skillcheck : {
-                                type : "", // to omit: "" | "dex" | "str" | "wis"
-                                difficulty : [ 2 , 3 , 6], // custom dice (players only get range)
-                            },
-                            // group: still only one ; players need one of the stated (OR)
-                            useKeyword     : [], 
-                            consumeKeyword : [],
-                        },
-                        
-                        
-                        onSuccess : {
-                            description : { 
-                                de : "" , 
-                                en : "" ,
-                            } ,
-                            effects: {
-                                yield: { // cards drawn from resource decks
-                                    gathering: 0,
-                                    chopping:  0,
-                                    hunting:   0,
-                                    ship:      0,
-                                },
-                                afflictions: {
-                                    target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
-                                    onlyParticipants: false,
-                                    // direct (neg means healing)
-                                    exhaustion:  1,
-                                    hunger:      0,
-                                    hypothermia: 0,
-                                    wound:       0,
-                                    // indirect (translate to hypothermia if not protected against)
-                                    cold:        0,
-                                    wet:         0,
-                                    wind:        0,
-                                },
-                                flags: {
-                                    addLocal     : [  ],
-                                    removeLocal  : [  ],
-                                    addGlobal    : [  ],
-                                    removeGlobal : [  ],
-                                },
-                            },
-                        },
-                        onFailure : {
-                            description : { 
-                                de : "" , 
-                                en : "" ,
-                            } ,
-                            effects: {
-                                yield: { // cards drawn from resource decks
-                                    gathering: 0,
-                                    chopping:  0,
-                                    hunting:   0,
-                                    ship:      0,
-                                },
-                                afflictions: {
-                                    target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
-                                    onlyParticipants: false,
-                                    // direct (neg means healing)
-                                    exhaustion:  0,
-                                    hunger:      0,
-                                    hypothermia: 0,
-                                    wound:       0,
-                                    // indirect (translate to hypothermia if not protected against)
-                                    cold:        0,
-                                    wet:         0,
-                                    wind:        0,
-                                },
-                                flags: {
-                                    addLocal     : [  ],
-                                    removeLocal  : [  ],
-                                    addGlobal    : [  ],
-                                    removeGlobal : [  ],
-                                },
-                            },
-                        },
-                    },
+                    _option, _option, _option
                 ],
             }
         },

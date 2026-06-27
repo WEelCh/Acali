@@ -48,7 +48,7 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <div class="container static">
 
-    <div class="row">
+    <div class="row nomargin">
         <div id="tabMeta" class="column three box tab purple" onclick="Display.openTab(this)">
             <h1> 
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon lucide lucide-file-code-icon lucide-file-code"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 12.5 8 15l2 2.5"/><path d="m14 12.5 2 2.5-2 2.5"/></svg>
@@ -112,11 +112,11 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <div id="tabEdit_Content" style="display: none;">
 
-    <div class="container box">
+    <div class="container box" style="padding: 3mm;">
 
         <!-- EX/IM PLODE
         –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <div class="row">
+        <div class="row nomargin">
             <h1 class="column six box tab orange" onclick="Display.implodeAllEvents()">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon lucide lucide-chevrons-up-icon lucide-chevrons-up"><path d="m17 11-5-5-5 5"/><path d="m17 18-5-5-5 5"/></svg>
             </h1>
@@ -127,15 +127,15 @@
 
     </div>
 
-    <div class="container">
+    <div id="eventDisplay" class="container">
 
         <!-- ADD BUTTON 
-        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <div class="row" style="display: none;">
+        –––––––––––––––––––––––––––––––––––––––––––––––––– 
+        <div class="row">
             <h1 class="column six offset-by-three box tab orange" onclick="Display.addEvent(this , false)">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon lucide lucide-file-plus-icon lucide-file-plus"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M9 15h6"/><path d="M12 18v-6"/></svg>
             </h1>
-        </div>
+        </div>-->
 
 
         <!-- EVENT SPACE
