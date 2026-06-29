@@ -148,6 +148,11 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
         // hand click info to GCevent to build the event
         // hand the event over to GCdisplay to display (popup) and let players play
         // hand event outcome to GCmap to change tags and ressources
+
+        if ( GCtime.dayPhase==0 || GCtime.dayPhase==2 ) {
+            MEDIATOR.Log.info(`rejecting popup; not day or night`);
+            return;
+        }
     }
 
 

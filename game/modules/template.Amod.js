@@ -98,7 +98,7 @@ export default { meta : { author, name, date, id, description },
                         ship:      0,
                     },
                     afflictions: { 
-                        target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
+                        target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
                         // direct (neg means healing)
                         exhaustion:  1,
                         hunger:      0,
@@ -148,7 +148,7 @@ export default { meta : { author, name, date, id, description },
                                     ship:      0,
                                 },
                                 afflictions: {
-                                    target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
+                                    target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
                                     onlyParticipants: false,
                                     // direct (neg means healing)
                                     exhaustion:  1,
@@ -181,7 +181,7 @@ export default { meta : { author, name, date, id, description },
                                     ship:      0,
                                 },
                                 afflictions: {
-                                    target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
+                                    target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
                                     onlyParticipants: false,
                                     // direct (neg means healing)
                                     exhaustion:  0,

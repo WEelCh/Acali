@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Acali-Menu</title>
+    <meta name="author"             content="WEelCh">
+    <meta name="description"        content="">
+    <meta name="keywords"           content="">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"> <meta charset="utf-8">                                              <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link class="icon" href="data:,">
+    <link rel="stylesheet" href="https://weelch.de/skeleton/css/weelch_v0.css">
+
+    <script src="./Asset.js"></script>
+
+    <style>
+        .header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .group-heading {
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #e1e1e1;
+            padding-bottom: 5px;
+            font-family: monospace;
+        }
+        .icon-card {
+            background: #ffffff;
+            border: 1px solid #e1e1e1;
+            border-radius: 4px;
+            padding: 15px 10px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 120px;
+            margin-bottom: 20px;
+        }
+        .icon-wrapper {
+            margin-bottom: 10px;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0;
+        }
+        .icon-wrapper svg {
+            max-width: 32px;
+            max-height: 32px;
+        }
+        .icon-title {
+            font-size: 1rem;
+            color: #555;
+            word-wrap: break-word;
+            line-height: 1.2;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row header">
+            <div class="twelve column">
+                <h4>Icon Devroom</h4>
+                <p>Asset Library Overview</p>
+            </div>
+        </div>
+
+        <div id="icon-grid"></div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const grid = document.getElementById("icon-grid");
+            const icons = [];
+
+            // 1. Recursively parse the Asset object to find { icon: "..." }
+            function parseAssets(obj, path = "") {
+                if (typeof obj !== "object" || obj === null) return;
+                
+                // If it has an icon property, store it and stop traversing this branch
+                if (obj.icon) {
+                    icons.push({ title: path, svg: obj.icon });
+                    return;
+                }
+                
+                // Otherwise, keep digging
+                for (const key in obj) {
+                    // Skip the 'spacer' string or primitive values
+                    if (obj.hasOwnProperty(key)) {
+                        const newPath = path ? `${path}.${key}` : key;
+                        parseAssets(obj[key], newPath);
+                    }
+                }
+            }
+
+            if (typeof Asset !== "undefined") {
+                parseAssets(Asset);
+            } else {
+                grid.innerHTML = '<p style="color:red; text-align:center;">Error: Asset object not found. Ensure Asset.js is in the same directory and loaded correctly.</p>';
+                return;
+            }
+
+            // 2. Generate the Skeleton CSS grid grouped by category headlines
+            let currentRow = null;
+            let currentGroup = null;
+            let itemsInCurrentRow = 0;
+
+            icons.forEach((item) => {
+                // Separate the leading group path from the final icon name segment
+                const parts = item.title.split('.');
+                const iconName = parts.pop();      // Last segment ('d')
+                const groupKey = parts.join('.');  // Leading path ('a.b.c')
+
+                // If the namespace group changes, inject a full-width row for the headline
+                if (groupKey !== currentGroup) {
+                    currentGroup = groupKey;
+                    
+                    const headerRow = document.createElement("div");
+                    headerRow.className = "row";
+                    
+                    const headerCol = document.createElement("div");
+                    headerCol.className = "twelve column";
+                    
+                    const heading = document.createElement("h5");
+                    heading.className = "group-heading";
+                    heading.textContent = groupKey || "General";
+                    
+                    headerCol.appendChild(heading);
+                    headerRow.appendChild(headerCol);
+                    grid.appendChild(headerRow);
+                    
+                    // Reset the row tracker so a fresh row is forced for these icons
+                    currentRow = null;
+                    itemsInCurrentRow = 0;
+                }
+
+                // Start a new row if we hit the 6 item limit (12 column / 2 column)
+                if (!currentRow || itemsInCurrentRow === 6) {
+                    currentRow = document.createElement("div");
+                    currentRow.className = "row";
+                    grid.appendChild(currentRow);
+                    itemsInCurrentRow = 0;
+                }
+
+                // Create the two-column container
+                const col = document.createElement("div");
+                col.className = "two column icon-card";
+                
+                // Inject the SVG
+                const iconWrapper = document.createElement("h1");
+                iconWrapper.className = "icon-wrapper";
+                iconWrapper.innerHTML = item.svg;
+                
+                // Inject only the short item name segment
+                const title = document.createElement("div");
+                title.className = "icon-title";
+                title.textContent = iconName;
+
+                col.appendChild(iconWrapper);
+                col.appendChild(title);
+                currentRow.appendChild(col);
+                
+                itemsInCurrentRow++;
+            });
+        });
+    </script>
+</body>
+</html>

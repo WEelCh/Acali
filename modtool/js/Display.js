@@ -187,6 +187,16 @@ class Display {
                         </select>
                     </div>
                     <!--afflictions-->
+                    ${(!resolution)?'':`
+                    <div class="row smaller">
+                        <div class="column three ltxt" onclick=Popup.alertInfo('TBF','type')> 
+                            ${ICON.tooltip} onlyParticipants: 
+                        </div>
+                        <select id="onlyParticipants${subid}_${id}" class="column nine ctxt" data-path="${dataPath}.afflictions.onlyParticipants" data-type="Boolean" onchange="DataManager.saveInput(this)">
+                            ${selectBooleanOptions(false)}
+                        </select>
+                    </div>
+                    `}
                     <div class="row smaller">
                         <div class="column three ltxt" onclick=Popup.alertInfo('TBF','type')> 
                             ${ICON.tooltip} afflictions: 
@@ -197,6 +207,7 @@ class Display {
                                 singleForced : "one random player",
                                 groupChoice  : "one or more volunteer player(s)",
                                 groupForced  : "all",
+                                special      : "special",
                             })}
                         </select>
                     </div>
@@ -319,6 +330,7 @@ class Display {
                                         singleForced : "one random player",
                                         groupChoice  : "one or more volunteer player(s)",
                                         groupForced  : "all",
+                                        special      : "special",
                                     })}
                                 </select>
                             </div>
