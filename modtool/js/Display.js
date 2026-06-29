@@ -325,7 +325,6 @@ class Display {
                                 </div>
                                 <select id="challengeTarget${i}_${id}" class="column nine ctxt" data-path="${dataPath}.challenge.target" data-type="String" onchange="DataManager.saveInput(this)">
                                     ${selectObjectOptions({
-                                        none : "NO CHALLENGE",
                                         singleChoice : "one volunteer player",
                                         singleForced : "one random player",
                                         groupChoice  : "one or more volunteer player(s)",
