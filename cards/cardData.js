@@ -909,30 +909,6 @@ W O O D
             herb       : 0 , nut    : 0 , root        : 0 , mushroom : 0 , berry : 0 },
     },
 },
-/***** 
-T R E A S U R E
-*****/
-{   layout: ItemCard , type:Asset.card.item.treasure , qty: 1 ,
-    name:{ de:"Name", en:"" }, weight: 0 ,
-    flavor:{ de:"", en:"" },
-    keyword : {
-        clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 },
-
-        tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
-            lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 },
-
-        material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
-            cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 },
-
-        supply : { _isPerishable : false ,
-            exhaustion : 0 , hunger : 0 , hypothermia : 0 , wound    : 0 , 
-            herb       : 0 , nut    : 0 , root        : 0 , mushroom : 0 , berry : 0 },
-    },
-},
 ]
 
 

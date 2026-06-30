@@ -99,6 +99,7 @@ export default { meta : { author, name, date, id, description },
                     },
                     afflictions: { 
                         target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
+                        special: "",
                         // direct (neg means healing)
                         exhaustion:  1,
                         hunger:      0,
@@ -124,7 +125,8 @@ export default { meta : { author, name, date, id, description },
                             en : "" ,
                         } ,
                         challenge : { // (skillcheck and/or keyword) or nothing
-                            target: "", // to omit: "" | "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
+                            target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
+                            special: "",
                             skillcheck : {
                                 type : "", // to omit: "" | "dex" | "str" | "wis"
                                 difficulty : [ 2 , 3 , 6], // custom dice (players only get range)
@@ -149,6 +151,7 @@ export default { meta : { author, name, date, id, description },
                                 },
                                 afflictions: {
                                     target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
+                                    special: "",
                                     onlyParticipants: false,
                                     // direct (neg means healing)
                                     exhaustion:  1,
@@ -182,6 +185,7 @@ export default { meta : { author, name, date, id, description },
                                 },
                                 afflictions: {
                                     target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
+                                    special: "",
                                     onlyParticipants: false,
                                     // direct (neg means healing)
                                     exhaustion:  0,
