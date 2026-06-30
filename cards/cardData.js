@@ -16,7 +16,8 @@ D E B U G
         tool : {  _isFragile : true ,
             crafting   : 1 , chopping    : 1 , kindle : 1 , light : 1 ,
             lookout    : 1 , navigation  : 1 , 
-            meleeLight : 1 , meleeHeavy  : 1 , ranged : 1 },
+            meleeLight : 1 , meleeHeavy  : 1 , ranged : 1 ,
+            magic      : 1 },
 
         material : { _isFragile : true ,
             structural : 1 , hard  : 1 , metallic : 1 , sharp     : 1 , shaft : 1 ,
