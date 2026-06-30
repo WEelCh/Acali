@@ -11,12 +11,12 @@ D E B U G
         custom   : [  ],
 
         clothing : { _isFragile : true ,
-            coldProt : 2 , wetProt : 2 , windProt : 2 , dmgProt : 2 },
+            coldProt : 2 , wetProt : 2 , windProt : 2 , storage : 1 , dmgProt : 2 },
 
         tool : {  _isFragile : true ,
-            crafting   : 1 , chopping    : 1 , kindle : 1 , light : 1 , storage : 1 ,
-            lookout    : 1 , navigation  : 1 ,
-            meleeLight : 1 , meleeHeavy  : 1 , ranged : 1 , trap  : 1 , fishing : 1 },
+            crafting   : 1 , chopping    : 1 , kindle : 1 , light : 1 ,
+            lookout    : 1 , navigation  : 1 , 
+            meleeLight : 1 , meleeHeavy  : 1 , ranged : 1 },
 
         material : { _isFragile : true ,
             structural : 1 , hard  : 1 , metallic : 1 , sharp     : 1 , shaft : 1 ,
