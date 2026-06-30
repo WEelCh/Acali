@@ -138,7 +138,7 @@ class Display {
         }
 
         const descriptionBlock = function( id , subid ) {
-            const dataPath = `body.${subid==0?'':`options.${subid-1}.`}description`;
+            const dataPath = `body.${subid==0?'':`options.${Number(subid)-1}.`}description`;
             return /*html*/`
                 <!-- description -->
                 <div class="row smaller">
@@ -153,8 +153,8 @@ class Display {
         const effectBlock = function( id , subid , resolution="" ) {
             let dataPath;
             if (subid==0) { dataPath = `body.effects` }
-            else if (resolution=='onSuccess') { dataPath = `body.options[${subid-1}].onSuccess.effects` }
-            else if (resolution=='onFailure') { dataPath = `body.options[${subid-1}].onFailure.effects` }
+            else if (resolution=='onSuccess') { dataPath = `body.options.${subid-1}.onSuccess.effects` }
+            else if (resolution=='onFailure') { dataPath = `body.options.${subid-1}.onFailure.effects` }
             return /*html*/`
                 <!--EFFECT.-->
                 <div class="box row smaller">
@@ -211,6 +211,20 @@ class Display {
                             })}
                         </select>
                     </div>
+
+                    <div class="row smaller nomargin">
+                        <div class="column three ltxt" onclick=Popup.alertInfo('TBF','type')> 
+                            ${Asset.spacer}
+                        </div>
+                        <div class="column nine ctxt"> special </div>
+                    </div>
+                    <div class="row smaller nomargin">
+                        <div class="column three ltxt" onclick=Popup.alertInfo('TBF','type')> 
+                            ${Asset.spacer}
+                        </div>
+                        <input id="afflictionsTargetSpecial${subid}_${id}" class="column nine" type="text" data-path="${dataPath}.afflictions.special" data-type="String" onchange="DataManager.saveInput(this)">
+                    </div>
+
                     <div class="row smaller">
                         <div class="column three ltxt" onclick=Popup.alertInfo('TBF','type')> 
                             ${Asset.spacer}
@@ -293,7 +307,7 @@ class Display {
                     <!--ON RESOLUTION-->
                     <div class="box row smaller">
                         <h4 class="row smaller" style="margin-top:0">${resolution}</h4>
-                        ${descriptionBlock(id , subid+resolution)}
+                        ${descriptionBlock(id , subid)}
                         <!--EFFECT.-->
                         ${effectBlock(id , subid , resolution)}
                     </div>`
@@ -304,7 +318,7 @@ class Display {
             let dataPath;
             let str = "";
             for (let i=1; i<=3; i++) {
-                dataPath = `body.options[${i-1}]`
+                dataPath = `body.options.${i-1}`
                 str += /*html*/`
                 <!--option i-->
                 <div class="box row smaller">
@@ -333,6 +347,20 @@ class Display {
                                     })}
                                 </select>
                             </div>
+
+                            <div class="row smaller nomargin">
+                                <div class="column three ltxt" onclick=Popup.alertInfo('TBF','type')> 
+                                    ${Asset.spacer}
+                                </div>
+                                <div class="column nine ctxt"> special </div>
+                            </div>
+                            <div class="row smaller nomargin">
+                                <div class="column three ltxt" onclick=Popup.alertInfo('TBF','type')> 
+                                    ${Asset.spacer}
+                                </div>
+                                <input id="challengeTargetSpecial${i}_${id}" class="column nine" type="text" data-path="${dataPath}.challenge.special" data-type="String" onchange="DataManager.saveInput(this)">
+                            </div>
+
                             <!--skillcheck-->
                             <div class="row smaller">
                                 <div class="column three ltxt" onclick=Popup.alertInfo('TBF','type')> 
@@ -353,7 +381,7 @@ class Display {
                                         WIS  : "wisdom",
                                     })}
                                 </select>
-                                <input id="skillcheckDifficulty${i}_${id}" class="column six" type="text" data-path="${dataPath}.skillcheck.difficulty" data-type="String" onchange="DataManager.saveInput(this)">
+                                <input id="skillcheckDifficulty${i}_${id}" class="column six" type="text" data-path="${dataPath}.challenge.skillcheck.difficulty" data-type="String" onchange="DataManager.saveInput(this)">
                             </div>
                             <!-- keywords -->
                             <div class="row smaller">

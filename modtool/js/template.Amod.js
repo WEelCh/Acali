@@ -5,7 +5,7 @@ const name        = {
     en : "Template" ,
 };
 const date        = "260617"; 
-const id          = `${author}_${name}_${date}`;
+const id          = `${author}_${name.en}_${date}`;
 const description = { 
     de : "" , 
     en : "" ,
@@ -17,7 +17,8 @@ const _option = {
         en : "" ,
     } ,
     challenge : { // (skillcheck and/or keyword) or nothing
-        target: "", // to omit: "" | "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
+        target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
+        special: "",
         skillcheck : {
             type : "", // to omit: "" | "dex" | "str" | "wis"
             difficulty : [ 2 , 3 , 6], // custom dice (players only get range)
@@ -26,6 +27,8 @@ const _option = {
         useKeyword     : [], 
         consumeKeyword : [],
     },
+    
+    
     onSuccess : {
         description : { 
             de : "" , 
@@ -39,7 +42,8 @@ const _option = {
                 ship:      0,
             },
             afflictions: {
-                target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
+                target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
+                special: "",
                 onlyParticipants: false,
                 // direct (neg means healing)
                 exhaustion:  1,
@@ -72,7 +76,8 @@ const _option = {
                 ship:      0,
             },
             afflictions: {
-                target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
+                target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
+                special: "",
                 onlyParticipants: false,
                 // direct (neg means healing)
                 exhaustion:  0,
@@ -181,7 +186,8 @@ const TEMPLATE = { meta : { author, name, date, id, description },
                         ship:      0,
                     },
                     afflictions: { 
-                        target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice"
+                        target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
+                        special: "",
                         // direct (neg means healing)
                         exhaustion:  1,
                         hunger:      0,
