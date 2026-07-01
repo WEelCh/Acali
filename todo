@@ -17,8 +17,8 @@ modtool: cards, events, weather, map --> started implementing "spawn new event"
 * Storyteller as default difficulty settings (RimWorld-esc)
 * () ersetzt ()()
 * not defect catory on items, but special icons instead (or to less return from more complexity?)
-* items destroyed by rain?
-* start loot in chests?
+NO* items destroyed by rain?
+NO* start loot in chests?
 
 MEDIATOR: import all js modules ??? --> data intensive (need to check)
 
