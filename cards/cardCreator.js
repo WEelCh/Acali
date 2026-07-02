@@ -9,15 +9,6 @@ function ItemCard ( card , ID ) {
         ${Asset.keyword.weight.icon.repeat(card.weight)}
         </div>
         `; else return ""}();
-
-    custom_category = "";
-    if ( card.keyword?.custom?.length ) {
-        custom_category += /*html*/`
-                                <div class="effectbox">
-                                <h1 class="headline">${Locale.keyword.custom.text()}</h1>`; 
-        for (line of card.keyword.custom) { custom_category += /*html*/`<h6>${line}</h6>`; }
-        custom_category += /*html*/`</div>`; 
-    }
         
     parsed_categories = {
         clothing : "",
@@ -31,8 +22,16 @@ function ItemCard ( card , ID ) {
             // handel the "_is..." special condition
             if ((key.startsWith('_is')) && card.keyword[category][key]) {
                 specialCondition = Asset.keyword[category][key].icon;
+            } else if ( key == 'customLines' ) {
+                continue
             } else if ( (typeof(card.keyword[category][key])=="number") && (card.keyword[category][key]>0) ){
-                parsed_categories[category] += Asset.keyword[category][key].icon.repeat( card.keyword[category][key] ); } }
+                parsed_categories[category] += Asset.keyword[category][key].icon.repeat( card.keyword[category][key] ); 
+            } 
+        }
+        if ( card.keyword[category].custom ) {
+            const style = parsed_categories[category] ? ' style="margin-top:0"' : ''
+            parsed_categories[category] += /*html*/`<h6${style}>${ card.keyword[category].custom }</h6>`
+        }
         //if ( parsed_categories[category].length == 0 ){ parsed_categories[category] = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon dummy lucide lucide-wind-icon lucide-wind"><path d="M12.8 19.6A2 2 0 1 0 14 16H2"/><path d="M17.5 8a2.5 2.5 0 1 1 2 4H2"/><path d="M9.8 4.4A2 2 0 1 1 11 8H2"/><line x1="1" y1="1" x2="23" y2="23" stroke="currentColor" stroke-width="2" /></svg>` }
         if ( parsed_categories[category].length > 0 ){
             parsed_categories[category] = /*html*/`
@@ -62,7 +61,6 @@ function ItemCard ( card , ID ) {
                 </div>
             <!-- B O D Y -->
             <div class="body">
-            ${custom_category}
             ${Object.values(parsed_categories).join('')}
             ${flavor}
             </div>

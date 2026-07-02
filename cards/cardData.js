@@ -8,24 +8,26 @@ D E B U G
     name:{ de:"AllInExample", en:"" }, weight: 2 ,
     flavor:{ de:"", en:"" },
     keyword : {
-        custom   : [  ],
-
         clothing : { _isFragile : true ,
-            coldProt : 2 , wetProt : 2 , windProt : 2 , storage : 1 , dmgProt : 2 },
+            coldProt : 1 , wetProt : 1 , windProt : 1 , storage : 1 , dmgProt : 1 ,
+            custom : `` },
 
         tool : {  _isFragile : true ,
             crafting   : 1 , chopping    : 1 , kindle : 1 , light : 1 ,
             lookout    : 1 , navigation  : 1 , 
             meleeLight : 1 , meleeHeavy  : 1 , ranged : 1 ,
-            magic      : 1 },
+            magic      : 1 ,
+            custom : `` },
 
         material : { _isFragile : true ,
             structural : 1 , hard  : 1 , metallic : 1 , sharp     : 1 , shaft : 1 ,
-            cordage    : 1 , cover : 1 , adhesive : 1 , flammable : 1 },
+            cordage    : 1 , cover : 1 , adhesive : 1 , flammable : 1 ,
+            custom : `` },
 
         supply : { _isPerishable : true ,
             exhaustion : 1 , hunger : 1 , hypothermia : 1 , wound    : 1 , 
-            herb       : 1 , nut    : 1 , root        : 1 , mushroom : 1 , berry : 1 },
+            herb       : 1 , nut    : 1 , root        : 1 , mushroom : 1 , berry : 1 ,
+            custom : `` },
     },
 },
 {   layout: ItemCard , type:Asset.card.item.beispiel , qty: 1 ,
@@ -426,25 +428,25 @@ S H I P
     name:{ de:"Bibel", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
-        custom   : [ 
-            `${Asset.keyword.supply.exhaustion.icon} pro Tag` , 
-            `${Asset.condition.exhaustion.icon} (alle) wenn Verbraucht ${Asset.keyword.material.flammable.icon}` ],
-        
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 },
+            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            custom : `` },
 
         tool : {  _isFragile : false ,
             crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 },
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            custom : `${Asset.keyword.supply.exhaustion.icon} pro Tag` },
 
         material : { _isFragile : false ,
             structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
-            cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 1 },
+            cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 1 ,
+            custom : `${Asset.condition.exhaustion.icon} (alle) wenn Verbraucht ${Asset.keyword.material.flammable.icon}` },
 
         supply : { _isPerishable : false ,
             exhaustion : 0 , hunger : 0 , hypothermia : 0 , wound    : 0 , 
-            herb       : 0 , nut    : 0 , root        : 0 , mushroom : 0 , berry : 0 },
+            herb       : 0 , nut    : 0 , root        : 0 , mushroom : 0 , berry : 0 ,
+            custom : `` },
     },
 },
 {   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
