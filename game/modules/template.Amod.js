@@ -32,12 +32,12 @@ export default { meta : { author, name, date, id, description },
             }, 
             body : {
                 name  : { 
-                    de : "" , 
-                    en : "" ,
+                    de : "Name" , 
+                    en : "Name" ,
                 } ,
                 description : { 
-                    de : "" , 
-                    en : "" ,
+                    de : "Desc" , 
+                    en : "Desc" ,
                 } ,
                 specialRule : { 
                     de : `` , 

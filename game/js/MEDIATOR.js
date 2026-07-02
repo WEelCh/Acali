@@ -141,18 +141,24 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
 
 
 
-    static triggerTile ( element ) { /* IS ASSIGNED TO onclick ; NAME ALL EXPLICITLY ! */
-        const id = element.currentTarget.id;
-        const row = id[4] ; const col = id[5];
-        MEDIATOR.Log.info(id, row, col, GCmap.island[row][col].body.name);
-        // hand click info to GCevent to build the event
-        // hand the event over to GCdisplay to display (popup) and let players play
-        // hand event outcome to GCmap to change tags and ressources
-
+    static async triggerTile ( element ) { /* IS ASSIGNED TO onclick ; NAME ALL EXPLICITLY ! */
         if ( GCtime.dayPhase==0 || GCtime.dayPhase==2 ) {
             MEDIATOR.Log.info(`rejecting popup; not day or night`);
             return;
         }
+
+        const id = element.currentTarget.id;
+        const row = id[4] ; const col = id[5];
+        let tile = GCmap.island[row][col]
+        MEDIATOR.Log.info(id, row, col, tile.body.name);
+        // hand the event over to GCdisplay to display (popup) and let players play
+        // hand click info to GCevent to build the event
+        // hand the event over to GCdisplay to display (popup) and let players play
+        // hand event outcome to GCmap to change tags and ressources
+
+        let action = "camp";
+        if ( !tile.head.tags.includes('camp') ) { action = await GCdisplay.actionSelector( tile ) }
+        MEDIATOR.Log.info("Selected action:",action);
     }
 
 

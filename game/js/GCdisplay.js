@@ -136,67 +136,68 @@ class GCdisplay { static Log = new Log("Display", "b");
         // Add the new target state class
         body.classList.add(bgStates[dayPhase]);
     }
-    
-}
 
 
 
-
-
-
-Popup.acaliPromp = function ( msg="???" , title="???" , icon="nf-md-progress_question" , color=Popup.cBlue ) {
-    const popup = document.getElementById("popup");
-    popup.innerHTML = /*html*/`
-                <div class="container">
-                <div class="box">
-                    <div class="row smaller nomargin">
-                        <h1 id="id_daytime_left" class="two column ltxt">
-                            <i class='nf ${icon}' style="vertical-align:top;"></i>
-                        </h1>
-                        <h1 id="id_daytime_center" class="eight column">
-                            ${title}
-                        </h1>
-                        <h1 id="id_daytime_right" class="two column rtxt">
-                            <i class='nf ${icon}' style="vertical-align:top;"></i>
-                        </h1>
+    static #tileHead ( tile ) {
+        const tileIcon = (tile.head.tags.includes('camp'))?Asset.tile.type.camp.icon:Asset.tile.type.wilderness.icon
+        return /*html*/`
+                <div class="box" style="padding-bottom:5mm">
+                        <div class="row smaller nomargin">
+                            <h1 class="two column ltxt">${tileIcon}</h1>
+                            <h1 class="eight column">${tile.body.name[APPLOC]}</h1>
+                            <h1 class="two column rtxt">${tileIcon}</h1>
+                        </div>
+                        <hr class="row smaller">
+                        <h6 class="row smaller">
+                            <i>${tile.body.description[APPLOC]}</i>
+                        </h6>
+                        ${!tile.body.specialRule[APPLOC]?'':/*html*/`<hr class="row smaller"><h6 class="row smaller">${tile.body.specialRule[APPLOC]}</h6>`}
                     </div>
-                    <hr>
-                    <div class="row smaller" style="margin-bottom: 15px">
-                        <h3 id="select1_btn" class="column tile3 box">
-                            <i class="nf nf-md-progress_question"></i>
-                        </h3>
-                        <h3 id="select2_btn" class="column tile3 box">
-                            <i class="nf nf-md-progress_question"></i>
-                        </h3>
-                        <h3 id="select3_btn" class="column tile3 box">
-                            <i class="nf nf-md-progress_question"></i>
-                        </h3>
-                    </div> /* MAKE SPECIAL TILE5, TILE3 CLASSES! CAUSE MARGIN NOT WORKING LIKE THIS YOU IDIOT */
+    `}
+    static #actionBtn ( id , title , icon , dependency='' ) {
+        return /*html*/`
+                <div id="${id}" class="row smaller box" style="padding: 5mm 0mm">
+                    <div class="row smaller nomargin">
+                        <h1 class="column two rtxt"> ${icon} </h1>
+                        <h1 class="column six ltxt"> ${title}</h1>
+                        <h3 class="column four rtxt"> ${dependency} </h3>
+                    </div>
                 </div>
-                <div class="row smaller">
-                    <h3 id="cancel_btn" class="column tile box" style="margin: 0 auto !important;">
-                        <i class="nf ${Popup.iconX}"></i>
-                    </h3>
-                </div>
+    `}
+    static actionSelector ( tile ) {
+        const popup = document.getElementById("popup");
+        popup.innerHTML = /*html*/`
+                <div class="container">
+                    ${this.#tileHead(tile)}
+                    ${this.#actionBtn( 'select1_btn' , 'gathering' , Asset.tile.action.gathering.icon )}
+                    ${this.#actionBtn( 'select2_btn' , 'chopping' , Asset.tile.action.chopping.icon , `( ${Asset.keyword.tool.chopping.icon} )` )}
+                    ${this.#actionBtn( 'select3_btn' , 'hunting' , Asset.tile.action.hunting.icon , `( ${Asset.keyword.tool.meleeLight.icon}|${Asset.keyword.tool.meleeHeavy.icon}|${Asset.keyword.tool.ranged.icon} )` )}
                 </div>`;
-    popup.style.display = "block";
-    setSquareHeight();
-    return new Promise((resolve) => {
-        document.getElementById("cancel_btn").onclick = function() {
-            popup.style.display = "none";
-            resolve(false);
-        };
-        document.getElementById("select1_btn").onclick = function() {
-            popup.style.display = "none";
-            resolve(1);
-        };
-        document.getElementById("select2_btn").onclick = function() {
-            popup.style.display = "none";
-            resolve(2);
-        };
-        document.getElementById("select3_btn").onclick = function() {
-            popup.style.display = "none";
-            resolve(3);
-        };
-    });
+        popup.style.display = "block";
+        setSquareHeight();
+        return new Promise((resolve) => {
+            document.getElementById("select1_btn").onclick = function() {
+                popup.style.display = "none";
+                resolve('gathering');
+            };
+            document.getElementById("select2_btn").onclick = function() {
+                popup.style.display = "none";
+                resolve('chopping');
+            };
+            document.getElementById("select3_btn").onclick = function() {
+                popup.style.display = "none";
+                resolve('hunting');
+            };
+        });
+    }
+    
+
+
+
 }
+
+
+
+
+
