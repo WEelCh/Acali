@@ -9,6 +9,8 @@ using event object
 GCevent ( weather subevents are global )
 GCsound fire
 
+win conditions , sheltercards firecards
+
 Localization ( Mediator, Errors ) 
 Mediator: game start settings looks trash
 
@@ -16,7 +18,6 @@ modtool: cards, events, weather, map --> started implementing "spawn new event"
 
 * Storyteller as default difficulty settings (RimWorld-esc)
 * () ersetzt ()()
-* not defect catory on items, but special icons instead (or to less return from more complexity?)
 NO* items destroyed by rain?
 NO* start loot in chests?
 
@@ -25,10 +26,6 @@ MEDIATOR: import all js modules ??? --> data intensive (need to check)
 
 + yield could be emergent property of tag system ??? (instead of three different resource yield ranges)
 + event difficulty system (percentage vaues instead of range ?)
-
-
-trapping as subevent of hunting (trap is crafted there)
-trap time and status is tracked -> used for events (trap still empty / broken / rotten)
 
 special items 
 
