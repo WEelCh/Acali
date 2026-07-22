@@ -30,6 +30,8 @@ MEDIATOR: import all js modules ??? --> data intensive (need to check)
 trapping as subevent of hunting (trap is crafted there)
 trap time and status is tracked -> used for events (trap still empty / broken / rotten)
 
+module specific flags and tags
+
 special items 
 
 
