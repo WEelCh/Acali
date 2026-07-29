@@ -78,33 +78,24 @@ function buildWeatherStates() {
                 weatherDeck.push({
                     head: {
                         title: stateTitle,
-                        spawn: {
-                            type: "weather",
-                            actionConfig: {
-                                action: "",
-                                yieldTierRange: [0, 2],
+                        spawn : {
+                            distanceRange: [ 0 , 8 ], // [0:camp] [1,2:near] [3,4:far] [5,8:very far]
+                            weight   : 10,       // [ 1-10 ]
+                            disabled : false,   // disables this subevent
+                            cw       : false,   // players can disable events with content warning for especially distrubing / harmfull content
+                            severity : 1,       // 0:forgiving | 1:standard | 2:harsh | 3:brutal
+                            flags : {
+                                require: [  ], // tile (and global) must have ALL of these
+                                exclude: [  ], // tile (and global) must have NONE of these
                             },
-                            weight: 5,
-                            disabled: false,
-                            cw: false,
-                            severity: 1,
-                            tags: {
-                                require: [],
-                                exclude: [],
+                            daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                            season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
+                            weather : {
+                                temp: [t, t], // range [ 0-4 ]: [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                prec: [p, p], // range [ 0-4 ]: [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                wind: [w, w], // range [ 0-3 ]: [ Calm   , Breeze   , Gale    , Storm          ]
                             },
-                            flags: {
-                                require: [],
-                                exclude: [],
-                            },
-                            daytime: [true, [true, true, true, true]],
-                            season: [true, true, true, true],
-                            weather: {
-                                temp: [t, t],
-                                prec: [p, p],
-                                wind: [w, w],
-                            },
-                            distanceRange: [0, 8],
-                        },
+                        }, 
                     },
                     body: {
                         description: {
@@ -112,30 +103,28 @@ function buildWeatherStates() {
                             en: descEn,
                         },
                         effects: {
-                            yield: { 
-                                gathering: 0,
-                                chopping: 0,
-                                hunting: 0,
-                                ship: 0,
+                            yield: { // cards drawn from resource decks
+                                gathering: 0,   chopping: 0,   hunting: 0,   ship: 0,
                             },
                             afflictions: {
                                 target: "groupForced",
-                                exhaustion: 0,
-                                hunger: 0,
-                                hypothermia: (t === 4) ? -1 : 0,
-                                wound: 0,
-                                cold: Math.max(0, 3 - t),
-                                wet: p,
-                                wind: w,
+                                special: "",
+                                // direct (neg means healing)
+                                exhaustion: 0,      hunger: 0,      hypothermia: (t === 4) ? -1 : 0,      wound: 0,
+                                // indirect (translate to hypothermia if not protected against)
+                                cold: Math.max(0, 3 - t),       wet: p,     wind: w,
                             },
                             flags: {
-                                addLocal: [],
-                                removeLocal: [],
-                                addGlobal: [],
-                                removeGlobal: [],
+                                local : {
+                                    add    : [  ],
+                                    remove : [  ],
+                                },
+                                global : {
+                                    add    : [  ],
+                                    remove : [  ],
+                                },
                             },
                         },
-                        options: [],
                     }
                 });
             }
@@ -148,40 +137,14 @@ export default { meta : { author, name, date, id, description },
     // ===================================================================
     // LOCATIONS
     // ===================================================================
-    locations: [
-        {
-            head : {
-                tags  : [ "" ],
-                spawn: {
-                    disabled : false,
-                    weight: 5, // [ 1-10 ]
-                    min: 0, max: 99,
-                },
-                resources: {// low mid high ( weighted distribution )
-                    gather: [  1 , 3 , 2  ],
-                    hunt:   [  1 , 3 , 2  ],
-                    chop:   [  1 , 3 , 2  ],
-                },
-            }, 
-            body : {
-                name  : { 
-                    de : "" , 
-                    en : "" ,
-                } ,
-                description : { 
-                    de : "" , 
-                    en : "" ,
-                } ,
-                specialRule : { 
-                    de : `` , 
-                    en : `` ,
-                } ,
-                weatherProt : { coldProt : 0 , wetProt : 0 , windProt : 0 },
-            }
-        }, 
-    ],
+    locations: [ ],
     // ===================================================================
-    // SUBEVENTS
+    // EVENT FRAGMENTS
     // ===================================================================
-    subevents : buildWeatherStates(),
+    eventFragment: {
+        weather: buildWeatherStates(),
+        travel : [ ],
+        unforseen : [ ],
+        action : { gathering : [ ], chopping : [ ], hunting : [ ] }
+    }
 }  
