@@ -1,3 +1,7 @@
+KEEP ONE BIG MODULE FORMAT ???
+OR SPLITT INTO MULTIPLE MODULE FORMATS ( like Aweather and Amod )
+> Do not split. Aweather contains a weather simulation, Amodule contains game content ( eventfragments, locations, mystery foods )
+
 # EVENT LOOP
 + click tile - weather (global), unforseen - select action - action, travel
 
@@ -16,6 +20,10 @@
 # KEYWORD SYSTEM
 + () replaces ()() 
 + signal to signal ships / make fire burn smoking
+
+# MEDIATOR
++ make fragments etc from single modules selectable
++ language selection
 
 # MISC
 + mystery food should have different severity outcomes! - modular approach
