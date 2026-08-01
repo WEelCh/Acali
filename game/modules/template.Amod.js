@@ -731,4 +731,32 @@ export default { meta : { author, name, date, id, description },
             ],
         },
     },
+    // ===================================================================
+    // MYSTERY FOOD
+    // ===================================================================
+    mysteryFood : [
+        {
+            head : {
+                title : "", // work title
+                spawn : {
+                    weight   : 5,       // [ 1-10 ]
+                    disabled : false,   // disables this subevent
+                    cw       : false,   // players can disable events with content warning for especially distrubing / harmfull content
+                    severity : 0,       // 0:forgiving | 1:standard | 2:harsh | 3:brutal
+                }, 
+            },
+            body : {
+                effects: {
+                    afflictions: {
+                        // direct (neg means healing)
+                        exhaustion: 1,      hunger: 0,      hypothermia: 0,     wound: 0,
+                        specialRule : { 
+                            de : `` , 
+                            en : `` ,
+                        } ,
+                    },
+                },
+            },
+        },
+    ],
 }  
