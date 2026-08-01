@@ -2,6 +2,10 @@ KEEP ONE BIG MODULE FORMAT ???
 OR SPLITT INTO MULTIPLE MODULE FORMATS ( like Aweather and Amod )
 > Do not split. Aweather contains a weather simulation, Amodule contains game content ( eventfragments, locations, mystery foods )
 
+
+special taget needs to be localized !!!
+
+
 # EVENT LOOP
 + click tile - weather (global), unforseen - select action - action, travel
 
@@ -9,6 +13,7 @@ OR SPLITT INTO MULTIPLE MODULE FORMATS ( like Aweather and Amod )
 + Storyteller as default difficulty settings (RimWorld-esc) ; bible inspired?
 ## CODE
 + severity distribution for event fragments and mystery food [1,5,3,1]
+    + option for mysterfood cooking to decrease severity
 + loot modificator ( to what percentage one more/less loot spawns ) [ chop, hunt, gather, ship seperate ]
 + damage modification ( to what percentage one more damage spawns ) [ also seperate ]
 + healing modification ( to what percentage one more healing spawns ) [ also seperate ]
