@@ -1,7 +1,3 @@
-KEEP ONE BIG MODULE FORMAT ???
-OR SPLITT INTO MULTIPLE MODULE FORMATS ( like Aweather and Amod )
-> Do not split. Aweather contains a weather simulation, Amodule contains game content ( eventfragments, locations, mystery foods )
-
 
 special taget needs to be localized !!!
 
