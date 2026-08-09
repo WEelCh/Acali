@@ -199,7 +199,7 @@ class GCmap { static Log = new Log("Map", "c");
         // ADD COASTAL FLAG
         for (const coastTile of this.costTiles) {
             if (coastTile[0]==this.campTile[0] && coastTile[1]==this.campTile[1]) {continue}
-            this.island[coastTile[0]][coastTile[1]].head.tags.push("coastal");
+            this.island[coastTile[0]][coastTile[1]].head.flags.push("coastal");
         }
 
         // ADD DISTANCE
@@ -243,7 +243,7 @@ class GCmap { static Log = new Log("Map", "c");
         // replace CAMP
         this.island[this.campTile[0]][this.campTile[1]] = {
             head : {
-                tags  : [ "camp" ],
+                flags  : [ "camp" ],
                 spawn: { disabled:false,weight:0,min:1,max:1,distance:0 },
                 resources: { gather:[0,0,0],hunt:[0,0,0],chop:[0,0,0] },
             }, 
