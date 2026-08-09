@@ -79,8 +79,8 @@ p { font-family: 'Courier New', Courier, monospace, "Raleway", "HelveticaNeue", 
 svg.icon:not(.popup) {
     width: 1em;
     height: 1em;
-    vertical-align: middle; /* works, but -0.125em often aligns perfectly with the text baseline */
-    /* vertical-align: -0.125em; */
+    /*vertical-align: middle; /* works, but -0.125em often aligns perfectly with the text baseline */
+    vertical-align: -0.125em;
     stroke: var(--txtColor); /* Keeps dynamic coloring intact */
     color: var(--txtColor);
     fill: none;
