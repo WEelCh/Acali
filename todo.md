@@ -1,7 +1,4 @@
 
-special taget needs to be localized !!!
-
-
 # EVENT LOOP
 + click tile - weather (global), unforseen - select action - action, travel
 
