@@ -7,8 +7,8 @@ const name        = {
 const date        = "260801"; 
 const id          = `${author}_${name.en}_${date}`;
 const description = { 
-    de : "" , 
-    en : "" ,
+    de : "base Events usw" , 
+    en : "base events etc" ,
 };
 
 
@@ -281,7 +281,7 @@ export default { meta : { author, name, date, id, description },
     locations: [
         {
             head : {
-                flags: [ "wilderness" , "camp" ], // coastal and camp will be assigned by island generation
+                flags: [ "wilderness" ], // coastal and camp will be assigned by island generation
                 spawn: {
                     disabled : false,
                     weight: 5, // [ 1-10 ]
