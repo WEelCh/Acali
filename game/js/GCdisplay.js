@@ -2,6 +2,26 @@
 
 class GCdisplay { static Log = new Log("Display", "b");
 
+
+
+    static mysteryfoodIcon ( ) {
+        document.getElementById( `id_mysteryfood_herb_raw` ).innerHTML = Asset.keyword.supply.herb.icon
+        document.getElementById( `id_mysteryfood_nut_raw` ).innerHTML = Asset.keyword.supply.nut.icon
+        document.getElementById( `id_mysteryfood_root_raw` ).innerHTML = Asset.keyword.supply.root.icon
+        document.getElementById( `id_mysteryfood_mushroom_raw` ).innerHTML = Asset.keyword.supply.mushroom.icon
+        document.getElementById( `id_mysteryfood_berry_raw` ).innerHTML = Asset.keyword.supply.berry.icon
+
+        document.getElementById( `id_mysteryfood_cooked` ).innerHTML = Asset.keyword.supply._isPerishable.icon
+
+        document.getElementById( `id_mysteryfood_herb_cooked` ).innerHTML = Asset.keyword.supply.herb.icon
+        document.getElementById( `id_mysteryfood_nut_cooked` ).innerHTML = Asset.keyword.supply.nut.icon
+        document.getElementById( `id_mysteryfood_root_cooked` ).innerHTML = Asset.keyword.supply.root.icon
+        document.getElementById( `id_mysteryfood_mushroom_cooked` ).innerHTML = Asset.keyword.supply.mushroom.icon
+        document.getElementById( `id_mysteryfood_berry_cooked` ).innerHTML = Asset.keyword.supply.berry.icon
+    }
+
+
+
     static update_dayPhase ( dayPhase , moonPhase ) {
         const icon = (dayPhase === 3) ?
             Asset.dayPhase[dayPhase][moonPhase].icon :
@@ -140,7 +160,7 @@ class GCdisplay { static Log = new Log("Display", "b");
 
 
     static #tileHead ( tile ) {
-        const tileIcon = (tile.head.tags.includes('camp'))?Asset.tile.type.camp.icon:Asset.tile.type.wilderness.icon
+        const tileIcon = (tile.head.flags.includes('camp'))?Asset.tile.type.camp.icon:Asset.tile.type.wilderness.icon
         return /*html*/`
                 <div class="box" style="padding-bottom:5mm">
                         <div class="row smaller nomargin">

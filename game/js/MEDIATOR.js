@@ -7,6 +7,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
     
     static async onload ( ) { // prompt game settings
         GCdisplay.update_settingLocals();
+        GCdisplay.mysteryfoodIcon();
 
         const response = await fetch('scanner.php');
         const allModules = await response.json();
@@ -32,9 +33,10 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
             document.getElementById( "id_load_events" ).innerHTML += /*html*/`
                 <div class="row smaller">
                     <input class="column two" type="checkbox" id="MOD_${index}" name="EVENTS" value="${index}">
-                    <h3 class="column nine ltxt">
-                    ${mod.default.meta.name[APPLOC]}
-                    </h3>
+                    <h3 class="column nine ltxt"> ${mod.default.meta.name[APPLOC]} </h3>
+                </div>
+                <div class="row smaller nomargin">
+                    <h6 class="column ctxt"> ${mod.default.meta.description[APPLOC]} </h6>
                 </div>`
         }
         this.Log.debug("selectable_weatherSystems:",this.selectable_weatherSystems)
@@ -94,7 +96,12 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
         // *** MOD ***
         for ( const events of EVENTS ) {
             // *** MOD :: EVENTS ***
-            GCevent.add( this.selectable_events[events.value].subevents )
+            GCevent.add( this.selectable_events[events.value].eventFragment.weather   , "w" )
+            GCevent.add( this.selectable_events[events.value].eventFragment.travel    , "t" )
+            GCevent.add( this.selectable_events[events.value].eventFragment.unforseen , "u" )
+            GCevent.add( this.selectable_events[events.value].eventFragment.action.gathering , "ag" )
+            GCevent.add( this.selectable_events[events.value].eventFragment.action.chopping  , "ac" )
+            GCevent.add( this.selectable_events[events.value].eventFragment.action.hunting   , "ah" )
             // *** MOD :: LOCATIONS ***
             GCmap.allTiles = GCmap.allTiles.concat( this.selectable_events[events.value].locations );
         }
@@ -151,14 +158,21 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
         const row = id[4] ; const col = id[5];
         let tile = GCmap.island[row][col]
         MEDIATOR.Log.info(id, row, col, tile.body.name);
+        MEDIATOR.Log.debug(tile);
         // hand the event over to GCdisplay to display (popup) and let players play
         // hand click info to GCevent to build the event
         // hand the event over to GCdisplay to display (popup) and let players play
         // hand event outcome to GCmap to change tags and ressources
 
         let action = "camp";
-        if ( !tile.head.tags.includes('camp') ) { action = await GCdisplay.actionSelector( tile ) }
+        if ( !tile.head.flags.includes('camp') ) { action = await GCdisplay.actionSelector( tile ) }
         MEDIATOR.Log.info("Selected action:",action);
+    }
+
+
+
+    static async triggerMysteryfood ( ctx ) {
+        this.Log.debug( ctx.id )
     }
 
 
