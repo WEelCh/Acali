@@ -40,7 +40,7 @@ const Locale = {
       },
       startdate : { text : function(){return Locale.setting.prompt.startdate[APPLOC]},
         de : "Datum des Unglücks",
-        en : "Date",
+        en : "Date of desaster",
       },
       cw : { text : function(){return Locale.setting.prompt.cw[APPLOC]},
         de : "Ereignisse, die mit Inhaltswarnungen markiert sind, aktivieren?",
