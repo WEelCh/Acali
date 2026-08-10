@@ -132,11 +132,9 @@ class GCmap { static Log = new Log("Map", "c");
         for (let r = 0; r < this.size; r++) {
             for (let c = 0; c < this.size; c++) {
                 if (this.island[r][c] === 0) {
-                    // CRITIC NOTE: Skip the camp tile right now! 
-                    // Previously you generated a tile here and overwrote it later.
+                    // Skip the camp tile
                     if (r === this.campTile[0] && c === this.campTile[1]) continue;
 
-                    // (Keeping your exact spelling of costTiles)
                     let isCoastal = this.costTiles.some(ct => ct[0] === r && ct[1] === c);
                     slots.push({ r, c, isCoastal, tile: null });
                 }
@@ -144,7 +142,7 @@ class GCmap { static Log = new Log("Map", "c");
         } 
         
         // 3. Shuffle the slots (Fisher-Yates Shuffle)
-        // We must shuffle the slots so that MIN requirements don't always clump in the top-left of the map.
+        // shuffle the slots so that MIN requirements don't always clump in the top-left of the map.
         for (let i = slots.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [slots[i], slots[j]] = [slots[j], slots[i]];
@@ -189,7 +187,7 @@ class GCmap { static Log = new Log("Map", "c");
 
             if (availableTiles.length === 0) {
                 this.Log.error(`No valid tiles found for ${slot.isCoastal ? 'coastal' : 'inland'} slot!`);
-                continue; // Leaves the slot blank or you could write a fallback here
+                continue; 
             }
 
             let currentTotalWeight = availableTiles.reduce((sum, t) => sum + t.head.spawn.weight, 0);
@@ -224,7 +222,7 @@ class GCmap { static Log = new Log("Map", "c");
             slot.tile.head.resources.hunt   = getWeightedIndex(slot.tile.head.resources.hunt);
             slot.tile.head.resources.chop   = getWeightedIndex(slot.tile.head.resources.chop);
 
-            // Add coastal flag if it's on a coastal slot (this replaces your old separate loop!)
+            // Add coastal flag if it's on a coastal slot
             if (slot.isCoastal) {
                 slot.tile.head.flags.push("coastal");
             }
@@ -233,7 +231,7 @@ class GCmap { static Log = new Log("Map", "c");
             this.island[slot.r][slot.c] = slot.tile;
         }
 
-        // 7. ADD DISTANCE (Untouched from your code)
+        // 7. ADD DISTANCE
         const distances = Array(this.size).fill(0).map(() => Array(this.size).fill(Infinity));
         const queue = [];
         const isValid = (r, c) => r >= 0 && r < this.size && c >= 0 && c < this.size;
@@ -275,18 +273,17 @@ class GCmap { static Log = new Log("Map", "c");
             } 
         }
 
-        // 8. REPLACE CAMP (Untouched)
+        // 8. REPLACE CAMP
         this.island[this.campTile[0]][this.campTile[1]] = {
             head : {
                 flags  : [ "camp" ],
-                spawn: { disabled:false,weight:0,min:1,max:1,distance:0 },
+                spawn: { disabled:false,weight:99,min:1,max:1,distance:0,allowOnInland:true,allowOnCoastal:true},
                 resources: { gather:[0,0,0],hunt:[0,0,0],chop:[0,0,0] },
             }, 
             body : {
                 name  : { de : "Lager" , en : "Camp" } ,
                 description : { de : "Die Lagerstätte" , en : "The camp site" } ,
                 specialRule : { de : `` , en : `` } ,
-                weatherProt : { coldProt : 0 , wetProt : 0 , windProt : 0 },
             }
         };
 
