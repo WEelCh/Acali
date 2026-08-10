@@ -119,7 +119,7 @@ function buildWeatherStates() {
                                 // direct (neg means healing)
                                 exhaustion: 0,      hunger: 0,      hypothermia: (t === 4) ? -1 : 0,      wound: 0,
                                 // indirect (translate to hypothermia if not protected against)
-                                cold: Math.max(0, 3 - t),       wet: p,     wind: w,
+                                cold: Math.max(0, 3 - t),       wet: Math.max(0, p-1),     wind: w,
                             },
                             flags: {
                                 local : {
@@ -290,19 +290,19 @@ export default { meta : { author, name, date, id, description },
                     allowOnCoastal: true,
                 },
                 resources: {// scarce normal abundand ( weighted distribution )
-                    gather: [  0 , 2 , 2  ],
-                    hunt:   [  1 , 3 , 0  ],
-                    chop:   [  0 , 1 , 0  ],
+                    gather: [  1 , 5 , 3  ],
+                    hunt:   [  1 , 1 , 1  ],
+                    chop:   [  1 , 1 , 1  ],
                 },
             }, 
             body : {
                 name  : { 
-                    de : "Name" , 
-                    en : "Name" ,
+                    de : "Gewöhnlicher Wald" , 
+                    en : "Normal Forest" ,
                 } ,
                 description : { 
-                    de : "Desc" , 
-                    en : "Desc" ,
+                    de : "Ein gewöhnlicher Wald" , 
+                    en : "A normal Forest" ,
                 } ,
                 specialRule : { 
                     de : `` , 
@@ -335,7 +335,7 @@ export default { meta : { author, name, date, id, description },
                         weight   : 5,       // [ 1-10 ]
                         disabled : false,   // disables this subevent
                         cw       : false,   // players can disable events with content warning for especially distrubing / harmfull content
-                        severity : 0,       // 0:forgiving | 1:standard | 2:harsh | 3:brutal
+                        severity : 1,       // 0:forgiving | 1:standard | 2:harsh | 3:brutal
                         flags : {
                             require: [  ], // tile (and global) must have ALL of these
                             exclude: [  ], // tile (and global) must have NONE of these
@@ -351,23 +351,23 @@ export default { meta : { author, name, date, id, description },
                 },
                 body : {
                     description : { 
-                        de : "" , 
+                        de : "Im Schlamm findet ihr alles lol" , 
                         en : "" ,
                     },
                     effects: {
                         yield: { // cards drawn from resource decks
-                            gathering: 0,   chopping: 0,   hunting: 0,   ship: 0,
+                            gathering: 1,   chopping: 1,   hunting: 1,   ship: 1,
                         },
                         afflictions: { 
-                            target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
+                            target: "groupForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
                             special: { 
                                 de : "" , 
                                 en : "" ,
                             },
                             // direct (neg means healing)
-                            exhaustion: 1,      hunger: 0,      hypothermia: 0,     wound: 0,
+                            exhaustion: 1,      hunger: 1,      hypothermia: 1,     wound: 1,
                             // indirect (translate to hypothermia if not protected against)
-                            cold: 0,        wet: 0,       wind: 0,
+                            cold: 1,        wet: 1,       wind: 1,
                         },
                         flags: {
                             local : {
@@ -384,7 +384,7 @@ export default { meta : { author, name, date, id, description },
                     options : [ // 1-3 options (at least one without keyword needs)
                         {
                             description : { 
-                                de : "" , 
+                                de : "Das ist eure einzige Option" , 
                                 en : "" ,
                             } ,
                             challenge : { // (skillcheck and/or keyword) or nothing
@@ -394,18 +394,21 @@ export default { meta : { author, name, date, id, description },
                                     en : "" ,
                                 },
                                 skillcheck : {
-                                    type : "", // to omit: "" | "dex" | "str" | "wis"
+                                    type : "str", // to omit: "" | "dex" | "str" | "wis"
                                     difficulty : [ 2 , 3 , 6], // custom dice (players only get range)
                                 },
-                                // group: still only one ; players need one of the stated (OR)
-                                useKeyword     : [  ], 
-                                consumeKeyword : [  ],
+                                keyword : {
+                                    // "keyword | keyword + keyword"
+                                    // "(kw)    or (kw and kw)"
+                                    use     : `${Asset.keyword.tool.lookout}`,
+                                    consume : ``,
+                                },
                             },
                             
                             
                             onSuccess : {
                                 description : { 
-                                    de : "" , 
+                                    de : "Hehe" , 
                                     en : "" ,
                                 } ,
                                 effects: {
@@ -438,7 +441,7 @@ export default { meta : { author, name, date, id, description },
                             },
                             onFailure : {
                                 description : { 
-                                    de : "" , 
+                                    de : "not hehe" , 
                                     en : "" ,
                                 } ,
                                 effects: {
@@ -553,9 +556,12 @@ export default { meta : { author, name, date, id, description },
                                         type : "", // to omit: "" | "dex" | "str" | "wis"
                                         difficulty : [ 2 , 3 , 6], // custom dice (players only get range)
                                     },
-                                    // group: still only one ; players need one of the stated (OR)
-                                    useKeyword     : [  ], 
-                                    consumeKeyword : [  ],
+                                    keyword : {
+                                        // "keyword | keyword + keyword"
+                                        // "(kw)    or (kw and kw)"
+                                        use     : ``,
+                                        consume : ``,
+                                    },
                                 },
                                 
                                 
@@ -705,9 +711,12 @@ export default { meta : { author, name, date, id, description },
                                         type : "", // to omit: "" | "dex" | "str" | "wis"
                                         difficulty : [ 2 , 3 , 6], // custom dice (players only get range)
                                     },
-                                    // group: still only one ; players need one of the stated (OR)
-                                    useKeyword     : [  ], 
-                                    consumeKeyword : [  ],
+                                    keyword : {
+                                        // "keyword | keyword + keyword"
+                                        // "(kw)    or (kw and kw)"
+                                        use     : ``,
+                                        consume : ``,
+                                    },
                                 },
                                 
                                 
@@ -857,9 +866,12 @@ export default { meta : { author, name, date, id, description },
                                         type : "", // to omit: "" | "dex" | "str" | "wis"
                                         difficulty : [ 2 , 3 , 6], // custom dice (players only get range)
                                     },
-                                    // group: still only one ; players need one of the stated (OR)
-                                    useKeyword     : [  ], 
-                                    consumeKeyword : [  ],
+                                    keyword : {
+                                        // "keyword | keyword + keyword"
+                                        // "(kw)    or (kw and kw)"
+                                        use     : ``,
+                                        consume : ``,
+                                    },
                                 },
                                 
                                 

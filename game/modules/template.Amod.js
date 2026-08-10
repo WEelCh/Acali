@@ -18,7 +18,7 @@ export default { meta : { author, name, date, id, description },
     locations: [
         {
             head : {
-                flags: [ "wilderness" , "camp" ], // coastal and camp will be assigned by island generation
+                flags: [ "wilderness" ], // coastal and camp will be assigned by island generation
                 spawn: {
                     disabled : false,
                     weight: 5, // [ 1-10 ]
@@ -246,9 +246,12 @@ export default { meta : { author, name, date, id, description },
                                     type : "", // to omit: "" | "dex" | "str" | "wis"
                                     difficulty : [ 2 , 3 , 6], // custom dice (players only get range)
                                 },
-                                // group: still only one ; players need one of the stated (OR)
-                                useKeyword     : [  ], 
-                                consumeKeyword : [  ],
+                                keyword : {
+                                    // "keyword | keyword + keyword* | keyword*"
+                                    // "(kw)    or (kw and all kw)   or (all kw)"
+                                    use     : ``,
+                                    consume : ``,
+                                },
                             },
                             
                             
@@ -402,9 +405,12 @@ export default { meta : { author, name, date, id, description },
                                         type : "", // to omit: "" | "dex" | "str" | "wis"
                                         difficulty : [ 2 , 3 , 6], // custom dice (players only get range)
                                     },
-                                    // group: still only one ; players need one of the stated (OR)
-                                    useKeyword     : [  ], 
-                                    consumeKeyword : [  ],
+                                    keyword : {
+                                        // "keyword | keyword + keyword* | keyword*"
+                                        // "(kw)    or (kw and all kw)   or (all kw)"
+                                        use     : ``,
+                                        consume : ``,
+                                    },
                                 },
                                 
                                 
@@ -554,9 +560,12 @@ export default { meta : { author, name, date, id, description },
                                         type : "", // to omit: "" | "dex" | "str" | "wis"
                                         difficulty : [ 2 , 3 , 6], // custom dice (players only get range)
                                     },
-                                    // group: still only one ; players need one of the stated (OR)
-                                    useKeyword     : [  ], 
-                                    consumeKeyword : [  ],
+                                    keyword : {
+                                        // "keyword | keyword + keyword* | keyword*"
+                                        // "(kw)    or (kw and all kw)   or (all kw)"
+                                        use     : ``,
+                                        consume : ``,
+                                    },
                                 },
                                 
                                 
@@ -706,9 +715,12 @@ export default { meta : { author, name, date, id, description },
                                         type : "", // to omit: "" | "dex" | "str" | "wis"
                                         difficulty : [ 2 , 3 , 6], // custom dice (players only get range)
                                     },
-                                    // group: still only one ; players need one of the stated (OR)
-                                    useKeyword     : [  ], 
-                                    consumeKeyword : [  ],
+                                    keyword : {
+                                        // "keyword | keyword + keyword* | keyword*"
+                                        // "(kw)    or (kw and all kw)   or (all kw)"
+                                        use     : ``,
+                                        consume : ``,
+                                    },
                                 },
                                 
                                 
