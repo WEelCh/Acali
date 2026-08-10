@@ -97,7 +97,7 @@ class GCdisplay { static Log = new Log("Display", "b");
     }
 
     static #map_is_locked = false
-    static update_map ( island , triggerFunc ) {
+    static update_map ( island , triggerWild , triggerCamp ) {
         document.getElementById('id_island_land').innerHTML = Locale.map.name.text();
         if (this.#map_is_locked) { 
             this.Log.error("map already displayed. you did something wrong calling this!") ; 
@@ -112,7 +112,7 @@ class GCdisplay { static Log = new Log("Display", "b");
                     offset++;
                     continue; }
                 // every non water tile gets a trigger
-                document.getElementById( `tile${row}${tile}` ).onclick = triggerFunc;
+                document.getElementById( `tile${row}${tile}` ).onclick = triggerWild;
                 if ( offset !== 0 ) { // non water needs to be offset
                     document.getElementById( `tile${row}${tile}` ).classList.add(`offset-by-${offset}-tile5`); }
                 if ( island[row][tile] === 1 ) { // is camp
@@ -120,6 +120,7 @@ class GCdisplay { static Log = new Log("Display", "b");
                     document.getElementById( `tile${row}${tile}` ).style.borderWidth = "2px";
                     document.getElementById( `tile${row}${tile}` ).style.borderStyle = "dotted";
                     document.getElementById( `tile${row}${tile}` ).style.borderColor = "rgb(211, 214, 199)";
+                    document.getElementById( `tile${row}${tile}` ).onclick = triggerCamp;
                     offset = 0; 
                     continue;
                 }
@@ -178,9 +179,9 @@ class GCdisplay { static Log = new Log("Display", "b");
     static #fragmentEffectIcons ( effects ) {
         //const tileIcon = (tile.head.flags.includes('camp'))?Asset.tile.type.camp.icon:Asset.tile.type.wilderness.icon
         let yieldIcons = ""
-        yieldIcons +=  Asset.tile.action.gathering.icon.repeat(effects.yield.gathering)
-        yieldIcons +=  Asset.tile.action.chopping.icon.repeat(effects.yield.chopping)
-        yieldIcons +=  Asset.tile.action.hunting.icon.repeat(effects.yield.hunting)
+        yieldIcons +=  Asset.tile.action.gathering.icon.repeat(effects?.yield?.gathering ?? 0)
+        yieldIcons +=  Asset.tile.action.chopping.icon.repeat(effects?.yield?.chopping ?? 0)
+        yieldIcons +=  Asset.tile.action.hunting.icon.repeat(effects?.yield?.hunting ?? 0)
         
         let afflictionIcons = ""
         afflictionIcons += Asset.event.target[ effects.afflictions.target ].icon
@@ -254,6 +255,7 @@ class GCdisplay { static Log = new Log("Display", "b");
                     ${this.#fragmentEffectIcons(event.weather.body.effects)}
 
                     <h2 class="row smaller"> ${event.unforseen.body.description[APPLOC]} </h2>
+                    ${this.#fragmentEffectIcons(event.unforseen.body.effects)}
                     ${unforseenOptions}
                 </div>`;
         popup.style.display = "block";
@@ -283,6 +285,7 @@ class GCdisplay { static Log = new Log("Display", "b");
                     ${this.#fragmentEffectIcons(event.weather.body.effects)}
 
                     <h2 class="row smaller"> ${event.unforseen.body.description[APPLOC]} </h2>
+                    ${this.#fragmentEffectIcons(event.unforseen.body.effects)}
                     <h2 class="row smaller"> ${difficulty} </h2>
                     <h2 id="select0_btn" class="row smaller box"> Geschafft </h2>
                     <h2 id="select1_btn" class="row smaller box"> Nicht geschafft </h2>
@@ -314,6 +317,7 @@ class GCdisplay { static Log = new Log("Display", "b");
                     ${this.#fragmentEffectIcons(event.weather.body.effects)}
 
                     <h2 class="row smaller"> ${event.unforseen.body.description[APPLOC]} </h2>
+                    ${this.#fragmentEffectIcons(event.unforseen.body.effects)}
 
                     <h2 class="row smaller"> ${event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].description[APPLOC]} </h2>
                     ${this.#fragmentEffectIcons(event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].effects)}
@@ -354,11 +358,13 @@ class GCdisplay { static Log = new Log("Display", "b");
                     ${this.#fragmentEffectIcons(event.weather.body.effects)}
 
                     <h2 class="row smaller"> ${event.unforseen.body.description[APPLOC]} </h2>
+                    ${this.#fragmentEffectIcons(event.unforseen.body.effects)}
 
                     <h2 class="row smaller"> ${event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].description[APPLOC]} </h2>
                     ${this.#fragmentEffectIcons(event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].effects)}
 
                     <h2 class="row smaller"> ${event.action[subaction].body.description[APPLOC]} </h2>
+                    ${this.#fragmentEffectIcons(event.action[subaction].body.effects)}
                     ${actionOptions}
                 </div>`;
         popup.style.display = "block";
@@ -392,11 +398,13 @@ class GCdisplay { static Log = new Log("Display", "b");
                     ${this.#fragmentEffectIcons(event.weather.body.effects)}
 
                     <h2 class="row smaller"> ${event.unforseen.body.description[APPLOC]} </h2>
+                    ${this.#fragmentEffectIcons(event.unforseen.body.effects)}
 
                     <h2 class="row smaller"> ${event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].description[APPLOC]} </h2>
                     ${this.#fragmentEffectIcons(event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].effects)}
-
+                    
                     <h2 class="row smaller"> ${event.action[subaction].body.description[APPLOC]} </h2>
+                    ${this.#fragmentEffectIcons(event.action[subaction].body.effects)}
                     <h2 class="row smaller"> ${difficulty} </h2>
                     <h2 id="select0_btn" class="row smaller box"> Geschafft </h2>
                     <h2 id="select1_btn" class="row smaller box"> Nicht geschafft </h2>
@@ -426,6 +434,8 @@ class GCdisplay { static Log = new Log("Display", "b");
             subaction = ["gathering","chopping","hunting"][subaction]
             actionPart = /*html*/`
                             <h2 class="row smaller"> ${event.action[subaction].body.description[APPLOC]} </h2>
+                            ${this.#fragmentEffectIcons(event.action[subaction].body.effects)}
+                            <h2 class="row smaller"> ${event.action[subaction].body.options[selectedActionChallenge][actionChallengeDoneKey].description[APPLOC]} </h2>
                             ${this.#fragmentEffectIcons(event.action[subaction].body.options[selectedActionChallenge][actionChallengeDoneKey].effects)}`
         }
 
@@ -437,6 +447,7 @@ class GCdisplay { static Log = new Log("Display", "b");
                     ${this.#fragmentEffectIcons(event.weather.body.effects)}
 
                     <h2 class="row smaller"> ${event.unforseen.body.description[APPLOC]} </h2>
+                    ${this.#fragmentEffectIcons(event.unforseen.body.effects)}
 
                     <h2 class="row smaller"> ${event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].description[APPLOC]} </h2>
                     ${this.#fragmentEffectIcons(event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].effects)}
@@ -445,6 +456,110 @@ class GCdisplay { static Log = new Log("Display", "b");
 
                     <h2 class="row smaller"> ${event.travel.body.description[APPLOC]} </h2>
                     ${this.#fragmentEffectIcons(event.travel.body.effects)}
+
+                    <h2 id="select0_btn" class="row smaller box"> X </h2>
+                </div>`;
+        popup.style.display = "block";
+        //setSquareHeight();
+        return new Promise((resolve) => {
+            document.getElementById(`select0_btn`).onclick = function() {
+                popup.style.display = "none";
+                resolve(0);
+            };
+        });
+    }
+
+
+
+
+
+
+
+
+    static tileInteraction_camp ( tile , event ) {
+        const popup = document.getElementById("popup");
+        let campOptions = ""; let i=0;
+        for (const option of event.body.options) {
+            if (i>2) {break}
+            campOptions += this.#optionButton( `select${i}_btn` , option ); i++;
+        }
+        popup.innerHTML = /*html*/`
+                <div class="container">
+                    ${this.#tileHead(tile)}
+
+                    <h2 class="row smaller"> ${GCevent.currentWeatherEvent.body.description[APPLOC]} </h2>
+                    ${this.#fragmentEffectIcons(GCevent.currentWeatherEvent.body.effects)}
+
+                    <h2 class="row smaller"> ${event.body.description[APPLOC]} </h2>
+                    ${this.#fragmentEffectIcons(event.body.effects)}
+
+                    ${campOptions}
+                </div>`;
+        popup.style.display = "block";
+        //setSquareHeight();
+        return new Promise((resolve) => {
+            for (const i in event.body.options) {
+                if (i>2) {break}
+                document.getElementById(`select${i}_btn`).onclick = function() {
+                    //popup.style.display = "none";
+                    resolve(i);
+                };
+            }
+        });
+    }
+
+    static tileInteraction_campChallenge ( selectedCampChallenge , tile , event ) {
+
+        const popup = document.getElementById("popup");
+
+        const dice = event.body.options[selectedCampChallenge].challenge.skillcheck.difficulty;
+        const difficulty = dice[Math.floor(Math.random() * dice.length)]
+
+        popup.innerHTML = /*html*/`
+                <div class="container">
+                    ${this.#tileHead(tile)}
+
+                    <h2 class="row smaller"> ${GCevent.currentWeatherEvent.body.description[APPLOC]} </h2>
+                    ${this.#fragmentEffectIcons(GCevent.currentWeatherEvent.body.effects)}
+
+                    <h2 class="row smaller"> ${event.body.description[APPLOC]} </h2>
+                    ${this.#fragmentEffectIcons(event.body.effects)}
+
+                    <h2 class="row smaller"> ${difficulty} </h2>
+                    <h2 id="select0_btn" class="row smaller box"> Geschafft </h2>
+                    <h2 id="select1_btn" class="row smaller box"> Nicht geschafft </h2>
+                </div>`;
+        popup.style.display = "block";
+        //setSquareHeight();
+        return new Promise((resolve) => {
+            document.getElementById(`select0_btn`).onclick = function() {
+                //popup.style.display = "none";
+                resolve(true);
+            };
+            document.getElementById(`select1_btn`).onclick = function() {
+                //popup.style.display = "none";
+                resolve(false);
+            };
+        });
+    }
+
+    static tileInteraction_resolveCamp ( selectedCampChallenge , campChallengeDone , tile , event ) {
+        const popup = document.getElementById("popup");
+
+        let campChallengeDoneKey = campChallengeDone?"onSuccess":"onFailure"
+
+        popup.innerHTML = /*html*/`
+                <div class="container">
+                    ${this.#tileHead(tile)}
+
+                    <h2 class="row smaller"> ${GCevent.currentWeatherEvent.body.description[APPLOC]} </h2>
+                    ${this.#fragmentEffectIcons(GCevent.currentWeatherEvent.body.effects)}
+
+                    <h2 class="row smaller"> ${event.body.description[APPLOC]} </h2>
+                    ${this.#fragmentEffectIcons(event.body.effects)}
+
+                    <h2 class="row smaller"> ${event.body.options[selectedCampChallenge][campChallengeDoneKey].description[APPLOC]} </h2>
+                    ${this.#fragmentEffectIcons(event.body.options[selectedCampChallenge][campChallengeDoneKey].effects)}
 
                     <h2 id="select0_btn" class="row smaller box"> X </h2>
                 </div>`;

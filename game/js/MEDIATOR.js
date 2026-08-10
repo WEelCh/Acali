@@ -102,6 +102,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
             GCevent.add( this.selectable_events[events.value].eventFragment.action.gathering , "ag" )
             GCevent.add( this.selectable_events[events.value].eventFragment.action.chopping  , "ac" )
             GCevent.add( this.selectable_events[events.value].eventFragment.action.hunting   , "ah" )
+            GCevent.add( this.selectable_events[events.value].eventFragment.camp , "c" )
             // *** MOD :: LOCATIONS ***
             GCmap.allTiles = GCmap.allTiles.concat( this.selectable_events[events.value].locations );
             // *** MOD :: MYSTERY FOOD ***
@@ -110,7 +111,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
         GCevent.setupMysteryFood()
         // *** MAP ***
         GCmap.genIsland( MAPSIZE )
-        GCdisplay.update_map( GCmap.island , this.triggerTile )
+        GCdisplay.update_map( GCmap.island , this.triggerTile , this.triggerCamp )
         GCmap.assignTiles()
         // *** SOUND ***
         GCsound.prep()
@@ -209,12 +210,62 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
         handleFlags( event.unforseen.body.effects.flags )
         handleFlags( event.unforseen.body.options[selectedUnforseenChallenge][(unforseenChallengeDone?"onSuccess":"onFailure")].effects.flags )
 
-        handleFlags( event.action[["gathering","chopping","hunting"][subaction]].body.effects.flags )
-        handleFlags( event.action[["gathering","chopping","hunting"][subaction]].body.options[selectedActionChallenge][(actionChallengeDone?"onSuccess":"onFailure")].effects.flags )
+        if (subaction < 3){
+            handleFlags( event.action[["gathering","chopping","hunting"][subaction]].body.effects.flags )
+            handleFlags( event.action[["gathering","chopping","hunting"][subaction]].body.options[selectedActionChallenge][(actionChallengeDone?"onSuccess":"onFailure")].effects.flags )
+        }
 
         handleFlags( event.travel.body.effects.flags )
 
     }
+
+
+
+    static async triggerCamp ( element ) {
+        console.info("yay camp")
+        if ( GCtime.dayPhase==0 || GCtime.dayPhase==2 ) {
+            MEDIATOR.Log.info(`rejecting popup; not day or night`);
+            return;
+        }
+
+        const id = element.currentTarget.id;
+        const row = id[4] ; const col = id[5];
+        let tile = GCmap.island[row][col]
+        MEDIATOR.Log.info(id, row, col, tile.body.name);
+        MEDIATOR.Log.debug(tile);
+
+        let event = GCevent.genCamp( tile, GCtime.dayTime, GCtime.moonPhase, GCtime.season, GCweather.current )
+        MEDIATOR.Log.info(event)
+
+        const selectedCampChallenge = await GCdisplay.tileInteraction_camp( tile , event );
+        const campChallengeDone = await GCdisplay.tileInteraction_campChallenge( selectedCampChallenge , tile , event );
+        GCdisplay.tileInteraction_resolveCamp( selectedCampChallenge , campChallengeDone , tile , event );
+        
+        // FLAG HANDELING
+        const handleFlags = function(flags) {
+            const updateFlags = (baseArray, toAdd, toRemove) => {
+                // Combine arrays and remove duplicates using a Set
+                let updated = [...new Set([...baseArray, ...toAdd])];
+                // Keep only the flags that are NOT in the toRemove array
+                return updated.filter(flag => !toRemove.includes(flag));
+            };
+            tile.head.flags = updateFlags( // Apply to local flags
+                tile.head.flags, 
+                flags.local.add, 
+                flags.local.remove );
+            GCmap.globalFlags = updateFlags( // Apply to global flags
+                GCmap.globalFlags, 
+                flags.global.add, 
+                flags.global.remove );
+        };
+        handleFlags( GCevent.currentWeatherEvent.body.effects.flags )
+
+        handleFlags( event.body.effects.flags )
+
+        handleFlags( event.body.options[selectedCampChallenge][(campChallengeDone?"onSuccess":"onFailure")].effects.flags )
+    }
+
+
 
 
 

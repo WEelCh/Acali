@@ -7,6 +7,7 @@ class GCevent { static Log = new Log( "GCevent" , "y" )
         unforseen   : [ 0 , 1 , 0 , 0 ],
         action      : [ 0 , 1 , 0 , 0 ],
         travel      : [ 0 , 1 , 0 , 0 ],
+        camp        : [ 0 , 1 , 0 , 0 ],
         mysteryFood : [ 0 , 1 , 0 , 0 ],
     }
     static globalFlags = [];
@@ -20,6 +21,7 @@ class GCevent { static Log = new Log( "GCevent" , "y" )
             hunting   : [],
         },
         travel    : [],
+        camp      : [],
     }
 
     static mysteryFoodEffects = [];
@@ -70,6 +72,10 @@ class GCevent { static Log = new Log( "GCevent" , "y" )
             if ( type == "u") {
                 this.Log.debug(`Accepted unforseen event:`,event);
                 this.all.unforseen.push(event);
+                continue }
+            if ( type == "c") {
+                this.Log.debug(`Accepted camp event:`,event);
+                this.all.camp.push(event);
                 continue }
             this.Log.warn(`Wrong type given in function call:`,type);
         }
@@ -162,6 +168,43 @@ class GCevent { static Log = new Log( "GCevent" , "y" )
             avaiable.push(event);
         } return avaiable;
     }
+    static #standartFilterCamp ( category,  tile , dayTime , moonPhase , season , weather , severity ) {
+        // this applies all filters that are used for all three event types; returns array
+        let avaiable = []; let failed;
+        for (const event of category) {
+            failed = false;
+            // SEVERITY
+            if (event.head.spawn.severity != severity) {continue}
+            // INCLUDE FLAGS
+            for (const flag of event.head.spawn.flags.require) {
+                if (!(tile.head.flags.includes(flag)||GCmap.globalFlags.includes(flag))){ failed=true; break }
+            } if (failed){continue}
+            // EXCLUDE FLAGS
+            for (const flag of event.head.spawn.flags.exclude) {
+                if ((tile.head.flags.includes(flag)||GCmap.globalFlags.includes(flag))){ failed=true; break }
+            } if (failed){continue}
+            // DAYTIME and MOONPHASE
+            // DAYTIME and MOONPHASE
+            if (dayTime == 0) {
+                // If it's day, skip if the event doesn't allow daytime spawning
+                if (!event.head.spawn.daytime[0]) { continue; }
+            } else {
+                // If it's night, skip if the event doesn't match the current moon phase
+                if (!event.head.spawn.daytime[1][moonPhase]) { continue; }
+            }
+            // SEASON
+            if (!event.head.spawn.season[season]) {continue}
+            // WEATHER
+            if (event.head.spawn.weather.temp[0]>weather.temp || 
+                event.head.spawn.weather.temp[1]<weather.temp) {this.Log.debug("reject cause temp");continue}
+            if (event.head.spawn.weather.prec[0]>weather.prec || 
+                event.head.spawn.weather.prec[1]<weather.prec) {this.Log.debug("reject cause prec");continue}
+            if (event.head.spawn.weather.wind[0]>weather.wind || 
+                event.head.spawn.weather.wind[1]<weather.wind) {this.Log.debug("reject cause wind");continue}
+            // event survived
+            avaiable.push(event);
+        } return avaiable;
+    }
 
 
 
@@ -223,6 +266,18 @@ class GCevent { static Log = new Log( "GCevent" , "y" )
             severity--;
         }
         if (severity < 0) { return this.#weightedSelection(this.all.unforseen); }
+        else { return this.#weightedSelection(avaiable); }
+    }
+    static genCamp  ( tile , dayTime , moonPhase , season , weather ) {
+        let severity = this.#severitySelection("camp");
+        let avaiable = [];
+        // if nothing found, lower severity step by step, if still nothing found, ignore all filter
+        while (avaiable.length == 0) {
+            if (severity < 0) { this.Log.warn("Nothing found with severity check, abandon all filters"); break }
+            avaiable = this.#standartFilterCamp( this.all.camp , tile , dayTime , moonPhase , season , weather , severity )
+            severity--;
+        }
+        if (severity < 0) { return this.#weightedSelection(this.all.camp); }
         else { return this.#weightedSelection(avaiable); }
     }
 
