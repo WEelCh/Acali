@@ -247,8 +247,8 @@ export default { meta : { author, name, date, id, description },
                                     difficulty : [ 2 , 3 , 6], // custom dice (players only get range)
                                 },
                                 keyword : {
-                                    // "keyword | keyword + keyword* | keyword*"
-                                    // "(kw)    or (kw and all kw)   or (all kw)"
+                                    // "keyword | keyword + keyword"
+                                    // "(kw)    or (kw and kw)"
                                     use     : ``,
                                     consume : ``,
                                 },
@@ -406,8 +406,8 @@ export default { meta : { author, name, date, id, description },
                                         difficulty : [ 2 , 3 , 6], // custom dice (players only get range)
                                     },
                                     keyword : {
-                                        // "keyword | keyword + keyword* | keyword*"
-                                        // "(kw)    or (kw and all kw)   or (all kw)"
+                                        // "keyword | keyword + keyword"
+                                        // "(kw)    or (kw and kw)"
                                         use     : ``,
                                         consume : ``,
                                     },
@@ -561,8 +561,8 @@ export default { meta : { author, name, date, id, description },
                                         difficulty : [ 2 , 3 , 6], // custom dice (players only get range)
                                     },
                                     keyword : {
-                                        // "keyword | keyword + keyword* | keyword*"
-                                        // "(kw)    or (kw and all kw)   or (all kw)"
+                                        // "keyword | keyword + keyword"
+                                        // "(kw)    or (kw and kw)"
                                         use     : ``,
                                         consume : ``,
                                     },
@@ -716,8 +716,8 @@ export default { meta : { author, name, date, id, description },
                                         difficulty : [ 2 , 3 , 6], // custom dice (players only get range)
                                     },
                                     keyword : {
-                                        // "keyword | keyword + keyword* | keyword*"
-                                        // "(kw)    or (kw and all kw)   or (all kw)"
+                                        // "keyword | keyword + keyword"
+                                        // "(kw)    or (kw and kw)"
                                         use     : ``,
                                         consume : ``,
                                     },
