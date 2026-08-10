@@ -4,6 +4,8 @@ class GCmap { static Log = new Log("Map", "c");
     static size = 5;
     static island = undefined;
 
+    static globalFlags = [];
+
     static allTiles = [];
 
     static costTiles = [];

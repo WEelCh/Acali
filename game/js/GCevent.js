@@ -88,11 +88,11 @@ class GCevent { static Log = new Log( "GCevent" , "y" )
             if (event.head.spawn.severity != severity) {this.Log.debug("reject cause severity");continue}
             // INCLUDE FLAGS
             for (const flag of event.head.spawn.flags.require) {
-                if (!(this.globalFlags.includes(flag))){ failed=true; this.Log.debug("reject cause include flag");break }
+                if (!(GCmap.globalFlags.includes(flag))){ failed=true; this.Log.debug("reject cause include flag");break }
             } if (failed){continue}
             // EXCLUDE FLAGS
             for (const flag of event.head.spawn.flags.exclude) {
-                if ((this.globalFlags.includes(flag))){ failed=true; this.Log.debug("reject cause exclude flag");break }
+                if ((GCmap.globalFlags.includes(flag))){ failed=true; this.Log.debug("reject cause exclude flag");break }
             } if (failed){continue}
             // DAYTIME and MOONPHASE
             if (dayTime == 0) {
@@ -121,11 +121,11 @@ class GCevent { static Log = new Log( "GCevent" , "y" )
             if (event.head.spawn.severity != severity) {continue}
             // INCLUDE FLAGS
             for (const flag of event.head.spawn.flags.require) {
-                if (!(tile.head.flags.includes(flag)||this.globalFlags.includes(flag))){ failed=true; break }
+                if (!(tile.head.flags.includes(flag)||GCmap.globalFlags.includes(flag))){ failed=true; break }
             } if (failed){continue}
             // EXCLUDE FLAGS
             for (const flag of event.head.spawn.flags.exclude) {
-                if ((tile.head.flags.includes(flag)||this.globalFlags.includes(flag))){ failed=true; break }
+                if ((tile.head.flags.includes(flag)||GCmap.globalFlags.includes(flag))){ failed=true; break }
             } if (failed){continue}
             // DAYTIME and MOONPHASE
             // DAYTIME and MOONPHASE
