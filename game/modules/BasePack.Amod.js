@@ -947,6 +947,159 @@ export default { meta : { author, name, date, id, description },
                 },
             ],
         },
+        // -------------------------------------------------------------------
+        // CAMP FRAGMENT
+        // -------------------------------------------------------------------
+        camp : [
+            {
+                head : {
+                    title : "", // work title
+                    spawn : {
+                        weight   : 5,       // [ 1-10 ]
+                        disabled : false,   // disables this subevent
+                        cw       : false,   // players can disable events with content warning for especially distrubing / harmfull content
+                        severity : 1,       // 0:forgiving | 1:standard | 2:harsh | 3:brutal
+                        flags : {
+                            require: [  ], // tile (and global) must have ALL of these
+                            exclude: [  ], // tile (and global) must have NONE of these
+                        },
+                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
+                        weather : {
+                            temp : [ 0 , 4 ], // range [ 0-4 ]: [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                            prec : [ 0 , 4 ], // range [ 0-4 ]: [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                            wind : [ 0 , 3 ], // range [ 0-3 ]: [ Calm   , Breeze   , Gale    , Storm          ]
+                        },
+                    }, 
+                },
+                body : {
+                    description : { 
+                        de : "Das Lager wird gegessen upsi" , 
+                        en : "" ,
+                    },
+                    effects: {
+                        yield: { // cards drawn from resource decks
+                            gathering: 1,   chopping: 1,   hunting: 1,   ship: 1,
+                        },
+                        afflictions: { 
+                            target: "groupForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
+                            special: { 
+                                de : "" , 
+                                en : "" ,
+                            },
+                            // direct (neg means healing)
+                            exhaustion: 1,      hunger: 1,      hypothermia: 1,     wound: 1,
+                            // indirect (translate to hypothermia if not protected against)
+                            cold: 1,        wet: 1,       wind: 1,
+                        },
+                        flags: {
+                            local : {
+                                add    : [  ],
+                                remove : [  ],
+                            },
+                            global : {
+                                add    : [  ],
+                                remove : [  ],
+                            },
+                        },
+                    },
+                    // weather type events' options are never used!
+                    options : [ // 1-3 options (at least one without keyword needs)
+                        {
+                            description : { 
+                                de : "Das ist eure einzige Option" , 
+                                en : "" ,
+                            } ,
+                            challenge : { // (skillcheck and/or keyword) or nothing
+                                target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
+                                special: { 
+                                    de : "" , 
+                                    en : "" ,
+                                },
+                                skillcheck : {
+                                    type : "str", // to omit: "" | "dex" | "str" | "wis"
+                                    difficulty : [ 2 , 3 , 6], // custom dice (players only get range)
+                                },
+                                keyword : {
+                                    // "keyword | keyword + keyword"
+                                    // "(kw)    or (kw and kw)"
+                                    use     : `${Asset.keyword.tool.lookout}`,
+                                    consume : ``,
+                                },
+                            },
+                            
+                            
+                            onSuccess : {
+                                description : { 
+                                    de : "Hehe" , 
+                                    en : "" ,
+                                } ,
+                                effects: {
+                                    yield: { // cards drawn from resource decks
+                                        gathering: 0,   chopping: 0,   hunting: 0,   ship: 0,
+                                    },
+                                    afflictions: {
+                                        target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
+                                        special: { 
+                                            de : "" , 
+                                            en : "" ,
+                                        },
+                                        onlyParticipants: false,
+                                        // direct (neg means healing)
+                                        exhaustion: 1,      hunger: 0,      hypothermia: 0,     wound: 0,
+                                        // indirect (translate to hypothermia if not protected against)
+                                        cold: 0,        wet: 0,       wind: 0,
+                                    },
+                                    flags: {
+                                        local : {
+                                            add    : [  ],
+                                            remove : [  ],
+                                        },
+                                        global : {
+                                            add    : [  ],
+                                            remove : [  ],
+                                        },
+                                    },
+                                },
+                            },
+                            onFailure : {
+                                description : { 
+                                    de : "not hehe" , 
+                                    en : "" ,
+                                } ,
+                                effects: {
+                                    yield: { // cards drawn from resource decks
+                                        gathering: 0,   chopping: 0,   hunting: 0,   ship: 0,
+                                    },
+                                    afflictions: {
+                                        target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
+                                        special: { 
+                                            de : "" , 
+                                            en : "" ,
+                                        },
+                                        onlyParticipants: false,
+                                        // direct (neg means healing)
+                                        exhaustion: 1,      hunger: 0,      hypothermia: 0,     wound: 0,
+                                        // indirect (translate to hypothermia if not protected against)
+                                        cold: 0,        wet: 0,       wind: 0,
+                                    },
+                                    flags: {
+                                        local : {
+                                            add    : [  ],
+                                            remove : [  ],
+                                        },
+                                        global : {
+                                            add    : [  ],
+                                            remove : [  ],
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    ],
+                },
+            },
+        ],
     },
     // ===================================================================
     // MYSTERY FOOD
