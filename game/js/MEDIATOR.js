@@ -176,14 +176,41 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
         const selectedUnforseenChallenge = await GCdisplay.tileInteraction_unforseen( tile , event );
         const unforseenChallengeDone = await GCdisplay.tileInteraction_unforseenChallenge( selectedUnforseenChallenge , tile , event );
         const subaction = await GCdisplay.tileInteraction_resolveUnforseen( selectedUnforseenChallenge , unforseenChallengeDone , tile , event );
+        let selectedActionChallenge;let actionChallengeDone
         if (subaction==3) { GCdisplay.tileInteraction_resolveAction( selectedUnforseenChallenge , unforseenChallengeDone , 3, "selectedActionChallenge", "actionChallengeDone" , tile , event ) }
         else { 
-            const selectedActionChallenge = await GCdisplay.tileInteraction_action( selectedUnforseenChallenge , unforseenChallengeDone , subaction , tile , event ) 
-            const actionChallengeDone = await GCdisplay.tileInteraction_actionChallenge( selectedUnforseenChallenge , unforseenChallengeDone , subaction, selectedActionChallenge , tile , event )
+            selectedActionChallenge = await GCdisplay.tileInteraction_action( selectedUnforseenChallenge , unforseenChallengeDone , subaction , tile , event ) 
+            actionChallengeDone = await GCdisplay.tileInteraction_actionChallenge( selectedUnforseenChallenge , unforseenChallengeDone , subaction, selectedActionChallenge , tile , event )
             GCdisplay.tileInteraction_resolveAction( selectedUnforseenChallenge , unforseenChallengeDone , subaction, selectedActionChallenge, actionChallengeDone , tile , event )
         }
 
-        console.warn("FLAG HANDELING")
+        // FLAG HANDELING
+        const handleFlags = function(flags) {
+            const updateFlags = (baseArray, toAdd, toRemove) => {
+                // Combine arrays and remove duplicates using a Set
+                let updated = [...new Set([...baseArray, ...toAdd])];
+                // Keep only the flags that are NOT in the toRemove array
+                return updated.filter(flag => !toRemove.includes(flag));
+            };
+            tile.head.flags = updateFlags( // Apply to local flags
+                tile.head.flags, 
+                flags.local.add, 
+                flags.local.remove );
+            GCmap.globalFlags = updateFlags( // Apply to global flags
+                GCmap.globalFlags, 
+                flags.global.add, 
+                flags.global.remove );
+        };
+        handleFlags( event.weather.body.effects.flags )
+
+        handleFlags( event.unforseen.body.effects.flags )
+        handleFlags( event.unforseen.body.options[selectedUnforseenChallenge][(unforseenChallengeDone?"onSuccess":"onFailure")].effects.flags )
+
+        handleFlags( event.action[["gathering","chopping","hunting"][subaction]].body.effects.flags )
+        handleFlags( event.action[["gathering","chopping","hunting"][subaction]].body.options[selectedActionChallenge][(actionChallengeDone?"onSuccess":"onFailure")].effects.flags )
+
+        handleFlags( event.travel.body.effects.flags )
+
     }
 
 
