@@ -132,6 +132,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
             GCweather.progress( GCtime.dayTime , GCtime.season );
             GCsound.weather(
                 GCtime.dayTime, GCweather.current.temp, GCweather.current.prec, GCweather.current.wind )
+            GCevent.genGlobalWeather( GCtime.dayTime, GCtime.moonPhase, GCtime.season, GCweather.current )
         }
 
         GCdisplay.update_bg_onDayPhase(GCtime.dayPhase);
@@ -144,6 +145,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
             GCweather.current.prec, GCweather.current.wind, GCweather.current.temp,
             GCtime.dayPhase, GCtime.moonPhase
         );
+
     }
 
 
@@ -159,20 +161,35 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
         let tile = GCmap.island[row][col]
         MEDIATOR.Log.info(id, row, col, tile.body.name);
         MEDIATOR.Log.debug(tile);
-        // hand the event over to GCdisplay to display (popup) and let players play
-        // hand click info to GCevent to build the event
-        // hand the event over to GCdisplay to display (popup) and let players play
-        // hand event outcome to GCmap to change tags and ressources
 
-        let action = "camp";
-        if ( !tile.head.flags.includes('camp') ) { action = await GCdisplay.actionSelector( tile ) }
-        MEDIATOR.Log.info("Selected action:",action);
+        // hand info to GCevent; generate a full event option pallet
+        // hand event to GCdisplay; let players play out the event
+        // hand tag changes to GCevent; add/rm tag changes
+
+        //let action = "camp";
+        //if ( !tile.head.flags.includes('camp') ) { action = await GCdisplay.actionSelector( tile ) }
+        //MEDIATOR.Log.info("Selected action:",action);
+
+        let event = GCevent.generate( tile, GCtime.dayTime, GCtime.moonPhase, GCtime.season, GCweather.current )
+        MEDIATOR.Log.info(event)
+
+        const selectedUnforseenChallenge = await GCdisplay.tileInteraction_unforseen( tile , event );
+        const unforseenChallengeDone = await GCdisplay.tileInteraction_unforseenChallenge( selectedUnforseenChallenge , tile , event );
+        const subaction = await GCdisplay.tileInteraction_resolveUnforseen( selectedUnforseenChallenge , unforseenChallengeDone , tile , event );
+        if (subaction==3) { GCdisplay.tileInteraction_resolveAction( selectedUnforseenChallenge , unforseenChallengeDone , 3, "selectedActionChallenge", "actionChallengeDone" , tile , event ) }
+        else { 
+            const selectedActionChallenge = await GCdisplay.tileInteraction_action( selectedUnforseenChallenge , unforseenChallengeDone , subaction , tile , event ) 
+            const actionChallengeDone = await GCdisplay.tileInteraction_actionChallenge( selectedUnforseenChallenge , unforseenChallengeDone , subaction, selectedActionChallenge , tile , event )
+            GCdisplay.tileInteraction_resolveAction( selectedUnforseenChallenge , unforseenChallengeDone , subaction, selectedActionChallenge, actionChallengeDone , tile , event )
+        }
+
+        console.warn("FLAG HANDELING")
     }
 
 
 
     static async triggerMysteryfood ( ctx ) {
-        this.Log.debug( ctx.id )
+        this.Log.warn( ctx.id )
     }
 
 
