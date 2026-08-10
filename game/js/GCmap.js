@@ -122,47 +122,74 @@ class GCmap { static Log = new Log("Map", "c");
 
 
     static assignTiles (  ) {
-        var tileSelection = [];
-        var freeLandTiles = [];
-
-        // FIX: Deep clone the input to prevent mutating this.allTiles across multiple runs (for Sim?)
+        // 1. Setup available tiles
         const tiles = JSON.parse(JSON.stringify(
-            this.allTiles.filter(tile => !tile.head?.spawn?.disabled))
-        );
+            this.allTiles.filter(tile => !tile.head?.spawn?.disabled)
+        ));
 
-        // FIX: Use traditional loops to get integer indices instead of string indices
+        // 2. Identify and categorize slots instead of just getting coordinates
+        let slots = [];
         for (let r = 0; r < this.size; r++) {
             for (let c = 0; c < this.size; c++) {
-                if (this.island[r][c] === 0) { 
-                    freeLandTiles.push([r, c]); 
+                if (this.island[r][c] === 0) {
+                    // CRITIC NOTE: Skip the camp tile right now! 
+                    // Previously you generated a tile here and overwrote it later.
+                    if (r === this.campTile[0] && c === this.campTile[1]) continue;
+
+                    // (Keeping your exact spelling of costTiles)
+                    let isCoastal = this.costTiles.some(ct => ct[0] === r && ct[1] === c);
+                    slots.push({ r, c, isCoastal, tile: null });
                 }
             } 
         } 
-        this.Log.debug(freeLandTiles);
         
-        // MIN SPAWN
+        // 3. Shuffle the slots (Fisher-Yates Shuffle)
+        // We must shuffle the slots so that MIN requirements don't always clump in the top-left of the map.
+        for (let i = slots.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [slots[i], slots[j]] = [slots[j], slots[i]];
+        }
+
+        // Helper to check if a tile is allowed on a specific slot
+        const tileFitsSlot = (tile, slot) => {
+            if (slot.isCoastal && !tile.head.spawn.allowOnCoastal) return false;
+            if (!slot.isCoastal && !tile.head.spawn.allowOnInland) return false;
+            return true;
+        };
+
+        // 4. MIN SPAWN
         for (const tile of tiles) {
-            if (tile.head.spawn.min <= 0) { continue }
-            for (let i=0; i<tile.head.spawn.min; i++) {
-                tileSelection.push( JSON.parse(JSON.stringify( tile )) );
-                if (!tile.head.spawn.inSelection){tile.head.spawn.inSelection = 0}
-                tile.head.spawn.inSelection += 1;
+            if (tile.head.spawn.min <= 0) continue;
+            
+            let placedCount = 0;
+            for (let i = 0; i < slots.length; i++) {
+                if (placedCount >= tile.head.spawn.min) break;
+                
+                let slot = slots[i];
+                // If the slot is empty and the tile is allowed on this terrain type
+                if (slot.tile === null && tileFitsSlot(tile, slot)) {
+                    slot.tile = JSON.parse(JSON.stringify(tile));
+                    tile.head.spawn.inSelection = (tile.head.spawn.inSelection || 0) + 1;
+                    placedCount++;
+                }
+            }
+            if (placedCount < tile.head.spawn.min) {
+                this.Log.warn(`Could not place all MIN requirements for ${tile.body.name.en}. Not enough valid slots.`);
             }
         }
 
-        // remove random if too many
-        while (tileSelection.length > freeLandTiles.length) {
-            this.Log.warn("Too many MIN tiles, removing random");
-            tileSelection.splice( Math.floor( Math.random() * tileSelection.length ) , 1);
-        }
-
-        // FILL tileSelection (KEEP MAX IN MIND)
-        while (tileSelection.length < freeLandTiles.length) {
-            let availableTiles = tiles.filter(t => (t.head.spawn.inSelection || 0) < t.head.spawn.max);
+        // 5. FILL REMAINING SLOTS
+        for (let slot of slots) {
+            if (slot.tile !== null) continue; // Skip if already filled by MIN spawn
+            
+            let availableTiles = tiles.filter(t => {
+                let underMax = (t.head.spawn.inSelection || 0) < t.head.spawn.max;
+                return underMax && tileFitsSlot(t, slot);
+            });
 
             if (availableTiles.length === 0) {
-                this.Log.error("Could not generate enough locations. Add more tile types or increase max limits.");
-                return 1;
+                this.Log.error(`No valid tiles found for ${slot.isCoastal ? 'coastal' : 'inland'} slot!`);
+                continue; // Leaves the slot blank or you could write a fallback here
             }
 
             let currentTotalWeight = availableTiles.reduce((sum, t) => sum + t.head.spawn.weight, 0);
@@ -173,44 +200,40 @@ class GCmap { static Log = new Log("Map", "c");
                 weight += tile.head.spawn.weight;
                 if (weight >= dice) { 
                     tile.head.spawn.inSelection = (tile.head.spawn.inSelection || 0) + 1;
-                    // This deep clone is perfect - it ensures each map tile has its own independent state
-                    tileSelection.push( JSON.parse(JSON.stringify( tile )) ); 
+                    slot.tile = JSON.parse(JSON.stringify(tile)); 
                     break; 
                 }
             }
         }
-        this.Log.debug("final tileSelection:", tileSelection);
 
-        // COMPUTE RESOURCES
+        // 6. COMPUTE RESOURCES & ASSIGN TO ISLAND
         const getWeightedIndex = (weights) => {
             const total = weights.reduce((acc, w) => acc + w, 0);
             let random = Math.random() * total;
-            
             for (let i = 0; i < weights.length; i++) {
                 if (random < weights[i]) return i;
                 random -= weights[i];
             }
         };
-        for (let tile of tileSelection) {
-            tile.head.resources.gather = getWeightedIndex(tile.head.resources.gather);
-            tile.head.resources.hunt   = getWeightedIndex(tile.head.resources.hunt);
-            tile.head.resources.chop   = getWeightedIndex(tile.head.resources.chop);
+
+        for (let slot of slots) {
+            if (!slot.tile) continue; // Safety check
+
+            // Compute resources
+            slot.tile.head.resources.gather = getWeightedIndex(slot.tile.head.resources.gather);
+            slot.tile.head.resources.hunt   = getWeightedIndex(slot.tile.head.resources.hunt);
+            slot.tile.head.resources.chop   = getWeightedIndex(slot.tile.head.resources.chop);
+
+            // Add coastal flag if it's on a coastal slot (this replaces your old separate loop!)
+            if (slot.isCoastal) {
+                slot.tile.head.flags.push("coastal");
+            }
+
+            // Place on the map
+            this.island[slot.r][slot.c] = slot.tile;
         }
 
-        // ASSIGN TILES TO ISLAND
-        for (const landTile of freeLandTiles){
-            let randIndex = Math.floor(Math.random() * tileSelection.length);
-            this.island[landTile[0]][landTile[1]] = JSON.parse(JSON.stringify( tileSelection[randIndex] ));
-            tileSelection.splice( randIndex, 1 ); // FIX: Removed brackets around randIndex
-        }
-        
-        // ADD COASTAL FLAG
-        for (const coastTile of this.costTiles) {
-            if (coastTile[0]==this.campTile[0] && coastTile[1]==this.campTile[1]) {continue}
-            this.island[coastTile[0]][coastTile[1]].head.flags.push("coastal");
-        }
-
-        // ADD DISTANCE
+        // 7. ADD DISTANCE (Untouched from your code)
         const distances = Array(this.size).fill(0).map(() => Array(this.size).fill(Infinity));
         const queue = [];
         const isValid = (r, c) => r >= 0 && r < this.size && c >= 0 && c < this.size;
@@ -227,6 +250,7 @@ class GCmap { static Log = new Log("Map", "c");
             }
             return neighbors;
         };
+        
         distances[this.campTile[0]][this.campTile[1]] = 0;
         queue.push(this.campTile);
         let head = 0; 
@@ -244,11 +268,14 @@ class GCmap { static Log = new Log("Map", "c");
         for (let r = 0; r < this.size; r++) {
             for (let c = 0; c < this.size; c++) {
                 if (this.island[r][c] == -1 || this.island[r][c] == 1) { continue }
-                this.island[r][c].head.spawn.distance = distances[r][c];
+                // CRITIC NOTE: Added a safety check here to ensure the tile exists before setting distance
+                if (this.island[r][c] && this.island[r][c].head) {
+                    this.island[r][c].head.spawn.distance = distances[r][c];
+                }
             } 
         }
 
-        // replace CAMP
+        // 8. REPLACE CAMP (Untouched)
         this.island[this.campTile[0]][this.campTile[1]] = {
             head : {
                 flags  : [ "camp" ],
@@ -256,18 +283,9 @@ class GCmap { static Log = new Log("Map", "c");
                 resources: { gather:[0,0,0],hunt:[0,0,0],chop:[0,0,0] },
             }, 
             body : {
-                name  : { 
-                    de : "Lager" , 
-                    en : "Camp" ,
-                } ,
-                description : { 
-                    de : "Die Lagerstätte" , 
-                    en : "The camp site" ,
-                } ,
-                specialRule : { 
-                    de : `` , 
-                    en : `` ,
-                } ,
+                name  : { de : "Lager" , en : "Camp" } ,
+                description : { de : "Die Lagerstätte" , en : "The camp site" } ,
+                specialRule : { de : `` , en : `` } ,
                 weatherProt : { coldProt : 0 , wetProt : 0 , windProt : 0 },
             }
         };
