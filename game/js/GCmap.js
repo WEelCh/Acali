@@ -180,13 +180,19 @@ class GCmap { static Log = new Log("Map", "c");
         this.Log.debug("final tileSelection:", tileSelection);
 
         // COMPUTE RESOURCES
-        const getRandomIntFromRange = ( range ) => {
-            const [min, max] = range;
-            return Math.floor(Math.random() * (max - min + 1)) + min; } 
+        const getWeightedIndex = (weights) => {
+            const total = weights.reduce((acc, w) => acc + w, 0);
+            let random = Math.random() * total;
+            
+            for (let i = 0; i < weights.length; i++) {
+                if (random < weights[i]) return i;
+                random -= weights[i];
+            }
+        };
         for (let tile of tileSelection) {
-            tile.head.resources.gather = getRandomIntFromRange(tile.head.resources.gather);
-            tile.head.resources.hunt   = getRandomIntFromRange(tile.head.resources.hunt);
-            tile.head.resources.chop   = getRandomIntFromRange(tile.head.resources.chop);
+            tile.head.resources.gather = getWeightedIndex(tile.head.resources.gather);
+            tile.head.resources.hunt   = getWeightedIndex(tile.head.resources.hunt);
+            tile.head.resources.chop   = getWeightedIndex(tile.head.resources.chop);
         }
 
         // ASSIGN TILES TO ISLAND
