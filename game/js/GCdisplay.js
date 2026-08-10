@@ -457,6 +457,55 @@ class GCdisplay { static Log = new Log("Display", "b");
             };
         });
     }
+
+
+
+
+
+
+
+
+
+
+
+    static mysteryFood ( effects , type , state ) {
+        const popup = document.getElementById("popup");
+
+        let afflictionIcons = ""
+
+        if (effects.afflictions.exhaustion >= 0) {
+            afflictionIcons += Asset.condition.exhaustion.icon.repeat(effects.afflictions.exhaustion)
+        } else { afflictionIcons += Asset.keyword.supply.exhaustion.icon.repeat(effects.afflictions.exhaustion*(-1)) }
+        if (effects.afflictions.hunger >= 0) {
+            afflictionIcons += Asset.condition.hunger.icon.repeat(effects.afflictions.hunger)
+        } else { afflictionIcons += Asset.keyword.supply.hunger.icon.repeat(effects.afflictions.hunger*(-1)) }
+        if (effects.afflictions.hypothermia >= 0) {
+            afflictionIcons += Asset.condition.hypothermia.icon.repeat(effects.afflictions.hypothermia)
+        } else { afflictionIcons += Asset.keyword.supply.hypothermia.icon.repeat(effects.afflictions.hypothermia*(-1)) }
+        if (effects.afflictions.wound >= 0) {
+            afflictionIcons += Asset.condition.wound.icon.repeat(effects.afflictions.wound)
+        } else { afflictionIcons += Asset.keyword.supply.wound.icon.repeat(effects.afflictions.wound*(-1)) }
+
+
+
+        popup.innerHTML = /*html*/`
+                <div class="container">
+                    <h2 class="row smaller"> ${ Asset.keyword.supply[type].icon } </h2>
+                    <h2 class="row smaller"> ${ state } </h2>
+                    <h2 class="row smaller"> ${afflictionIcons} </h2>
+                    <h2 class="row smaller"> ${effects.afflictions.specialRule[APPLOC]} </h2>
+
+                    <h2 id="select0_btn" class="row smaller box"> X </h2>
+                </div>`;
+        popup.style.display = "block";
+        //setSquareHeight();
+        return new Promise((resolve) => {
+            document.getElementById(`select0_btn`).onclick = function() {
+                popup.style.display = "none";
+                resolve(0);
+            };
+        });
+    }
     
 
 

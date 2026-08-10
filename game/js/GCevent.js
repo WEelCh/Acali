@@ -3,10 +3,11 @@ class GCevent { static Log = new Log( "GCevent" , "y" )
 
     static CW_allowed = false;
     static severityDistribution = {
-        weather   : [ 0 , 1 , 0 , 0 ],
-        unforseen : [ 0 , 1 , 0 , 0 ],
-        action    : [ 0 , 1 , 0 , 0 ],
-        travel    : [ 0 , 1 , 0 , 0 ],
+        weather     : [ 0 , 1 , 0 , 0 ],
+        unforseen   : [ 0 , 1 , 0 , 0 ],
+        action      : [ 0 , 1 , 0 , 0 ],
+        travel      : [ 0 , 1 , 0 , 0 ],
+        mysteryFood : [ 0 , 1 , 0 , 0 ],
     }
     static globalFlags = [];
 
@@ -20,6 +21,15 @@ class GCevent { static Log = new Log( "GCevent" , "y" )
         },
         travel    : [],
     }
+
+    static mysteryFoodEffects = [];
+    static mysteryFood = {
+        herb    : { raw : null, cooked : null, },
+        nut     : { raw : null, cooked : null, },
+        root    : { raw : null, cooked : null, },
+        mushroom: { raw : null, cooked : null, },
+        berry   : { raw : null, cooked : null, },
+    };
 
     static currentWeatherEvent;
 
@@ -241,6 +251,62 @@ class GCevent { static Log = new Log( "GCevent" , "y" )
         }
     }
 
+
+
+    static setupMysteryFood() {
+        let foods = GCevent.mysteryFoodEffects.filter(f => !f.head.spawn.disabled);
+        if (!this.CW_allowed) { foods = foods.filter(f => !f.head.spawn.cw); }
+        // CRITIC NOTE: I built a local helper for the weighted selection so 
+        // it doesn't clutter the main loop. It uses the same logic you already know.
+        const selectWeighted = (foodList) => {
+            const totalWeight = foodList.reduce((sum, f) => sum + f.head.spawn.weight, 0);
+            const dice = Math.random() * totalWeight;
+            let weight = 0;
+            for (const food of foodList) {
+                weight += food.head.spawn.weight;
+                if (weight >= dice) return food;
+            }
+            // Fallback in case of floating point math weirdness
+            return foodList[0]; 
+        };
+
+        // Helper to get food, integrating your "step down if empty" logic
+        const getFoodForSeverity = (targetSeverity) => {
+            let available = [];
+            let currentSev = targetSeverity;
+            
+            while (available.length === 0) {
+                if (currentSev < 0) {
+                    // If we dropped below 0 and still found nothing, abandon severity filters
+                    available = foods;
+                    break;
+                }
+                // Filter by current severity and ensure it's not disabled
+                available = foods.filter(f => 
+                    f.head.spawn.severity === currentSev
+                );
+                currentSev--;
+            }
+            return selectWeighted(available);
+        };
+
+        // Iterate over your static mysteryFood object keys (herb, nut, root, etc.)
+        for (const type in this.mysteryFood) {
+            
+            // 1. Roll the severity for the RAW version
+            let rawSeverity = this.#severitySelection("mysteryFood");
+            
+            // 2. Select the raw food
+            this.mysteryFood[type].raw = getFoodForSeverity(rawSeverity);
+            
+            // 3. Determine cooked severity. 
+            // Math.max(0, ...) prevents severity from going to -1 if raw was already 0.
+            let cookedSeverity = Math.max(0, rawSeverity - 1);
+            
+            // 4. Select the cooked food
+            this.mysteryFood[type].cooked = getFoodForSeverity(cookedSeverity);
+        }
+    }
     
 
 }

@@ -104,7 +104,10 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
             GCevent.add( this.selectable_events[events.value].eventFragment.action.hunting   , "ah" )
             // *** MOD :: LOCATIONS ***
             GCmap.allTiles = GCmap.allTiles.concat( this.selectable_events[events.value].locations );
+            // *** MOD :: MYSTERY FOOD ***
+            GCevent.mysteryFoodEffects = GCevent.mysteryFoodEffects.concat( this.selectable_events[events.value].mysteryFood )
         }
+        GCevent.setupMysteryFood()
         // *** MAP ***
         GCmap.genIsland( MAPSIZE )
         GCdisplay.update_map( GCmap.island , this.triggerTile )
@@ -216,7 +219,13 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
 
 
     static async triggerMysteryfood ( ctx ) {
-        this.Log.warn( ctx.id )
+        const idArray = ctx.id.split('_')
+        const type    = idArray[2]
+        const state   = idArray[3]
+        this.Log.debug( ctx.id, type, state )
+        this.Log.debug( GCevent.mysteryFood[type][state] , type , state )
+
+        GCdisplay.mysteryFood( GCevent.mysteryFood[type][state].body.effects , type , state )
     }
 
 
