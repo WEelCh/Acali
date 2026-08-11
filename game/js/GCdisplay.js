@@ -5,6 +5,9 @@ class GCdisplay { static Log = new Log("Display", "b");
 
 
     static mysteryfoodIcon ( ) {
+
+        document.getElementById( `id_mysteryfood_raw` ).innerHTML = _svg_crossout_lt_rb( Asset.keyword.supply._isPerishable.icon )
+
         document.getElementById( `id_mysteryfood_herb_raw` ).innerHTML = Asset.keyword.supply.herb.icon
         document.getElementById( `id_mysteryfood_nut_raw` ).innerHTML = Asset.keyword.supply.nut.icon
         document.getElementById( `id_mysteryfood_root_raw` ).innerHTML = Asset.keyword.supply.root.icon
@@ -251,10 +254,10 @@ class GCdisplay { static Log = new Log("Display", "b");
                 <div class="container">
                     ${this.#tileHead(tile)}
 
-                    <h2 class="row smaller"> ${event.weather.body.description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${event.weather.body.description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.weather.body.effects)}
 
-                    <h2 class="row smaller"> ${event.unforseen.body.description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${event.unforseen.body.description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.unforseen.body.effects)}
                     ${unforseenOptions}
                 </div>`;
@@ -281,10 +284,10 @@ class GCdisplay { static Log = new Log("Display", "b");
                 <div class="container">
                     ${this.#tileHead(tile)}
 
-                    <h2 class="row smaller"> ${event.weather.body.description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${event.weather.body.description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.weather.body.effects)}
 
-                    <h2 class="row smaller"> ${event.unforseen.body.description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${event.unforseen.body.description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.unforseen.body.effects)}
                     <h2 class="row smaller"> ${difficulty} </h2>
                     <h2 id="select0_btn" class="row smaller box"> Geschafft </h2>
@@ -313,13 +316,13 @@ class GCdisplay { static Log = new Log("Display", "b");
                 <div class="container">
                     ${this.#tileHead(tile)}
 
-                    <h2 class="row smaller"> ${event.weather.body.description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${event.weather.body.description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.weather.body.effects)}
 
-                    <h2 class="row smaller"> ${event.unforseen.body.description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${event.unforseen.body.description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.unforseen.body.effects)}
 
-                    <h2 class="row smaller"> ${event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].effects)}
 
                     <h2 id="select0_btn" class="row smaller box"> ${Asset.tile.action.gathering.icon} </h2>
@@ -354,16 +357,16 @@ class GCdisplay { static Log = new Log("Display", "b");
                 <div class="container">
                     ${this.#tileHead(tile)}
 
-                    <h2 class="row smaller"> ${event.weather.body.description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${event.weather.body.description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.weather.body.effects)}
 
-                    <h2 class="row smaller"> ${event.unforseen.body.description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${event.unforseen.body.description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.unforseen.body.effects)}
 
-                    <h2 class="row smaller"> ${event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].effects)}
 
-                    <h2 class="row smaller"> ${event.action[subaction].body.description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${event.action[subaction].body.description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.action[subaction].body.effects)}
                     ${actionOptions}
                 </div>`;
@@ -394,16 +397,16 @@ class GCdisplay { static Log = new Log("Display", "b");
                 <div class="container">
                     ${this.#tileHead(tile)}
 
-                    <h2 class="row smaller"> ${event.weather.body.description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${event.weather.body.description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.weather.body.effects)}
 
-                    <h2 class="row smaller"> ${event.unforseen.body.description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${event.unforseen.body.description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.unforseen.body.effects)}
 
-                    <h2 class="row smaller"> ${event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].effects)}
                     
-                    <h2 class="row smaller"> ${event.action[subaction].body.description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${event.action[subaction].body.description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.action[subaction].body.effects)}
                     <h2 class="row smaller"> ${difficulty} </h2>
                     <h2 id="select0_btn" class="row smaller box"> Geschafft </h2>
@@ -433,9 +436,9 @@ class GCdisplay { static Log = new Log("Display", "b");
         if (subaction<3){
             subaction = ["gathering","chopping","hunting"][subaction]
             actionPart = /*html*/`
-                            <h2 class="row smaller"> ${event.action[subaction].body.description[APPLOC]} </h2>
+                            <h4 class="row smaller"> ${event.action[subaction].body.description[APPLOC]} </h4>
                             ${this.#fragmentEffectIcons(event.action[subaction].body.effects)}
-                            <h2 class="row smaller"> ${event.action[subaction].body.options[selectedActionChallenge][actionChallengeDoneKey].description[APPLOC]} </h2>
+                            <h4 class="row smaller"> ${event.action[subaction].body.options[selectedActionChallenge][actionChallengeDoneKey].description[APPLOC]} </h4>
                             ${this.#fragmentEffectIcons(event.action[subaction].body.options[selectedActionChallenge][actionChallengeDoneKey].effects)}`
         }
 
@@ -443,18 +446,18 @@ class GCdisplay { static Log = new Log("Display", "b");
                 <div class="container">
                     ${this.#tileHead(tile)}
 
-                    <h2 class="row smaller"> ${event.weather.body.description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${event.weather.body.description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.weather.body.effects)}
 
-                    <h2 class="row smaller"> ${event.unforseen.body.description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${event.unforseen.body.description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.unforseen.body.effects)}
 
-                    <h2 class="row smaller"> ${event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].effects)}
 
                     ${actionPart}
 
-                    <h2 class="row smaller"> ${event.travel.body.description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${event.travel.body.description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.travel.body.effects)}
 
                     <h2 id="select0_btn" class="row smaller box"> X </h2>
@@ -487,10 +490,10 @@ class GCdisplay { static Log = new Log("Display", "b");
                 <div class="container">
                     ${this.#tileHead(tile)}
 
-                    <h2 class="row smaller"> ${GCevent.currentWeatherEvent.body.description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${GCevent.currentWeatherEvent.body.description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(GCevent.currentWeatherEvent.body.effects)}
 
-                    <h2 class="row smaller"> ${event.body.description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${event.body.description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.body.effects)}
 
                     ${campOptions}
@@ -519,10 +522,10 @@ class GCdisplay { static Log = new Log("Display", "b");
                 <div class="container">
                     ${this.#tileHead(tile)}
 
-                    <h2 class="row smaller"> ${GCevent.currentWeatherEvent.body.description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${GCevent.currentWeatherEvent.body.description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(GCevent.currentWeatherEvent.body.effects)}
 
-                    <h2 class="row smaller"> ${event.body.description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${event.body.description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.body.effects)}
 
                     <h2 class="row smaller"> ${difficulty} </h2>
@@ -552,13 +555,13 @@ class GCdisplay { static Log = new Log("Display", "b");
                 <div class="container">
                     ${this.#tileHead(tile)}
 
-                    <h2 class="row smaller"> ${GCevent.currentWeatherEvent.body.description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${GCevent.currentWeatherEvent.body.description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(GCevent.currentWeatherEvent.body.effects)}
 
-                    <h2 class="row smaller"> ${event.body.description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${event.body.description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.body.effects)}
 
-                    <h2 class="row smaller"> ${event.body.options[selectedCampChallenge][campChallengeDoneKey].description[APPLOC]} </h2>
+                    <h4 class="row smaller"> ${event.body.options[selectedCampChallenge][campChallengeDoneKey].description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.body.options[selectedCampChallenge][campChallengeDoneKey].effects)}
 
                     <h2 id="select0_btn" class="row smaller box"> X </h2>
@@ -605,10 +608,12 @@ class GCdisplay { static Log = new Log("Display", "b");
 
         popup.innerHTML = /*html*/`
                 <div class="container">
-                    <h2 class="row smaller"> ${ Asset.keyword.supply[type].icon } </h2>
-                    <h2 class="row smaller"> ${ state } </h2>
-                    <h2 class="row smaller"> ${afflictionIcons} </h2>
-                    <h2 class="row smaller"> ${effects.afflictions.specialRule[APPLOC]} </h2>
+                    <h1 class="row smaller"> 
+                        ${ Asset.keyword.supply[type].icon } 
+                        ( ${ (state=="raw")?_svg_crossout_lt_rb(Asset.keyword.supply._isPerishable.icon):Asset.keyword.supply._isPerishable.icon } )
+                    </h1>
+                    <h4 class="row smaller"> ${afflictionIcons} </h4>
+                    <h4 class="row smaller"> ${effects.afflictions.specialRule[APPLOC]} </h4>
 
                     <h2 id="select0_btn" class="row smaller box"> X </h2>
                 </div>`;
