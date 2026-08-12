@@ -1287,7 +1287,7 @@ H U N T
     name:{ de:"Fell", en:"" }, weight: 0 ,
     flavor:{ de:"Hat vorher ein Tier warm gehalten, warum also nicht dich", en:"" },
     keyword : {
-        clothing : { _isFragile : false ,
+        clothing : { _isFragile : true ,
             coldProt : 1 , wetProt : 0 , windProt : 1 , dmgProt : 0 ,
             custom : `` },
 
@@ -1584,7 +1584,7 @@ Seefahrer
     },
     {   layout: CharacterCard, type:Asset.card.character.seaman, qty:1,
         name:{de:"Koch"},
-        ability: ["","","",""
+        ability: [`Für das erste ${Asset.keyword.supply.hunger.icon}`,"pro Runde, ein",`weiteres ${Asset.keyword.supply.hunger.icon}`,""
         ],
         crafting: ["","","",""
         ],
