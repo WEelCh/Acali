@@ -15,8 +15,7 @@ D E B U G
         tool : {  _isFragile : true ,
             crafting   : 1 , chopping    : 1 , kindle : 1 , light : 1 ,
             lookout    : 1 , navigation  : 1 , 
-            meleeLight : 1 , meleeHeavy  : 1 , ranged : 1 ,
-            magic      : 1 ,
+            meleeLight : 1 , meleeHeavy  : 1 , ranged : 1 , magic : 1 ,
             custom : `` },
 
         material : { _isFragile : true ,
@@ -35,13 +34,13 @@ D E B U G
     flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -66,13 +65,13 @@ S H I P
     flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 1 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 1 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -91,13 +90,13 @@ S H I P
     flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 1 , wetProt : 1 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 1 , wetProt : 1 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -116,13 +115,13 @@ S H I P
     flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 1 , wetProt : 2 , windProt : 1 , dmgProt : 0 ,
+            coldProt : 1 , wetProt : 2 , windProt : 1 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -141,13 +140,13 @@ S H I P
     flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 1 , wetProt : 1 , windProt : 0 , dmgProt : 1 ,
+            coldProt : 1 , wetProt : 1 , windProt : 0 , storage : 0 , dmgProt : 1 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -166,13 +165,13 @@ S H I P
     flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 1 , wetProt : 2 , windProt : 1 , dmgProt : 1 ,
+            coldProt : 1 , wetProt : 2 , windProt : 1 , storage : 0 , dmgProt : 1 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -194,13 +193,13 @@ S H I P
     flavor:{ de:"Klein, leicht und einhändig geführt, diente es zum Anspitzen von Pflöcken, Entasten und für feine Holzarbeiten", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 1 , chopping    : 1 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 1 , chopping    : 1 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 1 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 1 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -219,13 +218,13 @@ S H I P
     flavor:{ de:"Ein unverzichtbares Werkzeug des traditionellen Zimmerhandwerks", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 1 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 1 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 1 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 1 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -244,13 +243,13 @@ S H I P
     flavor:{ de:"Zum Fällen von ganzen Bäumen und Trennen des Stammes", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 1 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 1 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 1 , ranged : 0 , trap  : 0 , fishing : 0,
+            meleeLight : 0 , meleeHeavy  : 1 , ranged : 0 , magic : 0 ,
             custom : `+1 ${Asset.tile.action.chopping.icon}` },
 
         material : { _isFragile : false ,
@@ -269,13 +268,13 @@ S H I P
     flavor:{ de:"Zum Spalten von bereits abgelängten Baumscheiten", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 1 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 1 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 1 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 1 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -296,13 +295,13 @@ S H I P
         custom   : [  ],
         
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 1 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 1 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -321,13 +320,13 @@ S H I P
     flavor:{ de:"Nadel und Faden", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -349,13 +348,13 @@ S H I P
     flavor:{ de:"Neben der Seefahrt diente er Landvermessern, Militärs und wohlhabenden Reisenden", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 1 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -374,13 +373,13 @@ S H I P
     flavor:{ de:"Hilft bei der Navigation", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 1 , navigation  : 1 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -399,13 +398,13 @@ S H I P
     flavor:{ de:"Zum Ablesen und Halten von Kursen", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 1 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -424,13 +423,13 @@ S H I P
     flavor:{ de:"Besteht aus robusten Leinen", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -449,13 +448,13 @@ S H I P
     flavor:{ de:"Ein langer, reißfester Strang aus verdrillten und geflochtenen Fasern", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -474,13 +473,13 @@ S H I P
     flavor:{ de:"Ein Stück der mächtigen Masten", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -499,13 +498,13 @@ S H I P
     flavor:{ de:"Ein Stück der Schiffshülle", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -527,13 +526,13 @@ S H I P
     flavor:{ de:"Ein kurzes, schweres Messer zum Abfangen von Wild", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 1 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 1 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 1 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 1 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -552,13 +551,13 @@ S H I P
     flavor:{ de:"Genau auf das Zerlegen von Fleisch und das Parieren von Sehnen ausgelegt", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 1 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 1 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 1 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 1 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `+1 ${Asset.tile.action.hunting.icon}` },
 
         material : { _isFragile : false ,
@@ -577,13 +576,13 @@ S H I P
     flavor:{ de:"Im Gegensatz zu feinen Degen erforderte der Entersäbel kaum komplexe Fechtkunst", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 1 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 1 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -605,13 +604,13 @@ S H I P
     flavor:{ de:"Deckt offene Wunden ab und schützt vor Schmutz", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -630,13 +629,13 @@ S H I P
     flavor:{ de:"Kleine Sägen und Zangen für einen Arzt", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 1 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 1 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 1 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 1 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -655,13 +654,13 @@ S H I P
     flavor:{ de:"Gut zur Desinfektion oder Konservierung", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -680,13 +679,13 @@ S H I P
     flavor:{ de:"Ein unverzichtbarer Begleiter in der Seefahrt", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `${Asset.keyword.supply.exhaustion.icon} pro Tag` },
 
         material : { _isFragile : false ,
@@ -708,13 +707,13 @@ S H I P
     flavor:{ de:"Eine überlebenswichtige Methode, um Fleisch ohne Kühlschränke monatelang haltbar zu machen", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -733,13 +732,13 @@ S H I P
     flavor:{ de:"Eignet sich auch gut als Viehfutter", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -758,13 +757,13 @@ S H I P
     flavor:{ de:"Jahrelang haltbar, aber auch steinhart", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -783,13 +782,13 @@ S H I P
     flavor:{ de:"Ein fester Bestandteil der europäischen Medizin", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -808,13 +807,13 @@ S H I P
     flavor:{ de:"Wichtiger Teil der täglichen Verpflegung an Bord", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -833,13 +832,13 @@ S H I P
     flavor:{ de:"Fester Bestandteil des Proviants", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -869,13 +868,13 @@ C R A F T
     flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -897,13 +896,13 @@ F O R A G E
     flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -922,13 +921,13 @@ F O R A G E
     flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -947,13 +946,13 @@ F O R A G E
     flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -972,13 +971,13 @@ F O R A G E
     flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -997,13 +996,13 @@ F O R A G E
     flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -1022,13 +1021,13 @@ F O R A G E
     flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -1047,13 +1046,13 @@ F O R A G E
     flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -1072,13 +1071,13 @@ F O R A G E
     flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -1097,13 +1096,13 @@ F O R A G E
     flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 1 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 1 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 1 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 1 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -1122,12 +1121,12 @@ F O R A G E
     flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 1 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
         material : { _isFragile : false ,
             structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
@@ -1144,12 +1143,12 @@ F O R A G E
     flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
         material : { _isFragile : false ,
             structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
@@ -1166,12 +1165,12 @@ F O R A G E
     flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
         tool : {  _isFragile : true ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
         material : { _isFragile : false ,
             structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
@@ -1188,12 +1187,12 @@ F O R A G E
     flavor:{ de:"Ein fasrig-filziger Baumpilz", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 1 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 1 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
         material : { _isFragile : false ,
             structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
@@ -1213,13 +1212,13 @@ H U N T
     flavor:{ de:"Roh schlecht verträglich", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -1238,13 +1237,13 @@ H U N T
     flavor:{ de:"Hart genug für primitives Werkzeug", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 1 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 1 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 1 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 1 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -1263,13 +1262,13 @@ H U N T
     flavor:{ de:"Zäh und widerstandsfähig", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 1 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 1 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -1288,13 +1287,13 @@ H U N T
     flavor:{ de:"Hat vorher ein Tier warm gehalten, warum also nicht dich", en:"" },
     keyword : {
         clothing : { _isFragile : true ,
-            coldProt : 1 , wetProt : 0 , windProt : 1 , dmgProt : 0 ,
+            coldProt : 1 , wetProt : 0 , windProt : 1 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -1313,13 +1312,13 @@ H U N T
     flavor:{ de:"Energiereich und brennt hervorragend", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -1338,13 +1337,13 @@ H U N T
     flavor:{ de:"Viel robuster als pflanzliche Fasern", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -1366,13 +1365,13 @@ W O O D
     flavor:{ de:"Gutes Brennholz und Baumaterial", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -1391,13 +1390,13 @@ W O O D
     flavor:{ de:"Vielseitig einsetzbar", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
@@ -1416,12 +1415,12 @@ W O O D
     flavor:{ de:"Kann als Dachmaterial oder Medizin genutzt werden", en:"Can be used as roofing or medicine." },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
         material : { _isFragile : true ,
             structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
@@ -1438,12 +1437,12 @@ W O O D
     flavor:{ de:"Vollgesogen mit Harz und brennt selbst bei Nässe", en:"Soaked in resin. Burns even when wet." },
     keyword : {
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 1 , light : 0 , storage : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 1 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , trap  : 0 , fishing : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
         material : { _isFragile : false ,
             structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 1 ,
@@ -1468,83 +1467,135 @@ Kolonist
 *****/
     {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
         name:{de:"Bauer"},
-        ability: ["a","b","c","d"
-        ],
-        crafting: ["e","f","g","h"
-        ],
-        passion: [ 0 , 1 , 0 ],
+        ability: [  `Besser gathering`,
+                    ``,
+                    ``,
+                    `` ],
+        crafting: [ ``,
+                    ``,
+                    ``,
+                    `` ],
+        passion: [ 1 , 0 , 0 ], // STR ; DEX ; WIS
     },
     {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
-        name:{de:"Tischler"},
-        ability: ["","","",""
-        ],
-        crafting: ["","","",""
-        ],
-        passion: [ 0 , 1 , 1 ],
+        name:{de:"Kräuterkundler"},
+        ability: [  `Einmal pro Runde:`,
+                    `Wenn vorhanden: `,
+                    `sieh einen`,
+                    `${Asset.keyword.supply.herb.icon}${Asset.keyword.supply.nut.icon}${Asset.keyword.supply.root.icon}${Asset.keyword.supply.mushroom.icon}${Asset.keyword.supply.berry.icon} Effekt` ],
+        crafting: [ `Heilextrakt aus 2 mystery food`,
+                    ``,
+                    ``,
+                    `` ],
+        passion: [ 0 , 0 , 1 ], // STR ; DEX ; WIS
+    },
+    {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
+        name:{de:"Zimmermann"},
+        ability: [  `kann Unterschlüpfe billiger bauen`,
+                    ``,
+                    ``,
+                    `` ],
+        crafting: [ `structure aus stock etc`,
+                    ``,
+                    ``,
+                    `` ],
+        passion: [ 1 , 0 , 0 ], // STR ; DEX ; WIS
     },
     {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
         name:{de:"Schmied"},
-        ability: ["","","",""
-        ],
-        crafting: ["","","",""
-        ],
-        passion: [ 0 , 1 , 1 ],
+        ability: [  ``,
+                    ``,
+                    ``,
+                    `` ],
+        crafting: [ `kaputtes werkzeug reparieren`,
+                    ``,
+                    ``,
+                    `` ],
+        passion: [ 1 , 0 , 0 ], // STR ; DEX ; WIS
     },
     {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
         name:{de:"Jäger"},
-        ability: ["","","",""
-        ],
-        crafting: ["","","",""
-        ],
-        passion: [ 0 , 1 , 1 ],
+        ability: [  `mehr jagt loot`,
+                    ``,
+                    ``,
+                    `` ],
+        crafting: [ `falle craften`,
+                    ``,
+                    ``,
+                    `` ],
+        passion: [ 0 , 1 , 0 ], // STR ; DEX ; WIS
     },
     {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
         name:{de:"Schneider"},
-        ability: ["","","",""
-        ],
-        crafting: ["","","",""
-        ],
-        passion: [ 0 , 1 , 1 ],
+        ability: [  ``,
+                    ``,
+                    ``,
+                    `` ],
+        crafting: [ `faden aus nix`,
+                    ``,
+                    ``,
+                    `` ],
+        passion: [ 0 , 1 , 0 ], // STR ; DEX ; WIS
     },
     {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
-        name:{de:"Doktor"},
-        ability: ["","","",""
-        ],
-        crafting: ["","","",""
-        ],
-        passion: [ 0 , 1 , 1 ],
+        name:{de:"Chirurg"},
+        ability: [  `Einmal pro Runde:`,
+                    `Nutze ${Asset.keyword.material.sharp.icon} und`,
+                    `verbrauche ${Asset.keyword.material.cordage.icon}/${Asset.keyword.material.cover.icon}:`,
+                    `jemand erhält ${Asset.keyword.supply.wound.icon}` ],
+        crafting: [ ``,
+                    ``,
+                    ``,
+                    `` ],
+        passion: [ 0 , 0 , 1 ], // STR ; DEX ; WIS
     },
     {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
         name:{de:"Priester"},
-        ability: ["","","",""
-        ],
-        crafting: ["","","",""
-        ],
-        passion: [ 0 , 1 , 1 ],
+        ability: [  `heile erschöpfung`,
+                    ``,
+                    ``,
+                    `` ],
+        crafting: [ ``,
+                    ``,
+                    ``,
+                    `` ],
+        passion: [ 0 , 0 , 1 ], // STR ; DEX ; WIS
     },
     {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
         name:{de:"Kaufmann"},
-        ability: ["","","",""
-        ],
-        crafting: ["","","",""
-        ],
-        passion: [ 0 , 1 , 1 ],
+        ability: [  ``,
+                    ``,
+                    ``,
+                    `` ],
+        crafting: [ ``,
+                    ``,
+                    ``,
+                    `` ],
+        passion: [ 0 , 0 , 1 ], // STR ; DEX ; WIS
     },
     {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
         name:{de:"Handwerker"},
-        ability: ["","","",""
-        ],
-        crafting: ["","","",""
-        ],
-        passion: [ 0 , 1 , 1 ],
+        ability: [  ``,
+                    ``,
+                    ``,
+                    `` ],
+        crafting: [ ``,
+                    ``,
+                    ``,
+                    `` ],
+        passion: [ 0 , 1 , 0 ], // STR ; DEX ; WIS
     },
     {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
         name:{de:"Koch"},
-        ability: ["","","",""
-        ],
-        crafting: ["","","",""
-        ],
-        passion: [ 0 , 1 , 1 ],
+        ability: [  `Für das erste ${Asset.keyword.supply.hunger.icon}`,
+                    `pro Runde, ein`,
+                    `weiteres ${Asset.keyword.supply.hunger.icon} für`,
+                    `jemanden` ],
+        crafting: [ ``,
+                    ``,
+                    ``,
+                    `` ],
+        passion: [ 0 , 0 , 1 ], // STR ; DEX ; WIS
     },
 /***** 
 C H A R A C T E R
@@ -1552,43 +1603,63 @@ Seefahrer
 *****/
     {   layout: CharacterCard, type:Asset.card.character.seaman, qty:1,
         name:{de:"Kapitän"},
-        ability: ["","","",""
-        ],
-        crafting: ["","","",""
-        ],
-        passion: [ 0 , 1 , 1 ],
+        ability: [  `Nach Abstimmung:`,
+                    `${Asset.card.character.seaman.icon} stimmen wie du,`,
+                    `alle Umgestimmten`,
+                    `und du: ${Asset.condition.exhaustion.icon}` ],
+        crafting: [ ``,
+                    ``,
+                    ``,
+                    `` ],
+        passion: [ 0 , 0 , 1 ], // STR ; DEX ; WIS
     },
     {   layout: CharacterCard, type:Asset.card.character.seaman, qty:1,
         name:{de:"Erster Offizier"},
-        ability: ["","","",""
-        ],
-        crafting: ["","","",""
-        ],
-        passion: [ 0 , 1 , 1 ],
+        ability: [  `Nach Abstimmung:`,
+                    `${Asset.card.character.seaman.icon} stimmen wie du,`,
+                    `alle Umgestimmten`,
+                    `und du: ${Asset.condition.exhaustion.icon}` ],
+        crafting: [ ``,
+                    ``,
+                    ``,
+                    `` ],
+        passion: [ 0 , 0 , 1 ], // STR ; DEX ; WIS
     },
     {   layout: CharacterCard, type:Asset.card.character.seaman, qty:1,
         name:{de:"Navigator"},
-        ability: ["","","",""
-        ],
-        crafting: ["","","",""
-        ],
-        passion: [ 0 , 1 , 1 ],
+        ability: [  `zählt wie drei nav items`,
+                    ``,
+                    ``,
+                    `` ],
+        crafting: [ ``,
+                    ``,
+                    ``,
+                    `` ],
+        passion: [ 0 , 0 , 1 ], // STR ; DEX ; WIS
     },
     {   layout: CharacterCard, type:Asset.card.character.seaman, qty:1,
         name:{de:"Matrose"},
-        ability: ["","","",""
-        ],
-        crafting: ["","","",""
-        ],
-        passion: [ 0 , 1 , 1 ],
+        ability: [  `erstes gewicht zählt nicht`,
+                    ``,
+                    ``,
+                    `` ],
+        crafting: [ ``,
+                    ``,
+                    ``,
+                    `` ],
+        passion: [ 1 , 0 , 0 ], // STR ; DEX ; WIS
     },
     {   layout: CharacterCard, type:Asset.card.character.seaman, qty:1,
         name:{de:"Koch"},
-        ability: [`Für das erste ${Asset.keyword.supply.hunger.icon}`,"pro Runde, ein",`weiteres ${Asset.keyword.supply.hunger.icon}`,""
-        ],
-        crafting: ["","","",""
-        ],
-        passion: [ 0 , 1 , 1 ],
+        ability: [  `Für das erste ${Asset.keyword.supply.hunger.icon}`,
+                    `pro Runde, ein`,
+                    `weiteres ${Asset.keyword.supply.hunger.icon} für`,
+                    `jemanden` ],
+        crafting: [ `Esslöffel`,
+                    `${Asset.keyword.material.shaft.icon} mit ${Asset.keyword.tool.crafting.icon}`,
+                    ``,
+                    `` ],
+        passion: [ 0 , 1 , 0 ], // STR ; DEX ; WIS
     },
 ]
 
