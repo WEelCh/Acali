@@ -217,29 +217,25 @@ class GCdisplay { static Log = new Log("Display", "b");
 
     static #optionButton ( id , option ) {
         console.warn("HANDLE onlyPARTICIPATNS")
+        const skillcheck = option.challenge.skillcheck.type ? /*html*/`
+                    <h4 class="row smaller nomargin">
+                        ${ Asset.attribute[ option.challenge.skillcheck.type ].icon } 
+                        : ${(option.challenge.skillcheck.type)? `${Math.min(...option.challenge.skillcheck.difficulty)}-${Math.max(...option.challenge.skillcheck.difficulty)}`:""} 
+                    </h4>` : ""
         return /*html*/`
                 <div id="${id}" class="row smaller box" style="padding: 5mm 0mm">
-                    <div class="row smaller nomargin">
+                    <h4 class="row smaller nomargin">
                         ${option.description[APPLOC]}
-                    </div>
-                    <div class="row smaller nomargin">
+                    </h4>
+                    <h4 class="row smaller nomargin">
                         ${Asset.event.target[option.challenge.target].icon}
-                    </div>
-                    <div class="row smaller nomargin">
+                    </h4>
+                    <h4 class="row smaller nomargin">
                         ${(option.challenge.target=="special")?option.challenge.special[APPLOC]:""}
-                    </div>
-                    <div class="row smaller nomargin">
-                        ${option.challenge.skillcheck.type}
-                    </div>
-                    <div class="row smaller nomargin">
-                        ${(option.challenge.skillcheck.type)? `${Math.min(...option.challenge.skillcheck.difficulty)}-${Math.max(...option.challenge.skillcheck.difficulty)}`:""}
-                    </div>
-                    <div class="row smaller nomargin">
-                        USE:${option.challenge.keyword.use}
-                    </div>
-                    <div class="row smaller nomargin">
-                        CONSUME:${option.challenge.keyword.consume}
-                    </div>
+                    </h4>
+                    ${skillcheck}
+                    <h4 class="row smaller nomargin"> GEBRAUCHEN: ${option.challenge.keyword.use} </h4>
+                    <h4 class="row smaller nomargin"> VERBRAUCHEN: ${option.challenge.keyword.consume} </h4>
                 </div>
     `}
 
