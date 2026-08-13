@@ -21,47 +21,47 @@ function buildWeatherStates() {
     // Narrative fragments designed to form a cohesive, player-facing sentence
     const fragments = {
         en: {
-            temp: [
-                "You are surrounded by arctic cold",
-                "Freezing temperatures bite at you",
-                "A chill fills the air around you",
-                "Mild temperatures surround your group",
-                "A comforting warmth washes over you"
-            ],
             prec: [
-                "under a crystal-clear sky,",
-                "beneath a thick canopy of clouds,",
-                "as a light drizzle falls on you,",
-                "amidst pouring rain,",
-                "during a torrential downpour,"
+                "Under a clear sky,",
+                "Beneath a thick cloud cover,",
+                "With a light drizzle falling,",
+                "In heavy rain,",
+                "During a torrential downpour,"
+            ],
+            temp: [
+                "it is bitterly cold",
+                "freezing temperatures set in",
+                "there is a noticeable chill",
+                "the temperature is mild",
+                "a pleasant warmth fills the air"
             ],
             wind: [
-                "and the air is dead calm.",
-                "accompanied by a gentle breeze.",
-                "while howling gales push against you.",
-                "and a violent storm threatens to sweep you away."
+                "and the air is completely still.",
+                "with a gentle breeze blowing.",
+                "as strong gales blow against you.",
+                "and a heavy storm rages around you."
             ]
         },
         de: {
-            temp: [
-                "Arktische Kälte umgibt euch",
-                "Klirrende Kälte macht euch zu schaffen",
-                "Eine kühle Luft umweht euch",
-                "Angenehme Temperaturen umgeben eure Gruppe",
-                "Eine wohlige Wärme durchströmt euch"
-            ],
             prec: [
-                "unter wolkenlosem Himmel,",
-                "unter einer dichten Wolkendecke,",
-                "während ein leichter Nieselregen auf euch fällt,",
-                "im strömenden Regen,",
-                "während eines heftigen Wolkenbruchs,"
+                "Unter wolkenlosem Himmel",
+                "Unter einer dichten Wolkendecke",
+                "Bei leichtem Nieselregen",
+                "Bei starkem Regen",
+                "Bei einem heftigen Wolkenbruch"
+            ],
+            temp: [
+                "ist es eiskalt,",
+                "herrscht eiskalte Kälte,",
+                "liegt eine spürbare Kühle in der Luft,",
+                "sind die Temperaturen mild,",
+                "umgibt euch eine angenehme Wärme,"
             ],
             wind: [
-                "und es ist absolut windstill.",
-                "begleitet von einer sanften Brise.",
+                "und es ist völlig windstill.",
+                "begleitet von einer leichten Brise.",
                 "während euch ein stürmischer Wind entgegenweht.",
-                "und ein gewaltiger Sturm droht, euch fortzureißen."
+                "während ein heftiger Sturm um euch wütet."
             ]
         },
         titles: {
@@ -76,8 +76,8 @@ function buildWeatherStates() {
             for (let w = 0; w <= 3; w++) {
 
                 const stateTitle = `Weather_${fragments.titles.temp[t]}_${fragments.titles.prec[p]}_${fragments.titles.wind[w]}`;
-                const descEn = `${fragments.en.temp[t]} ${fragments.en.prec[p]} ${fragments.en.wind[w]}`;
-                const descDe = `${fragments.de.temp[t]} ${fragments.de.prec[p]} ${fragments.de.wind[w]}`;
+                const descEn = `${fragments.en.prec[p]} ${fragments.en.temp[t]} ${fragments.en.wind[w]}`;
+                const descDe = `${fragments.de.prec[p]} ${fragments.de.temp[t]} ${fragments.de.wind[w]}`;
 
                 weatherDeck.push({
                     head: {
@@ -144,73 +144,84 @@ function buildTravelStates() {
 
     // Narrative fragments designed to form a cohesive, player-facing sentence
     const fragments = [
-        {   title: "12_forgiving",
-            weight: 5, range: [1,2], severity: 0,
-            de: "Der Weg ist wie erwartet leicht", en: "",
+        // --- NEAR (Distance 1 - 3) ---
+        {   title: "near_forgiving",
+            weight: 5, range: [1, 3], severity: 0,
+            de: "Der kurze Weg ist erstaunlich mühelos.", 
+            en: "The short path is surprisingly effortless.",
             exhaustion: 0, hunger: 0,
         },
-        {   title: "12_standard",
-            weight: 5, range: [1,2], severity: 1,
-            de: "Der Weg ist wie erwartet leicht", en: "",
+        {   title: "near_standard",
+            weight: 5, range: [1, 3], severity: 1,
+            de: "Die kurze Strecke verläuft ohne Probleme.", 
+            en: "The short distance is covered without issues.",
             exhaustion: 0, hunger: 0,
         },
-        {   title: "12_harsh",
-            weight: 5, range: [1,2], severity: 2,
-            de: "Der Weg ist überraschend anstrengend", en: "",
+        {   title: "near_harsh",
+            weight: 5, range: [1, 3], severity: 2,
+            de: "Der kurze Weg ist unerwartet beschwerlich.", 
+            en: "The short path is unexpectedly strenuous.",
             exhaustion: 1, hunger: 0,
         },
-
-
-        {   title: "34_forgiving",
-            weight: 5, range: [3,4], severity: 0,
-            de: "Der Weg ist überraschend leicht", en: "",
-            exhaustion: 0, hunger: 0,
-        },
-        {   title: "34_standard",
-            weight: 5, range: [3,4], severity: 1,
-            de: "Der Weg ist wie erwartet anstrengend", en: "",
-            exhaustion: 1, hunger: 0,
-        },
-        {   title: "34_harsh",
-            weight: 5, range: [3,4], severity: 2,
-            de: "Der Weg ist überraschend sehr anstrengend", en: "",
+        {   title: "near_brutal",
+            weight: 5, range: [1, 3], severity: 3,
+            de: "Selbst diese kurze Strecke kostet euch viel Kraft.", 
+            en: "Even this short distance takes a heavy toll.",
             exhaustion: 1, hunger: 1,
         },
 
-
-        {   title: "56_forgiving",
-            weight: 5, range: [5,6], severity: 0,
-            de: "Der Weg ist überraschend nur anstrengend", en: "",
+        // --- MID / BLEEDING (Distance 3 - 5) ---
+        {   title: "mid_forgiving",
+            weight: 5, range: [3, 5], severity: 0,
+            de: "Ihr kommt gut voran und spart eure Kräfte.", 
+            en: "You make good progress and conserve your energy.",
+            exhaustion: 0, hunger: 0,
+        },
+        {   title: "mid_standard",
+            weight: 5, range: [3, 5], severity: 1,
+            de: "Der Weg strengt an, wie zu erwarten war.", 
+            en: "The march is tiring, just as expected.",
             exhaustion: 1, hunger: 0,
         },
-        {   title: "56_standard",
-            weight: 5, range: [5,6], severity: 1,
-            de: "Der Weg ist wie erwartet sehr anstrengend", en: "",
+        {   title: "mid_harsh",
+            weight: 5, range: [3, 5], severity: 2,
+            de: "Das Gelände verlangt euch mehr ab als gedacht.", 
+            en: "The terrain demands more from you than anticipated.",
             exhaustion: 1, hunger: 1,
         },
-        {   title: "56_harsh",
-            weight: 5, range: [5,6], severity: 2,
-            de: "Der Weg ist überraschend extremst anstrengend", en: "",
+        {   title: "mid_brutal",
+            weight: 5, range: [3, 5], severity: 3,
+            de: "Eine zermürbende Etappe, die an euren Reserven zehrt.", 
+            en: "A grueling march that drains your reserves.",
             exhaustion: 2, hunger: 1,
         },
 
-        
-        {   title: "78_forgiving",
-            weight: 5, range: [7,8], severity: 0,
-            de: "Der Weg ist überraschend nur sehr anstrengend", en: "",
+        // --- FAR (Distance 4 - 8) ---
+        {   title: "far_forgiving",
+            weight: 5, range: [4, 8], severity: 0,
+            de: "Für diese lange Distanz kommt ihr erstaunlich gut durch.", 
+            en: "You manage this long distance surprisingly well.",
+            exhaustion: 1, hunger: 0,
+        },
+        {   title: "far_standard",
+            weight: 5, range: [4, 8], severity: 1,
+            de: "Der lange Weg zehrt an euren Kräften und Vorräten.", 
+            en: "The long journey drains your strength and supplies.",
             exhaustion: 1, hunger: 1,
         },
-        {   title: "78_standard",
-            weight: 5, range: [7,8], severity: 1,
-            de: "Der Weg ist wie erwartet extremst anstrengend", en: "",
+        {   title: "far_harsh",
+            weight: 5, range: [4, 8], severity: 2,
+            de: "Die weite Strecke bringt euch an eure physischen Grenzen.", 
+            en: "The vast distance pushes you to your physical limits.",
             exhaustion: 2, hunger: 1,
         },
-        {   title: "78_harsh",
-            weight: 5, range: [7,8], severity: 2,
-            de: "Der Weg ist überraschend extremst anstrengend", en: "",
+        {   title: "far_brutal",
+            weight: 5, range: [4, 8], severity: 3,
+            de: "Ein gnadenloser Marsch, der euch völlig erschöpft zurücklässt.", 
+            en: "A merciless trek that leaves you completely exhausted.",
             exhaustion: 2, hunger: 2,
-        },
-    ]
+        }
+    ];
 
     for (const fragment of fragments) {
         
@@ -291,8 +302,8 @@ export default { meta : { author, name, date, id, description },
                 },
                 resources: {// scarce normal abundand ( weighted distribution )
                     gather: [  1 , 5 , 3  ],
-                    hunt:   [  1 , 1 , 1  ],
-                    chop:   [  1 , 1 , 1  ],
+                    hunt:   [  1 , 3 , 1  ],
+                    chop:   [  0 , 2 , 3  ],
                 },
             }, 
             body : {
@@ -400,7 +411,7 @@ export default { meta : { author, name, date, id, description },
                                 keyword : {
                                     // "keyword | keyword + keyword"
                                     // "(kw)    or (kw and kw)"
-                                    use     : `${Asset.keyword.tool.lookout}`,
+                                    use     : `${Asset.keyword.tool.lookout.icon}`,
                                     consume : ``,
                                 },
                             },
@@ -649,7 +660,7 @@ export default { meta : { author, name, date, id, description },
                             weight   : 5,       // [ 1-10 ]
                             disabled : false,   // disables this subevent
                             cw       : false,   // players can disable events with content warning for especially distrubing / harmfull content
-                            severity : 0,       // 0:forgiving | 1:standard | 2:harsh | 3:brutal
+                            severity : 1,       // 0:forgiving | 1:standard | 2:harsh | 3:brutal
                             flags : {
                                 require: [  ], // tile (and global) must have ALL of these
                                 exclude: [  ], // tile (and global) must have NONE of these
@@ -665,7 +676,7 @@ export default { meta : { author, name, date, id, description },
                     },
                     body : {
                         description : { 
-                            de : "" , 
+                            de : "Ihr findet einen Baum, der sich gut zum fällen eignet." , 
                             en : "" ,
                         },
                         effects: {
@@ -679,7 +690,7 @@ export default { meta : { author, name, date, id, description },
                                     en : "" ,
                                 },
                                 // direct (neg means healing)
-                                exhaustion: 1,      hunger: 0,      hypothermia: 0,     wound: 0,
+                                exhaustion: 0,      hunger: 0,      hypothermia: 0,     wound: 0,
                                 // indirect (translate to hypothermia if not protected against)
                                 cold: 0,        wet: 0,       wind: 0,
                             },
@@ -694,48 +705,42 @@ export default { meta : { author, name, date, id, description },
                                 },
                             },
                         },
-                        // weather type events' options are never used!
                         options : [ // 1-3 options (at least one without keyword needs)
                             {
                                 description : { 
-                                    de : "" , 
+                                    de : "Versucht ihn mit einer Axt zu fällen." , 
                                     en : "" ,
                                 } ,
                                 challenge : { // (skillcheck and/or keyword) or nothing
-                                    target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
+                                    target: "groupChoice", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
                                     special: { 
                                         de : "" , 
                                         en : "" ,
                                     },
-                                    skillcheck : {
-                                        type : "", // to omit: "" | "dex" | "str" | "wis"
-                                        difficulty : [ 2 , 3 , 6], // custom dice (players only get range)
-                                    },
+                                    skillcheck : { type : "str", difficulty : [ 1 , 2 , 2 , 2 , 2 , 3] },
                                     keyword : {
                                         // "keyword | keyword + keyword"
                                         // "(kw)    or (kw and kw)"
-                                        use     : ``,
+                                        use     : `${Asset.keyword.tool.chopping.icon}`,
                                         consume : ``,
                                     },
                                 },
-                                
-                                
                                 onSuccess : {
                                     description : { 
-                                        de : "" , 
+                                        de : "Ihr könnt den Baum ohne größere Probleme fällen!" , 
                                         en : "" ,
                                     } ,
                                     effects: {
                                     yield: { // cards drawn from resource decks
-                                        gathering: 0,   chopping: 0,   hunting: 0,   ship: 0,
+                                        gathering: 0,   chopping: 3,   hunting: 0,   ship: 0,
                                     },
                                     afflictions: {
-                                        target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
+                                        target: "groupForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
                                         special: { 
                                             de : "" , 
                                             en : "" ,
                                         },
-                                        onlyParticipants: false,
+                                        onlyParticipants: true,
                                         // direct (neg means healing)
                                         exhaustion: 1,      hunger: 0,      hypothermia: 0,     wound: 0,
                                         // indirect (translate to hypothermia if not protected against)
@@ -755,22 +760,108 @@ export default { meta : { author, name, date, id, description },
                                 },
                                 onFailure : {
                                     description : { 
-                                        de : "" , 
+                                        de : "Ihr könnt den Baum nur unter großer Anstrengung fällen!" , 
                                         en : "" ,
                                     } ,
                                     effects: {
                                     yield: { // cards drawn from resource decks
-                                        gathering: 0,   chopping: 0,   hunting: 0,   ship: 0,
+                                        gathering: 0,   chopping: 3,   hunting: 0,   ship: 0,
                                     },
                                     afflictions: {
-                                        target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
+                                        target: "groupForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
                                         special: { 
                                             de : "" , 
                                             en : "" ,
                                         },
-                                        onlyParticipants: false,
+                                        onlyParticipants: true,
                                         // direct (neg means healing)
-                                        exhaustion: 1,      hunger: 0,      hypothermia: 0,     wound: 0,
+                                        exhaustion: 1,      hunger: 1,      hypothermia: 0,     wound: 0,
+                                        // indirect (translate to hypothermia if not protected against)
+                                        cold: 0,        wet: 0,       wind: 0,
+                                    },
+                                    flags: {
+                                        local : {
+                                            add    : [  ],
+                                            remove : [  ],
+                                        },
+                                        global : {
+                                            add    : [  ],
+                                            remove : [  ],
+                                        },
+                                    },
+                                },
+                                },
+                            },
+                            {
+                                description : { 
+                                    de : "Versucht den Baum mit improvisiertem Werkzeug zu fällen." , 
+                                    en : "" ,
+                                } ,
+                                challenge : { // (skillcheck and/or keyword) or nothing
+                                    target: "groupChoice", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
+                                    special: { 
+                                        de : "" , 
+                                        en : "" ,
+                                    },
+                                    skillcheck : { type : "str", difficulty : [ 2 , 2 , 3 , 3 , 4 , 5] },
+                                    keyword : {
+                                        // "keyword | keyword + keyword"
+                                        // "(kw)    or (kw and kw)"
+                                        use     : `${Asset.keyword.material.sharp.icon}`,
+                                        consume : ``,
+                                    },
+                                },
+                                onSuccess : {
+                                    description : { 
+                                        de : "Ihr könnt den Baum nur unter großer Anstrengung fällen" , 
+                                        en : "" ,
+                                    } ,
+                                    effects: {
+                                    yield: { // cards drawn from resource decks
+                                        gathering: 0,   chopping: 3,   hunting: 0,   ship: 0,
+                                    },
+                                    afflictions: {
+                                        target: "groupForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
+                                        special: { 
+                                            de : "" , 
+                                            en : "" ,
+                                        },
+                                        onlyParticipants: true,
+                                        // direct (neg means healing)
+                                        exhaustion: 1,      hunger: 1,      hypothermia: 0,     wound: 0,
+                                        // indirect (translate to hypothermia if not protected against)
+                                        cold: 0,        wet: 0,       wind: 0,
+                                    },
+                                    flags: {
+                                        local : {
+                                            add    : [  ],
+                                            remove : [  ],
+                                        },
+                                        global : {
+                                            add    : [  ],
+                                            remove : [  ],
+                                        },
+                                    },
+                                },
+                                },
+                                onFailure : {
+                                    description : { 
+                                        de : "Auch unter großer Anstrengung könnt ihr nur Teile des Baumes abschlagen" , 
+                                        en : "" ,
+                                    } ,
+                                    effects: {
+                                    yield: { // cards drawn from resource decks
+                                        gathering: 0,   chopping: 1,   hunting: 0,   ship: 0,
+                                    },
+                                    afflictions: {
+                                        target: "groupChoice", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
+                                        special: { 
+                                            de : "" , 
+                                            en : "" ,
+                                        },
+                                        onlyParticipants: true,
+                                        // direct (neg means healing)
+                                        exhaustion: 1,      hunger: 1,      hypothermia: 0,     wound: 0,
                                         // indirect (translate to hypothermia if not protected against)
                                         cold: 0,        wet: 0,       wind: 0,
                                     },
