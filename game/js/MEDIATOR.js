@@ -28,6 +28,7 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
 
         for (const path of allModules.events) {
             const mod = await import(`../${path}`);
+            if (mod.default.meta.hidden) {continue}
             this.selectable_events.push(mod.default);
             const index = this.selectable_events.length-1
             document.getElementById( "id_load_events" ).innerHTML += /*html*/`
@@ -88,6 +89,8 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
     // ==================
         // *** CW ***
         GCevent.CW_allowed = document.querySelector('input[name="CW"]').checked;
+        // *** HARSH ***
+        GCevent.harsh_allowed = document.querySelector('input[name="harsh"]').checked;
         // *** realistic time and offset ***
         GCtime.isRealistic = document.querySelector('input[name="realTime"]').checked;
         GCtime.startDate = START_DATE;

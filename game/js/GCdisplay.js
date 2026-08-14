@@ -147,6 +147,7 @@ class GCdisplay { static Log = new Log("Display", "b");
         document.getElementById('settings-headline-events').innerHTML = Locale.setting.headline.events.text();
 
         document.getElementById('settings-prompt-cw').innerHTML = Locale.setting.prompt.cw.text();
+        document.getElementById('settings-prompt-harsh').innerHTML = Locale.setting.prompt.harsh.text();
 
         document.getElementById('settings-prompt-start').innerHTML = Locale.setting.prompt.start.text();
     }

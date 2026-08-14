@@ -85,9 +85,15 @@
             </h3> 
         </div>
 
-        <div class="box" style="padding-bottom: 5mm;">
-            <h5 id="settings-prompt-cw" class="row"> Play with CW Events? </h5>
-            <input class="row" type="checkbox" id="CW" name="CW" value="CW" checked="checked">
+        <div class="box row" style="padding-bottom: 5mm;">
+            <div class="column six">
+                <h5 id="settings-prompt-cw" class="row"> Play with CW Events? </h5>
+                <input class="row" type="checkbox" id="CW" name="CW" value="CW" checked="checked">
+            </div>
+            <div class="column six">
+                <h5 id="settings-prompt-harsh" class="row"> Play with harsh Events? </h5>
+                <input class="row" type="checkbox" id="harsh" name="harsh" value="harsh" checked="checked">
+            </div>
         </div>
 
         <div class="box" onclick="MEDIATOR.start()">
