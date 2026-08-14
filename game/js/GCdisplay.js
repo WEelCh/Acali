@@ -212,7 +212,6 @@ class GCdisplay { static Log = new Log("Display", "b");
 
 
     static #optionButton ( id , option ) {
-        console.warn("HANDLE onlyPARTICIPATNS")
         const skillcheck = option.challenge.skillcheck.type ? /*html*/`
                     <h4 class="row smaller nomargin">
                         ${ Asset.attribute[ option.challenge.skillcheck.type ].icon } 
