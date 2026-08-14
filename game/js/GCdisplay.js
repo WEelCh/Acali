@@ -187,11 +187,6 @@ class GCdisplay { static Log = new Log("Display", "b");
         yieldIcons +=  Asset.tile.action.hunting.icon.repeat(effects?.yield?.hunting ?? 0)
         
         let afflictionIcons = ""
-        afflictionIcons += Asset.event.target[ effects.afflictions.target ].icon
-        if ( effects.afflictions.target == "special") {
-            afflictionIcons += `(${effects.afflictions.special[APPLOC]})`
-        }
-
         if (effects.afflictions.exhaustion >= 0) {
             afflictionIcons += Asset.condition.exhaustion.icon.repeat(effects.afflictions.exhaustion)
         } else { afflictionIcons += Asset.keyword.supply.exhaustion.icon.repeat(effects.afflictions.exhaustion*(-1)) }
@@ -226,12 +221,6 @@ class GCdisplay { static Log = new Log("Display", "b");
                 <div id="${id}" class="row smaller box" style="padding: 5mm 0mm">
                     <h4 class="row smaller nomargin">
                         ${option.description[APPLOC]}
-                    </h4>
-                    <h4 class="row smaller nomargin">
-                        ${Asset.event.target[option.challenge.target].icon}
-                    </h4>
-                    <h4 class="row smaller nomargin">
-                        ${(option.challenge.target=="special")?option.challenge.special[APPLOC]:""}
                     </h4>
                     ${skillcheck}
                     <h4 class="row smaller nomargin"> GEBRAUCHEN: ${option.challenge.keyword.use} </h4>
