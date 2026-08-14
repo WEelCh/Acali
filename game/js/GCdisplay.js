@@ -243,7 +243,6 @@ class GCdisplay { static Log = new Log("Display", "b");
                     ${this.#fragmentEffectIcons(event.weather.body.effects)}
 
                     <h4 class="row smaller"> ${event.unforseen.body.description[APPLOC]} </h4>
-                    ${this.#fragmentEffectIcons(event.unforseen.body.effects)}
                     ${unforseenOptions}
                 </div>`;
         popup.style.display = "block";
@@ -273,7 +272,6 @@ class GCdisplay { static Log = new Log("Display", "b");
                     ${this.#fragmentEffectIcons(event.weather.body.effects)}
 
                     <h4 class="row smaller"> ${event.unforseen.body.description[APPLOC]} </h4>
-                    ${this.#fragmentEffectIcons(event.unforseen.body.effects)}
                     <h2 class="row smaller"> ${difficulty} </h2>
                     <h2 id="select0_btn" class="row smaller box"> Geschafft </h2>
                     <h2 id="select1_btn" class="row smaller box"> Nicht geschafft </h2>
@@ -305,7 +303,6 @@ class GCdisplay { static Log = new Log("Display", "b");
                     ${this.#fragmentEffectIcons(event.weather.body.effects)}
 
                     <h4 class="row smaller"> ${event.unforseen.body.description[APPLOC]} </h4>
-                    ${this.#fragmentEffectIcons(event.unforseen.body.effects)}
 
                     <h4 class="row smaller"> ${event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].effects)}
@@ -346,13 +343,11 @@ class GCdisplay { static Log = new Log("Display", "b");
                     ${this.#fragmentEffectIcons(event.weather.body.effects)}
 
                     <h4 class="row smaller"> ${event.unforseen.body.description[APPLOC]} </h4>
-                    ${this.#fragmentEffectIcons(event.unforseen.body.effects)}
 
                     <h4 class="row smaller"> ${event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].effects)}
 
                     <h4 class="row smaller"> ${event.action[subaction].body.description[APPLOC]} </h4>
-                    ${this.#fragmentEffectIcons(event.action[subaction].body.effects)}
                     ${actionOptions}
                 </div>`;
         popup.style.display = "block";
@@ -386,13 +381,11 @@ class GCdisplay { static Log = new Log("Display", "b");
                     ${this.#fragmentEffectIcons(event.weather.body.effects)}
 
                     <h4 class="row smaller"> ${event.unforseen.body.description[APPLOC]} </h4>
-                    ${this.#fragmentEffectIcons(event.unforseen.body.effects)}
 
                     <h4 class="row smaller"> ${event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].effects)}
                     
                     <h4 class="row smaller"> ${event.action[subaction].body.description[APPLOC]} </h4>
-                    ${this.#fragmentEffectIcons(event.action[subaction].body.effects)}
                     <h2 class="row smaller"> ${difficulty} </h2>
                     <h2 id="select0_btn" class="row smaller box"> Geschafft </h2>
                     <h2 id="select1_btn" class="row smaller box"> Nicht geschafft </h2>
@@ -422,7 +415,6 @@ class GCdisplay { static Log = new Log("Display", "b");
             subaction = ["gathering","chopping","hunting"][subaction]
             actionPart = /*html*/`
                             <h4 class="row smaller"> ${event.action[subaction].body.description[APPLOC]} </h4>
-                            ${this.#fragmentEffectIcons(event.action[subaction].body.effects)}
                             <h4 class="row smaller"> ${event.action[subaction].body.options[selectedActionChallenge][actionChallengeDoneKey].description[APPLOC]} </h4>
                             ${this.#fragmentEffectIcons(event.action[subaction].body.options[selectedActionChallenge][actionChallengeDoneKey].effects)}`
         }
@@ -435,7 +427,6 @@ class GCdisplay { static Log = new Log("Display", "b");
                     ${this.#fragmentEffectIcons(event.weather.body.effects)}
 
                     <h4 class="row smaller"> ${event.unforseen.body.description[APPLOC]} </h4>
-                    ${this.#fragmentEffectIcons(event.unforseen.body.effects)}
 
                     <h4 class="row smaller"> ${event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.unforseen.body.options[selectedUnforseenChallenge][unforseenChallengeDoneKey].effects)}
@@ -479,8 +470,6 @@ class GCdisplay { static Log = new Log("Display", "b");
                     ${this.#fragmentEffectIcons(GCevent.currentWeatherEvent.body.effects)}
 
                     <h4 class="row smaller"> ${event.body.description[APPLOC]} </h4>
-                    ${this.#fragmentEffectIcons(event.body.effects)}
-
                     ${campOptions}
                 </div>`;
         popup.style.display = "block";
@@ -511,7 +500,6 @@ class GCdisplay { static Log = new Log("Display", "b");
                     ${this.#fragmentEffectIcons(GCevent.currentWeatherEvent.body.effects)}
 
                     <h4 class="row smaller"> ${event.body.description[APPLOC]} </h4>
-                    ${this.#fragmentEffectIcons(event.body.effects)}
 
                     <h2 class="row smaller"> ${difficulty} </h2>
                     <h2 id="select0_btn" class="row smaller box"> Geschafft </h2>
@@ -544,7 +532,6 @@ class GCdisplay { static Log = new Log("Display", "b");
                     ${this.#fragmentEffectIcons(GCevent.currentWeatherEvent.body.effects)}
 
                     <h4 class="row smaller"> ${event.body.description[APPLOC]} </h4>
-                    ${this.#fragmentEffectIcons(event.body.effects)}
 
                     <h4 class="row smaller"> ${event.body.options[selectedCampChallenge][campChallengeDoneKey].description[APPLOC]} </h4>
                     ${this.#fragmentEffectIcons(event.body.options[selectedCampChallenge][campChallengeDoneKey].effects)}

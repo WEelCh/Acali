@@ -210,11 +210,9 @@ class MEDIATOR { static Log = new Log( "Mediator" , "o" )
         };
         handleFlags( event.weather.body.effects.flags )
 
-        handleFlags( event.unforseen.body.effects.flags )
         handleFlags( event.unforseen.body.options[selectedUnforseenChallenge][(unforseenChallengeDone?"onSuccess":"onFailure")].effects.flags )
 
         if (subaction < 3){
-            handleFlags( event.action[["gathering","chopping","hunting"][subaction]].body.effects.flags )
             handleFlags( event.action[["gathering","chopping","hunting"][subaction]].body.options[selectedActionChallenge][(actionChallengeDone?"onSuccess":"onFailure")].effects.flags )
         }
 
