@@ -10,8 +10,9 @@ const description = {
     de : "" , 
     en : "" ,
 };
+const hidden = true;
 
-export default { meta : { author, name, date, id, description },
+export default { meta : { author, name, date, id, description, hidden },
     // ===================================================================
     // LOCATIONS
     // ===================================================================
