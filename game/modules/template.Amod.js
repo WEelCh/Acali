@@ -88,11 +88,6 @@ export default { meta : { author, name, date, id, description },
                             gathering: 0,   chopping: 0,   hunting: 0,   ship: 0,
                         },
                         afflictions: { 
-                            target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
-                            special: { 
-                                de : "" , 
-                                en : "" ,
-                            },
                             // direct (neg means healing)
                             exhaustion: 1,      hunger: 0,      hypothermia: 0,     wound: 0,
                             // indirect (translate to hypothermia if not protected against)
@@ -147,12 +142,7 @@ export default { meta : { author, name, date, id, description },
                         yield: { // cards drawn from resource decks
                             gathering: 0,   chopping: 0,   hunting: 0,   ship: 0,
                         },
-                        afflictions: { 
-                            target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
-                            special: { 
-                                de : "" , 
-                                en : "" ,
-                            },
+                        afflictions: {
                             // direct (neg means healing)
                             exhaustion: 1,      hunger: 0,      hypothermia: 0,     wound: 0,
                             // indirect (translate to hypothermia if not protected against)
@@ -207,12 +197,7 @@ export default { meta : { author, name, date, id, description },
                         yield: { // cards drawn from resource decks
                             gathering: 0,   chopping: 0,   hunting: 0,   ship: 0,
                         },
-                        afflictions: { 
-                            target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
-                            special: { 
-                                de : "" , 
-                                en : "" ,
-                            },
+                        afflictions: {
                             // direct (neg means healing)
                             exhaustion: 1,      hunger: 0,      hypothermia: 0,     wound: 0,
                             // indirect (translate to hypothermia if not protected against)
@@ -236,12 +221,7 @@ export default { meta : { author, name, date, id, description },
                                 de : "" , 
                                 en : "" ,
                             } ,
-                            challenge : { // (skillcheck and/or keyword) or nothing
-                                target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
-                                special: { 
-                                    de : "" , 
-                                    en : "" ,
-                                },
+                            challenge : {
                                 skillcheck : {
                                     type : "", // to omit: "" | "dex" | "str" | "wis"
                                     difficulty : [ 2 , 3 , 6], // custom dice (players only get range)
@@ -265,12 +245,6 @@ export default { meta : { author, name, date, id, description },
                                         gathering: 0,   chopping: 0,   hunting: 0,   ship: 0,
                                     },
                                     afflictions: {
-                                        target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
-                                        special: { 
-                                            de : "" , 
-                                            en : "" ,
-                                        },
-                                        onlyParticipants: false,
                                         // direct (neg means healing)
                                         exhaustion: 1,      hunger: 0,      hypothermia: 0,     wound: 0,
                                         // indirect (translate to hypothermia if not protected against)
@@ -298,12 +272,6 @@ export default { meta : { author, name, date, id, description },
                                         gathering: 0,   chopping: 0,   hunting: 0,   ship: 0,
                                     },
                                     afflictions: {
-                                        target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
-                                        special: { 
-                                            de : "" , 
-                                            en : "" ,
-                                        },
-                                        onlyParticipants: false,
                                         // direct (neg means healing)
                                         exhaustion: 1,      hunger: 0,      hypothermia: 0,     wound: 0,
                                         // indirect (translate to hypothermia if not protected against)
@@ -367,11 +335,6 @@ export default { meta : { author, name, date, id, description },
                                 gathering: 0,   chopping: 0,   hunting: 0,   ship: 0,
                             },
                             afflictions: { 
-                                target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
-                                special: { 
-                                    de : "" , 
-                                    en : "" ,
-                                },
                                 // direct (neg means healing)
                                 exhaustion: 1,      hunger: 0,      hypothermia: 0,     wound: 0,
                                 // indirect (translate to hypothermia if not protected against)
@@ -395,12 +358,7 @@ export default { meta : { author, name, date, id, description },
                                     de : "" , 
                                     en : "" ,
                                 } ,
-                                challenge : { // (skillcheck and/or keyword) or nothing
-                                    target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
-                                    special: { 
-                                        de : "" , 
-                                        en : "" ,
-                                    },
+                                challenge : {
                                     skillcheck : {
                                         type : "", // to omit: "" | "dex" | "str" | "wis"
                                         difficulty : [ 2 , 3 , 6], // custom dice (players only get range)
@@ -424,12 +382,6 @@ export default { meta : { author, name, date, id, description },
                                         gathering: 0,   chopping: 0,   hunting: 0,   ship: 0,
                                     },
                                     afflictions: {
-                                        target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
-                                        special: { 
-                                            de : "" , 
-                                            en : "" ,
-                                        },
-                                        onlyParticipants: false,
                                         // direct (neg means healing)
                                         exhaustion: 1,      hunger: 0,      hypothermia: 0,     wound: 0,
                                         // indirect (translate to hypothermia if not protected against)
@@ -457,12 +409,6 @@ export default { meta : { author, name, date, id, description },
                                         gathering: 0,   chopping: 0,   hunting: 0,   ship: 0,
                                     },
                                     afflictions: {
-                                        target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
-                                        special: { 
-                                            de : "" , 
-                                            en : "" ,
-                                        },
-                                        onlyParticipants: false,
                                         // direct (neg means healing)
                                         exhaustion: 1,      hunger: 0,      hypothermia: 0,     wound: 0,
                                         // indirect (translate to hypothermia if not protected against)
@@ -522,11 +468,6 @@ export default { meta : { author, name, date, id, description },
                                 gathering: 0,   chopping: 0,   hunting: 0,   ship: 0,
                             },
                             afflictions: { 
-                                target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
-                                special: { 
-                                    de : "" , 
-                                    en : "" ,
-                                },
                                 // direct (neg means healing)
                                 exhaustion: 1,      hunger: 0,      hypothermia: 0,     wound: 0,
                                 // indirect (translate to hypothermia if not protected against)
@@ -550,12 +491,7 @@ export default { meta : { author, name, date, id, description },
                                     de : "" , 
                                     en : "" ,
                                 } ,
-                                challenge : { // (skillcheck and/or keyword) or nothing
-                                    target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
-                                    special: { 
-                                        de : "" , 
-                                        en : "" ,
-                                    },
+                                challenge : { 
                                     skillcheck : {
                                         type : "", // to omit: "" | "dex" | "str" | "wis"
                                         difficulty : [ 2 , 3 , 6], // custom dice (players only get range)
@@ -579,12 +515,6 @@ export default { meta : { author, name, date, id, description },
                                         gathering: 0,   chopping: 0,   hunting: 0,   ship: 0,
                                     },
                                     afflictions: {
-                                        target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
-                                        special: { 
-                                            de : "" , 
-                                            en : "" ,
-                                        },
-                                        onlyParticipants: false,
                                         // direct (neg means healing)
                                         exhaustion: 1,      hunger: 0,      hypothermia: 0,     wound: 0,
                                         // indirect (translate to hypothermia if not protected against)
@@ -612,12 +542,6 @@ export default { meta : { author, name, date, id, description },
                                         gathering: 0,   chopping: 0,   hunting: 0,   ship: 0,
                                     },
                                     afflictions: {
-                                        target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
-                                        special: { 
-                                            de : "" , 
-                                            en : "" ,
-                                        },
-                                        onlyParticipants: false,
                                         // direct (neg means healing)
                                         exhaustion: 1,      hunger: 0,      hypothermia: 0,     wound: 0,
                                         // indirect (translate to hypothermia if not protected against)
@@ -677,11 +601,6 @@ export default { meta : { author, name, date, id, description },
                                 gathering: 0,   chopping: 0,   hunting: 0,   ship: 0,
                             },
                             afflictions: { 
-                                target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
-                                special: { 
-                                    de : "" , 
-                                    en : "" ,
-                                },
                                 // direct (neg means healing)
                                 exhaustion: 1,      hunger: 0,      hypothermia: 0,     wound: 0,
                                 // indirect (translate to hypothermia if not protected against)
@@ -705,12 +624,7 @@ export default { meta : { author, name, date, id, description },
                                     de : "" , 
                                     en : "" ,
                                 } ,
-                                challenge : { // (skillcheck and/or keyword) or nothing
-                                    target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
-                                    special: { 
-                                        de : "" , 
-                                        en : "" ,
-                                    },
+                                challenge : { 
                                     skillcheck : {
                                         type : "", // to omit: "" | "dex" | "str" | "wis"
                                         difficulty : [ 2 , 3 , 6], // custom dice (players only get range)
@@ -734,12 +648,6 @@ export default { meta : { author, name, date, id, description },
                                         gathering: 0,   chopping: 0,   hunting: 0,   ship: 0,
                                     },
                                     afflictions: {
-                                        target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
-                                        special: { 
-                                            de : "" , 
-                                            en : "" ,
-                                        },
-                                        onlyParticipants: false,
                                         // direct (neg means healing)
                                         exhaustion: 1,      hunger: 0,      hypothermia: 0,     wound: 0,
                                         // indirect (translate to hypothermia if not protected against)
@@ -767,12 +675,6 @@ export default { meta : { author, name, date, id, description },
                                         gathering: 0,   chopping: 0,   hunting: 0,   ship: 0,
                                     },
                                     afflictions: {
-                                        target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
-                                        special: { 
-                                            de : "" , 
-                                            en : "" ,
-                                        },
-                                        onlyParticipants: false,
                                         // direct (neg means healing)
                                         exhaustion: 1,      hunger: 0,      hypothermia: 0,     wound: 0,
                                         // indirect (translate to hypothermia if not protected against)
@@ -831,11 +733,6 @@ export default { meta : { author, name, date, id, description },
                             gathering: 1,   chopping: 1,   hunting: 1,   ship: 1,
                         },
                         afflictions: { 
-                            target: "groupForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
-                            special: { 
-                                de : "" , 
-                                en : "" ,
-                            },
                             // direct (neg means healing)
                             exhaustion: 1,      hunger: 1,      hypothermia: 1,     wound: 1,
                             // indirect (translate to hypothermia if not protected against)
@@ -859,12 +756,7 @@ export default { meta : { author, name, date, id, description },
                                 de : "Das ist eure einzige Option" , 
                                 en : "" ,
                             } ,
-                            challenge : { // (skillcheck and/or keyword) or nothing
-                                target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
-                                special: { 
-                                    de : "" , 
-                                    en : "" ,
-                                },
+                            challenge : { 
                                 skillcheck : {
                                     type : "str", // to omit: "" | "dex" | "str" | "wis"
                                     difficulty : [ 2 , 3 , 6], // custom dice (players only get range)
@@ -888,12 +780,6 @@ export default { meta : { author, name, date, id, description },
                                         gathering: 0,   chopping: 0,   hunting: 0,   ship: 0,
                                     },
                                     afflictions: {
-                                        target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
-                                        special: { 
-                                            de : "" , 
-                                            en : "" ,
-                                        },
-                                        onlyParticipants: false,
                                         // direct (neg means healing)
                                         exhaustion: 1,      hunger: 0,      hypothermia: 0,     wound: 0,
                                         // indirect (translate to hypothermia if not protected against)
@@ -921,12 +807,6 @@ export default { meta : { author, name, date, id, description },
                                         gathering: 0,   chopping: 0,   hunting: 0,   ship: 0,
                                     },
                                     afflictions: {
-                                        target: "singleForced", // "groupForced" | "groupChoice" | "singleForced" | "singleChoice" | "special"
-                                        special: { 
-                                            de : "" , 
-                                            en : "" ,
-                                        },
-                                        onlyParticipants: false,
                                         // direct (neg means healing)
                                         exhaustion: 1,      hunger: 0,      hypothermia: 0,     wound: 0,
                                         // indirect (translate to hypothermia if not protected against)
