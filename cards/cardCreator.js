@@ -45,8 +45,6 @@ function ItemCard ( card , ID ) {
     // craft
     specialCondition = '';
     for ( const category in card.keyword.craft ) {
-        console.log(category)
-
         if ( category.startsWith('_is') ) {
             if ( card.keyword.craft._isComplex ) {
                 specialCondition = Asset.keyword.craft._isComplex.icon;

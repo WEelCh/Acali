@@ -1647,7 +1647,7 @@ H U N T
 
         material : { _isFragile : false ,
             structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
-            cordage    : 1 , cover : 0 , adhesive : 1 , flammable : 1 ,
+            cordage    : 1 , cover : 0 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
         supply : { _isPerishable : true ,
