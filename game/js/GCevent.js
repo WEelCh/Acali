@@ -112,30 +112,37 @@ class GCevent { static Log = new Log( "GCevent" , "y" )
             avaiable.push(event);
         } return avaiable;
     }
-    static #standartFilterEventCategory ( category,  tile , dayTime , moonPhase , season , weather ) {
+    static #standartFilterEventCategory ( action, category,  tile , dayTime , moonPhase , season , weather ) {
         // this applies all filters that are used for all three event types; returns array
         let avaiable = []; let failed;
         for (const event of category) {
+            this.Log.debug(`testing for ${action}`,event);
+            // YIELD
+            if ( action ) {
+                console.warn(event.head.spawn.yieldTierRange,tile.head.resources[action])
+                if ( event.head.spawn.yieldTierRange[0]>tile.head.resources[action] ||
+                     event.head.spawn.yieldTierRange[1]<tile.head.resources[action] ) { this.Log.debug("reject cause yield");continue }
+            }
             failed = false;
             // INCLUDE FLAGS
             for (const flag of event.head.spawn.flags.require) {
                 if (!(tile.head.flags.includes(flag)||GCmap.globalFlags.includes(flag))){ failed=true; break }
-            } if (failed){continue}
+            } if (failed){this.Log.debug("reject cause incl flag");continue}
             // EXCLUDE FLAGS
             for (const flag of event.head.spawn.flags.exclude) {
                 if ((tile.head.flags.includes(flag)||GCmap.globalFlags.includes(flag))){ failed=true; break }
-            } if (failed){continue}
+            } if (failed){this.Log.debug("reject cause excl flag");continue}
             // DAYTIME and MOONPHASE
             // DAYTIME and MOONPHASE
             if (dayTime == 0) {
                 // If it's day, skip if the event doesn't allow daytime spawning
-                if (!event.head.spawn.daytime[0]) { continue; }
+                if (!event.head.spawn.daytime[0]) { this.Log.debug("reject cause daytime");continue; }
             } else {
                 // If it's night, skip if the event doesn't match the current moon phase
-                if (!event.head.spawn.daytime[1][moonPhase]) { continue; }
+                if (!event.head.spawn.daytime[1][moonPhase]) { this.Log.debug("reject cause moonphase");continue; }
             }
             // SEASON
-            if (!event.head.spawn.season[season]) {continue}
+            if (!event.head.spawn.season[season]) {this.Log.debug("reject cause season");continue}
             // WEATHER
             if (event.head.spawn.weather.temp[0]>weather.temp || 
                 event.head.spawn.weather.temp[1]<weather.temp) {this.Log.debug("reject cause temp");continue}
@@ -145,9 +152,10 @@ class GCevent { static Log = new Log( "GCevent" , "y" )
                 event.head.spawn.weather.wind[1]<weather.wind) {this.Log.debug("reject cause wind");continue}
             // DISTANCE
             if (tile.head.spawn.distance<event.head.spawn.distanceRange[0]||
-                tile.head.spawn.distance>event.head.spawn.distanceRange[1]) {continue}
+                tile.head.spawn.distance>event.head.spawn.distanceRange[1]) {this.Log.debug("reject cause distance");continue}
             // event survived
             avaiable.push(event);
+            this.Log.debug("accepted");
         } return avaiable;
     }
     static #standartFilterCamp ( category,  tile , dayTime , moonPhase , season , weather  ) {
@@ -212,7 +220,7 @@ class GCevent { static Log = new Log( "GCevent" , "y" )
     static genTravel  ( tile , dayTime , moonPhase , season , weather ) {
         let avaiable = [];
         // if nothing found ignore all filter
-        avaiable =  this.#standartFilterEventCategory( this.all.travel , tile , dayTime , moonPhase , season , weather )
+        avaiable =  this.#standartFilterEventCategory( '' , this.all.travel , tile , dayTime , moonPhase , season , weather )
         if (avaiable.length == 0) { 
             this.Log.warn("Nothing found, abandon all filters") 
             return this.#weightedSelection(this.all.travel);
@@ -221,7 +229,7 @@ class GCevent { static Log = new Log( "GCevent" , "y" )
     static genAction  ( tile , action , dayTime , moonPhase , season , weather ) {
         let avaiable = [];
         // if nothing found ignore all filter
-        avaiable =  this.#standartFilterEventCategory( this.all.action[action] , tile , dayTime , moonPhase , season , weather )
+        avaiable =  this.#standartFilterEventCategory( action , this.all.action[action] , tile , dayTime , moonPhase , season , weather )
         if (avaiable.length == 0) { 
             this.Log.warn("Nothing found, abandon all filters") 
             return this.#weightedSelection(this.all.action[action]);
@@ -230,7 +238,7 @@ class GCevent { static Log = new Log( "GCevent" , "y" )
     static genUnforseen  ( tile , dayTime , moonPhase , season , weather ) {
         let avaiable = [];
         // if nothing found ignore all filter
-        avaiable =  this.#standartFilterEventCategory( this.all.unforseen , tile , dayTime , moonPhase , season , weather )
+        avaiable =  this.#standartFilterEventCategory( '' , this.all.unforseen , tile , dayTime , moonPhase , season , weather )
         if (avaiable.length == 0) { 
             this.Log.warn("Nothing found, abandon all filters") 
             return this.#weightedSelection(this.all.unforseen);
