@@ -1,3 +1,47 @@
+const KW = {
+    clothing : {
+        coldProt  : Asset.keyword.clothing.coldProt.icon,
+        wetProt   : Asset.keyword.clothing.wetProt.icon,
+        windProt  : Asset.keyword.clothing.windProt.icon,
+        storage   : Asset.keyword.clothing.storage.icon,
+        dmgProt   : Asset.keyword.clothing.dmgProt.icon,
+    },
+    tool : {
+        crafting  : Asset.keyword.tool.crafting.icon,
+        chopping  : Asset.keyword.tool.chopping.icon,
+        kindle    : Asset.keyword.tool.kindle.icon,
+        light     : Asset.keyword.tool.light.icon,
+        lookout   : Asset.keyword.tool.lookout.icon,
+        navigation: Asset.keyword.tool.navigation.icon,
+        meleeLight: Asset.keyword.tool.meleeLight.icon,
+        meleeHeavy: Asset.keyword.tool.meleeHeavy.icon,
+        ranged    : Asset.keyword.tool.ranged.icon,
+        magic     : Asset.keyword.tool.magic.icon,
+    },
+    material : {
+        structural: Asset.keyword.material.structural.icon,
+        metallic  : Asset.keyword.material.metallic.icon,
+        sharp     : Asset.keyword.material.sharp.icon,
+        shaft     : Asset.keyword.material.shaft.icon,
+        cordage   : Asset.keyword.material.cordage.icon,
+        cover     : Asset.keyword.material.cover.icon,
+        adhesive  : Asset.keyword.material.adhesive.icon,
+        flammable : Asset.keyword.material.flammable.icon,
+    },
+    supply : {
+        exhaustion : Asset.keyword.supply.exhaustion.icon,
+        hunger     : Asset.keyword.supply.hunger.icon,
+        hypothermia: Asset.keyword.supply.hypothermia.icon,
+        wound      : Asset.keyword.supply.wound.icon,
+        herb       : Asset.keyword.supply.herb.icon,
+        nut        : Asset.keyword.supply.nut.icon,
+        root       : Asset.keyword.supply.root.icon,
+        mushroom   : Asset.keyword.supply.mushroom.icon,
+        berry      : Asset.keyword.supply.berry.icon,
+    },
+}
+
+
 
 const author      = "WEelCh";
 const name        = { 
@@ -24,9 +68,9 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
                 flags: [ "wilderness" ],
                 spawn: { disabled: false , weight: 10 , min: 0 , max: 99 ,
                         allowOnInland: true , allowOnCoastal: true },
-                resources: { gather: [  1 , 5 , 3  ],
-                            hunt:   [  1 , 3 , 1  ],
-                            chop:   [  0 , 2 , 3  ]},
+                resources: { gathering: [  1 , 5 , 3  ],
+                            hunting:   [  1 , 3 , 1  ],
+                            chopping:   [  0 , 2 , 3  ]},
             }, 
             body : { name  : { de: "Ausgedehnter Wald" , 
                             en: "Expansive Forest" },
@@ -39,9 +83,9 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
                 flags: [ "wilderness" ],
                 spawn: { disabled: false , weight: 3 , min: 0 , max: 99 ,
                         allowOnInland: true , allowOnCoastal: true },
-                resources: { gather: [  1 , 5 , 3  ],
-                            hunt:   [  2 , 3 , 0  ],
-                            chop:   [  2 , 3 , 1  ]},
+                resources: { gathering: [  1 , 5 , 3  ],
+                            hunting:   [  2 , 3 , 0  ],
+                            chopping:   [  2 , 3 , 1  ]},
             }, 
             body : { name  : { de: "Lichtes Waldland" , 
                             en: "Open Woodland" },
@@ -54,9 +98,9 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
                 flags: [ "wilderness" ],
                 spawn: { disabled: false , weight: 2 , min: 0 , max: 99 ,
                         allowOnInland: true , allowOnCoastal: true },
-                resources: { gather: [  1 , 6 , 6  ],
-                            hunt:   [  1 , 2 , 3  ],
-                            chop:   [  0 , 2 , 5  ]},
+                resources: { gathering: [  1 , 6 , 6  ],
+                            hunting:   [  1 , 2 , 3  ],
+                            chopping:   [  0 , 2 , 5  ]},
             }, 
             body : { name  : { de: "Tiefe Wälder" , 
                             en: "Deep Woods" },
@@ -69,9 +113,9 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
                 flags: [ "wilderness" , "lake" ],
                 spawn: { disabled: false , weight: 1 , min: 0 , max: 99 ,
                         allowOnInland: true , allowOnCoastal: true },
-                resources: { gather: [  1 , 6 , 5  ],
-                            hunt:   [  1 , 2 , 3  ],
-                            chop:   [  1 , 3 , 1  ]},
+                resources: { gathering: [  1 , 6 , 5  ],
+                            hunting:   [  1 , 2 , 3  ],
+                            chopping:   [  1 , 3 , 1  ]},
             }, 
             body : { name  : { de: "Verborgener Waldsee" , 
                             en: "Hidden Forest Lake" },
@@ -84,9 +128,9 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
                 flags: [ "wilderness" , "bog" ],
                 spawn: { disabled: false , weight: 1 , min: 0 , max: 99 ,
                         allowOnInland: true , allowOnCoastal: true },
-                resources: { gather: [  1 , 3 , 6  ], 
-                            hunt:   [  4 , 2 , 1  ], 
-                            chop:   [  6 , 2 , 0  ]}, 
+                resources: { gathering: [  1 , 3 , 6  ], 
+                            hunting:   [  4 , 2 , 1  ], 
+                            chopping:   [  6 , 2 , 0  ]}, 
             }, 
             body : { name  : { de: "Sumpfiges Moor" , 
                             en: "Marshy Bog" },
@@ -99,9 +143,9 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
                 flags: [ "wilderness" , "ravine" ],
                 spawn: { disabled: false , weight: 1 , min: 0 , max: 99 ,
                         allowOnInland: true , allowOnCoastal: true },
-                resources: { gather: [  5 , 2 , 0  ], 
-                            hunt:   [  1 , 4 , 3  ], 
-                            chop:   [  6 , 1 , 0  ]}, 
+                resources: { gathering: [  5 , 2 , 0  ], 
+                            hunting:   [  1 , 4 , 3  ], 
+                            chopping:   [  6 , 1 , 0  ]}, 
             }, 
             body : { name  : { de: "Kleine Schlucht" , 
                             en: "Steep Ravine" },
@@ -114,9 +158,9 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
                 flags: [ "wilderness" , "ruin" ],
                 spawn: { disabled: false , weight: 1 , min: 0 , max: 99 ,
                         allowOnInland: true , allowOnCoastal: true },
-                resources: { gather: [  3 , 4 , 1  ], 
-                            hunt:   [  4 , 2 , 0  ], 
-                            chop:   [  5 , 2 , 0  ]}, 
+                resources: { gathering: [  3 , 4 , 1  ], 
+                            hunting:   [  4 , 2 , 0  ], 
+                            chopping:   [  5 , 2 , 0  ]}, 
             }, 
             body : { name  : { de: "Überwucherte Ruinen" , 
                             en: "Overgrown Ruins" },
@@ -129,9 +173,9 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
                 flags: [ "wilderness" ],
                 spawn: { disabled: false , weight: 3 , min: 0 , max: 99 ,
                         allowOnInland: false , allowOnCoastal: true }, 
-                resources: { gather: [  2 , 4 , 1  ], 
-                            hunt:   [  2 , 3 , 2  ], 
-                            chop:   [  1 , 3 , 5  ]}, 
+                resources: { gathering: [  2 , 4 , 1  ], 
+                            hunting:   [  2 , 3 , 2  ], 
+                            chopping:   [  1 , 3 , 5  ]}, 
             }, 
             body : { name  : { de: "Windgepeitschter Küstenwald" , 
                             en: "Windswept Coastal Woods" },
@@ -144,9 +188,9 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
                 flags: [ "wilderness" , "cliff" ],
                 spawn: { disabled: false , weight: 1 , min: 0 , max: 99 ,
                         allowOnInland: false , allowOnCoastal: true }, // Coastal ONLY
-                resources: { gather: [  5 , 2 , 0  ], 
-                            hunt:   [  2 , 4 , 0  ], 
-                            chop:   [  6 , 0 , 0  ]}, // Almost no wood on a bare cliff
+                resources: { gathering: [  5 , 2 , 0  ], 
+                            hunting:   [  2 , 4 , 0  ], 
+                            chopping:   [  6 , 0 , 0  ]}, // Almost no wood on a bare cliff
             }, 
             body : { name  : { de: "Raue Küstenklippe" , 
                             en: "Rugged Coastal Cliff" },
@@ -159,9 +203,9 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
                 flags: [ "wilderness" , "ravine" , "stream" ],
                 spawn: { disabled: false , weight: 1 , min: 0 , max: 99 ,
                         allowOnInland: true , allowOnCoastal: true },
-                resources: { gather: [  3 , 4 , 0  ], 
-                            hunt:   [  2 , 4 , 0  ], 
-                            chop:   [  4 , 3 , 0  ]}, 
+                resources: { gathering: [  3 , 4 , 0  ], 
+                            hunting:   [  2 , 4 , 0  ], 
+                            chopping:   [  4 , 3 , 0  ]}, 
             }, 
             body : { name  : { de: "Tiefe Klamm" , 
                             en: "Deep Gorge" },
@@ -174,9 +218,9 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
                 flags: [ "wilderness" ],
                 spawn: { disabled: false , weight: 2 , min: 0 , max: 99 ,
                         allowOnInland: true , allowOnCoastal: true },
-                resources: { gather: [  1 , 4 , 5  ], // Excellent for gathering herbs/berries
-                            hunt:   [  1 , 5 , 0  ], // Okay for hunting
-                            chop:   [  6 , 1 , 0  ]}, // Terrible for wood (no trees)
+                resources: { gathering: [  1 , 4 , 5  ], // Excellent for gathering herbs/berries
+                            hunting:   [  1 , 5 , 0  ], // Okay for hunting
+                            chopping:   [  6 , 1 , 0  ]}, // Terrible for wood (no trees)
             }, 
             body : { name  : { de: "Ruhige Waldlichtung" , 
                             en: "Peaceful Clearing" },
@@ -189,9 +233,9 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
                 flags: [ "wilderness" , "stream" ],
                 spawn: {    disabled: false , weight: 1 , min: 0 , max: 99 ,
                             allowOnInland: true , allowOnCoastal: true },
-                resources: {    gather: [  1 , 4 , 4  ], // Fresh water flora / mud
-                                hunt:   [  1 , 4 , 3  ], // Animals frequent streams
-                                chop:   [  4 , 3 , 0  ]}, 
+                resources: {    gathering: [  1 , 4 , 4  ], // Fresh water flora / mud
+                                hunting:   [  1 , 4 , 3  ], // Animals frequent streams
+                                chopping:   [  4 , 3 , 0  ]}, 
             }, 
             body : { name  : {  de: "Waldbach" , 
                                 en: "Forest Stream" },
@@ -204,9 +248,9 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
                 flags: [ "wilderness" ],
                 spawn: {    disabled: false , weight: 1 , min: 0 , max: 99 ,
                             allowOnInland: true , allowOnCoastal: false },
-                resources: {    gather: [  1 , 3 , 5  ], // High humidity = abundant growth
-                                hunt:   [  3 , 3 , 1  ], 
-                                chop:   [  3 , 3 , 1  ]}, 
+                resources: {    gathering: [  1 , 3 , 5  ], // High humidity = abundant growth
+                                hunting:   [  3 , 3 , 1  ], 
+                                chopping:   [  3 , 3 , 1  ]}, 
             }, 
             body : { name  : {  de: "Nebelverhangene Senke" , 
                                 en: "Misty Hollow" },
@@ -219,9 +263,9 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
                 flags: [ "wilderness" , "ruin" ],
                 spawn: {    disabled: false , weight: 1 , min: 0 , max: 99 ,
                             allowOnInland: true , allowOnCoastal: true },
-                resources: {    gather: [  2 , 4 , 2  ], 
-                                hunt:   [  4 , 2 , 0  ], 
-                                chop:   [  5 , 2 , 0  ]}, 
+                resources: {    gathering: [  2 , 4 , 2  ], 
+                                hunting:   [  4 , 2 , 0  ], 
+                                chopping:   [  5 , 2 , 0  ]}, 
             }, 
             body : { name  : {  de: "Moosbedeckter Steinkreis" , 
                                 en: "Mossy Stone Circle" },
@@ -234,9 +278,9 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
                 flags: [ "wilderness" ],
                 spawn: {    disabled: false , weight: 1 , min: 0 , max: 99 ,
                             allowOnInland: false , allowOnCoastal: true }, // Coastal ONLY
-                resources: {    gather: [  1 , 3 , 5  ], // Shoreline foraging
-                                hunt:   [  2 , 4 , 2  ], 
-                                chop:   [  6 , 1 , 0  ]}, // Bare rocks, no wood
+                resources: {    gathering: [  1 , 3 , 5  ], // Shoreline foraging
+                                hunting:   [  2 , 4 , 2  ], 
+                                chopping:   [  6 , 1 , 0  ]}, // Bare rocks, no wood
             }, 
             body : { name  : {  de: "Steinige Gezeitenbecken" , 
                                 en: "Rocky Tidal Pools" },
@@ -249,9 +293,9 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
                 flags: [ "wilderness" ],
                 spawn: {    disabled: false , weight: 1 , min: 0 , max: 99 ,
                             allowOnInland: true , allowOnCoastal: true },
-                resources: {    gather: [  2 , 4 , 2  ], 
-                                hunt:   [  2 , 4 , 1  ], 
-                                chop:   [  4 , 3 , 0  ]}, 
+                resources: {    gathering: [  2 , 4 , 2  ], 
+                                hunting:   [  2 , 4 , 1  ], 
+                                chopping:   [  4 , 3 , 0  ]}, 
             }, 
             body : { name  : {  de: "Trockenes Bachbett" , 
                                 en: "Dry Creekbed" },
@@ -264,9 +308,9 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
                 flags: [ "wilderness" ],
                 spawn: {    disabled: false , weight: 1 , min: 0 , max: 99 ,
                             allowOnInland: true , allowOnCoastal: true },
-                resources: {    gather: [  2 , 4 , 2  ], 
-                                hunt:   [  0 , 4 , 5  ], // Excellent hunting spot
-                                chop:   [  3 , 4 , 0  ]}, 
+                resources: {    gathering: [  2 , 4 , 2  ], 
+                                hunting:   [  0 , 4 , 5  ], // Excellent hunting spot
+                                chopping:   [  3 , 4 , 0  ]}, 
             }, 
             body : { name  : {  de: "Alter Wildpfad" , 
                                 en: "Faint Game Trail" },
@@ -279,9 +323,9 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
                 flags: [ "wilderness" , "ravine" ],
                 spawn: {    disabled: false , weight: 1 , min: 0 , max: 99 ,
                             allowOnInland: true , allowOnCoastal: true },
-                resources: {    gather: [  4 , 3 , 0  ], 
-                                hunt:   [  1 , 4 , 2  ], 
-                                chop:   [  5 , 2 , 0  ]}, 
+                resources: {    gathering: [  4 , 3 , 0  ], 
+                                hunting:   [  1 , 4 , 2  ], 
+                                chopping:   [  5 , 2 , 0  ]}, 
             }, 
             body : { name  : {  de: "Moosiger Felsvorsprung" , 
                                 en: "Mossy Outcrop" },
@@ -294,9 +338,9 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
                 flags: [ "wilderness" , "stream" ],
                 spawn: {    disabled: false , weight: 1 , min: 0 , max: 99 ,
                             allowOnInland: false , allowOnCoastal: true }, // Coastal ONLY
-                resources: {    gather: [  1 , 4 , 4  ], 
-                                hunt:   [  1 , 4 , 3  ], 
-                                chop:   [  3 , 3 , 1  ]}, 
+                resources: {    gathering: [  1 , 4 , 4  ], 
+                                hunting:   [  1 , 4 , 3  ], 
+                                chopping:   [  3 , 3 , 1  ]}, 
             }, 
             body : { name  : {  de: "Ruhige Flussmündung" , 
                                 en: "Quiet Estuary" },
@@ -321,58 +365,30 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
         // UNFORSEEN FRAGMENT
         // -------------------------------------------------------------------
         unforseen : [
-            {
-                head : {
-                    title : "", // work title
-                    spawn : {
-                        distanceRange: [ 0 , 8 ], // [0:camp] [1,2:near] [3,4:far] [5,8:very far]
-                        weight   : 5 , disabled: false , cw: false , harsh: false ,
-                        flags : { require: [  ], // tile (and global) must have ALL of these
-                                  exclude: [  ], /* tile (and global) must have NONE of these */},
-                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
-                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
-                        weather : { temp : [ 0 , 4 ], // range [ 0-4 ]: [ Arctic , Freezing , Cold    , Medium , Warm  ]
-                                    prec : [ 0 , 4 ], // range [ 0-4 ]: [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
-                                    wind : [ 0 , 3 ], /* range [ 0-3 ]: [ Calm   , Breeze   , Gale    , Storm          ] */},
-                    }, 
-                },
-                body : {
-                    description : { de : "unforseen" , 
-                                    en : "" },
-                    options : [ // 1-3 options (at least one without keyword needs)
-                        {
-                            description : { de : "A" , 
-                                            en : "" } ,
-                            challenge : { // (skillcheck and/or keyword) or nothing
-                                skillcheck : { type : "wis", difficulty : [ 1 , 2 , 2 , 2 , 2 , 3 ] },
-                                keyword    : { use     : ``,
-                                                consume : `` },
+            {   head: { title : "",
+                        spawn : {   distanceRange: [ 1 , 8 ], // [1,3:near] [3,5:far] [4,8:very far]
+                                    weight: 10 , disabled: false , cw: false , harsh: false ,
+                                    flags   : { require: [  ], exclude: [  ] },
+                                    daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                                    season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
+                                    weather : { temp : [ 0 , 4 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                                prec : [ 0 , 4 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                                wind : [ 0 , 3 ], /* [ Calm   , Breeze   , Gale    , Storm          ] */},},},
+                body: { description : { de: "Es passiert nichts ungewöhnliches" , en: "" },
+                        options : [
+                            {   description : { de: "Ok" , en: "" } ,
+                                challenge : {   skillcheck : { type: "", difficulty: [ 0 ] },
+                                                keyword    : { use: ``, consume: `` },},
+                                onSuccess : {   description : { de : "" , en : "" },
+                                                effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                            afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                            flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                onFailure : {   description : { de : "" , en : "" },
+                                                effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                            afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                            flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
                             },
-                            onSuccess : {
-                                description : { de : "S" , 
-                                                en : "" } ,
-                                effects: {
-                                    yield       : { gathering: 4 , chopping: 0 , hunting: 0 , ship: 0 },
-                                    afflictions : { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                    cold: 0 , wet: 0 , wind: 0 },
-                                    flags       : { local  : { add : [  ], remove : [  ] },
-                                                    global : { add : [  ], remove : [  ] } },
-                                },
-                            },
-                            onFailure : {
-                                description : { de : "F" , 
-                                                en : "" } ,
-                                effects: {
-                                    yield       : { gathering: 3 , chopping: 0 , hunting: 0 , ship: 0 },
-                                    afflictions : { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                    cold: 0 , wet: 0 , wind: 0 },
-                                    flags       : { local  : { add : [  ], remove : [  ] },
-                                                    global : { add : [  ], remove : [  ] } },
-                                },
-                            },
-                        },
-                    ],
-                },
+                        ],},
             },
         ],
         // -------------------------------------------------------------------
@@ -382,660 +398,986 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
             // -------------------------------------------------------------------
             // ACTION.gathering FRAGMENT
             // -------------------------------------------------------------------
-            gathering : [ // BELOW IS DISABLED !!!!
-                {
-                    head : {
-                        title : "",
-                        spawn : {
-                            distanceRange: [ 0 , 8 ], // [0:camp] [1,3:near] [3,5:mid] [4,8:far]
-                            yieldTierRange: [ 2 , 2 ],  // spawns on tiles with yield<action>Tier [ 0-2 ]
-                            weight   : 5 , disabled: true , cw: false , harsh: false ,
-                            flags : { require: [  ], // tile (and global) must have ALL of these
-                                      exclude: [  ], /* tile (and global) must have NONE of these */},
-                            daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
-                            season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
-                            weather : { temp : [ 0 , 4 ], // range [ 0-4 ]: [ Arctic , Freezing , Cold    , Medium , Warm  ]
-                                        prec : [ 0 , 4 ], // range [ 0-4 ]: [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
-                                        wind : [ 0 , 3 ], /* range [ 0-3 ]: [ Calm   , Breeze   , Gale    , Storm          ] */},
-                        }, 
-                    },
-                    body : {
-                        description : { de : "Ihr findet einen Ort mit üppigem Unterholz." , 
-                                        en : "" },
-                        options : [ // 1-3 options (at least one without keyword needs)
-                            {
-                                description : { de : "Sucht den Boden und Streucher intensiv ab." , 
-                                                en : "" } ,
-                                challenge : { // (skillcheck and/or keyword) or nothing
-                                    skillcheck : { type : "wis", difficulty : [ 1 , 2 , 2 , 2 , 2 , 3 ] },
-                                    keyword    : { use     : ``,
-                                                   consume : `` },
+            gathering : [
+                {   head: { title : "DEFAULT GATHERING YIElD 2",
+                            spawn : {   distanceRange:  [ 1 , 8 ], // [1,3:near] [3,5:far] [4,8:very far]
+                                        yieldTierRange: [ 2 , 2 ],
+                                        weight: 5 , disabled: false , cw: false , harsh: false ,
+                                        flags   : { require: [  ], exclude: [  ] },
+                                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
+                                        weather : { temp : [ 0 , 4 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                                    prec : [ 0 , 4 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                                    wind : [ 0 , 3 ], /* [ Calm   , Breeze   , Gale    , Storm          ] */},},},
+                    body: { description : { de: "Ihr stoßt auf ein dicht durchwachsenes Dickicht. Wildes Gestrüpp verspricht viele Naturalien." , en: "" },
+                            options : [
+                                {   description : { de: "Das Unterholz kräftezehrend durchkämmen und jeden Strauch gründlich umdrehen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "wis", difficulty: [ 1 , 2 , 2 , 2 , 3 , 3 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "Eure Gründlichkeit zahlt sich aus." , en : "" },
+                                                    effects: {  yield      : { gathering: 4 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Trotz mühsamer Arbeit bleibt ein Teil der Ausbeute im Gestrüpp verborgen." , en : "" },
+                                                    effects: {  yield      : { gathering: 3 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
                                 },
-                                onSuccess : {
-                                    description : { de : "Ihr findet reichlich viel im Unterholz." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 4 , chopping: 0 , hunting: 0 , ship: 0 },
-                                        afflictions : { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
+                                {   description : { de: "Nur leicht erreichbares abpflücken, um Kräfte zu sparen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "wis", difficulty: [ 1 , 2 , 2 , 2 , 2 , 3 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "Trotz flüchtiger Absuche lässt sich die Ausbeute sehen." , en : "" },
+                                                    effects: {  yield      : { gathering: 3 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Das flüchtige Absuchen bringt nur karge Ausbeute." , en : "" },
+                                                    effects: {  yield      : { gathering: 2 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
                                 },
-                                onFailure : {
-                                    description : { de : "Ihr findet einiges im Unterholz." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 3 , chopping: 0 , hunting: 0 , ship: 0 },
-                                        afflictions : { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
+                                {   description : { de: "Das Unterholz kräftezehrend nach Holz durchkämmen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "wis", difficulty: [ 1 , 2 , 2 , 2 , 3 , 3 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "Eure Gründlichkeit zahlt sich aus." , en : "" },
+                                                    effects: {  yield      : { gathering: 2 , chopping: 2 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Trotz mühsamer Arbeit bleibt ein Teil der Ausbeute im Gestrüpp verborgen." , en : "" },
+                                                    effects: {  yield      : { gathering: 2 , chopping: 1 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
                                 },
-                            },
-                            {
-                                description : { de : "Sucht den Boden und Streucher oberflächig ab." , 
-                                                en : "" } ,
-                                challenge : { // (skillcheck and/or keyword) or nothing
-                                    skillcheck : { type : "wis", difficulty : [ 1 , 2 , 2 , 2 , 2 , 3 ] },
-                                    keyword    : { use     : ``,
-                                                   consume : `` },
-                                },
-                                onSuccess : {
-                                    description : { de : "Ihr findet einiges im Unterholz." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 3 , chopping: 0 , hunting: 0 , ship: 0 },
-                                        afflictions : { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
-                                },
-                                onFailure : {
-                                    description : { de : "Ihr findet etwas im Unterholz." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 2 , chopping: 0 , hunting: 0 , ship: 0 },
-                                        afflictions : { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
-                                },
-                            },
-                        ],
-                    },
+                            ],},
                 },
+
+                {   head: { title : "DEFAULT GATHERING YIElD 1",
+                            spawn : {   distanceRange:  [ 1 , 8 ], // [1,3:near] [3,5:far] [4,8:very far]
+                                        yieldTierRange: [ 1 , 1 ],
+                                        weight: 5 , disabled: false , cw: false , harsh: false ,
+                                        flags   : { require: [  ], exclude: [  ] },
+                                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
+                                        weather : { temp : [ 0 , 4 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                                    prec : [ 0 , 4 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                                    wind : [ 0 , 3 ], /* [ Calm   , Breeze   , Gale    , Storm          ] */},},},
+                    body: { description : { de: "Ihr stoßt auf ein durchwachsenes Dickicht. Das Gestrüpp verspricht Naturalien." , en: "" },
+                            options : [
+                                {   description : { de: "Das Unterholz kräftezehrend durchkämmen und jeden Strauch gründlich umdrehen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "wis", difficulty: [ 1 , 2 , 2 , 2 , 3 , 3 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "Eure Gründlichkeit zahlt sich aus." , en : "" },
+                                                    effects: {  yield      : { gathering: 3 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Trotz mühsamer Arbeit bleibt ein Teil der Ausbeute im Gestrüpp verborgen." , en : "" },
+                                                    effects: {  yield      : { gathering: 2 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                                {   description : { de: "Nur leicht erreichbares abpflücken, um Kräfte zu sparen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "wis", difficulty: [ 1 , 2 , 2 , 2 , 2 , 3 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "Trotz flüchtiger Absuche lässt sich die Ausbeute sehen." , en : "" },
+                                                    effects: {  yield      : { gathering: 2 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Das flüchtige Absuchen bringt nur karge Ausbeute." , en : "" },
+                                                    effects: {  yield      : { gathering: 1 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                                {   description : { de: "Das Unterholz kräftezehrend nach Holz durchkämmen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "wis", difficulty: [ 1 , 2 , 2 , 2 , 3 , 3 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "Eure Gründlichkeit zahlt sich aus." , en : "" },
+                                                    effects: {  yield      : { gathering: 1 , chopping: 2 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Trotz mühsamer Arbeit bleibt ein Teil der Ausbeute im Gestrüpp verborgen." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 1 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                            ],},
+                },
+
+                {   head: { title : "DEFAULT GATHERING YIElD 0",
+                            spawn : {   distanceRange:  [ 1 , 8 ], // [1,3:near] [3,5:far] [4,8:very far]
+                                        yieldTierRange: [ 0 , 0 ],
+                                        weight: 5 , disabled: false , cw: false , harsh: false ,
+                                        flags   : { require: [  ], exclude: [  ] },
+                                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
+                                        weather : { temp : [ 0 , 4 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                                    prec : [ 0 , 4 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                                    wind : [ 0 , 3 ], /* [ Calm   , Breeze   , Gale    , Storm          ] */},},},
+                    body: { description : { de: "Ihr stoßt auf ein loses Dickicht. Das Gestrüpp wirkt nicht vielversprechend." , en: "" },
+                            options : [
+                                {   description : { de: "Das Unterholz kräftezehrend durchkämmen und jeden Strauch gründlich umdrehen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "wis", difficulty: [ 1 , 2 , 2 , 2 , 3 , 3 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "Eure Gründlichkeit zahlt sich kaum aus." , en : "" },
+                                                    effects: {  yield      : { gathering: 2 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Trotz mühsamer Arbeit findet ihr kaum etwas." , en : "" },
+                                                    effects: {  yield      : { gathering: 1 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                                {   description : { de: "Nur leicht erreichbares abpflücken, um Kräfte zu sparen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "wis", difficulty: [ 1 , 2 , 2 , 2 , 2 , 3 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "Mit der flüchtigen Absuche findet ihr kaum etwas." , en : "" },
+                                                    effects: {  yield      : { gathering: 1 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Das flüchtige Absuchen bringt keine Ausbeute." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                                {   description : { de: "Das Unterholz kräftezehrend nach Holz durchkämmen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "wis", difficulty: [ 1 , 2 , 2 , 2 , 3 , 3 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "Eure Gründlichkeit zahlt sich kaum aus." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 1 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Trotz mühsamer Arbeit findet ihr kaum etwas." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                            ],},
+                },
+
+
+                
             ],
             // -------------------------------------------------------------------
             // ACTION.chopping FRAGMENT
             // -------------------------------------------------------------------
-            chopping : [ // BELOW IS DISABLED !!!!
-                {
-                    head : {
-                        title : "",
-                        spawn : {
-                            distanceRange: [ 0 , 8 ], // [0:camp] [1,3:near] [3,5:mid] [4,8:far]
-                            yieldTierRange: [ 0 , 2 ],  // spawns on tiles with yield<action>Tier [ 0-2 ]
-                            weight   : 5 , disabled: true , cw: false , harsh: false ,
-                            flags : { require: [  ], // tile (and global) must have ALL of these
-                                      exclude: [  ], /* tile (and global) must have NONE of these */},
-                            daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
-                            season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
-                            weather : { temp : [ 0 , 4 ], // range [ 0-4 ]: [ Arctic , Freezing , Cold    , Medium , Warm  ]
-                                        prec : [ 0 , 4 ], // range [ 0-4 ]: [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
-                                        wind : [ 0 , 3 ], /* range [ 0-3 ]: [ Calm   , Breeze   , Gale    , Storm          ] */},
-                        }, 
-                    },
-                    body : {
-                        description : { de : "Ihr findet einen Baum, der sich gut zum fällen eignet." , 
-                                        en : "" },
-                        options : [ // 1-3 options (at least one without keyword needs)
-                            {
-                                description : { de : "Versucht ihn mit einer Axt zu fällen." , 
-                                                en : "" } ,
-                                challenge : { // (skillcheck and/or keyword) or nothing
-                                    skillcheck : { type : "str", difficulty : [ 1 , 2 , 2 , 2 , 2 , 3 ] },
-                                    keyword    : { use     : `${Asset.keyword.tool.chopping.icon}`,
-                                                   consume : `` },
+            chopping : [ 
+                // -------------------------
+                // CHOPPING YIELD 2
+                // -------------------------
+                {   head: { title : "CHOPPING YIElD 2",
+                            spawn : {   distanceRange:  [ 1 , 8 ], // [1,3:near] [3,5:far] [4,8:very far]
+                                        yieldTierRange: [ 2 , 2 ],
+                                        weight: 5 , disabled: false , cw: false , harsh: false ,
+                                        flags   : { require: [  ], exclude: [  ] },
+                                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
+                                        weather : { temp : [ 0 , 4 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                                    prec : [ 0 , 4 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                                    wind : [ 0 , 3 ], /* [ Calm   , Breeze   , Gale    , Storm          ] */},},},
+                    body: { description : { de: "Vor euch ragt ein kräftiger Baum mit mächtiger Krone auf. Sein dichtes Holz verspricht wertvolles Bau- und Brennholz." , en: "" },
+                            options : [
+                                {   description : { de: "Den Baum mit geeignetem Werkzeug fällen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "str", difficulty: [ 1 , 2 , 2 , 2 , 2 , 3 ] },
+                                                    keyword    : { use: `${KW.tool.chopping}`, consume: `` },},
+                                    onSuccess : {   description : { de : "Der Stamm fällt und liefert reichlich wertvolles Nutzholz." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 4 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Das harte Holz fordert euch heraus. Nur unter großer Mühe gelingt es euch schließlich, den Stamm zu fällen." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 4 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 1 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
                                 },
-                                onSuccess : {
-                                    description : { de : "Ihr könnt den Baum ohne größere Probleme fällen." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 0 , chopping: 3 , hunting: 0 , ship: 0 },
-                                        afflictions : { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
+                                {   description : { de: "Den Baum mit improvisiertem Werkzeug bearbeiten." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "str", difficulty: [ 2 , 3 , 3 , 3 , 4 , 5 ] },
+                                                    keyword    : { use: ``, consume: `${KW.tool.chopping}` },},
+                                    onSuccess : {   description : { de : "Ihr könnt den Baum schließlich unter Anstrengung fällen." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 4 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 1 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Das behelfsmäßige Werkzeug schlägt kaum Kerben ins Holz. Unter großer Anstrengung brecht ihr lediglich ein paar Äste ab." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 2 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 1 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
                                 },
-                                onFailure : {
-                                    description : { de : "Ihr könnt den Baum unter Anstrengung fällen." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 0 , chopping: 3 , hunting: 0 , ship: 0 },
-                                        afflictions : { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
+                                {   description : { de: "Versucht ihn ganz ohne Werkzeug zu fällen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "str", difficulty: [ 5 , 6 , 7 , 8 , 8 , 9 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "Unter hoher körperlicher Anstrengung stemmt ihr euch gegen den Stamm und brecht das Wurzelwerk, bis das Holz krachend nachgibt." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 4 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 1 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Der Stamm trotzt starrsinnig euren Kräften. Ausser tiefer Erschöpfung und ein paar abgebrochenen Stücken erreicht ihr nichts." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 1 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 1 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
                                 },
-                            },
-                            {
-                                description : { de : "Versucht ihn mit einem improvisiertem Werkzeug zu fällen." , 
-                                                en : "" } ,
-                                challenge : { // (skillcheck and/or keyword) or nothing
-                                    skillcheck : { type : "str", difficulty : [ 2 , 3 , 3 , 3 , 4 , 5 ] },
-                                    keyword    : { use     : `${Asset.keyword.material.sharp.icon}`,
-                                                   consume : `` },
+                            ],},
+                },
+                // -------------------------
+                // CHOPPING YIELD 1
+                // -------------------------
+                {   head: { title : "CHOPPING YIElD 1",
+                            spawn : {   distanceRange:  [ 1 , 8 ], // [1,3:near] [3,5:far] [4,8:very far]
+                                        yieldTierRange: [ 1 , 1 ],
+                                        weight: 5 , disabled: false , cw: false , harsh: false ,
+                                        flags   : { require: [  ], exclude: [  ] },
+                                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
+                                        weather : { temp : [ 0 , 4 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                                    prec : [ 0 , 4 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                                    wind : [ 0 , 3 ], /* [ Calm   , Breeze   , Gale    , Storm          ] */},},},
+                    body: { description : { de: "Vor euch ragt ein passabler Baum auf. Das Holz ist nicht allzu dick, bietet aber brauchbare Stämme." , en: "" },
+                            options : [
+                                {   description : { de: "Den Baum mit geeignetem Werkzeug fällen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "str", difficulty: [ 1 , 1 , 2 , 2 , 2 , 3 ] },
+                                                    keyword    : { use: `${KW.tool.chopping}`, consume: `` },},
+                                    onSuccess : {   description : { de : "Der Stamm fällt und liefert reichlich Nutzholz." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 3 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Das harte Holz fordert euch heraus. Nur unter großer Mühe gelingt es euch schließlich, den Stamm zu fällen." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 3 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 1 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
                                 },
-                                onSuccess : {
-                                    description : { de : "Ihr könnt den Baum unter Anstrengung fällen." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 0 , chopping: 3 , hunting: 0 , ship: 0 },
-                                        afflictions : { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
+                                {   description : { de: "Den Baum mit improvisiertem Werkzeug bearbeiten." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "str", difficulty: [ 2 , 2 , 3 , 3 , 4 , 5 ] },
+                                                    keyword    : { use: ``, consume: `${KW.tool.chopping}` },},
+                                    onSuccess : {   description : { de : "Ihr könnt den Baum schließlich unter Anstrengung fällen." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 3 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 1 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Das behelfsmäßige Werkzeug schlägt kaum Kerben ins Holz. Unter großer Anstrengung brecht ihr lediglich ein paar Äste ab." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 1 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 1 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
                                 },
-                                onFailure : {
-                                    description : { de : "Ihr könnt unter Anstrengung nur Teile abschlagen." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 0 , chopping: 1 , hunting: 0 , ship: 0 },
-                                        afflictions : { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
+                                {   description : { de: "Versucht ihn ganz ohne Werkzeug zu fällen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "str", difficulty: [ 4 , 5 , 6 , 7 , 8 , 9 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "Unter hoher körperlicher Anstrengung stemmt ihr euch gegen den Stamm und brecht das Wurzelwerk, bis das Holz krachend nachgibt." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 3 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 1 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Der Stamm trotzt starrsinnig euren Kräften. Ausser tiefer Erschöpfung und ein paar abgebrochenen Stücken erreicht ihr nichts." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 1 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 1 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
                                 },
-                            },
-                            {
-                                description : { de : "Versucht ihn ganz ohne Werkzeug zu fällen." , 
-                                                en : "" } ,
-                                challenge : { // (skillcheck and/or keyword) or nothing
-                                    skillcheck : { type : "str", difficulty : [ 5 , 6 , 7 , 8 , 8 , 9 ] },
-                                    keyword    : { use     : ``,
-                                                   consume : `` },
+                            ],},
+                },
+                // -------------------------
+                // CHOPPING YIELD 0
+                // -------------------------
+                {   head: { title : "CHOPPING YIElD 0",
+                            spawn : {   distanceRange:  [ 1 , 8 ], // [1,3:near] [3,5:far] [4,8:very far]
+                                        yieldTierRange: [ 0 , 0 ],
+                                        weight: 5 , disabled: false , cw: false , harsh: false ,
+                                        flags   : { require: [  ], exclude: [  ] },
+                                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
+                                        weather : { temp : [ 0 , 4 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                                    prec : [ 0 , 4 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                                    wind : [ 0 , 3 ], /* [ Calm   , Breeze   , Gale    , Storm          ] */},},},
+                    body: { description : { de: "Vor euch ragt ein karger Baum auf. Das Holz ist knorrig und schief." , en: "" },
+                            options : [
+                                {   description : { de: "Den Baum mit geeignetem Werkzeug fällen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "str", difficulty: [ 1 , 1 , 2 , 2 , 2 , 3 ] },
+                                                    keyword    : { use: `${KW.tool.chopping}`, consume: `` },},
+                                    onSuccess : {   description : { de : "Der Stamm fällt und liefert Nutzholz." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 2 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Das harte Holz fordert euch heraus. Nur unter großer Mühe gelingt es euch schließlich, den Stamm zu fällen." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 2 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 1 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
                                 },
-                                onSuccess : {
-                                    description : { de : "Ihr könnt den Baum unter starker Anstrengung umstoßen." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 0 , chopping: 3 , hunting: 0 , ship: 0 },
-                                        afflictions : { exhaustion: 0 , hunger: 1 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
+                                {   description : { de: "Den Baum mit improvisiertem Werkzeug bearbeiten." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "str", difficulty: [ 2 , 2 , 3 , 3 , 4 , 5 ] },
+                                                    keyword    : { use: ``, consume: `${KW.tool.chopping}` },},
+                                    onSuccess : {   description : { de : "Ihr könnt den Baum schließlich unter Anstrengung fällen." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 2 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 1 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Das behelfsmäßige Werkzeug schlägt kaum Kerben ins Holz. Unter großer Anstrengung brecht ihr lediglich ein paar Äste ab." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 1 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 1 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
                                 },
-                                onFailure : {
-                                    description : { de : "Selbst unter starker Anstrengung bewegt sich der Baum nicht." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
-                                        afflictions : { exhaustion: 1 , hunger: 1 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
+                                {   description : { de: "Versucht ihn ganz ohne Werkzeug zu fällen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "str", difficulty: [ 4 , 5 , 6 , 7 , 8 , 9 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "Unter hoher körperlicher Anstrengung stemmt ihr euch gegen den Stamm und brecht das Wurzelwerk, bis das Holz krachend nachgibt." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 2 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 1 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Der Stamm trotzt starrsinnig euren Kräften. Ausser tiefer Erschöpfung und ein paar abgebrochenen Stücken erreicht ihr nichts." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 1 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 1 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
                                 },
-                            },
-                        ],
-                    },
+                            ],},
                 },
             ],
             // -------------------------------------------------------------------
             // ACTION.hunting FRAGMENT
             // -------------------------------------------------------------------
             hunting : [
-                {
-                    head : {
-                        title : "",
-                        spawn : {
-                            distanceRange: [ 0 , 8 ], // [0:camp] [1,3:near] [3,5:mid] [4,8:far]
-                            yieldTierRange: [ 0 , 2 ],  // spawns on tiles with yield<action>Tier [ 0-2 ]
-                            weight   : 1 , disabled: false , cw: false , harsh: false ,
-                            flags : { require: [  ], // tile (and global) must have ALL of these
-                                      exclude: [  ], /* tile (and global) must have NONE of these */},
-                            daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
-                            season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
-                            weather : { temp : [ 0 , 4 ], // range [ 0-4 ]: [ Arctic , Freezing , Cold    , Medium , Warm  ]
-                                        prec : [ 0 , 4 ], // range [ 0-4 ]: [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
-                                        wind : [ 0 , 3 ], /* range [ 0-3 ]: [ Calm   , Breeze   , Gale    , Storm          ] */},
-                        }, 
-                    },
-                    body : {
-                        description : { de : "Ihr entdeckt ein Hasen im Unterholz." , 
-                                        en : "" },
-                        // weather type events' options are never used!
-                        options : [ // 1-3 options (at least one without keyword needs)
-                            {
-                                description : { de : "Versucht den Hasen aus der Ferne zu erjagen." , 
-                                                en : "" } ,
-                                challenge : { // (skillcheck and/or keyword) or nothing
-                                    skillcheck : { type : "dex", difficulty : [ 1 , 2 , 2 , 2 , 2 , 3 ] },
-                                    keyword    : { use     : `${Asset.keyword.tool.ranged.icon}`,
-                                                   consume : `${Asset.keyword.material.sharp.icon}` },
+                // -------------------------
+                // NO ANIMAL
+                // -------------------------
+                {   head: { title : "HUNT NO ANIMAL YIElD 2",
+                            spawn : {   distanceRange:  [ 1 , 8 ], // [1,3:near] [3,5:far] [4,8:very far]
+                                        yieldTierRange: [ 2 , 2 ],
+                                        weight: 2 , disabled: false , cw: false , harsh: false ,
+                                        flags   : { require: [  ], exclude: [  ] },
+                                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
+                                        weather : { temp : [ 0 , 4 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                                    prec : [ 0 , 4 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                                    wind : [ 0 , 3 ], /* [ Calm   , Breeze   , Gale    , Storm          ] */},},},
+                    body: { description : { de: "Kein Wild wagt sich ins Freie, doch der Waldboden birgt Versprechen." , en: "" },
+                            options : [
+                                {   description : { de: "Versucht wenigstens Fährten zu finden." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "wis", difficulty: [ 1 , 2 , 2 , 2 , 3 , 3 , 4] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "Ihr entdeckt zahlreiche frische Fährten!" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Trotz mühsamers Suche gelingt es euch nicht eine Aussage über das Wild der Region zu fällen." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
                                 },
-                                onSuccess : {
-                                    description : { de : "Ihr habt den Hasen erfolgreich erjagt." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 0 , chopping: 0 , hunting: 3 , ship: 0 },
-                                        afflictions : { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
+                                {   description : { de: "Zieht euch zurück und ruht euch aus." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "", difficulty: [ 0 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "Ihr zieht euch zurück und ruht euch aus." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: -1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
                                 },
-                                onFailure : {
-                                    description : { de : "Daneben und der Hase flüchtet ins Unterholz." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
-                                        afflictions : { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
-                                },
-                            },
-                            {
-                                description : { de : "Versucht den Hasen aus der Nähe mit einer Waffe zu erlegen." , 
-                                                en : "" } ,
-                                challenge : { // (skillcheck and/or keyword) or nothing
-                                    skillcheck : { type : "dex", difficulty : [ 1 , 2 , 2 , 2 , 3 , 3 ] },
-                                    keyword    : { use     : `${Asset.keyword.tool.meleeLight.icon} | ${Asset.keyword.tool.meleeHeavy.icon}`,
-                                                   consume : `${Asset.keyword.material.sharp.icon}` },
-                                },
-                                onSuccess : {
-                                    description : { de : "Ihr habt den Hasen erfolgreich erjagt." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 0 , chopping: 0 , hunting: 3 , ship: 0 },
-                                        afflictions : { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
-                                },
-                                onFailure : {
-                                    description : { de : "Daneben und der Hase flüchtet ins Unterholz." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
-                                        afflictions : { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
-                                },
-                            },
-                            {
-                                description : { de : "Versucht den Hasen aus der Nähe mit der Hand zu erlegen." , 
-                                                en : "" } ,
-                                challenge : { // (skillcheck and/or keyword) or nothing
-                                    skillcheck : { type : "str", difficulty : [ 1 , 2 , 2 , 2 , 3 , 3 ] },
-                                    keyword    : { use     : ``,
-                                                   consume : `` },
-                                },
-                                onSuccess : {
-                                    description : { de : "Ihr habt den Hasen erfolgreich erjagt." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 0 , chopping: 0 , hunting: 3 , ship: 0 },
-                                        afflictions : { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
-                                },
-                                onFailure : {
-                                    description : { de : "Daneben und der Hase flüchtet ins Unterholz." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
-                                        afflictions : { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
-                                },
-                            },
-                        ],
-                    },
+                            ],},
                 },
-                {
-                    head : {
-                        title : "",
-                        spawn : {
-                            distanceRange: [ 0 , 8 ], // [0:camp] [1,3:near] [3,5:mid] [4,8:far]
-                            yieldTierRange: [ 1 , 2 ],  // spawns on tiles with yield<action>Tier [ 0-2 ]
-                            weight   : 1 , disabled: false , cw: false , harsh: false ,
-                            flags : { require: [  ], // tile (and global) must have ALL of these
-                                      exclude: [  ], /* tile (and global) must have NONE of these */},
-                            daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
-                            season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
-                            weather : { temp : [ 0 , 4 ], // range [ 0-4 ]: [ Arctic , Freezing , Cold    , Medium , Warm  ]
-                                        prec : [ 0 , 4 ], // range [ 0-4 ]: [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
-                                        wind : [ 0 , 3 ], /* range [ 0-3 ]: [ Calm   , Breeze   , Gale    , Storm          ] */},
-                        }, 
-                    },
-                    body : {
-                        description : { de : "Ihr entdeckt einen Hirsch." , 
-                                        en : "" },
-                        // weather type events' options are never used!
-                        options : [ // 1-3 options (at least one without keyword needs)
-                            {
-                                description : { de : "Versucht den Hirsch aus der Ferne zu erjagen." , 
-                                                en : "" } ,
-                                challenge : { // (skillcheck and/or keyword) or nothing
-                                    skillcheck : { type : "dex", difficulty : [ 2 , 2 , 2 , 3 , 3 , 4 ] },
-                                    keyword    : { use     : `${Asset.keyword.tool.ranged.icon}`,
-                                                   consume : `${Asset.keyword.material.sharp.icon}` },
+                {   head: { title : "HUNT NO ANIMAL YIElD 1",
+                            spawn : {   distanceRange:  [ 1 , 8 ], // [1,3:near] [3,5:far] [4,8:very far]
+                                        yieldTierRange: [ 1 , 1 ],
+                                        weight: 5 , disabled: false , cw: false , harsh: false ,
+                                        flags   : { require: [  ], exclude: [  ] },
+                                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
+                                        weather : { temp : [ 0 , 4 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                                    prec : [ 0 , 4 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                                    wind : [ 0 , 3 ], /* [ Calm   , Breeze   , Gale    , Storm          ] */},},},
+                    body: { description : { de: "Kein Wild wagt sich ins Freie, doch der Waldboden birgt Versprechen." , en: "" },
+                            options : [
+                                {   description : { de: "Versucht wenigstens Fährten zu finden." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "wis", difficulty: [ 1 , 2 , 2 , 2 , 3 , 3 , 4] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "Ihr stöbert vereinzelte, teils verwaschene Spuren auf." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Trotz mühsamers Suche gelingt es euch nicht eine Aussage über das Wild der Region zu fällen." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
                                 },
-                                onSuccess : {
-                                    description : { de : "Ihr habt den Hirsch erfolgreich erjagt." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 0 , chopping: 0 , hunting: 6 , ship: 0 },
-                                        afflictions : { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
+                                {   description : { de: "Zieht euch zurück und ruht euch aus." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "", difficulty: [ 0 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "Ihr zieht euch zurück und ruht euch aus." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: -1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
                                 },
-                                onFailure : {
-                                    description : { de : "Daneben und der Hirsch flüchtet ins Unterholz." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
-                                        afflictions : { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
-                                },
-                            },
-                            {
-                                description : { de : "Versucht den Hirsch aus der Nähe mit einer Waffe zu erlegen." , 
-                                                en : "" } ,
-                                challenge : { // (skillcheck and/or keyword) or nothing
-                                    skillcheck : { type : "str", difficulty : [ 2 , 2 , 2 , 3 , 3 , 4 ] },
-                                    keyword    : { use     : `${Asset.keyword.tool.meleeLight.icon} | ${Asset.keyword.tool.meleeHeavy.icon}`,
-                                                   consume : `${Asset.keyword.material.sharp.icon}` },
-                                },
-                                onSuccess : {
-                                    description : { de : "Ihr habt den Hirsch erfolgreich erjagt." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 0 , chopping: 0 , hunting: 6 , ship: 0 },
-                                        afflictions : { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
-                                },
-                                onFailure : {
-                                    description : { de : "Daneben und der Hirsch flüchtet ins Unterholz." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
-                                        afflictions : { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
-                                },
-                            },
-                            {
-                                description : { de : "Versucht den Hirsch aus der Nähe mit der Hand zu erlegen." , 
-                                                en : "" } ,
-                                challenge : { // (skillcheck and/or keyword) or nothing
-                                    skillcheck : { type : "str", difficulty : [ 3 , 4 , 4 , 4 , 5 , 6 ] },
-                                    keyword    : { use     : ``,
-                                                   consume : `` },
-                                },
-                                onSuccess : {
-                                    description : { de : "Ihr habt den Hirsch erfolgreich erjagt." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 0 , chopping: 0 , hunting: 6 , ship: 0 },
-                                        afflictions : { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
-                                },
-                                onFailure : {
-                                    description : { de : "Daneben und der Hirsch flüchtet ins Unterholz." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
-                                        afflictions : { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
-                                },
-                            },
-                        ],
-                    },
+                            ],},
                 },
-                {
-                    head : {
-                        title : "",
-                        spawn : {
-                            distanceRange: [ 0 , 8 ], // [0:camp] [1,3:near] [3,5:mid] [4,8:far]
-                            yieldTierRange: [ 1 , 2 ],  // spawns on tiles with yield<action>Tier [ 0-2 ]
-                            weight   : 1 , disabled: false , cw: false , harsh: false ,
-                            flags : { require: [  ], // tile (and global) must have ALL of these
-                                      exclude: [  ], /* tile (and global) must have NONE of these */},
-                            daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
-                            season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
-                            weather : { temp : [ 0 , 4 ], // range [ 0-4 ]: [ Arctic , Freezing , Cold    , Medium , Warm  ]
-                                        prec : [ 0 , 4 ], // range [ 0-4 ]: [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
-                                        wind : [ 0 , 3 ], /* range [ 0-3 ]: [ Calm   , Breeze   , Gale    , Storm          ] */},
-                        }, 
-                    },
-                    body : {
-                        description : { de : "Ihr entdeckt ein Wildschwein." , 
-                                        en : "" },
-                        // weather type events' options are never used!
-                        options : [ // 1-3 options (at least one without keyword needs)
-                            {
-                                description : { de : "Versucht das Wildschwein aus der Ferne zu erjagen." , 
-                                                en : "" } ,
-                                challenge : { // (skillcheck and/or keyword) or nothing
-                                    skillcheck : { type : "dex", difficulty : [ 2 , 2 , 2 , 3 , 3 , 4 ] },
-                                    keyword    : { use     : `${Asset.keyword.tool.ranged.icon}`,
-                                                   consume : `${Asset.keyword.material.sharp.icon}` },
+                {   head: { title : "HUNT NO ANIMAL YIElD 0",
+                            spawn : {   distanceRange:  [ 1 , 8 ], // [1,3:near] [3,5:far] [4,8:very far]
+                                        yieldTierRange: [ 0 , 0 ],
+                                        weight: 10 , disabled: false , cw: false , harsh: false ,
+                                        flags   : { require: [  ], exclude: [  ] },
+                                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
+                                        weather : { temp : [ 0 , 4 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                                    prec : [ 0 , 4 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                                    wind : [ 0 , 3 ], /* [ Calm   , Breeze   , Gale    , Storm          ] */},},},
+                    body: { description : { de: "Kein Wild wagt sich ins Freie, doch der Waldboden birgt Versprechen." , en: "" },
+                            options : [
+                                {   description : { de: "Versucht wenigstens Fährten zu finden." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "wis", difficulty: [ 1 , 2 , 2 , 2 , 3 , 3 , 4] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "Auch nach geduldiger Suche entdeckt ihr lediglich verblasste, kaum noch erkennbare Trittspuren." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Trotz mühsamers Suche gelingt es euch nicht eine Aussage über das Wild der Region zu fällen." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
                                 },
-                                onSuccess : {
-                                    description : { de : "Ihr habt das Wildschwein erfolgreich erjagt." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 0 , chopping: 0 , hunting: 6 , ship: 0 },
-                                        afflictions : { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
+                                {   description : { de: "Zieht euch zurück und ruht euch aus." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "", difficulty: [ 0 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "Ihr zieht euch zurück und ruht euch aus." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: -1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
                                 },
-                                onFailure : {
-                                    description : { de : "Daneben und das Wildschwein flüchtet ins Unterholz." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
-                                        afflictions : { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
-                                },
-                            },
-                            {
-                                description : { de : "Versucht das Wildschwein aus der Nähe mit einer Waffe zu erlegen." , 
-                                                en : "" } ,
-                                challenge : { // (skillcheck and/or keyword) or nothing
-                                    skillcheck : { type : "str", difficulty : [ 2 , 2 , 3 , 3 , 3 , 4 ] },
-                                    keyword    : { use     : `${Asset.keyword.tool.meleeLight.icon} | ${Asset.keyword.tool.meleeHeavy.icon}`,
-                                                   consume : `${Asset.keyword.material.sharp.icon}` },
-                                },
-                                onSuccess : {
-                                    description : { de : "Ihr habt das Wildschwein erfolgreich erjagt." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 0 , chopping: 0 , hunting: 6 , ship: 0 },
-                                        afflictions : { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
-                                },
-                                onFailure : {
-                                    description : { de : "Daneben und das Wildschwein flüchtet ins Unterholz, nachdem es einen von euch verletzt." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
-                                        afflictions : { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 1 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
-                                },
-                            },
-                            {
-                                description : { de : "Versucht das Wildschwein aus der Nähe mit der Hand zu erlegen." , 
-                                                en : "" } ,
-                                challenge : { // (skillcheck and/or keyword) or nothing
-                                    skillcheck : { type : "str", difficulty : [ 4 , 4 , 5 , 5 , 6 , 7 ] },
-                                    keyword    : { use     : ``,
-                                                   consume : `` },
-                                },
-                                onSuccess : {
-                                    description : { de : "Ihr habt das Wildschwein erfolgreich erjagt, einer von euch hat sich allerdings verletzt." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 0 , chopping: 0 , hunting: 6 , ship: 0 },
-                                        afflictions : { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 1 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
-                                },
-                                onFailure : {
-                                    description : { de : "Daneben und das Wildschwein flüchtet ins Unterholz nachdem es euch alle verletzt." , 
-                                                    en : "" } ,
-                                    effects: {
-                                        yield       : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
-                                        afflictions : { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 1 , // neg means healing
-                                                        cold: 0 , wet: 0 , wind: 0 },
-                                        flags       : { local  : { add : [  ], remove : [  ] },
-                                                        global : { add : [  ], remove : [  ] } },
-                                    },
-                                },
-                            },
-                        ],
-                    },
+                            ],},
                 },
+                // -------------------------
+                // ANIMAL RABBIT
+                // -------------------------
+                {   head: { title : "HUNT ANIMAL RABBIT",
+                            spawn : {   distanceRange:  [ 1 , 8 ], // [1,3:near] [3,5:far] [4,8:very far]
+                                        yieldTierRange: [ 0 , 2 ],
+                                        weight: 2 , disabled: false , cw: false , harsh: false ,
+                                        flags   : { require: [  ], exclude: [  ] },
+                                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
+                                        weather : { temp : [ 0 , 4 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                                    prec : [ 0 , 4 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                                    wind : [ 0 , 3 ], /* [ Calm   , Breeze   , Gale    , Storm          ] */},},},
+                    body: { description : { de: "Ein wachsamer Wildhase knabbert an kargen Wurzeln, die Löffel lauschend aufgestellt!" , en: "" },
+                            options : [
+                                {   description : { de: "Euch leise anschleichen und einen gezielten Angriff aus der Distanz wagen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "dex", difficulty:[ 1 , 2 , 2 , 2 , 2 , 3 ] },
+                                                    keyword    : { use: `${KW.tool.ranged}`, consume: `${KW.material.sharp}` },},
+                                    onSuccess : {   description : { de : "Das Geschoss trifft sauber. Der Hase bricht lautlos zusammen - schnelle Beute." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 3 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Das Geschoss verfehlt sein Ziel. Aufgeschreckt schlägt der Hase Haken und verschwindet im Unterholz." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                                {   description : { de: "Euch leise heranpirschen und mit einer Waffe zuschlagen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "dex", difficulty:[ 1 , 2 , 2 , 2 , 2 , 3 ] },
+                                                    keyword    : { use: `${KW.tool.meleeLight} / ${KW.tool.meleeHeavy}`, consume: `${KW.material.sharp}` },},
+                                    onSuccess : {   description : { de : "Ein rascher, gezielter Hieb überwältigt die Beute, ehe sie die Gefahr überhaupt wittern kann." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 3 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Ein knackender Ast verrät euch. Ehe die Waffe überhaupt herabschlägt, saust das wendige Tier davon." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                                {   description : { de: "Auf wenige Schritte heranrobben und verzweifelt mit bloßen Händen zupacken." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "str", difficulty:[ 1 , 2 , 2 , 2 , 3 , 3 ] },
+                                                    keyword    : { use: `${KW.tool.meleeLight} / ${KW.tool.meleeHeavy}`, consume: `${KW.material.sharp}` },},
+                                    onSuccess : {   description : { de : "In einem hechtenden Satz packt ihr das zappelnde Tier fest. Eine entbehrungsreiche Jagd endet erfolgreich!" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 3 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Ihr greift ins Leere und stürzt ins feuchte Moos. Der Hase entspringt flink euren Fingern." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                            ],},
+                },
+                // -------------------------
+                // ANIMAL STAG
+                // -------------------------
+                {   head: { title : "HUNT ANIMAL STAG",
+                            spawn : {   distanceRange:  [ 1 , 8 ], // [1,3:near] [3,5:far] [4,8:very far]
+                                        yieldTierRange: [ 1 , 2 ],
+                                        weight: 1 , disabled: false , cw: false , harsh: false ,
+                                        flags   : { require: [  ], exclude: [ "hurt_stag" , "dead_stag" ] },
+                                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
+                                        weather : { temp : [ 0 , 4 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                                    prec : [ 0 , 4 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                                    wind : [ 0 , 3 ], /* [ Calm   , Breeze   , Gale    , Storm          ] */},},},
+                    body: { description : { de: "An einer Schneise steht ein mächtiger Hirsch. Sein stolzes Geweih hebt sich scharf gegen das Blätterdach ab!" , en: "" },
+                            options : [
+                                {   description : { de: "Euch leise anschleichen und einen gezielten Angriff aus der Distanz wagen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "dex", difficulty:[ 2 , 2 , 2 , 3 , 3 , 4 ] },
+                                                    keyword    : { use: `${KW.tool.ranged}`, consume: `${KW.material.sharp}` },},
+                                    onSuccess : {   description : { de : "Das Geschoss trifft sauber. Nach wenigen Fluchtsprüngen bricht das mächtige Tier zusammen - gewaltige Beute." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 8 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Das Geschoss trifft unsauber. Verwundet prellt der Hirsch durch das Dickicht davon." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[ "hurt_stag" ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                                {   description : { de: "Euch leise heranpirschen und mit einer Waffe zuschlagen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "str", difficulty:[ 2 , 2 , 2 , 3 , 3 , 4 ] },
+                                                    keyword    : { use: `${KW.tool.meleeLight} / ${KW.tool.meleeHeavy}`, consume: `${KW.material.sharp}` },},
+                                    onSuccess : {   description : { de : "Ihr brecht im richtigen Moment aus der Deckung hervor. Ein wuchtiger Hieb bringt den Hirsch zu Fall." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 8 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Ein wuchtiger Hieb verletzt den Hirsch, welcher in weiten Sprüngen türmt." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[ "hurt_stag" ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                                {   description : { de: "In purer Verzweiflung auf das mächtige Tier hechten und versuchen, es mit bloßen Händen niederzuringen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "str", difficulty:[ 3 , 4 , 4 , 4 , 5 , 6 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "Durch schiere Körpergewalt brecht ihr den Widerstand des Kollosses - gewaltige Beute." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 8 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Der Hirsch schleudert euch mit einer einzigen Kopfbewegung mühelos ins Unterholz wobei sich einer von euch verletzt. Der Hirsch verschwindet auf und davon." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 1 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                                {   description : { de: "Euch leise zurückziehen und das mächtige Tier ungestört weiterziehen lassen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "", difficulty:[ 0 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "Ihr zieht euch leise zurück." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: -1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                            ],},
+                },
+                {   head: { title : "HUNT ANIMAL STAG WOUNDED",
+                            spawn : {   distanceRange:  [ 1 , 8 ], // [1,3:near] [3,5:far] [4,8:very far]
+                                        yieldTierRange: [ 0 , 2 ],
+                                        weight: 3 , disabled: false , cw: false , harsh: false ,
+                                        flags   : { require: [ "hurt_stag" ], exclude: [  ] },
+                                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
+                                        weather : { temp : [ 0 , 4 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                                    prec : [ 0 , 4 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                                    wind : [ 0 , 3 ], /* [ Calm   , Breeze   , Gale    , Storm          ] */},},},
+                    body: { description : { de: "Einer Blutspur folgend, stoßt ihr auf den verletzten Hirsch. Das mächtige Tier atmet schwer und schwankt leicht." , en: "" },
+                            options : [
+                                {   description : { de: "Euch leise anschleichen und einen gezielten Angriff aus der Distanz wagen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "dex", difficulty:[ 2 , 2 , 2 , 2 , 3 , 4 ] },
+                                                    keyword    : { use: `${KW.tool.ranged}`, consume: `${KW.material.sharp}` },},
+                                    onSuccess : {   description : { de : "Das Geschoss trifft sauber. Nach wenigen Fluchtsprüngen bricht das mächtige Tier zusammen - gewaltige Beute." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 8 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[ "hurt_stag" ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Das Geschoss schlägt krachend im Geäst ein. Aufgeschreckt prellt der Hirsch durch das Dickicht davon." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[ "dead_stag" ],remove:[ "hurt_stag" ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                                {   description : { de: "Euch leise heranpirschen und mit einer Waffe zuschlagen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "str", difficulty:[ 1 , 1 , 2 , 2 , 3 , 3 ] },
+                                                    keyword    : { use: `${KW.tool.meleeLight} / ${KW.tool.meleeHeavy}`, consume: `${KW.material.sharp}` },},
+                                    onSuccess : {   description : { de : "Ihr brecht im richtigen Moment aus der Deckung hervor. Ein wuchtiger Hieb bringt den Hirsch schließlich zu Fall." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 8 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[ "hurt_stag" ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Ein wuchtiger Hieb verletzt den Hirsch weiter, welcher in weiten Sprüngen verzweifelt türmt." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[ "dead_stag" ],remove:[ "hurt_stag" ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                                {   description : { de: "In purer Verzweiflung auf das mächtige Tier hechten und versuchen, es mit bloßen Händen niederzuringen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "str", difficulty:[ 2 , 3 , 3 , 4 , 4 , 5 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "Durch schiere Körpergewalt brecht ihr den letzten Widerstand des Kollosses - gewaltige Beute." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 8 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[ "hurt_stag" ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Der Hirsch schleudert euch mit einer einzigen Kopfbewegung ins Unterholz wobei sich einer von euch verletzt. Der Hirsch verschwindet panisch auf und davon." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 1 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[ "dead_stag" ],remove:[ "hurt_stag" ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                                {   description : { de: "Euch leise zurückziehen und das verletzte Tier weiterziehen lassen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "", difficulty:[ 0 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "Ihr zieht euch leise zurück." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: -1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                            ],},
+                },
+                {   head: { title : "HUNT ANIMAL STAG DEAD FRESH",
+                            spawn : {   distanceRange:  [ 1 , 8 ], // [1,3:near] [3,5:far] [4,8:very far]
+                                        yieldTierRange: [ 0 , 2 ],
+                                        weight: 2 , disabled: false , cw: false , harsh: false ,
+                                        flags   : { require: [ "dead_stag" ], exclude: [  ] },
+                                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
+                                        weather : { temp : [ 0 , 4 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                                    prec : [ 0 , 4 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                                    wind : [ 0 , 3 ], /* [ Calm   , Breeze   , Gale    , Storm          ] */},},},
+                    body: { description : { de: "Eine Blutspur endet auf einer stillen Lichtung. Der verletzte Hirsch ist hier seinen Wunden erlegen. Das Fleisch ist frisch und unberührt von Aasfressern." , en: "" },
+                            options : [
+                                {   description : { de: "Den Kadaver mit Werkzeug zerlegen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "", difficulty:[ 0 ] },
+                                                    keyword    : { use: `${KW.tool.meleeLight} / ${KW.tool.meleeHeavy} / ${KW.tool.sharp}`, consume: `` },},
+                                    onSuccess : {   description : { de : "" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 7 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[ "dead_stag" ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                                {   description : { de: "Den massiven Kadaver notgedrungen mit bloßen Händen aufbrechen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "", difficulty:[0 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 5 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[ "dead_stag" ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                            ],},
+                },
+                {   head: { title : "HUNT ANIMAL STAG DEAD OLD",
+                            spawn : {   distanceRange:  [ 1 , 8 ], // [1,3:near] [3,5:far] [4,8:very far]
+                                        yieldTierRange: [ 0 , 2 ],
+                                        weight: 2 , disabled: false , cw: false , harsh: false ,
+                                        flags   : { require: [ "dead_stag" ], exclude: [  ] },
+                                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
+                                        weather : { temp : [ 0 , 4 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                                    prec : [ 0 , 4 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                                    wind : [ 0 , 3 ], /* [ Calm   , Breeze   , Gale    , Storm          ] */},},},
+                    body: { description : { de: "Eine Blutspur endet auf einer stillen Lichtung. Der verletzte Hirsch ist hier seinen Wunden erlegen. Das einst prächtige Tier ist übel zugerichtet und das meiste Fleisch ist zerrissen." , en: "" },
+                            options : [
+                                {   description : { de: "Den Kadaver mit Werkzeug zerlegen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "", difficulty:[ 0 ] },
+                                                    keyword    : { use: `${KW.tool.meleeLight} / ${KW.tool.meleeHeavy} / ${KW.tool.sharp}`, consume: `` },},
+                                    onSuccess : {   description : { de : "" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 3 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[ "dead_stag" ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                                {   description : { de: "Den massiven Kadaver notgedrungen mit bloßen Händen aufbrechen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "", difficulty:[0 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 2 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[ "dead_stag" ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                            ],},
+                },
+                // -------------------------
+                // ANIMAL BOAR
+                // -------------------------
+                {   head: { title : "HUNT ANIMAL BOAR",
+                            spawn : {   distanceRange:  [ 1 , 8 ], // [1,3:near] [3,5:far] [4,8:very far]
+                                        yieldTierRange: [ 1 , 2 ],
+                                        weight: 1 , disabled: false , cw: false , harsh: false ,
+                                        flags   : { require: [  ], exclude: [ "hurt_boar" , "dead_boar" ] },
+                                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
+                                        weather : { temp : [ 0 , 4 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                                    prec : [ 0 , 4 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                                    wind : [ 0 , 3 ], /* [ Calm   , Breeze   , Gale    , Storm          ] */},},},
+                    body: { description : { de: "Ein ausgewachsener Keiler wühlt im feuchten Waldboden!" , en: "" },
+                            options : [
+                                {   description : { de: "Euch leise anschleichen und einen gezielten Angriff aus der Distanz wagen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "dex", difficulty:[ 2 , 2 , 2 , 3 , 3 , 4 ] },
+                                                    keyword    : { use: `${KW.tool.ranged}`, consume: `${KW.material.sharp}` },},
+                                    onSuccess : {   description : { de : "Das Geschoss trifft sauber. Nach wenigen Fluchtsprüngen bricht das mächtige Tier zusammen - gewaltige Beute." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 7 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Das Geschoss trifft unsauber. Verwundet bricht der Keiler tief ins Dickicht aus." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[ "hurt_boar" ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                                {   description : { de: "Euch leise heranpirschen und mit einer Waffe zuschlagen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "str", difficulty:[ 2 , 2 , 2 , 3 , 3 , 4 ] },
+                                                    keyword    : { use: `${KW.tool.meleeLight} / ${KW.tool.meleeHeavy}`, consume: `${KW.material.sharp}` },},
+                                    onSuccess : {   description : { de : "Ihr brecht im richtigen Moment aus der Deckung hervor und streckt das Tier mit einem gezielten Hieb nieder." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 7 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Ein wuchtiger Hieb verletzt den Keiler, welcher in weiten Sprüngen türmt und dabei einen von euch verletzt." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 1 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[ "hurt_boar" ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                                {   description : { de: "In purer Verzweiflung auf das mächtige Tier hechten und versuchen, es mit bloßen Händen niederzuringen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "str", difficulty:[ 3 , 4 , 4 , 4 , 5 , 6 ] },
+                                                    keyword    : { use: `${KW.tool.meleeLight} / ${KW.tool.meleeHeavy}`, consume: `${KW.material.sharp}` },},
+                                    onSuccess : {   description : { de : "Durch schiere Körpergewalt brecht ihr den Widerstand des Kollosses, jedoch nicht ohne das sich einer von euch verletzt!" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 7 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 1 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Eine katastrophale Idee. Das wütende Tier überrennt euch, schlägt allen böse Wunden und türmt ins Gebüsch." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 1 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                                {   description : { de: "Euch leise zurückziehen und das mächtige Tier ungestört weiterziehen lassen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "", difficulty:[ 0 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "Ihr zieht euch leise zurück." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: -1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                            ],},
+                },
+                {   head: { title : "HUNT ANIMAL BOAR WOUNDED",
+                            spawn : {   distanceRange:  [ 1 , 8 ], // [1,3:near] [3,5:far] [4,8:very far]
+                                        yieldTierRange: [ 0 , 2 ],
+                                        weight: 3 , disabled: false , cw: false , harsh: false ,
+                                        flags   : { require: [ "hurt_boar" ], exclude: [  ] },
+                                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
+                                        weather : { temp : [ 0 , 4 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                                    prec : [ 0 , 4 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                                    wind : [ 0 , 3 ], /* [ Calm   , Breeze   , Gale    , Storm          ] */},},},
+                    body: { description : { de: "Einer Blutspur folgend, stoßt ihr auf den verletzten Keiler. Das Tier atmet schwer und schwankt leicht." , en: "" },
+                            options : [
+                                {   description : { de: "Euch leise anschleichen und einen gezielten Angriff aus der Distanz wagen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "dex", difficulty:[ 2 , 2 , 2 , 3 , 3 , 4 ] },
+                                                    keyword    : { use: `${KW.tool.ranged}`, consume: `${KW.material.sharp}` },},
+                                    onSuccess : {   description : { de : "Das Geschoss trifft sauber. Nach wenigen Fluchtsprüngen bricht das mächtige Tier zusammen - gewaltige Beute." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 7 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[ "hurt_boar" ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Das Geschoss verfehlt das Ziel knapp. Aufgeschreckt poltert der Keiler tief ins Dickicht." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[ "dead_boar" ],remove:[ "hurt_boar" ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                                {   description : { de: "Euch leise heranpirschen und mit einer Waffe zuschlagen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "str", difficulty:[ 1 , 2 , 2 , 3 , 3 , 4 ] },
+                                                    keyword    : { use: `${KW.tool.meleeLight} / ${KW.tool.meleeHeavy}`, consume: `${KW.material.sharp}` },},
+                                    onSuccess : {   description : { de : "Ihr brecht im richtigen Moment aus der Deckung hervor. Ein wuchtiger Hieb bringt den Keiler schließlich zu Fall." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 7 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[ "hurt_boar" ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Ein wuchtiger Hieb verletzt den Keiler weiter, welcher in weiten Sprüngen türmt." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[ "dead_boar" ],remove:[ "hurt_boar" ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                                {   description : { de: "In purer Verzweiflung auf das mächtige Tier hechten und versuchen, es mit bloßen Händen niederzuringen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "str", difficulty:[ 2 , 3 , 3 , 4 , 5 , 6 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "Durch schiere Körpergewalt brecht ihr den Widerstand des Kollosses, jedoch nicht ohne das sich einer von euch verletzt!" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 8 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 1 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[ "hurt_boar" ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "Eine katastrophale Idee. Das wütende Tier überrennt euch, schlägt einem eine böse Wunde und türmt ins Gebüsch." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 1 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[ "dead_boar" ],remove:[ "hurt_boar" ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                                {   description : { de: "Euch leise zurückziehen und das verletzte Tier weiterziehen lassen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "", difficulty:[ 0 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "Ihr zieht euch leise zurück." , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: -1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                            ],},
+                },
+                {   head: { title : "HUNT ANIMAL BOAR DEAD FRESH",
+                            spawn : {   distanceRange:  [ 1 , 8 ], // [1,3:near] [3,5:far] [4,8:very far]
+                                        yieldTierRange: [ 0 , 2 ],
+                                        weight: 2 , disabled: false , cw: false , harsh: false ,
+                                        flags   : { require: [ "dead_boar" ], exclude: [  ] },
+                                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
+                                        weather : { temp : [ 0 , 4 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                                    prec : [ 0 , 4 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                                    wind : [ 0 , 3 ], /* [ Calm   , Breeze   , Gale    , Storm          ] */},},},
+                    body: { description : { de: "Eine Blutspur endet auf einer stillen Lichtung. Der verletzte Keiler ist hier seinen Wunden erlegen. Das Fleisch ist frisch und unberührt von Aasfressern." , en: "" },
+                            options : [
+                                {   description : { de: "Den Kadaver mit Werkzeug zerlegen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "", difficulty:[ 0 ] },
+                                                    keyword    : { use: `${KW.tool.meleeLight} / ${KW.tool.meleeHeavy} / ${KW.tool.sharp}`, consume: `` },},
+                                    onSuccess : {   description : { de : "" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 5 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[ "dead_boar" ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                                {   description : { de: "Den massiven Kadaver notgedrungen mit bloßen Händen aufbrechen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "", difficulty:[0 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 3 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[ "dead_boar" ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                            ],},
+                },
+                {   head: { title : "HUNT ANIMAL BOAR DEAD OLD",
+                            spawn : {   distanceRange:  [ 1 , 8 ], // [1,3:near] [3,5:far] [4,8:very far]
+                                        yieldTierRange: [ 0 , 2 ],
+                                        weight: 2 , disabled: false , cw: false , harsh: false ,
+                                        flags   : { require: [ "dead_boar" ], exclude: [  ] },
+                                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
+                                        weather : { temp : [ 0 , 4 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                                    prec : [ 0 , 4 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                                    wind : [ 0 , 3 ], /* [ Calm   , Breeze   , Gale    , Storm          ] */},},},
+                    body: { description : { de: "Eine Blutspur endet auf einer stillen Lichtung. Der verletzte Keiler ist hier seinen Wunden erlegen. Das einst prächtige Tier ist übel zugerichtet und das meiste Fleisch ist zerrissen." , en: "" },
+                            options : [
+                                {   description : { de: "Den Kadaver mit Werkzeug zerlegen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "", difficulty:[ 0 ] },
+                                                    keyword    : { use: `${KW.tool.meleeLight} / ${KW.tool.meleeHeavy} / ${KW.tool.sharp}`, consume: `` },},
+                                    onSuccess : {   description : { de : "" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 2 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[ "dead_boar" ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                                {   description : { de: "Den massiven Kadaver notgedrungen mit bloßen Händen aufbrechen." , en: "" } ,
+                                    challenge : {   skillcheck : { type: "", difficulty:[0 ] },
+                                                    keyword    : { use: ``, consume: `` },},
+                                    onSuccess : {   description : { de : "" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 1 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[ "dead_boar" ]},global:{add:[  ],remove:[  ]}},},},
+                                    onFailure : {   description : { de : "" , en : "" },
+                                                    effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                                afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                                flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                },
+                            ],},
+                },
+                // TODO : sow and child?
             ],
         },
         // -------------------------------------------------------------------
         // CAMP FRAGMENT
         // -------------------------------------------------------------------
         camp : [
-            {
-                head : {
-                    title : "",
-                    spawn : {
-                        weight   : 5 , disabled: false , cw: false , harsh: false ,
-                        flags : { require: [  ], // tile (and global) must have ALL of these
-                                    exclude: [  ], /* tile (and global) must have NONE of these */},
-                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
-                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
-                        weather : { temp : [ 0 , 4 ], // range [ 0-4 ]: [ Arctic , Freezing , Cold    , Medium , Warm  ]
-                                    prec : [ 0 , 4 ], // range [ 0-4 ]: [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
-                                    wind : [ 0 , 3 ], /* range [ 0-3 ]: [ Calm   , Breeze   , Gale    , Storm          ] */},
-                    }, 
-                },
-                body : {
-                    description : { de : "Moin" , 
-                                    en : "" },
-                    // weather type events' options are never used!
-                    options : [ // 1-3 options (at least one without keyword needs)
-                        {
-                            description : { de : "Sucht den Boden und Streucher intensiv ab." , 
-                                            en : "" } ,
-                            challenge : { // (skillcheck and/or keyword) or nothing
-                                skillcheck : { type : "wis", difficulty : [ 1 , 2 , 2 , 2 , 2 , 3 ] },
-                                keyword    : { use     : ``,
-                                                consume : `` },
+            {   head: { title : "CAMP SHIP",
+                        spawn : {   weight: 5 , disabled: false , cw: false , harsh: false ,
+                                    flags   : { require: [  ], exclude: [  ] },
+                                    daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                                    season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
+                                    weather : { temp : [ 0 , 4 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                                prec : [ 0 , 4 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                                wind : [ 0 , 3 ], /* [ Calm   , Breeze   , Gale    , Storm          ] */},},},
+                body: { description : { de: "Hier kommen dann Schiffsachen." , en: "" },
+                        options : [
+                            {   description : { de: "Schiff." , en: "" } ,
+                                challenge : {   skillcheck : { type: "wis", difficulty: [ 1 , 2 , 2 , 2 , 3 , 3 ] },
+                                                keyword    : { use: ``, consume: `` },},
+                                onSuccess : {   description : { de : "Schiff." , en : "" },
+                                                effects: {  yield      : { gathering: 4 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                            afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                            flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
+                                onFailure : {   description : { de : "Schiff." , en : "" },
+                                                effects: {  yield      : { gathering: 3 , chopping: 0 , hunting: 0 , ship: 0 },
+                                                            afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                                            flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},},
                             },
-                            onSuccess : {
-                                description : { de : "Ihr findet reichlich viel im Unterholz." , 
-                                                en : "" } ,
-                                effects: {
-                                    yield       : { gathering: 4 , chopping: 0 , hunting: 0 , ship: 0 },
-                                    afflictions : { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                    cold: 0 , wet: 0 , wind: 0 },
-                                    flags       : { local  : { add : [  ], remove : [  ] },
-                                                    global : { add : [  ], remove : [  ] } },
-                                },
-                            },
-                            onFailure : {
-                                description : { de : "Ihr findet einiges im Unterholz." , 
-                                                en : "" } ,
-                                effects: {
-                                    yield       : { gathering: 3 , chopping: 0 , hunting: 0 , ship: 0 },
-                                    afflictions : { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , // neg means healing
-                                                    cold: 0 , wet: 0 , wind: 0 },
-                                    flags       : { local  : { add : [  ], remove : [  ] },
-                                                    global : { add : [  ], remove : [  ] } },
-                                },
-                            },
-                        },
-                    ],
-                },
+                        ],},
             },
+
+
+
         ],
     },
     // ===================================================================
     // MYSTERY FOOD
     // ===================================================================
     mysteryFood : [
-        {
-            head : { title : "" , spawn : { weight: 5 , disabled: false , cw: false , harsh: false }, },
-            body : { effects: { afflictions: {
-                        exhaustion: -1 , hunger: 0 , hypothermia: 0 , wound: 0 , // direct (neg means healing)
-                        specialRule : { de : `` , en : `` },
+        // -------------------------
+        // GOOD FOOD
+        // -------------------------
+        {   head : { title : "" , spawn : { weight: 8 , disabled: false , cw: false , harsh: false }, },
+            body : { effects: { afflictions: { exhaustion: -1 , hunger: 0 , hypothermia: 0 , wound: 0 , specialRule: { de: `` , en: `` },
             }, }, },
         },
-        {
-            head : { title : "" , spawn : { weight: 5 , disabled: false , cw: false , harsh: false }, },
-            body : { effects: { afflictions: {
-                        exhaustion: 0,  hunger: -1 , hypothermia: 0 , wound: 0 , // direct (neg means healing)
-                        specialRule : { de : `` , en : `` },
+        {   head : { title : "" , spawn : { weight: 5 , disabled: false , cw: false , harsh: false }, },
+            body : { effects: { afflictions: { exhaustion: 0 , hunger: -1 , hypothermia: 0 , wound: 0 , specialRule: { de: `` , en: `` },
             }, }, },
         },
-        {
-            head : { title : "" , spawn : { weight: 5 , disabled: false , cw: false , harsh: false }, },
-            body : { effects: { afflictions: {
-                        exhaustion: 0,  hunger: 0,   hypothermia: -1 , wound: 0 , // direct (neg means healing)
-                        specialRule : { de : `` , en : `` },
+        {   head : { title : "" , spawn : { weight: 3 , disabled: false , cw: false , harsh: false }, },
+            body : { effects: { afflictions: { exhaustion: 0,  hunger: 0 , hypothermia: -1 , wound: 0 , specialRule: { de: `` , en: `` },
             }, }, },
         },
-        {
-            head : { title : "" , spawn : { weight: 5 , disabled: false , cw: false , harsh: false }, },
-            body : { effects: { afflictions: {
-                        exhaustion: 0,  hunger: 0,   hypothermia: 0,   wound: -1 , // direct (neg means healing)
-                        specialRule : { de : `` , en : `` },
+        {   head : { title : "" , spawn : { weight: 5 , disabled: false , cw: false , harsh: false }, },
+            body : { effects: { afflictions: { exhaustion: 0, hunger: 0, hypothermia: 0,   wound: -1 , specialRule: { de: `` , en: `` },
+            }, }, },
+        },
+        // -------------------------
+        // BAD FOOD
+        // -------------------------
+        {   head : { title : "" , spawn : { weight: 5 , disabled: false , cw: false , harsh: false }, },
+            body : { effects: { afflictions: { exhaustion: 1 , hunger: 0 , hypothermia: 0 , wound: 0 , specialRule: { de: `` , en: `` },
+            }, }, },
+        },
+        {   head : { title : "" , spawn : { weight: 4 , disabled: false , cw: false , harsh: false }, },
+            body : { effects: { afflictions: { exhaustion: 0 , hunger: 1 , hypothermia: 0 , wound: 0 , specialRule: { de: `` , en: `` },
+            }, }, },
+        },
+        {   head : { title : "" , spawn : { weight: 4 , disabled: false , cw: false , harsh: false }, },
+            body : { effects: { afflictions: { exhaustion: 0, hunger: 0, hypothermia: 0,   wound: 1 , specialRule: { de: `` , en: `` },
+            }, }, },
+        },
+        // -------------------------
+        // VERY BAD FOOD
+        // -------------------------
+        {   head : { title : "" , spawn : { weight: 3 , disabled: false , cw: false , harsh: false }, },
+            body : { effects: { afflictions: { exhaustion: 1 , hunger: 1 , hypothermia: 0 , wound: 0 , specialRule: { de: `` , en: `` },
             }, }, },
         },
     ],
@@ -1045,12 +1387,6 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
 
 
 
-
-
-
-// ===================================================================
-// SPECIAL BASE VALUE CODE
-// ===================================================================
 function addBasicWeatherFragments() {
     // Narrative fragments designed to form a cohesive, player-facing sentence
     const fragments = {
@@ -1117,8 +1453,8 @@ function addBasicWeatherFragments() {
                     head: {
                         title: stateTitle,
                         spawn : {
-                            distanceRange: [ 0 , 8 ], // [0:camp] [1,2:near] [3,4:far] [5,8:very far]
-                            weight   : 10,       // [ 1-10 ]
+                            distanceRange: [ 0 , 8 ], // [1,3:near] [3,5:far] [4,8:very far]
+                            weight: 10,       // [ 1-10 ]
                             disabled : false,   // disables this subevent
                             cw       : false,   // players can disable events with content warning for especially distrubing / harmfull content
                             harsh    : false,   // is this event especially punishing (death, all wounded etc)
@@ -1129,9 +1465,9 @@ function addBasicWeatherFragments() {
                             daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
                             season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
                             weather : {
-                                temp: [t, t], // range [ 0-4 ]: [ Arctic , Freezing , Cold    , Medium , Warm  ]
-                                prec: [p, p], // range [ 0-4 ]: [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
-                                wind: [w, w], // range [ 0-3 ]: [ Calm   , Breeze   , Gale    , Storm          ]
+                                temp: [t, t], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                prec: [p, p], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                wind: [w, w], // [ Calm   , Breeze   , Gale    , Storm          ]
                             },
                         }, 
                     },
@@ -1250,8 +1586,8 @@ function addBasicTravelFragments() {
             head: {
                 title: fragment.title,
                 spawn : {
-                    distanceRange: fragment.range, // [0:camp] [1,2:near] [3,4:far] [5,8:very far]
-                    weight   : fragment.weight,       // [ 1-10 ]
+                    distanceRange: fragment.range, // [1,3:near] [3,5:far] [4,8:very far]
+                    weight: fragment.weight,       // [ 1-10 ]
                     disabled : false,   // disables this subevent
                     cw       : false,   // players can disable events with content warning for especially distrubing / harmfull content
                     severity : fragment.severity,       // 0:forgiving | 1:standard | 2:harsh | 3:brutal
@@ -1262,9 +1598,9 @@ function addBasicTravelFragments() {
                     daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
                     season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
                     weather : {
-                        temp: [0, 4], // range [ 0-4 ]: [ Arctic , Freezing , Cold    , Medium , Warm  ]
-                        prec: [0, 4], // range [ 0-4 ]: [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
-                        wind: [0, 3], // range [ 0-3 ]: [ Calm   , Breeze   , Gale    , Storm          ]
+                        temp: [0, 4], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                        prec: [0, 4], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                        wind: [0, 3], // [ Calm   , Breeze   , Gale    , Storm          ]
                     },
                 }, 
             },
@@ -1298,402 +1634,12 @@ function addBasicTravelFragments() {
         });
     }
 }
-function addBasicActionChoppingFragments() {
-
-    const fragments = [
-        {
-            yieldTierRange: [ 2 , 2 ],
-            description: {  de : "Ihr findet einen Baum, der sich gut zum fällen eignet.",
-                            en : "" },
-            options: [
-                {   onSuccess: { loot: 4 , afflictions : { exhaustion: 1 , hunger: 0 } },
-                    onFailure: { loot: 4 , afflictions : { exhaustion: 1 , hunger: 1 } }}, // werkzeug
-                {   onSuccess: { loot: 4 , afflictions : { exhaustion: 1 , hunger: 0 } },
-                    onFailure: { loot: 3 , afflictions : { exhaustion: 1 , hunger: 1 } }}, // improv werkzeug
-                {   onSuccess: { loot: 4 , afflictions : { exhaustion: 1 , hunger: 1 } },
-                    onFailure: { loot: 0 , afflictions : { exhaustion: 1 , hunger: 1 } }}, // ohne werkzeug
-            ],
-        },
-        {
-            yieldTierRange: [ 1 , 1 ],
-            description: {  de : "Nach einer kurzen Suche findet ihr einen Baum, der sich zum fällen eignet.",
-                            en : "" },
-            options: [
-                {   onSuccess: { loot: 3 , afflictions : { exhaustion: 1 , hunger: 0 } },
-                    onFailure: { loot: 3 , afflictions : { exhaustion: 1 , hunger: 1 } }}, // werkzeug
-                {   onSuccess: { loot: 3 , afflictions : { exhaustion: 1 , hunger: 0 } },
-                    onFailure: { loot: 2 , afflictions : { exhaustion: 1 , hunger: 1 } }}, // improv werkzeug
-                {   onSuccess: { loot: 3 , afflictions : { exhaustion: 1 , hunger: 1 } },
-                    onFailure: { loot: 0 , afflictions : { exhaustion: 1 , hunger: 1 } }}, // ohne werkzeug
-            ],
-        },
-        {
-            yieldTierRange: [ 0 , 0 ],
-            description: {  de : "Nach einer langen Suche findet ihr einen Baum, der sich zum fällen eignen sollte.",
-                            en : "" },
-            options: [
-                {   onSuccess: { loot: 2 , afflictions : { exhaustion: 1 , hunger: 0 } },
-                    onFailure: { loot: 2 , afflictions : { exhaustion: 1 , hunger: 1 } }}, // werkzeug
-                {   onSuccess: { loot: 2 , afflictions : { exhaustion: 1 , hunger: 0 } },
-                    onFailure: { loot: 1 , afflictions : { exhaustion: 1 , hunger: 1 } }}, // improv werkzeug
-                {   onSuccess: { loot: 2 , afflictions : { exhaustion: 1 , hunger: 1 } },
-                    onFailure: { loot: 0 , afflictions : { exhaustion: 1 , hunger: 1 } }}, // ohne werkzeug
-            ],
-        },
-    ]
-
-    for (const fragment of fragments) {    
-        AMOD.eventFragment.action.chopping.push(
-            {
-                head : {
-                    title : "",
-                    spawn : {
-                        distanceRange: [ 0 , 8 ], // [0:camp] [1,3:near] [3,5:mid] [4,8:far]
-                        yieldTierRange: [ fragment.yieldTierRange[0] , fragment.yieldTierRange[1] ],  // spawns on tiles with yield<action>Tier [ 0-2 ]
-                        weight   : 5 , disabled: false , cw: false , harsh: false ,
-                        flags : { require: [  ], // tile (and global) must have ALL of these
-                                    exclude: [  ], /* tile (and global) must have NONE of these */},
-                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
-                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
-                        weather : { temp : [ 0 , 4 ], // range [ 0-4 ]: [ Arctic , Freezing , Cold    , Medium , Warm  ]
-                                    prec : [ 0 , 4 ], // range [ 0-4 ]: [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
-                                    wind : [ 0 , 3 ], /* range [ 0-3 ]: [ Calm   , Breeze   , Gale    , Storm          ] */},
-                    }, 
-                },
-                body : {
-                    description : { de : fragment.description.de , 
-                                    en : fragment.description.en },
-                    options : [ // 1-3 options (at least one without keyword needs)
-                        {
-                            description : { de : "Versucht ihn mit passendem Werkzeug zu fällen." , 
-                                            en : "" } ,
-                            challenge : { // (skillcheck and/or keyword) or nothing
-                                skillcheck : { type : "str", difficulty : [ 1 , 2 , 2 , 2 , 2 , 3 ] },
-                                keyword    : { use     : `${Asset.keyword.tool.chopping.icon}`,
-                                                consume : `` },
-                            },
-                            onSuccess : {
-                                description : { de : "Ihr könnt den Baum ohne größere Probleme fällen." , 
-                                                en : "" } ,
-                                effects: {
-                                    yield       : { gathering: 0 , chopping: fragment.options[0].onSuccess.loot , hunting: 0 , ship: 0 },
-                                    afflictions : { exhaustion: fragment.options[0].onSuccess.afflictions.exhaustion , hunger: fragment.options[0].onSuccess.afflictions.hunger , hypothermia: 0 , wound: 0 , // neg means healing
-                                                    cold: 0 , wet: 0 , wind: 0 },
-                                    flags       : { local  : { add : [  ], remove : [  ] },
-                                                    global : { add : [  ], remove : [  ] } },
-                                },
-                            },
-                            onFailure : {
-                                description : { de : "Ihr könnt den Baum unter Anstrengung fällen." , 
-                                                en : "" } ,
-                                effects: {
-                                    yield       : { gathering: 0 , chopping: fragment.options[0].onSuccess.loot , hunting: 0 , ship: 0 },
-                                    afflictions : { exhaustion: fragment.options[0].onFailure.afflictions.exhaustion , hunger: fragment.options[0].onFailure.afflictions.hunger , hypothermia: 0 , wound: 0 , // neg means healing
-                                                    cold: 0 , wet: 0 , wind: 0 },
-                                    flags       : { local  : { add : [  ], remove : [  ] },
-                                                    global : { add : [  ], remove : [  ] } },
-                                },
-                            },
-                        },
-                        {
-                            description : { de : "Versucht ihn mit einem improvisierten Werkzeug zu fällen." , 
-                                            en : "" } ,
-                            challenge : { // (skillcheck and/or keyword) or nothing
-                                skillcheck : { type : "str", difficulty : [ 2 , 3 , 3 , 3 , 4 , 5 ] },
-                                keyword    : { use     : `${Asset.keyword.material.sharp.icon}`,
-                                                consume : `` },
-                            },
-                            onSuccess : {
-                                description : { de : "Ihr könnt den Baum unter Anstrengung fällen." , 
-                                                en : "" } ,
-                                effects: {
-                                    yield       : { gathering: 0 , chopping: fragment.options[1].onSuccess.loot , hunting: 0 , ship: 0 },
-                                    afflictions : { exhaustion: fragment.options[1].onSuccess.afflictions.exhaustion , hunger: fragment.options[1].onSuccess.afflictions.hunger , hypothermia: 0 , wound: 0 , // neg means healing
-                                                    cold: 0 , wet: 0 , wind: 0 },
-                                    flags       : { local  : { add : [  ], remove : [  ] },
-                                                    global : { add : [  ], remove : [  ] } },
-                                },
-                            },
-                            onFailure : {
-                                description : { de : "Ihr könnt unter Anstrengung nur Teile abschlagen." , 
-                                                en : "" } ,
-                                effects: {
-                                    yield       : { gathering: 0 , chopping: fragment.options[1].onSuccess.loot , hunting: 0 , ship: 0 },
-                                    afflictions : { exhaustion: fragment.options[1].onFailure.afflictions.exhaustion , hunger: fragment.options[1].onFailure.afflictions.hunger , hypothermia: 0 , wound: 0 , // neg means healing
-                                                    cold: 0 , wet: 0 , wind: 0 },
-                                    flags       : { local  : { add : [  ], remove : [  ] },
-                                                    global : { add : [  ], remove : [  ] } },
-                                },
-                            },
-                        },
-                        {
-                            description : { de : "Versucht ihn ganz ohne Werkzeug zu fällen." , 
-                                            en : "" } ,
-                            challenge : { // (skillcheck and/or keyword) or nothing
-                                skillcheck : { type : "str", difficulty : [ 5 , 6 , 7 , 8 , 8 , 9 ] },
-                                keyword    : { use     : ``,
-                                                consume : `` },
-                            },
-                            onSuccess : {
-                                description : { de : "Ihr könnt den Baum unter starker Anstrengung umstoßen." , 
-                                                en : "" } ,
-                                effects: {
-                                    yield       : { gathering: 0 , chopping: fragment.options[2].onSuccess.loot , hunting: 0 , ship: 0 },
-                                    afflictions : { exhaustion: fragment.options[2].onSuccess.afflictions.exhaustion , hunger: fragment.options[2].onSuccess.afflictions.hunger , hypothermia: 0 , wound: 0 , // neg means healing
-                                                    cold: 0 , wet: 0 , wind: 0 },
-                                    flags       : { local  : { add : [  ], remove : [  ] },
-                                                    global : { add : [  ], remove : [  ] } },
-                                },
-                            },
-                            onFailure : {
-                                description : { de : "Selbst unter starker Anstrengung bewegt sich der Baum nicht." , 
-                                                en : "" } ,
-                                effects: {
-                                    yield       : { gathering: 0 , chopping: fragment.options[2].onSuccess.loot , hunting: 0 , ship: 0 },
-                                    afflictions : { exhaustion: fragment.options[2].onFailure.afflictions.exhaustion , hunger: fragment.options[2].onFailure.afflictions.hunger , hypothermia: 0 , wound: 0 , // neg means healing
-                                                    cold: 0 , wet: 0 , wind: 0 },
-                                    flags       : { local  : { add : [  ], remove : [  ] },
-                                                    global : { add : [  ], remove : [  ] } },
-                                },
-                            },
-                        },
-                    ],
-                },
-            },
-        );
-    }
-}
-function addBasicActionGatheringFragments() {
-
-    const fragments = [
-        {
-            yieldTierRange: [ 2 , 2 ],
-            description: {  de : "Ihr entdeckt ein dichtes Areal mit reichhaltigem Bewuchs.",
-                            en : "" },
-            options: [
-                {   onSuccess: { loot: 4 , afflictions: { exhaustion: 1 , hunger: 0 } , description: "Ihr findet reichlich viel im Unterholz." },
-                    onFailure: { loot: 3 , afflictions: { exhaustion: 1 , hunger: 0 } , description: "Ihr findet einiges im Unterholz." }}, // viel aufwand
-                {   onSuccess: { loot: 3 , afflictions: { exhaustion: 0 , hunger: 0 } , description: "Ihr findet einiges im Unterholz." },
-                    onFailure: { loot: 2 , afflictions: { exhaustion: 0 , hunger: 0 } , description: "Ihr findet etwas im Unterholz." }}, // wenig aufwand
-            ],
-        },
-        {
-            yieldTierRange: [ 1 , 1 ],
-            description: {  de : "Ihr stoßt auf ein unauffälliges Gebiet mit gewöhnlichem Bewuchs.",
-                            en : "" },
-            options: [
-                {   onSuccess: { loot: 3 , afflictions: { exhaustion: 1 , hunger: 0 } , description: "Ihr findet einiges im Unterholz." },
-                    onFailure: { loot: 2 , afflictions: { exhaustion: 1 , hunger: 0 } , description: "Ihr findet etwas im Unterholz." }}, // viel aufwand
-                {   onSuccess: { loot: 2 , afflictions: { exhaustion: 0 , hunger: 0 } , description: "Ihr findet etwas im Unterholz." },
-                    onFailure: { loot: 1 , afflictions: { exhaustion: 0 , hunger: 0 } , description: "Ihr findet kaum etwas im Unterholz." }}, // wenig aufwand
-            ],
-        },
-        {
-            yieldTierRange: [ 0 , 0 ],
-            description: {  de : "Ihr erreicht einen kargen Abschnitt mit nur spärlichem Bewuchs.",
-                            en : "" },
-            options: [
-                {   onSuccess: { loot: 2 , afflictions: { exhaustion: 1 , hunger: 0 } , description: "Ihr findet mit Mühe etwas Brauchbares." },
-                    onFailure: { loot: 1 , afflictions: { exhaustion: 1 , hunger: 0 } , description: "Ihr findet fast gar nichts." }}, // viel aufwand
-                {   onSuccess: { loot: 1 , afflictions: { exhaustion: 0 , hunger: 0 } , description: "Ihr findet ein paar spärliche Reste." },
-                    onFailure: { loot: 0 , afflictions: { exhaustion: 0 , hunger: 0 } , description: "Ihr findet rein gar nichts." }}, // wenig aufwand
-            ],
-        },
-    ]
-
-    for (const fragment of fragments) {    
-        AMOD.eventFragment.action.gathering.push(
-            {
-                head : {
-                    title : "",
-                    spawn : {
-                        distanceRange: [ 0 , 8 ], // [0:camp] [1,3:near] [3,5:mid] [4,8:far]
-                        yieldTierRange: [ fragment.yieldTierRange[0] , fragment.yieldTierRange[1] ],  // spawns on tiles with yield<action>Tier [ 0-2 ]
-                        weight   : 5 , disabled: false , cw: false , harsh: false ,
-                        flags : { require: [  ], // tile (and global) must have ALL of these
-                                    exclude: [  ], /* tile (and global) must have NONE of these */},
-                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
-                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
-                        weather : { temp : [ 0 , 4 ], // range [ 0-4 ]: [ Arctic , Freezing , Cold    , Medium , Warm  ]
-                                    prec : [ 0 , 4 ], // range [ 0-4 ]: [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
-                                    wind : [ 0 , 3 ], /* range [ 0-3 ]: [ Calm   , Breeze   , Gale    , Storm          ] */},
-                    }, 
-                },
-                body : {
-                    description : { de : fragment.description.de , 
-                                    en : fragment.description.en },
-                    options : [ // 1-3 options (at least one without keyword needs)
-                        {
-                            description : { de : "Sucht den Boden und Streucher intensiv ab." , 
-                                            en : "" } ,
-                            challenge : { // (skillcheck and/or keyword) or nothing
-                                skillcheck : { type : "wis", difficulty : [ 1 , 2 , 2 , 2 , 2 , 3 ] },
-                                keyword    : { use     : `${Asset.keyword.tool.chopping.icon}`,
-                                                consume : `` },
-                            },
-                            onSuccess : {
-                                description : { de : fragment.options[0].onSuccess.description , 
-                                                en : "" } ,
-                                effects: {
-                                    yield       : { gathering: fragment.options[0].onSuccess.loot , chopping: 0 , hunting: 0 , ship: 0 },
-                                    afflictions : { exhaustion: fragment.options[0].onSuccess.afflictions.exhaustion , hunger: fragment.options[0].onSuccess.afflictions.hunger , hypothermia: 0 , wound: 0 , // neg means healing
-                                                    cold: 0 , wet: 0 , wind: 0 },
-                                    flags       : { local  : { add : [  ], remove : [  ] },
-                                                    global : { add : [  ], remove : [  ] } },
-                                },
-                            },
-                            onFailure : {
-                                description : { de : fragment.options[0].onFailure.description , 
-                                                en : "" } ,
-                                effects: {
-                                    yield       : { gathering: fragment.options[0].onSuccess.loot , chopping: 0 , hunting: 0 , ship: 0 },
-                                    afflictions : { exhaustion: fragment.options[0].onFailure.afflictions.exhaustion , hunger: fragment.options[0].onFailure.afflictions.hunger , hypothermia: 0 , wound: 0 , // neg means healing
-                                                    cold: 0 , wet: 0 , wind: 0 },
-                                    flags       : { local  : { add : [  ], remove : [  ] },
-                                                    global : { add : [  ], remove : [  ] } },
-                                },
-                            },
-                        },
-                        {
-                            description : { de : "Sucht den Boden und Streucher oberflächig ab." , 
-                                            en : "" } ,
-                            challenge : { // (skillcheck and/or keyword) or nothing
-                                skillcheck : { type : "wis", difficulty : [ 1 , 2 , 2 , 2 , 2 , 3 ] },
-                                keyword    : { use     : `${Asset.keyword.material.sharp.icon}`,
-                                                consume : `` },
-                            },
-                            onSuccess : {
-                                description : { de : fragment.options[1].onSuccess.description , 
-                                                en : "" } ,
-                                effects: {
-                                    yield       : { gathering: fragment.options[1].onSuccess.loot , chopping: 0 , hunting: 0 , ship: 0 },
-                                    afflictions : { exhaustion: fragment.options[1].onSuccess.afflictions.exhaustion , hunger: fragment.options[1].onSuccess.afflictions.hunger , hypothermia: 0 , wound: 0 , // neg means healing
-                                                    cold: 0 , wet: 0 , wind: 0 },
-                                    flags       : { local  : { add : [  ], remove : [  ] },
-                                                    global : { add : [  ], remove : [  ] } },
-                                },
-                            },
-                            onFailure : {
-                                description : { de : fragment.options[1].onFailure.description , 
-                                                en : "" } ,
-                                effects: {
-                                    yield       : { gathering: fragment.options[1].onSuccess.loot , chopping: 0 , hunting: 0 , ship: 0 },
-                                    afflictions : { exhaustion: fragment.options[1].onFailure.afflictions.exhaustion , hunger: fragment.options[1].onFailure.afflictions.hunger , hypothermia: 0 , wound: 0 , // neg means healing
-                                                    cold: 0 , wet: 0 , wind: 0 },
-                                    flags       : { local  : { add : [  ], remove : [  ] },
-                                                    global : { add : [  ], remove : [  ] } },
-                                },
-                            },
-                        },
-                    ],
-                },
-            },
-        );
-    }
-}
-function addBasicActionHuntingFragments() {
-
-    const fragments = [
-        {
-            weight: 2,
-            yieldTierRange: [ 2 , 2 ],
-            description: {  de : "Ihr könnt keine Tier zum erjagen entdecken.",
-                            en : "" },
-            options: [
-                {   onSuccess: { afflictions: { exhaustion: 0 , hunger: 0 } , description: "Ihr entdeckt zahlreiche frische Fährten." },
-                    onFailure: { afflictions: { exhaustion: 0 , hunger: 0 } , description: "" }},
-            ],
-        },
-        {
-            weight: 5,
-            yieldTierRange: [ 1 , 1 ],
-            description: {  de : "Ihr könnt keine Tier zum erjagen entdecken.",
-                            en : "" },
-            options: [
-                {   onSuccess: { afflictions: { exhaustion: 0 , hunger: 0 } , description: "Ihr entdeckt ein paar Fährten." },
-                    onFailure: { afflictions: { exhaustion: 0 , hunger: 0 } , description: "" }},
-            ],
-        },
-        {
-            weight: 10,
-            yieldTierRange: [ 0 , 0 ],
-            description: {  de : "Ihr könnt keine Tier zum erjagen entdecken.",
-                            en : "" },
-            options: [
-                {   onSuccess: { afflictions: { exhaustion: 0 , hunger: 0 } , description: "Ihr entdeckt kaum Fährten." },
-                    onFailure: { afflictions: { exhaustion: 0 , hunger: 0 } , description: "" }},
-            ],
-        },
-    ]
-
-    for (const fragment of fragments) {    
-        AMOD.eventFragment.action.hunting.push(
-            {
-                head : {
-                    title : "",
-                    spawn : {
-                        distanceRange: [ 0 , 8 ], // [0:camp] [1,3:near] [3,5:mid] [4,8:far]
-                        yieldTierRange: [ fragment.yieldTierRange[0] , fragment.yieldTierRange[1] ],  // spawns on tiles with yield<action>Tier [ 0-2 ]
-                        weight   : fragment.weight , disabled: false , cw: false , harsh: false ,
-                        flags : { require: [  ], // tile (and global) must have ALL of these
-                                    exclude: [  ], /* tile (and global) must have NONE of these */},
-                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
-                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
-                        weather : { temp : [ 0 , 4 ], // range [ 0-4 ]: [ Arctic , Freezing , Cold    , Medium , Warm  ]
-                                    prec : [ 0 , 4 ], // range [ 0-4 ]: [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
-                                    wind : [ 0 , 3 ], /* range [ 0-3 ]: [ Calm   , Breeze   , Gale    , Storm          ] */},
-                    }, 
-                },
-                body : {
-                    description : { de : fragment.description.de , 
-                                    en : fragment.description.en },
-                    options : [ // 1-3 options (at least one without keyword needs)
-                        {
-                            description : { de : "Versucht dennoch Fährten zu entdecken." , 
-                                            en : "" } ,
-                            challenge : { // (skillcheck and/or keyword) or nothing
-                                skillcheck : { type : "wis", difficulty : [ 1 , 2 , 2 , 2 , 3 , 3 , 4] },
-                                keyword    : { use     : ``,
-                                                consume : `` },
-                            },
-                            onSuccess : {
-                                description : { de : fragment.options[0].onSuccess.description , 
-                                                en : "" } ,
-                                effects: {
-                                    yield       : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
-                                    afflictions : { exhaustion: fragment.options[0].onSuccess.afflictions.exhaustion , hunger: fragment.options[0].onSuccess.afflictions.hunger , hypothermia: 0 , wound: 0 , // neg means healing
-                                                    cold: 0 , wet: 0 , wind: 0 },
-                                    flags       : { local  : { add : [  ], remove : [  ] },
-                                                    global : { add : [  ], remove : [  ] } },
-                                },
-                            },
-                            onFailure : {
-                                description : { de : fragment.options[0].onFailure.description , 
-                                                en : "" } ,
-                                effects: {
-                                    yield       : { gathering: 0 , chopping: 0 , hunting: 0 , ship: 0 },
-                                    afflictions : { exhaustion: fragment.options[0].onFailure.afflictions.exhaustion , hunger: fragment.options[0].onFailure.afflictions.hunger , hypothermia: 0 , wound: 0 , // neg means healing
-                                                    cold: 0 , wet: 0 , wind: 0 },
-                                    flags       : { local  : { add : [  ], remove : [  ] },
-                                                    global : { add : [  ], remove : [  ] } },
-                                },
-                            },
-                        },
-                    ],
-                },
-            },
-        );
-    }
-}
 
 
 
 addBasicWeatherFragments();
-
 addBasicTravelFragments();
 
-addBasicActionChoppingFragments();
-addBasicActionGatheringFragments();
-addBasicActionHuntingFragments();
+
 
 export default AMOD;
