@@ -62,7 +62,7 @@ S H I P
 // ---------------------
 {   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
     name:{ de:"Leinenhemd", en:"Linen clothing" }, weight: 0 ,
-    flavor:{ de:"", en:"" },
+    flavor:{ de:"Grobes, graues Leinenhemd", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
             coldProt : 1 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
@@ -87,7 +87,7 @@ S H I P
 },
 {   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
     name:{ de:"Wollhemd", en:"" }, weight: 0 ,
-    flavor:{ de:"", en:"" },
+    flavor:{ de:"Warmer, robuster Kälteschutz", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
             coldProt : 1 , wetProt : 1 , windProt : 0 , storage : 0 , dmgProt : 0 ,
@@ -112,7 +112,7 @@ S H I P
 },
 {   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
     name:{ de:"Canvasjacke", en:"" }, weight: 0 ,
-    flavor:{ de:"", en:"" },
+    flavor:{ de:"Diente Seeleuten, Fischern und Arbeitern als extrem reißfester, wind- und wetterfester Schutz", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
             coldProt : 1 , wetProt : 2 , windProt : 1 , storage : 0 , dmgProt : 0 ,
@@ -136,8 +136,8 @@ S H I P
     },
 },
 {   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
-    name:{ de:"Lederjacke", en:"" }, weight: 0 ,
-    flavor:{ de:"", en:"" },
+    name:{ de:"Lederweste", en:"" }, weight: 0 ,
+    flavor:{ de:"robuste, schützende Arbeitskleidung", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
             coldProt : 1 , wetProt : 1 , windProt : 0 , storage : 0 , dmgProt : 1 ,
@@ -162,7 +162,7 @@ S H I P
 },
 {   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
     name:{ de:"Ledermantel", en:"" }, weight: 0 ,
-    flavor:{ de:"", en:"" },
+    flavor:{ de:"extreme Haltbarkeit bei harter körperlicher Arbei", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
             coldProt : 1 , wetProt : 2 , windProt : 1 , storage : 0 , dmgProt : 1 ,
@@ -865,7 +865,7 @@ C R A F T
 *****/
 {   layout: ItemCard , type:Asset.card.item.craft , qty: 1 ,
     name:{ de:"Messer", en:"" }, weight: 0 ,
-    flavor:{ de:"", en:"" },
+    flavor:{ de:"ein kleines, kurzes improvisiertes Messer", en:"" },
     keyword : {
         craft : { _isComplex : true ,
             clothing : {    coldProt   : 0 , wetProt     : 0 , windProt    : 0 , storage   : 0 , dmgProt : 0 },
@@ -883,13 +883,13 @@ C R A F T
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
+            crafting   : 1 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
+            meleeLight : 1 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 1 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -918,14 +918,14 @@ C R A F T
             coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
-        tool : {  _isFragile : false ,
+        tool : {  _isFragile : true ,
             crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
             meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
-            custom : `` },
+            custom : `+2 ${Asset.tile.action.hunting.icon} pro Coin (max 6)` },
 
         material : { _isFragile : false ,
-            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 1 , shaft : 1 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -936,7 +936,7 @@ C R A F T
     },
 },
 {   layout: ItemCard , type:Asset.card.item.craft , qty: 1 ,
-    name:{ de:"Axt", en:"" }, weight: 0 ,
+    name:{ de:"improvisierte Axt", en:"" }, weight: 1 ,
     flavor:{ de:"", en:"" },
     keyword : {
         craft : { _isComplex : true ,
@@ -945,7 +945,7 @@ C R A F T
                             lookout    : 0 , navigation  : 0 , 
                             meleeLight : 0 , meleeHeavy  : 0 , ranged      : 0 , magic     : 0 },
             material : {    structural : 0 , metallic    : 0 , sharp       : 1 , shaft     : 1 ,
-                            cordage    : 0 , cover       : 0 , adhesive    : 0 , flammable : 0 },
+                            cordage    : 0 , cover       : 0 , adhesive    : 0 , flammable : 1 },
             supply   : {    exhaustion : 0 , hunger      : 0 , hypothermia : 0 , wound     : 0 , 
                             herb       : 0 , nut         : 0 , root        : 0 , mushroom  : 0 , berry   : 0 },
             custom : `${Asset.keyword.material.cordage.icon}/${Asset.keyword.material.adhesive.icon}` },
@@ -955,14 +955,14 @@ C R A F T
             custom : `` },
 
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
+            crafting   : 0 , chopping    : 1 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
-            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
+            meleeLight : 0 , meleeHeavy  : 1 , ranged : 0 , magic : 0 ,
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
-            cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 1 , shaft : 1 ,
+            cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
         supply : { _isPerishable : false ,
@@ -1002,13 +1002,13 @@ C R A F T
             custom : `` },
 
         supply : { _isPerishable : false ,
-            exhaustion : 0 , hunger : 0 , hypothermia : 0 , wound    : 0 , 
+            exhaustion : 0 , hunger : 0 , hypothermia : 0 , wound    : 1 , 
             herb       : 0 , nut    : 0 , root        : 0 , mushroom : 0 , berry : 0 ,
             custom : `` },
     },
 },
 {   layout: ItemCard , type:Asset.card.item.craft , qty: 1 ,
-    name:{ de:"Struktur", en:"" }, weight: 0 ,
+    name:{ de:"Brett", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
         craft : { _isComplex : false ,
@@ -1033,8 +1033,8 @@ C R A F T
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
-            cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
+            structural : 1 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
         supply : { _isPerishable : false ,
@@ -1044,7 +1044,7 @@ C R A F T
     },
 },
 {   layout: ItemCard , type:Asset.card.item.craft , qty: 1 ,
-    name:{ de:"Kleidung", en:"" }, weight: 0 ,
+    name:{ de:"Leinenhemd", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
         craft : { _isComplex : false ,
@@ -1059,7 +1059,7 @@ C R A F T
             custom : `` },
 
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
+            coldProt : 1 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
@@ -1070,7 +1070,7 @@ C R A F T
 
         material : { _isFragile : false ,
             structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
-            cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
+            cordage    : 1 , cover : 0 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
         supply : { _isPerishable : false ,
@@ -1095,7 +1095,7 @@ C R A F T
             custom : `` },
 
         clothing : { _isFragile : false ,
-            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 1 , dmgProt : 0 ,
             custom : `` },
 
         tool : {  _isFragile : false ,
@@ -1106,7 +1106,7 @@ C R A F T
 
         material : { _isFragile : false ,
             structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
-            cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
+            cordage    : 1 , cover : 0 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
         supply : { _isPerishable : false ,
@@ -1142,7 +1142,7 @@ C R A F T
 
         material : { _isFragile : false ,
             structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
-            cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
+            cordage    : 1 , cover : 0 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
         supply : { _isPerishable : false ,
@@ -1152,7 +1152,7 @@ C R A F T
     },
 },
 {   layout: ItemCard , type:Asset.card.item.craft , qty: 1 ,
-    name:{ de:"Naturfaden", en:"" }, weight: 0 ,
+    name:{ de:"Bandage", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
         craft : { _isComplex : true ,
@@ -1178,11 +1178,11 @@ C R A F T
 
         material : { _isFragile : false ,
             structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
-            cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
+            cordage    : 1 , cover : 0 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
         supply : { _isPerishable : false ,
-            exhaustion : 0 , hunger : 0 , hypothermia : 0 , wound    : 0 , 
+            exhaustion : 0 , hunger : 0 , hypothermia : 0 , wound    : 1 , 
             herb       : 0 , nut    : 0 , root        : 0 , mushroom : 0 , berry : 0 ,
             custom : `` },
     },
