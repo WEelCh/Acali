@@ -253,9 +253,9 @@ const Locale = {
   },
 
   keyword : {
-    custom : { text : function(){return Locale.keyword.custom[APPLOC]},
-      de : "Spezial",
-      en : "Special",
+    craft : { text : function(){return Locale.keyword.craft[APPLOC]},
+      de : "Herstellen",
+      en : "Craften",
     },
     clothing : { text : function(){return Locale.keyword.clothing[APPLOC]},
       de : "Kleidung",

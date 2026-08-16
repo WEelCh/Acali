@@ -11,12 +11,14 @@ function ItemCard ( card , ID ) {
         `; else return ""}();
         
     parsed_categories = {
+        craft : "",
         clothing : "",
         tool : "",
         material : "",
         supply : "",
     };
     for ( category in parsed_categories ){
+        if ( category == "craft") { continue }
         specialCondition = '';
         for (key in Asset.keyword[category]){
             // handel the "_is..." special condition
@@ -40,6 +42,33 @@ function ItemCard ( card , ID ) {
                                             ${specialCondition}
                                             ${parsed_categories[category]}</div> `; }
     }
+    // craft
+    specialCondition = '';
+    for ( const category in card.keyword.craft ) {
+        console.log(category)
+
+        if ( category.startsWith('_is') ) {
+            if ( card.keyword.craft._isComplex ) {
+                specialCondition = Asset.keyword.craft._isComplex.icon;
+            } continue }
+
+        if ( category == "custom" ) {
+            if (card.keyword.craft.custom) {
+                const style = parsed_categories.craft ? ' style="margin-top:0"' : ''
+                parsed_categories.craft += /*html*/`<h6${style}>${ card.keyword.craft.custom }</h6>`
+            } continue
+        }
+
+        for ( const keyword in card.keyword.craft[category] ) {
+            parsed_categories.craft += Asset.keyword[category][keyword].icon.repeat(card.keyword.craft[category][keyword])
+        }
+    }
+    if ( parsed_categories.craft.length > 0 ){
+        parsed_categories.craft = /*html*/`
+                                    <div class="effectbox">
+                                    <h1 class="headline">${Locale.keyword.craft.text()}</h1>
+                                    ${specialCondition}
+                                    ${parsed_categories.craft}</div> `; }
 
     flavor = "";
     if ( card?.flavor[APPLOC] ) {

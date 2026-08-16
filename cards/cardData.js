@@ -19,7 +19,7 @@ D E B U G
             custom : `` },
 
         material : { _isFragile : true ,
-            structural : 1 , hard  : 1 , metallic : 1 , sharp     : 1 , shaft : 1 ,
+            structural : 1 , metallic : 1 , sharp     : 1 , shaft : 1 ,
             cordage    : 1 , cover : 1 , adhesive : 1 , flammable : 1 ,
             custom : `` },
 
@@ -43,8 +43,8 @@ D E B U G
             meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
 
-        material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+        material : { _isFragile : true ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -75,7 +75,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 1 , cover : 0 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
@@ -100,7 +100,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 1 , cover : 1 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -125,7 +125,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 1 , cover : 1 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
@@ -150,7 +150,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 1 , cover : 1 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -175,7 +175,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 1 , cover : 1 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -203,7 +203,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 1 , metallic : 1 , sharp     : 1 , shaft : 1 ,
+            structural : 0 , metallic : 1 , sharp     : 1 , shaft : 1 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
@@ -228,7 +228,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 1 , metallic : 1 , sharp     : 1 , shaft : 1 ,
+            structural : 0 , metallic : 1 , sharp     : 1 , shaft : 1 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
@@ -253,7 +253,7 @@ S H I P
             custom : `+1 ${Asset.tile.action.chopping.icon}` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 1 , metallic : 1 , sharp     : 1 , shaft : 1 ,
+            structural : 0 , metallic : 1 , sharp     : 1 , shaft : 1 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
@@ -278,7 +278,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 1 , metallic : 1 , sharp     : 1 , shaft : 1 ,
+            structural : 0 , metallic : 1 , sharp     : 1 , shaft : 1 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
@@ -305,7 +305,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 1 , metallic : 1 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 1 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -330,7 +330,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 1 , cover : 0 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
@@ -358,7 +358,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 1 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 1 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -383,7 +383,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 1 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 1 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -408,7 +408,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
@@ -433,7 +433,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 1 , cover : 1 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
@@ -458,7 +458,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 1 , cover : 0 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
@@ -483,7 +483,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 1 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 1 ,
+            structural : 1 , metallic : 0 , sharp     : 0 , shaft : 1 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
@@ -508,7 +508,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 1 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 1 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 1 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
@@ -536,7 +536,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 1 , sharp     : 1 , shaft : 0 ,
+            structural : 0 , metallic : 1 , sharp     : 1 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -561,7 +561,7 @@ S H I P
             custom : `+1 ${Asset.tile.action.hunting.icon}` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 1 , sharp     : 1 , shaft : 0 ,
+            structural : 0 , metallic : 1 , sharp     : 1 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -586,7 +586,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 1 , metallic : 1 , sharp     : 1 , shaft : 0 ,
+            structural : 0 , metallic : 1 , sharp     : 1 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -614,7 +614,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 1 , cover : 0 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
@@ -639,7 +639,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 1 , metallic : 1 , sharp     : 1 , shaft : 0 ,
+            structural : 0 , metallic : 1 , sharp     : 1 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -664,7 +664,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
@@ -689,7 +689,7 @@ S H I P
             custom : `${Asset.keyword.supply.exhaustion.icon} pro Tag` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 1 ,
             custom : `${Asset.condition.exhaustion.icon} (alle) wenn verbrannt` },
 
@@ -717,7 +717,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -742,7 +742,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -767,7 +767,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -792,7 +792,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -817,7 +817,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -842,7 +842,7 @@ S H I P
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -867,6 +867,17 @@ C R A F T
     name:{ de:"CRAFTING", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
+        craft : { _isComplex : true ,
+            clothing : {    coldProt   : 0 , wetProt     : 0 , windProt    : 0 , storage   : 0 , dmgProt : 0 },
+            tool     : {    crafting   : 0 , chopping    : 0 , kindle      : 0 , light     : 0 ,
+                            lookout    : 0 , navigation  : 0 , 
+                            meleeLight : 0 , meleeHeavy  : 0 , ranged      : 0 , magic     : 0 },
+            material : {    structural : 0 , metallic    : 0 , sharp       : 0 , shaft     : 0 ,
+                            cordage    : 0 , cover       : 0 , adhesive    : 0 , flammable : 0 },
+            supply   : {    exhaustion : 0 , hunger      : 0 , hypothermia : 0 , wound     : 0 , 
+                            herb       : 0 , nut         : 0 , root        : 0 , mushroom  : 0 , berry   : 0 },
+            custom : `` },
+
         clothing : { _isFragile : false ,
             coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
@@ -878,7 +889,7 @@ C R A F T
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -906,7 +917,7 @@ F O R A G E
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 1 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
@@ -931,7 +942,7 @@ F O R A G E
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -956,7 +967,7 @@ F O R A G E
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -981,7 +992,7 @@ F O R A G E
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -1006,7 +1017,7 @@ F O R A G E
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -1031,7 +1042,7 @@ F O R A G E
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -1056,7 +1067,7 @@ F O R A G E
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 1 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 1 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
@@ -1081,7 +1092,7 @@ F O R A G E
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 1 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 1 ,
+            structural : 1 , metallic : 0 , sharp     : 0 , shaft : 1 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
@@ -1106,7 +1117,7 @@ F O R A G E
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 1 , metallic : 0 , sharp     : 1 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 1 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -1129,7 +1140,7 @@ F O R A G E
             meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 1 , cover : 0 , adhesive : 0 , flammable : 1 ,
             custom : `` },
         supply : { _isPerishable : false ,
@@ -1151,7 +1162,7 @@ F O R A G E
             meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 1 , adhesive : 1 , flammable : 1 ,
             custom : `` },
         supply : { _isPerishable : false ,
@@ -1173,7 +1184,7 @@ F O R A G E
             meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 1 , adhesive : 0 , flammable : 1 ,
             custom : `` },
         supply : { _isPerishable : false ,
@@ -1195,7 +1206,7 @@ F O R A G E
             meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 1 , cover : 0 , adhesive : 0 , flammable : 1 ,
             custom : `` },
         supply : { _isPerishable : false ,
@@ -1222,7 +1233,7 @@ H U N T
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -1247,7 +1258,7 @@ H U N T
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 1 , shaft : 1 ,
+            structural : 0 , metallic : 0 , sharp     : 1 , shaft : 1 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -1272,7 +1283,7 @@ H U N T
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 1 , cover : 1 , adhesive : 0 , flammable : 0 ,
             custom : `` },
 
@@ -1297,7 +1308,7 @@ H U N T
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 1 , cover : 1 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
@@ -1322,7 +1333,7 @@ H U N T
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 1 , flammable : 1 ,
             custom : `` },
 
@@ -1347,7 +1358,7 @@ H U N T
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 1 , cover : 0 , adhesive : 1 , flammable : 1 ,
             custom : `` },
 
@@ -1375,7 +1386,7 @@ W O O D
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 1 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 1 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
@@ -1400,7 +1411,7 @@ W O O D
             custom : `` },
 
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 1 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 1 ,
             cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 1 ,
             custom : `` },
 
@@ -1423,7 +1434,7 @@ W O O D
             meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
         material : { _isFragile : true ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
             cordage    : 1 , cover : 1 , adhesive : 0 , flammable : 1 ,
             custom : `` },
         supply : { _isPerishable : false ,
@@ -1445,7 +1456,7 @@ W O O D
             meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
         material : { _isFragile : false ,
-            structural : 0 , hard  : 0 , metallic : 0 , sharp     : 0 , shaft : 1 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 1 ,
             cordage    : 0 , cover : 0 , adhesive : 1 , flammable : 1 ,
             custom : `` },
         supply : { _isPerishable : false ,
@@ -1466,136 +1477,135 @@ C H A R A C T E R
 Kolonist
 *****/
     {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
-        name:{de:"Bauer"},
-        ability: [  `Besser gathering`,
+        name:{de:"Landarbeiter"}, // Era-appropriate for a general gatherer
+        ability: [  `+ ${Asset.tile.action.gathering.icon}`,
                     ``,
                     ``,
                     `` ],
-        crafting: [ ``,
-                    ``,
+        crafting: [ `Messer`,
+                    `${Asset.keyword.material.sharp.icon} ${Asset.keyword.material.cordage.icon}`,
                     ``,
                     `` ],
-        passion: [ 1 , 0 , 0 ], // STR ; DEX ; WIS
+        passion: [ 1 , 0 , 0 ], // STR 
     },
     {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
-        name:{de:"Kräuterkundler"},
+        name:{de:"Wildhüter"}, // Gamekeeper fits the hunting/trapping theme perfectly
+        ability: [  `+ ${Asset.tile.action.hunting.icon}`,
+                    ``,
+                    ``,
+                    `` ],
+        crafting: [ `Falle`,
+                    `${Asset.keyword.material.shaft.icon} ${Asset.keyword.material.cordage.icon} ${Asset.keyword.material.sharp.icon}`,
+                    ``,
+                    `` ],
+        passion: [ 0 , 1 , 0 ], // Shifted to DEX: Trapping is finesse and patience
+    },
+    {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
+        name:{de:"Holzfäller"},
+        ability: [  `+ ${Asset.tile.action.chopping.icon}`,
+                    ``,
+                    ``,
+                    `` ],
+        crafting: [ `Axt`,
+                    `${Asset.keyword.material.shaft.icon} ${Asset.keyword.material.cordage.icon}/${Asset.keyword.material.adhesive.icon} ${Asset.keyword.material.sharp.icon}`,
+                    ``,
+                    `` ],
+        passion: [ 1 , 0 , 0 ], // STR
+    },
+    {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
+        name:{de:"Botaniker"},
         ability: [  `Einmal pro Runde:`,
                     `Wenn vorhanden: `,
                     `sieh einen`,
                     `${Asset.keyword.supply.herb.icon}${Asset.keyword.supply.nut.icon}${Asset.keyword.supply.root.icon}${Asset.keyword.supply.mushroom.icon}${Asset.keyword.supply.berry.icon} Effekt` ],
-        crafting: [ `Heilextrakt aus 2 mystery food`,
-                    ``,
-                    ``,
+        crafting: [ `Pflanzenextrakt`,
+                    `${Asset.keyword.supply.herb.icon}/${Asset.keyword.supply.nut.icon}/${Asset.keyword.supply.root.icon}/${Asset.keyword.supply.mushroom.icon}/${Asset.keyword.supply.berry.icon}`,
+                    `${Asset.keyword.supply.herb.icon}/${Asset.keyword.supply.nut.icon}/${Asset.keyword.supply.root.icon}/${Asset.keyword.supply.mushroom.icon}/${Asset.keyword.supply.berry.icon}`,
                     `` ],
-        passion: [ 0 , 0 , 1 ], // STR ; DEX ; WIS
+        passion: [ 0 , 0 , 1 ], // WIS
     },
     {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
-        name:{de:"Zimmermann"},
-        ability: [  `kann Unterschlüpfe billiger bauen`,
-                    ``,
+        name:{de:"Zimmermann"}, // Carpenter
+        ability: [  `Unterschlupf`,
+                    `verbessern:`,
+                    `- ${Asset.keyword.material.structural.icon}`,
+                    `` ],
+        crafting: [ `Struktur`,
+                    `${Asset.keyword.material.shaft.icon} ${Asset.keyword.material.shaft.icon}`,
                     ``,
                     `` ],
-        crafting: [ `structure aus stock etc`,
-                    ``,
-                    ``,
-                    `` ],
-        passion: [ 1 , 0 , 0 ], // STR ; DEX ; WIS
+        passion: [ 1 , 0 , 0 ], // STR 
     },
     {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
-        name:{de:"Schmied"},
+        name:{de:"Schneider"}, // Tailor
         ability: [  ``,
                     ``,
                     ``,
                     `` ],
-        crafting: [ `kaputtes werkzeug reparieren`,
-                    ``,
+        crafting: [ `Kleidung`,
+                    `${Asset.keyword.material.cover.icon} ${Asset.keyword.material.cordage.icon} ${Asset.keyword.material.cordage.icon}`,
                     ``,
                     `` ],
-        passion: [ 1 , 0 , 0 ], // STR ; DEX ; WIS
+        passion: [ 0 , 1 , 0 ], // Shifted to DEX: Sewing/weaving requires dexterity
     },
     {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
-        name:{de:"Jäger"},
-        ability: [  `mehr jagt loot`,
-                    ``,
-                    ``,
-                    `` ],
-        crafting: [ `falle craften`,
-                    ``,
-                    ``,
-                    `` ],
-        passion: [ 0 , 1 , 0 ], // STR ; DEX ; WIS
-    },
-    {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
-        name:{de:"Schneider"},
+        name:{de:"Gerber"}, // Tanner/Leatherworker
         ability: [  ``,
                     ``,
                     ``,
                     `` ],
-        crafting: [ `faden aus nix`,
+        crafting: [ `Beutel`,
+                    `${Asset.keyword.material.cover.icon} ${Asset.keyword.material.cordage.icon}`,
+                    ``,
+                    `` ],
+        passion: [ 0 , 1 , 0 ], // DEX
+    },
+    {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
+        name:{de:"Seiler"}, // Ropemaker
+        ability: [  ``,
+                    ``,
+                    ``,
+                    `` ], // Rewards gathering raw materials for threads
+        crafting: [ `Naturfaden`,
                     ``,
                     ``,
                     `` ],
-        passion: [ 0 , 1 , 0 ], // STR ; DEX ; WIS
+        passion: [ 0 , 1 , 0 ], // DEX
     },
     {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
-        name:{de:"Chirurg"},
+        name:{de:"Feldscher"}, // 18th-century field surgeon/medic
         ability: [  `Einmal pro Runde:`,
                     `Nutze ${Asset.keyword.material.sharp.icon} und`,
                     `verbrauche ${Asset.keyword.material.cordage.icon}/${Asset.keyword.material.cover.icon}:`,
-                    `jemand erhält ${Asset.keyword.supply.wound.icon}` ],
+                    `jemand ${Asset.keyword.supply.wound.icon}` ], // Changed "erhält" (receives wound) to "erholt" (heals wound) assuming a typo
+        crafting: [ `Bandage`,
+                    `${Asset.keyword.material.cordage.icon} ${Asset.keyword.material.cover.icon}`,
+                    ``,
+                    `` ],
+        passion: [ 0 , 1 , 0 ], // Shifted to DEX: Surgery is a steady hand, not just book smarts
+    },
+    {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
+        name:{de:"Pfarrer"}, // Priest/Pastor
+        ability: [  `Einmal pro Runde:`,
+                    `Selber ${Asset.condition.exhaustion.icon}${Asset.condition.exhaustion.icon}`,
+                    `Alle anderen ${Asset.keyword.supply.exhaustion.icon}`,
+                    `` ], // Added "entfernen" for clarity
         crafting: [ ``,
                     ``,
                     ``,
                     `` ],
-        passion: [ 0 , 0 , 1 ], // STR ; DEX ; WIS
+        passion: [ 0 , 0 , 1 ], // WIS
     },
     {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
-        name:{de:"Priester"},
-        ability: [  `heile erschöpfung`,
-                    ``,
-                    ``,
-                    `` ],
-        crafting: [ ``,
-                    ``,
-                    ``,
-                    `` ],
-        passion: [ 0 , 0 , 1 ], // STR ; DEX ; WIS
-    },
-    {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
-        name:{de:"Kaufmann"},
-        ability: [  ``,
-                    ``,
-                    ``,
-                    `` ],
-        crafting: [ ``,
-                    ``,
-                    ``,
-                    `` ],
-        passion: [ 0 , 0 , 1 ], // STR ; DEX ; WIS
-    },
-    {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
-        name:{de:"Handwerker"},
-        ability: [  ``,
-                    ``,
-                    ``,
-                    `` ],
-        crafting: [ ``,
-                    ``,
-                    ``,
-                    `` ],
-        passion: [ 0 , 1 , 0 ], // STR ; DEX ; WIS
-    },
-    {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
-        name:{de:"Koch"},
+        name:{de:"Wirt"}, // Innkeeper/Tavernkeep for the colonist cook
         ability: [  `Für das erste ${Asset.keyword.supply.hunger.icon}`,
                     `pro Runde, ein`,
-                    `weiteres ${Asset.keyword.supply.hunger.icon} für`,
-                    `jemanden` ],
+                    `weiteres ${Asset.keyword.supply.hunger.icon} für jemanden` ],
         crafting: [ ``,
                     ``,
                     ``,
                     `` ],
-        passion: [ 0 , 0 , 1 ], // STR ; DEX ; WIS
+        passion: [ 0 , 0 , 1 ], // WIS
     },
 /***** 
 C H A R A C T E R
@@ -1611,55 +1621,66 @@ Seefahrer
                     ``,
                     ``,
                     `` ],
-        passion: [ 0 , 0 , 1 ], // STR ; DEX ; WIS
+        passion: [ 0 , 0 , 1 ], // WIS
     },
     {   layout: CharacterCard, type:Asset.card.character.seaman, qty:1,
         name:{de:"Erster Offizier"},
-        ability: [  `Nach Abstimmung:`,
-                    `${Asset.card.character.seaman.icon} stimmen wie du,`,
-                    `alle Umgestimmten`,
-                    `und du: ${Asset.condition.exhaustion.icon}` ],
+        ability: [  `Einmal pro Runde:`,
+                    `Ein ${Asset.card.character.seaman.icon} tut`,
+                    `was du willst`,
+                    `Beide ${Asset.condition.exhaustion.icon}` ],
         crafting: [ ``,
                     ``,
                     ``,
                     `` ],
-        passion: [ 0 , 0 , 1 ], // STR ; DEX ; WIS
+        passion: [ 1 , 0 , 0 ], // STR: Enforcing physical order
     },
     {   layout: CharacterCard, type:Asset.card.character.seaman, qty:1,
         name:{de:"Navigator"},
-        ability: [  `zählt wie drei nav items`,
+        ability: [  `Flucht mit`,
+                    `dem Schiff:`,
+                    `${Asset.keyword.tool.navigation.icon} ${Asset.keyword.tool.navigation.icon}`,
+                    `` ],
+        crafting: [ ``,
                     ``,
+                    ``,
+                    `` ],
+        passion: [ 0 , 0 , 1 ], // WIS
+    },
+    {   layout: CharacterCard, type:Asset.card.character.seaman, qty:1,
+        name:{de:"Matrose"}, // Standard Sailor
+        ability: [  `Das erste ${Asset.keyword.weight.icon}`,
+                    `zählt nicht`,
                     ``,
                     `` ],
         crafting: [ ``,
                     ``,
                     ``,
                     `` ],
-        passion: [ 0 , 0 , 1 ], // STR ; DEX ; WIS
+        passion: [ 1 , 0 , 0 ], // STR
     },
     {   layout: CharacterCard, type:Asset.card.character.seaman, qty:1,
-        name:{de:"Matrose"},
-        ability: [  `erstes gewicht zählt nicht`,
-                    ``,
+        name:{de:"Schiffszimmermann"}, // Ship's Carpenter
+        ability: [  `Schiff`,
+                    `verbessern:`,
+                    `- ${Asset.keyword.material.structural.icon}`,
+                    `` ],
+        crafting: [ `Struktur`,
+                    `${Asset.keyword.material.shaft.icon} ${Asset.keyword.material.shaft.icon}`,
                     ``,
                     `` ],
-        crafting: [ ``,
-                    ``,
-                    ``,
-                    `` ],
-        passion: [ 1 , 0 , 0 ], // STR ; DEX ; WIS
+        passion: [ 1 , 0 , 0 ], // STR
     },
     {   layout: CharacterCard, type:Asset.card.character.seaman, qty:1,
-        name:{de:"Koch"},
+        name:{de:"Smutje"}, // Authentic 18th-century German naval slang for Cook
         ability: [  `Für das erste ${Asset.keyword.supply.hunger.icon}`,
                     `pro Runde, ein`,
-                    `weiteres ${Asset.keyword.supply.hunger.icon} für`,
-                    `jemanden` ],
-        crafting: [ `Esslöffel`,
-                    `${Asset.keyword.material.shaft.icon} mit ${Asset.keyword.tool.crafting.icon}`,
+                    `weiteres ${Asset.keyword.supply.hunger.icon} für jemanden` ],
+        crafting: [ ``,
+                    ``,
                     ``,
                     `` ],
-        passion: [ 0 , 1 , 0 ], // STR ; DEX ; WIS
+        passion: [ 0 , 0 , 1 ], // WIS
     },
 ]
 
