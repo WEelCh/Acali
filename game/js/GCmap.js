@@ -218,9 +218,9 @@ class GCmap { static Log = new Log("Map", "c");
             if (!slot.tile) continue; // Safety check
 
             // Compute resources
-            slot.tile.head.resources.gather = getWeightedIndex(slot.tile.head.resources.gather);
-            slot.tile.head.resources.hunt   = getWeightedIndex(slot.tile.head.resources.hunt);
-            slot.tile.head.resources.chop   = getWeightedIndex(slot.tile.head.resources.chop);
+            slot.tile.head.resources.gathering = getWeightedIndex(slot.tile.head.resources.gathering);
+            slot.tile.head.resources.hunting   = getWeightedIndex(slot.tile.head.resources.hunting);
+            slot.tile.head.resources.chopping   = getWeightedIndex(slot.tile.head.resources.chopping);
 
             // Add coastal flag if it's on a coastal slot
             if (slot.isCoastal) {
@@ -278,7 +278,7 @@ class GCmap { static Log = new Log("Map", "c");
             head : {
                 flags  : [ "camp" ],
                 spawn: { disabled:false,weight:99,min:1,max:1,distance:0,allowOnInland:true,allowOnCoastal:true},
-                resources: { gather:[0,0,0],hunt:[0,0,0],chop:[0,0,0] },
+                resources: { gathering:[0,0,0],hunting:[0,0,0],chopping:[0,0,0] },
             }, 
             body : {
                 name  : { de : "Lager" , en : "Camp" } ,
