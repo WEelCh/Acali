@@ -232,7 +232,6 @@ class GCdisplay { static Log = new Log("Display", "b");
         const popup = document.getElementById("popup");
         let unforseenOptions = ""; let i=0;
         for (const option of event.unforseen.body.options) {
-            if (i>2) {break}
             unforseenOptions += this.#optionButton( `select${i}_btn` , option ); i++;
         }
         popup.innerHTML = /*html*/`
@@ -249,7 +248,6 @@ class GCdisplay { static Log = new Log("Display", "b");
         //setSquareHeight();
         return new Promise((resolve) => {
             for (const i in event.unforseen.body.options) {
-                if (i>2) {break}
                 document.getElementById(`select${i}_btn`).onclick = function() {
                     //popup.style.display = "none";
                     resolve(i);
@@ -330,10 +328,9 @@ class GCdisplay { static Log = new Log("Display", "b");
         let unforseenChallengeDoneKey = unforseenChallengeDone?"onSuccess":"onFailure"
 
         subaction = ["gathering","chopping","hunting"][subaction]
-        let actionOptions = ""; let x=0;
+        let actionOptions = ""; let i=0;
         for (const option of event.action[subaction].body.options) {
-            if (x>2) {break}
-            actionOptions += this.#optionButton( `select${x}_btn` , option ); x++;
+            actionOptions += this.#optionButton( `select${i}_btn` , option ); i++;
         }
         popup.innerHTML = /*html*/`
                 <div class="container">
@@ -354,7 +351,6 @@ class GCdisplay { static Log = new Log("Display", "b");
         //setSquareHeight();
         return new Promise((resolve) => {
             for (const i in event.action[subaction].body.options) {
-                if (i>2) {break}
                 document.getElementById(`select${i}_btn`).onclick = function() {
                     //popup.style.display = "none";
                     resolve(i);
@@ -459,7 +455,6 @@ class GCdisplay { static Log = new Log("Display", "b");
         const popup = document.getElementById("popup");
         let campOptions = ""; let i=0;
         for (const option of event.body.options) {
-            if (i>2) {break}
             campOptions += this.#optionButton( `select${i}_btn` , option ); i++;
         }
         popup.innerHTML = /*html*/`
@@ -476,7 +471,6 @@ class GCdisplay { static Log = new Log("Display", "b");
         //setSquareHeight();
         return new Promise((resolve) => {
             for (const i in event.body.options) {
-                if (i>2) {break}
                 document.getElementById(`select${i}_btn`).onclick = function() {
                     //popup.style.display = "none";
                     resolve(i);
