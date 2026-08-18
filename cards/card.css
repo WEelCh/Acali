@@ -51,8 +51,10 @@ p {
     flex-direction: column;
     float: left; }
 .card.item { /*silver Docsmagic sleeves*/
-    width : 63.5mm;
-    height: 88.0mm; }
+    /*width : 63.5mm;
+    height: 88.0mm;*/
+    width : 52.1mm; /*4x4*/
+    height: 73.8mm; }
 .card.character { /*magenta Docsmagic sleeves*/
     width : 80mm;
     height: 120mm; }

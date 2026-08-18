@@ -71,6 +71,7 @@ function ItemCard ( card , ID ) {
     flavor = "";
     if ( card?.flavor[APPLOC] ) {
         flavor = `<p> „${card.flavor[APPLOC]}“ </p>`
+        flavor = `<p> „flavor" </p>`
     }
     
     return /*html*/`
@@ -309,16 +310,18 @@ function addSheetIfNeeded( cardsOnSheet , max ){
 function onLoad(){
 
     for (let card of ItemCards) {
+        if (creatorMode) { card.qty=Math.min( 1 , card.qty ) }
         for (let i=0;i<card.qty;i++){
             try {document.querySelector('section:last-of-type').innerHTML += card.layout( card , ID );}
             catch (e) { console.warn( `Error generating card (id:${ID}): ${e}` ) }
             ID++; COS++; 
-            addSheetIfNeeded(COS , 9); 
+            addSheetIfNeeded(COS , 16); 
         } }
 
     addSheetIfNeeded(1,1); COS=0;
 
     for (let card of CharacterCards) {
+        if (creatorMode) { card.qty=Math.min( 1 , card.qty ) }
         for (let i=0;i<card.qty;i++){
             try {document.querySelector('section:last-of-type').innerHTML += card.layout( card , ID );}
             catch (e) { console.warn( `Error generating card (id:${ID}): ${e}` ) }
@@ -326,16 +329,16 @@ function onLoad(){
             addSheetIfNeeded(COS , 4); } }
     
     /* FOIL CARDS */
-    addSheetIfNeeded(1,1); COS=0;
+    //addSheetIfNeeded(1,1); COS=0;
 
     for (let card of ModifierCards) {
+        console.warn("ModifierCards disabled"); break;
+        if (creatorMode) { card.qty=Math.min( 1 , card.qty ) }
         for (let i=0;i<card.qty;i++){
             try {document.querySelector('section:last-of-type').innerHTML += card.layout( card , ID );}
             catch (e) { console.warn( `Error generating card (id:${ID}): ${e}` ) }
             ID++; COS++; 
             addSheetIfNeeded(COS , 10); } }
 
-
-
-    lucide.createIcons()
+    console.info(`Created ${ID}`)
 }

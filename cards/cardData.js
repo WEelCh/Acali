@@ -1,10 +1,11 @@
 
+const creatorMode = true;
 
 const ItemCards = [ 
 /***** 
 D E B U G
 *****/
-{   layout: ItemCard , type:Asset.card.item.beispiel , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.beispiel , qty: 0 ,
     name:{ de:"AllInExample", en:"" }, weight: 2 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -29,7 +30,7 @@ D E B U G
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.beispiel , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.beispiel , qty: 0 ,
     name:{ de:"AllOutExample", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -60,7 +61,7 @@ S H I P
 // ---------------------
 // CLOTHING & WEARABLES
 // ---------------------
-{   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.ship , qty: 3 ,
     name:{ de:"Leinenhemd", en:"Linen clothing" }, weight: 0 ,
     flavor:{ de:"Grobes, graues Leinenhemd", en:"" },
     keyword : {
@@ -85,7 +86,7 @@ S H I P
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.ship , qty: 3 ,
     name:{ de:"Wollhemd", en:"" }, weight: 0 ,
     flavor:{ de:"Warmer, robuster Kälteschutz", en:"" },
     keyword : {
@@ -110,7 +111,7 @@ S H I P
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.ship , qty: 2 ,
     name:{ de:"Canvasjacke", en:"" }, weight: 0 ,
     flavor:{ de:"Diente Seeleuten, Fischern und Arbeitern als extrem reißfester, wind- und wetterfester Schutz", en:"" },
     keyword : {
@@ -135,7 +136,7 @@ S H I P
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.ship , qty: 2 ,
     name:{ de:"Lederweste", en:"" }, weight: 0 ,
     flavor:{ de:"robuste, schützende Arbeitskleidung", en:"" },
     keyword : {
@@ -288,7 +289,7 @@ S H I P
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.ship , qty: 3 ,
     name:{ de:"Schlagfeuerzeug", en:"" }, weight: 0 ,
     flavor:{ de:"Durch das Schlagen des Stahls gegen den Stein werden heiße Funken erzeugt", en:"" },
     keyword : {
@@ -315,7 +316,7 @@ S H I P
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.ship , qty: 3 ,
     name:{ de:"Nähzeug", en:"" }, weight: 0 ,
     flavor:{ de:"Nadel und Faden", en:"" },
     keyword : {
@@ -418,7 +419,7 @@ S H I P
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.ship , qty: 2 ,
     name:{ de:"Segel", en:"" }, weight: 0 ,
     flavor:{ de:"Besteht aus robusten Leinen", en:"" },
     keyword : {
@@ -443,7 +444,7 @@ S H I P
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.ship , qty: 3 ,
     name:{ de:"Seil", en:"" }, weight: 0 ,
     flavor:{ de:"Ein langer, reißfester Strang aus verdrillten und geflochtenen Fasern", en:"" },
     keyword : {
@@ -468,7 +469,7 @@ S H I P
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.ship , qty: 2 ,
     name:{ de:"Maststück", en:"" }, weight: 1 ,
     flavor:{ de:"Ein Stück der mächtigen Masten", en:"" },
     keyword : {
@@ -493,7 +494,7 @@ S H I P
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.ship , qty: 3 ,
     name:{ de:"Schiffshülle", en:"" }, weight: 1 ,
     flavor:{ de:"Ein Stück der Schiffshülle", en:"" },
     keyword : {
@@ -521,7 +522,7 @@ S H I P
 // ---------------------
 // WEAPONS
 // ---------------------
-{   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.ship , qty: 2 ,
     name:{ de:"Hirschfänger", en:"" }, weight: 0 ,
     flavor:{ de:"Ein kurzes, schweres Messer zum Abfangen von Wild", en:"" },
     keyword : {
@@ -599,7 +600,7 @@ S H I P
 // ---------------------
 // MEDICAL
 // ---------------------
-{   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.ship , qty: 4 ,
     name:{ de:"Bandage", en:"" }, weight: 0 ,
     flavor:{ de:"Deckt offene Wunden ab und schützt vor Schmutz", en:"" },
     keyword : {
@@ -649,7 +650,7 @@ S H I P
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.ship , qty: 2 ,
     name:{ de:"Essig", en:"" }, weight: 0 ,
     flavor:{ de:"Gut zur Desinfektion oder Konservierung", en:"" },
     keyword : {
@@ -702,7 +703,7 @@ S H I P
 // ---------------------
 // FOOD
 // ---------------------
-{   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.ship , qty: 3 ,
     name:{ de:"Pöckelfleisch", en:"" }, weight: 0 ,
     flavor:{ de:"Eine überlebenswichtige Methode, um Fleisch ohne Kühlschränke monatelang haltbar zu machen", en:"" },
     keyword : {
@@ -727,7 +728,7 @@ S H I P
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.ship , qty: 3 ,
     name:{ de:"Bohnen", en:"" }, weight: 0 ,
     flavor:{ de:"Eignet sich auch gut als Viehfutter", en:"" },
     keyword : {
@@ -752,7 +753,7 @@ S H I P
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.ship , qty: 5 ,
     name:{ de:"Schiffszwieback", en:"" }, weight: 0 ,
     flavor:{ de:"Jahrelang haltbar, aber auch steinhart", en:"" },
     keyword : {
@@ -777,7 +778,7 @@ S H I P
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.ship , qty: 2 ,
     name:{ de:"Kräutertinktur", en:"" }, weight: 0 ,
     flavor:{ de:"Ein fester Bestandteil der europäischen Medizin", en:"" },
     keyword : {
@@ -802,7 +803,7 @@ S H I P
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.ship , qty: 3 ,
     name:{ de:"Rum", en:"" }, weight: 0 ,
     flavor:{ de:"Wichtiger Teil der täglichen Verpflegung an Bord", en:"" },
     keyword : {
@@ -827,7 +828,7 @@ S H I P
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.ship , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.ship , qty: 2 ,
     name:{ de:"Tabak", en:"" }, weight: 0 ,
     flavor:{ de:"Fester Bestandteil des Proviants", en:"" },
     keyword : {
@@ -864,7 +865,7 @@ S H I P
 /***** 
 F O R A G E
 *****/
-{   layout: ItemCard , type:Asset.card.item.forage , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.forage , qty: 8 ,
     name:{ de:"Moos", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -889,7 +890,7 @@ F O R A G E
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.forage , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.forage , qty: 2 ,
     name:{ de:"Wildes Kraut", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -914,7 +915,7 @@ F O R A G E
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.forage , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.forage , qty: 2 ,
     name:{ de:"Wilde Nuss", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -939,7 +940,7 @@ F O R A G E
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.forage , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.forage , qty: 2 ,
     name:{ de:"Wilde Wurzel", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -964,7 +965,7 @@ F O R A G E
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.forage , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.forage , qty: 2 ,
     name:{ de:"Wilder Pilz", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -989,7 +990,7 @@ F O R A G E
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.forage , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.forage , qty: 2 ,
     name:{ de:"Wilde Beere", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -1014,7 +1015,7 @@ F O R A G E
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.forage , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.forage , qty: 8 ,
     name:{ de:"Stock", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -1039,7 +1040,7 @@ F O R A G E
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.forage , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.forage , qty: 4 ,
     name:{ de:"Ast", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -1064,7 +1065,7 @@ F O R A G E
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.forage , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.forage , qty: 3 ,
     name:{ de:"Feuerstein", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -1089,7 +1090,7 @@ F O R A G E
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.forage , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.forage , qty: 3 ,
     name:{ de:"Ranke", en:"Vine" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -1111,7 +1112,7 @@ F O R A G E
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.forage , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.forage , qty: 3 ,
     name:{ de:"Baumharz", en:"Tree Resin" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -1133,7 +1134,7 @@ F O R A G E
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.forage , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.forage , qty: 3 ,
     name:{ de:"Dichtes Gestrüpp", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -1155,7 +1156,7 @@ F O R A G E
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.forage , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.forage , qty: 3 ,
     name:{ de:"Zunderpilz", en:"Tinder Fungus" }, weight: 0 ,
     flavor:{ de:"Ein fasrig-filziger Baumpilz", en:"" },
     keyword : {
@@ -1180,7 +1181,7 @@ F O R A G E
 /***** 
 H U N T
 *****/
-{   layout: ItemCard , type:Asset.card.item.hunt , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.hunt , qty: 16 ,
     name:{ de:"Fleisch", en:"" }, weight: 0 ,
     flavor:{ de:"Roh schlecht verträglich", en:"" },
     keyword : {
@@ -1205,7 +1206,7 @@ H U N T
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.hunt , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.hunt , qty: 3 ,
     name:{ de:"Knochen", en:"" }, weight: 0 ,
     flavor:{ de:"Hart genug für primitives Werkzeug", en:"" },
     keyword : {
@@ -1230,7 +1231,7 @@ H U N T
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.hunt , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.hunt , qty: 3 ,
     name:{ de:"Leder", en:"" }, weight: 0 ,
     flavor:{ de:"Zäh und widerstandsfähig", en:"" },
     keyword : {
@@ -1255,7 +1256,7 @@ H U N T
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.hunt , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.hunt , qty: 3 ,
     name:{ de:"Fell", en:"" }, weight: 0 ,
     flavor:{ de:"Hat vorher ein Tier warm gehalten, warum also nicht dich", en:"" },
     keyword : {
@@ -1280,7 +1281,7 @@ H U N T
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.hunt , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.hunt , qty: 3 ,
     name:{ de:"Fett", en:"" }, weight: 0 ,
     flavor:{ de:"Energiereich und brennt hervorragend", en:"" },
     keyword : {
@@ -1305,7 +1306,7 @@ H U N T
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.hunt , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.hunt , qty: 3 ,
     name:{ de:"Sehnen", en:"" }, weight: 0 ,
     flavor:{ de:"Viel robuster als pflanzliche Fasern", en:"" },
     keyword : {
@@ -1333,7 +1334,7 @@ H U N T
 /***** 
 W O O D
 *****/
-{   layout: ItemCard , type:Asset.card.item.wood , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.wood , qty: 16 ,
     name:{ de:"Scheit", en:"" }, weight: 1 ,
     flavor:{ de:"Gutes Brennholz und Baumaterial", en:"" },
     keyword : {
@@ -1358,7 +1359,7 @@ W O O D
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.wood , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.wood , qty: 3 ,
     name:{ de:"Ast", en:"" }, weight: 0 ,
     flavor:{ de:"Vielseitig einsetzbar", en:"" },
     keyword : {
@@ -1383,7 +1384,7 @@ W O O D
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.wood , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.wood , qty: 3 ,
     name:{ de:"Baumrinde", en:"Tree Bark" }, weight: 0 ,
     flavor:{ de:"Kann als Dachmaterial oder Medizin genutzt werden", en:"Can be used as roofing or medicine." },
     keyword : {
@@ -1405,24 +1406,24 @@ W O O D
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.wood , qty: 1 ,
-    name:{ de:"Kienspan", en:"Fatwood" }, weight: 0 ,
-    flavor:{ de:"Vollgesogen mit Harz und brennt selbst bei Nässe", en:"Soaked in resin. Burns even when wet." },
+{   layout: ItemCard , type:Asset.card.item.wood , qty: 3 ,
+    name:{ de:"Baumharz", en:"Tree Resin" }, weight: 0 ,
+    flavor:{ de:"", en:"" },
     keyword : {
         clothing : { _isFragile : false ,
             coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
             custom : `` },
         tool : {  _isFragile : false ,
-            crafting   : 0 , chopping    : 0 , kindle : 1 , light : 0 ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
             lookout    : 0 , navigation  : 0 ,
             meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
             custom : `` },
         material : { _isFragile : false ,
-            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 1 ,
-            cordage    : 0 , cover : 0 , adhesive : 1 , flammable : 1 ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            cordage    : 0 , cover : 1 , adhesive : 1 , flammable : 1 ,
             custom : `` },
         supply : { _isPerishable : false ,
-            exhaustion : 0 , hunger : 0 , hypothermia : 0 , wound    : 0 , 
+            exhaustion : 0 , hunger : 0 , hypothermia : 0 , wound    : 1 , 
             herb       : 0 , nut    : 0 , root        : 0 , mushroom : 0 , berry : 0 ,
             custom : `` },
     },
@@ -1432,7 +1433,7 @@ W O O D
 /***** 
 C R A F T
 *****/
-{   layout: ItemCard , type:Asset.card.item.craft , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.craft , qty: 3 ,
     name:{ de:"Messer", en:"" }, weight: 0 ,
     flavor:{ de:"ein kleines, kurzes improvisiertes Messer", en:"" },
     keyword : {
@@ -1468,7 +1469,7 @@ C R A F T
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.craft , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.craft , qty: 3 ,
     name:{ de:"Falle", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -1504,7 +1505,7 @@ C R A F T
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.craft , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.craft , qty: 3 ,
     name:{ de:"improvisierte Axt", en:"" }, weight: 1 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -1540,7 +1541,7 @@ C R A F T
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.craft , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.craft , qty: 3 ,
     name:{ de:"Pflanzenextrakt", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -1576,7 +1577,7 @@ C R A F T
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.craft , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.craft , qty: 3 ,
     name:{ de:"Brett", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -1612,7 +1613,7 @@ C R A F T
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.craft , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.craft , qty: 3 ,
     name:{ de:"Leinenhemd", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -1648,7 +1649,7 @@ C R A F T
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.craft , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.craft , qty: 3 ,
     name:{ de:"Beutel", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -1684,7 +1685,7 @@ C R A F T
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.craft , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.craft , qty: 3 ,
     name:{ de:"Naturfaden", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -1720,7 +1721,7 @@ C R A F T
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.craft , qty: 1 ,
+{   layout: ItemCard , type:Asset.card.item.craft , qty: 3 ,
     name:{ de:"Bandage", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -1756,6 +1757,195 @@ C R A F T
             custom : `` },
     },
 },
+
+
+
+/***** 
+S H E L T E R
+*****/
+{   layout: ItemCard , type:Asset.card.item.tent , qty: 3 ,
+    name:{ de:"Zelt", en:"" }, weight: 5 ,
+    flavor:{ de:"", en:"" },
+    keyword : {
+        craft : { _isComplex : true ,
+            clothing : {    coldProt   : 0 , wetProt     : 0 , windProt    : 0 , storage   : 0 , dmgProt : 0 },
+            tool     : {    crafting   : 0 , chopping    : 0 , kindle      : 0 , light     : 0 ,
+                            lookout    : 0 , navigation  : 0 , 
+                            meleeLight : 0 , meleeHeavy  : 0 , ranged      : 0 , magic     : 0 },
+            material : {    structural : 0 , metallic    : 0 , sharp       : 0 , shaft     : 2 ,
+                            cordage    : 1 , cover       : 1 , adhesive    : 0 , flammable : 0 },
+            supply   : {    exhaustion : 0 , hunger      : 0 , hypothermia : 0 , wound     : 0 , 
+                            herb       : 0 , nut         : 0 , root        : 0 , mushroom  : 0 , berry   : 0 },
+            custom : `` },
+
+        clothing : { _isFragile : false ,
+            coldProt : 0 , wetProt : 2 , windProt : 1 , storage : 0 , dmgProt : 0 ,
+            custom : `` },
+
+        tool : {  _isFragile : false ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
+            lookout    : 0 , navigation  : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
+            custom : `` },
+
+        material : { _isFragile : false ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
+            custom : `` },
+
+        supply : { _isPerishable : false ,
+            exhaustion : 0 , hunger : 0 , hypothermia : 0 , wound    : 0 , 
+            herb       : 0 , nut    : 0 , root        : 0 , mushroom : 0 , berry : 0 ,
+            custom : `` },
+    },
+},
+{   layout: ItemCard , type:Asset.card.item.hut , qty: 3 ,
+    name:{ de:"Unterschlupf", en:"" }, weight: 5 ,
+    flavor:{ de:"", en:"" },
+    keyword : {
+        craft : { _isComplex : true ,
+            clothing : {    coldProt   : 0 , wetProt     : 0 , windProt    : 0 , storage   : 0 , dmgProt : 0 },
+            tool     : {    crafting   : 0 , chopping    : 0 , kindle      : 0 , light     : 0 ,
+                            lookout    : 0 , navigation  : 0 , 
+                            meleeLight : 0 , meleeHeavy  : 0 , ranged      : 0 , magic     : 0 },
+            material : {    structural : 1 , metallic    : 0 , sharp       : 0 , shaft     : 1 ,
+                            cordage    : 1 , cover       : 1 , adhesive    : 0 , flammable : 0 },
+            supply   : {    exhaustion : 0 , hunger      : 0 , hypothermia : 0 , wound     : 0 , 
+                            herb       : 0 , nut         : 0 , root        : 0 , mushroom  : 0 , berry   : 0 },
+            custom : `` },
+
+        clothing : { _isFragile : false ,
+            coldProt : 1 , wetProt : 3 , windProt : 2 , storage : 0 , dmgProt : 0 ,
+            custom : `` },
+
+        tool : {  _isFragile : false ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
+            lookout    : 0 , navigation  : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
+            custom : `` },
+
+        material : { _isFragile : false ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
+            custom : `` },
+
+        supply : { _isPerishable : false ,
+            exhaustion : 0 , hunger : 0 , hypothermia : 0 , wound    : 0 , 
+            herb       : 0 , nut    : 0 , root        : 0 , mushroom : 0 , berry : 0 ,
+            custom : `` },
+    },
+},
+{   layout: ItemCard , type:Asset.card.item.house , qty: 3 ,
+    name:{ de:"Hütte", en:"" }, weight: 5 ,
+    flavor:{ de:"", en:"" },
+    keyword : {
+        craft : { _isComplex : true ,
+            clothing : {    coldProt   : 0 , wetProt     : 0 , windProt    : 0 , storage   : 0 , dmgProt : 0 },
+            tool     : {    crafting   : 0 , chopping    : 0 , kindle      : 0 , light     : 0 ,
+                            lookout    : 0 , navigation  : 0 , 
+                            meleeLight : 0 , meleeHeavy  : 0 , ranged      : 0 , magic     : 0 },
+            material : {    structural : 1 , metallic    : 0 , sharp       : 0 , shaft     : 0 ,
+                            cordage    : 1 , cover       : 1 , adhesive    : 0 , flammable : 0 },
+            supply   : {    exhaustion : 0 , hunger      : 0 , hypothermia : 0 , wound     : 0 , 
+                            herb       : 0 , nut         : 0 , root        : 0 , mushroom  : 0 , berry   : 0 },
+            custom : `` },
+
+        clothing : { _isFragile : false ,
+            coldProt : 2 , wetProt : 3 , windProt : 3 , storage : 0 , dmgProt : 0 ,
+            custom : `` },
+
+        tool : {  _isFragile : false ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
+            lookout    : 0 , navigation  : 0 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
+            custom : `` },
+
+        material : { _isFragile : false ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
+            custom : `` },
+
+        supply : { _isPerishable : false ,
+            exhaustion : 0 , hunger : 0 , hypothermia : 0 , wound    : 0 , 
+            herb       : 0 , nut    : 0 , root        : 0 , mushroom : 0 , berry : 0 ,
+            custom : `` },
+    },
+},
+/***** 
+S H I P
+*****/
+{   layout: ItemCard , type:Asset.card.item.dinghy , qty: 3 ,
+    name:{ de:"Boot", en:"" }, weight: 5 ,
+    flavor:{ de:"", en:"" },
+    keyword : {
+        craft : { _isComplex : true ,
+            clothing : {    coldProt   : 0 , wetProt     : 0 , windProt    : 0 , storage   : 0 , dmgProt : 0 },
+            tool     : {    crafting   : 0 , chopping    : 0 , kindle      : 0 , light     : 0 ,
+                            lookout    : 0 , navigation  : 0 , 
+                            meleeLight : 0 , meleeHeavy  : 0 , ranged      : 0 , magic     : 0 },
+            material : {    structural : 2 , metallic    : 0 , sharp       : 0 , shaft     : 1 ,
+                            cordage    : 1 , cover       : 0 , adhesive    : 0 , flammable : 0 },
+            supply   : {    exhaustion : 0 , hunger      : 0 , hypothermia : 0 , wound     : 0 , 
+                            herb       : 0 , nut         : 0 , root        : 0 , mushroom  : 0 , berry   : 0 },
+            custom : `` },
+
+        clothing : { _isFragile : false ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
+            custom : `` },
+
+        tool : {  _isFragile : false ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
+            lookout    : 0 , navigation  : 1 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
+            custom : `` },
+
+        material : { _isFragile : false ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
+            custom : `` },
+
+        supply : { _isPerishable : false ,
+            exhaustion : 0 , hunger : 0 , hypothermia : 0 , wound    : 0 , 
+            herb       : 0 , nut    : 0 , root        : 0 , mushroom : 0 , berry : 0 ,
+            custom : `` },
+    },
+},
+{   layout: ItemCard , type:Asset.card.item.boat , qty: 3 ,
+    name:{ de:"Schiff", en:"" }, weight: 5 ,
+    flavor:{ de:"", en:"" },
+    keyword : {
+        craft : { _isComplex : true ,
+            clothing : {    coldProt   : 0 , wetProt     : 0 , windProt    : 0 , storage   : 0 , dmgProt : 0 },
+            tool     : {    crafting   : 0 , chopping    : 0 , kindle      : 0 , light     : 0 ,
+                            lookout    : 0 , navigation  : 0 , 
+                            meleeLight : 0 , meleeHeavy  : 0 , ranged      : 0 , magic     : 0 },
+            material : {    structural : 2 , metallic    : 1 , sharp       : 0 , shaft     : 1 ,
+                            cordage    : 1 , cover       : 0 , adhesive    : 1 , flammable : 0 },
+            supply   : {    exhaustion : 0 , hunger      : 0 , hypothermia : 0 , wound     : 0 , 
+                            herb       : 0 , nut         : 0 , root        : 0 , mushroom  : 0 , berry   : 0 },
+            custom : `` },
+
+        clothing : { _isFragile : false ,
+            coldProt : 0 , wetProt : 0 , windProt : 0 , storage : 0 , dmgProt : 0 ,
+            custom : `` },
+
+        tool : {  _isFragile : false ,
+            crafting   : 0 , chopping    : 0 , kindle : 0 , light : 0 ,
+            lookout    : 0 , navigation  : 3 ,
+            meleeLight : 0 , meleeHeavy  : 0 , ranged : 0 , magic : 0 ,
+            custom : `` },
+
+        material : { _isFragile : false ,
+            structural : 0 , metallic : 0 , sharp     : 0 , shaft : 0 ,
+            cordage    : 0 , cover : 0 , adhesive : 0 , flammable : 0 ,
+            custom : `` },
+
+        supply : { _isPerishable : false ,
+            exhaustion : 0 , hunger : 0 , hypothermia : 0 , wound    : 0 , 
+            herb       : 0 , nut    : 0 , root        : 0 , mushroom : 0 , berry : 0 ,
+            custom : `` },
+    },
+},
 ]
 
 
@@ -1767,6 +1957,18 @@ const CharacterCards = [
 C H A R A C T E R
 Kolonist
 *****/
+    {   layout: CharacterCard, type:Asset.card.character.colonist, qty:4,
+        name:{de:Asset.spacer},
+        ability: [  ``,
+                    ``,
+                    ``,
+                    ``,
+                    ``,
+                    ``,
+                    `` ],
+        crafting: [ `` ],
+        passion: [ 0 , 0 , 0 ],
+    },
     {   layout: CharacterCard, type:Asset.card.character.colonist, qty:1,
         name:{de:"Landarbeiter"}, // Era-appropriate for a general gatherer
         ability: [  `+ ${Asset.tile.action.gathering.icon}`,
@@ -1902,6 +2104,18 @@ Kolonist
 C H A R A C T E R
 Seefahrer
 *****/
+    {   layout: CharacterCard, type:Asset.card.character.seaman, qty:4,
+        name:{de:Asset.spacer},
+        ability: [  ``,
+                    ``,
+                    ``,
+                    ``,
+                    ``,
+                    ``,
+                    `` ],
+        crafting: [ `` ],
+        passion: [ 0 , 0 , 0 ],
+    },
     {   layout: CharacterCard, type:Asset.card.character.seaman, qty:1,
         name:{de:"Kapitän"},
         ability: [  `Nach Abstimmung:`,
