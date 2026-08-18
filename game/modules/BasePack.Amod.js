@@ -356,11 +356,45 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
         // -------------------------------------------------------------------
         // WEATHER FRAGMENT
         // -------------------------------------------------------------------
-        weather : [],
+        weather : [
+            {   head: {
+                    title: "",
+                    spawn : {
+                        distanceRange: [ 0 , 8 ], // [1,3:near] [3,5:far] [4,8:very far]
+                        weight: 10 , disabled: true , cw: false , harsh: false ,
+                        flags   : { require: [  ], exclude: [  ] },
+                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
+                        weather : { temp: [ 0 , 4 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                    prec: [ 0 , 4 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                    wind: [ 0 , 3 ], /* [ Calm   , Breeze   , Gale    , Storm          ]*/ },},},
+                body: { description: { de: "" , en: "" },
+                        effects: {  yield      : { gathering: 0,   chopping: 0,   hunting: 0,   ship: 0 },
+                                    afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                    flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},}
+            },
+        ],
         // -------------------------------------------------------------------
         // TRAVEL FRAGMENT
         // -------------------------------------------------------------------
-        travel : [],
+        travel : [
+            {   head: {
+                    title: "",
+                    spawn : {
+                        distanceRange: [ 0 , 8 ], // [1,3:near] [3,5:far] [4,8:very far]
+                        weight: 10 , disabled: true , cw: false , harsh: false ,
+                        flags   : { require: [  ], exclude: [  ] },
+                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
+                        weather : { temp: [ 0 , 4 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                    prec: [ 0 , 4 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                    wind: [ 0 , 3 ], /* [ Calm   , Breeze   , Gale    , Storm          ]*/ },},},
+                body: { description: { de: "" , en: "" },
+                        effects: {  yield      : { gathering: 0,   chopping: 0,   hunting: 0,   ship: 0 },
+                                    afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                    flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},}
+            },
+        ],
         // -------------------------------------------------------------------
         // UNFORSEEN FRAGMENT
         // -------------------------------------------------------------------
@@ -1034,7 +1068,7 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
                             options : [
                                 {   description : { de: "Den Kadaver mit Werkzeug zerlegen." , en: "" } ,
                                     challenge : {   skillcheck : { type: "", difficulty:[ 0 ] },
-                                                    keyword    : { use: `${KW.tool.meleeLight} / ${KW.tool.meleeHeavy} / ${KW.tool.sharp}`, consume: `` },},
+                                                    keyword    : { use: `${KW.tool.meleeLight} / ${KW.tool.meleeHeavy} / ${KW.material.sharp}`, consume: `` },},
                                     onSuccess : {   description : { de : "" , en : "" },
                                                     effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 7 , ship: 0 },
                                                                 afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
@@ -1072,7 +1106,7 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
                             options : [
                                 {   description : { de: "Den Kadaver mit Werkzeug zerlegen." , en: "" } ,
                                     challenge : {   skillcheck : { type: "", difficulty:[ 0 ] },
-                                                    keyword    : { use: `${KW.tool.meleeLight} / ${KW.tool.meleeHeavy} / ${KW.tool.sharp}`, consume: `` },},
+                                                    keyword    : { use: `${KW.tool.meleeLight} / ${KW.tool.meleeHeavy} / ${KW.material.sharp}`, consume: `` },},
                                     onSuccess : {   description : { de : "" , en : "" },
                                                     effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 3 , ship: 0 },
                                                                 afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
@@ -1237,7 +1271,7 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
                             options : [
                                 {   description : { de: "Den Kadaver mit Werkzeug zerlegen." , en: "" } ,
                                     challenge : {   skillcheck : { type: "", difficulty:[ 0 ] },
-                                                    keyword    : { use: `${KW.tool.meleeLight} / ${KW.tool.meleeHeavy} / ${KW.tool.sharp}`, consume: `` },},
+                                                    keyword    : { use: `${KW.tool.meleeLight} / ${KW.tool.meleeHeavy} / ${KW.material.sharp}`, consume: `` },},
                                     onSuccess : {   description : { de : "" , en : "" },
                                                     effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 5 , ship: 0 },
                                                                 afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
@@ -1275,7 +1309,7 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
                             options : [
                                 {   description : { de: "Den Kadaver mit Werkzeug zerlegen." , en: "" } ,
                                     challenge : {   skillcheck : { type: "", difficulty:[ 0 ] },
-                                                    keyword    : { use: `${KW.tool.meleeLight} / ${KW.tool.meleeHeavy} / ${KW.tool.sharp}`, consume: `` },},
+                                                    keyword    : { use: `${KW.tool.meleeLight} / ${KW.tool.meleeHeavy} / ${KW.material.sharp}`, consume: `` },},
                                     onSuccess : {   description : { de : "" , en : "" },
                                                     effects: {  yield      : { gathering: 0 , chopping: 0 , hunting: 2 , ship: 0 },
                                                                 afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
@@ -1300,7 +1334,7 @@ let AMOD = { meta : { author, name, date, id, description, hidden },
                             ],},
                 },
                 // TODO : sow and child?
-            ],
+            ], // fuchs oder wolf, remove hurt and dead
         },
         // -------------------------------------------------------------------
         // CAMP FRAGMENT
@@ -1454,49 +1488,17 @@ function addBasicWeatherFragments() {
                         title: stateTitle,
                         spawn : {
                             distanceRange: [ 0 , 8 ], // [1,3:near] [3,5:far] [4,8:very far]
-                            weight: 10,       // [ 1-10 ]
-                            disabled : false,   // disables this subevent
-                            cw       : false,   // players can disable events with content warning for especially distrubing / harmfull content
-                            harsh    : false,   // is this event especially punishing (death, all wounded etc)
-                            flags : {
-                                require: [  ], // tile (and global) must have ALL of these
-                                exclude: [  ], // tile (and global) must have NONE of these
-                            },
+                            weight: 10 , disabled: false , cw: false , harsh: false ,
+                            flags   : { require: [  ], exclude: [  ] },
                             daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
                             season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
-                            weather : {
-                                temp: [t, t], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
-                                prec: [p, p], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
-                                wind: [w, w], // [ Calm   , Breeze   , Gale    , Storm          ]
-                            },
-                        }, 
-                    },
-                    body: {
-                        description: {
-                            de: descDe,
-                            en: descEn,
-                        },
-                        effects: {
-                            yield: { // cards drawn from resource decks
-                                gathering: 0,   chopping: 0,   hunting: 0,   ship: 0,
-                            },
-                            afflictions: {
-                                // direct (neg means healing)
-                                exhaustion: 0,      hunger: 0,      hypothermia: (t === 4) ? -1 : 0,      wound: 0,
-                                // indirect (translate to hypothermia if not protected against)
-                                cold: Math.max(0, 3 - t),       wet: Math.max(0, p-1),     wind: w,
-                            },
-                            flags: {
-                                local : {
-                                    add    : [  ],
-                                    remove : [  ],
-                                },
-                                global : {
-                                    add    : [  ],
-                                    remove : [  ],
-                                },
-                            },
-                        },
+                            weather : { temp: [t, t], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                        prec: [p, p], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                        wind: [w, w], /* [ Calm   , Breeze   , Gale    , Storm          ]*/ },},},
+                    body: { description: { de: descDe , en: descEn },
+                            effects: {  yield: { gathering: 0,   chopping: 0,   hunting: 0,   ship: 0 },
+                                        afflictions: { exhaustion: 0 , hunger: 0 , hypothermia: (t === 4) ? -1 : 0 , wound: 0 , cold: Math.max(0, 3 - t) , wet: Math.max(0, p-1) , wind: w },
+                                        flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},
                     }
                 });
             }
@@ -1582,64 +1584,28 @@ function addBasicTravelFragments() {
 
     for (const fragment of fragments) {
         
-        AMOD.eventFragment.travel.push({
-            head: {
-                title: fragment.title,
-                spawn : {
-                    distanceRange: fragment.range, // [1,3:near] [3,5:far] [4,8:very far]
-                    weight: fragment.weight,       // [ 1-10 ]
-                    disabled : false,   // disables this subevent
-                    cw       : false,   // players can disable events with content warning for especially distrubing / harmfull content
-                    severity : fragment.severity,       // 0:forgiving | 1:standard | 2:harsh | 3:brutal
-                    flags : {
-                        require: [  ], // tile (and global) must have ALL of these
-                        exclude: [  ], // tile (and global) must have NONE of these
-                    },
-                    daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
-                    season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
-                    weather : {
-                        temp: [0, 4], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
-                        prec: [0, 4], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
-                        wind: [0, 3], // [ Calm   , Breeze   , Gale    , Storm          ]
-                    },
-                }, 
+        AMOD.eventFragment.travel.push(
+            {   head: {
+                    title: fragment.title,
+                    spawn : {
+                        distanceRange: fragment.range, // [1,3:near] [3,5:far] [4,8:very far]
+                        weight: fragment.weight , disabled: false , cw: false , harsh: fragment.harsh ,
+                        flags   : { require: [  ], exclude: [  ] },
+                        daytime : [ true , [ true , true , true , true ] ], // [ day , night (starts with losing moon) ] 
+                        season  : [ true , true , true , true ],            // [ spring , summer, autumn, winter ] 
+                        weather : { temp: [ 0 , 4 ], // [ Arctic , Freezing , Cold    , Medium , Warm  ]
+                                    prec: [ 0 , 4 ], // [ Clear  , Cloudy   , Drizzle , Rain   , Heavy ]
+                                    wind: [ 0 , 3 ], /* [ Calm   , Breeze   , Gale    , Storm          ]*/ },},},
+                body: { description: { de: fragment.de , en: fragment.en },
+                        effects: {  yield      : { gathering: 0,   chopping: 0,   hunting: 0,   ship: 0 },
+                                    afflictions: { exhaustion: fragment.exhaustion , hunger: fragment.hunger , hypothermia: 0 , wound: 0 , cold: 0 , wet: 0 , wind: 0 },
+                                    flags      : { local:{add:[  ],remove:[  ]},global:{add:[  ],remove:[  ]}},},}
             },
-            body: {
-                description: {
-                    de: fragment.de,
-                    en: fragment.en,
-                },
-                effects: {
-                    yield: { // cards drawn from resource decks
-                        gathering: 0,   chopping: 0,   hunting: 0,   ship: 0,
-                    },
-                    afflictions: {
-                        // direct (neg means healing)
-                        exhaustion: fragment.exhaustion,      hunger: fragment.hunger,      hypothermia: 0,      wound: 0,
-                        // indirect (translate to hypothermia if not protected against)
-                        cold: 0,       wet: 0,     wind: 0,
-                    },
-                    flags: {
-                        local : {
-                            add    : [  ],
-                            remove : [  ],
-                        },
-                        global : {
-                            add    : [  ],
-                            remove : [  ],
-                        },
-                    },
-                },
-            }
-        });
+        );
     }
 }
 
-
-
 addBasicWeatherFragments();
 addBasicTravelFragments();
-
-
 
 export default AMOD;
