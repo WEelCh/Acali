@@ -1,5 +1,5 @@
 
-const creatorMode = true;
+const creatorMode = false;
 
 const ItemCards = [ 
 /***** 
@@ -289,7 +289,7 @@ S H I P
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.ship , qty: 3 ,
+{   layout: ItemCard , type:Asset.card.item.ship , qty: 2 ,
     name:{ de:"Schlagfeuerzeug", en:"" }, weight: 0 ,
     flavor:{ de:"Durch das Schlagen des Stahls gegen den Stein werden heiße Funken erzeugt", en:"" },
     keyword : {
@@ -494,7 +494,7 @@ S H I P
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.ship , qty: 3 ,
+{   layout: ItemCard , type:Asset.card.item.ship , qty: 2 ,
     name:{ de:"Schiffshülle", en:"" }, weight: 1 ,
     flavor:{ de:"Ein Stück der Schiffshülle", en:"" },
     keyword : {
@@ -1015,7 +1015,7 @@ F O R A G E
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.forage , qty: 8 ,
+{   layout: ItemCard , type:Asset.card.item.forage , qty: 4 ,
     name:{ de:"Stock", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -1040,7 +1040,7 @@ F O R A G E
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.forage , qty: 4 ,
+{   layout: ItemCard , type:Asset.card.item.forage , qty: 2 ,
     name:{ de:"Ast", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -1065,7 +1065,7 @@ F O R A G E
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.forage , qty: 3 ,
+{   layout: ItemCard , type:Asset.card.item.forage , qty: 4 ,
     name:{ de:"Feuerstein", en:"" }, weight: 0 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -1763,7 +1763,7 @@ C R A F T
 /***** 
 S H E L T E R
 *****/
-{   layout: ItemCard , type:Asset.card.item.tent , qty: 3 ,
+{   layout: ItemCard , type:Asset.card.item.tent , qty: 8 ,
     name:{ de:"Zelt", en:"" }, weight: 5 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -1799,7 +1799,7 @@ S H E L T E R
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.hut , qty: 3 ,
+{   layout: ItemCard , type:Asset.card.item.hut , qty: 5 ,
     name:{ de:"Unterschlupf", en:"" }, weight: 5 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -1874,7 +1874,7 @@ S H E L T E R
 /***** 
 S H I P
 *****/
-{   layout: ItemCard , type:Asset.card.item.dinghy , qty: 3 ,
+{   layout: ItemCard , type:Asset.card.item.dinghy , qty: 8 ,
     name:{ de:"Boot", en:"" }, weight: 5 ,
     flavor:{ de:"", en:"" },
     keyword : {
@@ -1910,7 +1910,7 @@ S H I P
             custom : `` },
     },
 },
-{   layout: ItemCard , type:Asset.card.item.boat , qty: 3 ,
+{   layout: ItemCard , type:Asset.card.item.boat , qty: 5 ,
     name:{ de:"Schiff", en:"" }, weight: 5 ,
     flavor:{ de:"", en:"" },
     keyword : {
